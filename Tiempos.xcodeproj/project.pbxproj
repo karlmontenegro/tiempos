@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4731641B6FDB1600944D7C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C47315B1B6FDB1600944D7C /* FMDatabase.m */; };
+		0C4731651B6FDB1600944D7C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C47315D1B6FDB1600944D7C /* FMResultSet.m */; };
+		0C4731661B6FDB1600944D7C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C47315F1B6FDB1600944D7C /* FMDatabaseQueue.m */; };
+		0C4731671B6FDB1600944D7C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4731611B6FDB1600944D7C /* FMDatabaseAdditions.m */; };
+		0C4731681B6FDB1600944D7C /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4731631B6FDB1600944D7C /* FMDatabasePool.m */; };
+		0C47316A1B6FE06C00944D7C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4731691B6FE06C00944D7C /* libsqlite3.dylib */; };
+		0C47316C1B6FE58900944D7C /* tiempos.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0C47316B1B6FE58900944D7C /* tiempos.sqlite */; };
 		526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567C1B5D57BF000F323D /* AppDelegate.swift */; };
 		526D567F1B5D57BF000F323D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567E1B5D57BF000F323D /* ViewController.swift */; };
 		526D56821B5D57BF000F323D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526D56801B5D57BF000F323D /* Main.storyboard */; };
@@ -26,6 +33,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C4731581B6FDB1500944D7C /* Tiempos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tiempos-Bridging-Header.h"; sourceTree = "<group>"; };
+		0C4731591B6FDB1600944D7C /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		0C47315A1B6FDB1600944D7C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		0C47315B1B6FDB1600944D7C /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		0C47315C1B6FDB1600944D7C /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		0C47315D1B6FDB1600944D7C /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		0C47315E1B6FDB1600944D7C /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		0C47315F1B6FDB1600944D7C /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		0C4731601B6FDB1600944D7C /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		0C4731611B6FDB1600944D7C /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		0C4731621B6FDB1600944D7C /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		0C4731631B6FDB1600944D7C /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		0C4731691B6FE06C00944D7C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		0C47316B1B6FE58900944D7C /* tiempos.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = tiempos.sqlite; path = Tiempos/tiempos.sqlite; sourceTree = "<group>"; };
 		526D56771B5D57BF000F323D /* Tiempos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiempos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526D567B1B5D57BF000F323D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526D567C1B5D57BF000F323D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C47316A1B6FE06C00944D7C /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +81,8 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
+				0C47316B1B6FE58900944D7C /* tiempos.sqlite */,
+				0C4731691B6FE06C00944D7C /* libsqlite3.dylib */,
 				526D56791B5D57BF000F323D /* Tiempos */,
 				526D568F1B5D57C0000F323D /* TiemposTests */,
 				526D56781B5D57BF000F323D /* Products */,
@@ -77,12 +101,24 @@
 		526D56791B5D57BF000F323D /* Tiempos */ = {
 			isa = PBXGroup;
 			children = (
+				0C4731591B6FDB1600944D7C /* FMDB.h */,
+				0C47315A1B6FDB1600944D7C /* FMDatabase.h */,
+				0C47315B1B6FDB1600944D7C /* FMDatabase.m */,
+				0C47315C1B6FDB1600944D7C /* FMResultSet.h */,
+				0C47315D1B6FDB1600944D7C /* FMResultSet.m */,
+				0C47315E1B6FDB1600944D7C /* FMDatabaseQueue.h */,
+				0C47315F1B6FDB1600944D7C /* FMDatabaseQueue.m */,
+				0C4731601B6FDB1600944D7C /* FMDatabaseAdditions.h */,
+				0C4731611B6FDB1600944D7C /* FMDatabaseAdditions.m */,
+				0C4731621B6FDB1600944D7C /* FMDatabasePool.h */,
+				0C4731631B6FDB1600944D7C /* FMDatabasePool.m */,
 				526D567C1B5D57BF000F323D /* AppDelegate.swift */,
 				526D567E1B5D57BF000F323D /* ViewController.swift */,
 				526D56801B5D57BF000F323D /* Main.storyboard */,
 				526D56831B5D57BF000F323D /* Images.xcassets */,
 				526D56851B5D57BF000F323D /* LaunchScreen.xib */,
 				526D567A1B5D57BF000F323D /* Supporting Files */,
+				0C4731581B6FDB1500944D7C /* Tiempos-Bridging-Header.h */,
 			);
 			path = Tiempos;
 			sourceTree = "<group>";
@@ -192,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C47316C1B6FE58900944D7C /* tiempos.sqlite in Resources */,
 				526D56821B5D57BF000F323D /* Main.storyboard in Resources */,
 				526D56871B5D57BF000F323D /* LaunchScreen.xib in Resources */,
 				526D56841B5D57BF000F323D /* Images.xcassets in Resources */,
@@ -212,8 +249,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C4731661B6FDB1600944D7C /* FMDatabaseQueue.m in Sources */,
+				0C4731641B6FDB1600944D7C /* FMDatabase.m in Sources */,
 				526D567F1B5D57BF000F323D /* ViewController.swift in Sources */,
+				0C4731651B6FDB1600944D7C /* FMResultSet.m in Sources */,
+				0C4731681B6FDB1600944D7C /* FMDatabasePool.m in Sources */,
 				526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */,
+				0C4731671B6FDB1600944D7C /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +384,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tiempos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tiempos/Tiempos-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -352,9 +397,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tiempos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tiempos/Tiempos-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -411,6 +458,7 @@
 				526D56981B5D57C0000F323D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		526D56991B5D57C0000F323D /* Build configuration list for PBXNativeTarget "TiemposTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +467,7 @@
 				526D569B1B5D57C0000F323D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
