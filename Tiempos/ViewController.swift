@@ -14,13 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let filemgr = NSFileManager.defaultManager()
-        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask,true)
-        let docsDir = dirPaths[0] as! String
         
-        var databasePath = docsDir.stringByAppendingPathComponent("tiempos.sqlite")
-
+        let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let databasePath = documentsFolder.stringByAppendingPathComponent("tiempos.sqlite")
         
         if filemgr.fileExistsAtPath(databasePath as String){
+
             let contactDB = FMDatabase(path: databasePath as String)
             
             if contactDB == nil{
