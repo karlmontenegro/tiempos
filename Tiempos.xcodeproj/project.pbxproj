@@ -14,6 +14,12 @@
 		0C4731681B6FDB1600944D7C /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4731631B6FDB1600944D7C /* FMDatabasePool.m */; };
 		0C47316A1B6FE06C00944D7C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4731691B6FE06C00944D7C /* libsqlite3.dylib */; };
 		0C6CD5781B71617B0084343E /* tiempos.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0C6CD5771B71617B0084343E /* tiempos.sqlite */; };
+		0C9C58951B726A0E0091B578 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58941B726A0E0091B578 /* TableViewController.swift */; };
+		0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */; };
+		0C9C58991B727AC20091B578 /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58981B727AC20091B578 /* Cliente.swift */; };
+		0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */; };
+		0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589C1B72869B0091B578 /* NotaAudio.swift */; };
+		0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */; };
 		526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567C1B5D57BF000F323D /* AppDelegate.swift */; };
 		526D567F1B5D57BF000F323D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567E1B5D57BF000F323D /* ViewController.swift */; };
 		526D56821B5D57BF000F323D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526D56801B5D57BF000F323D /* Main.storyboard */; };
@@ -47,6 +53,12 @@
 		0C4731631B6FDB1600944D7C /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		0C4731691B6FE06C00944D7C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0C6CD5771B71617B0084343E /* tiempos.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = tiempos.sqlite; path = Tiempos/tiempos.sqlite; sourceTree = "<group>"; };
+		0C9C58941B726A0E0091B578 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleClienteViewController.swift; sourceTree = "<group>"; };
+		0C9C58981B727AC20091B578 /* Cliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cliente.swift; sourceTree = "<group>"; };
+		0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotaAudioTableViewController.swift; path = Tiempos/NotaAudioTableViewController.swift; sourceTree = "<group>"; };
+		0C9C589C1B72869B0091B578 /* NotaAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaAudio.swift; sourceTree = "<group>"; };
+		0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleNotaAudioViewController.swift; path = Tiempos/DetalleNotaAudioViewController.swift; sourceTree = "<group>"; };
 		526D56771B5D57BF000F323D /* Tiempos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiempos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526D567B1B5D57BF000F323D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526D567C1B5D57BF000F323D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +93,10 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
+				0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */,
+				0C9C589C1B72869B0091B578 /* NotaAudio.swift */,
+				0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */,
+				0C9C58981B727AC20091B578 /* Cliente.swift */,
 				0C6CD5771B71617B0084343E /* tiempos.sqlite */,
 				0C4731691B6FE06C00944D7C /* libsqlite3.dylib */,
 				526D56791B5D57BF000F323D /* Tiempos */,
@@ -114,6 +130,8 @@
 				0C4731631B6FDB1600944D7C /* FMDatabasePool.m */,
 				526D567C1B5D57BF000F323D /* AppDelegate.swift */,
 				526D567E1B5D57BF000F323D /* ViewController.swift */,
+				0C9C58941B726A0E0091B578 /* TableViewController.swift */,
+				0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */,
 				526D56801B5D57BF000F323D /* Main.storyboard */,
 				526D56831B5D57BF000F323D /* Images.xcassets */,
 				526D56851B5D57BF000F323D /* LaunchScreen.xib */,
@@ -262,11 +280,17 @@
 			files = (
 				0C4731661B6FDB1600944D7C /* FMDatabaseQueue.m in Sources */,
 				0C4731641B6FDB1600944D7C /* FMDatabase.m in Sources */,
+				0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */,
 				526D567F1B5D57BF000F323D /* ViewController.swift in Sources */,
+				0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */,
+				0C9C58951B726A0E0091B578 /* TableViewController.swift in Sources */,
+				0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */,
+				0C9C58991B727AC20091B578 /* Cliente.swift in Sources */,
 				0C4731651B6FDB1600944D7C /* FMResultSet.m in Sources */,
 				0C4731681B6FDB1600944D7C /* FMDatabasePool.m in Sources */,
 				526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */,
 				0C4731671B6FDB1600944D7C /* FMDatabaseAdditions.m in Sources */,
+				0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
