@@ -50,6 +50,9 @@
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="82" y="400" width="42" height="30"/>
                                 </variation>
+                                <connections>
+                                    <segue destination="p7q-Yq-PEJ" kind="show" id="tRt-RW-GFi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etg-GX-X3t">
                                 <rect key="frame" x="176" y="401" width="102" height="30"/>
