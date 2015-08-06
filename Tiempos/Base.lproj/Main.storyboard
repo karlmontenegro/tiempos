@@ -268,7 +268,7 @@
             </objects>
             <point key="canvasLocation" x="-178.5" y="751"/>
         </scene>
-        <!--Notas de Audio-->
+        <!--Notas de Voz-->
         <scene sceneID="jEy-51-7c1">
             <objects>
                 <tableViewController id="fTx-qM-ikv" customClass="NotaAudioTableViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,7 +303,7 @@
                             <outlet property="delegate" destination="fTx-qM-ikv" id="Ncq-4p-zIc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notas de Audio" id="QnS-Qm-Ym2">
+                    <navigationItem key="navigationItem" title="Notas de Voz" id="QnS-Qm-Ym2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="s1b-vo-mqG">
                             <connections>
                                 <segue destination="p7q-Yq-PEJ" kind="showDetail" id="bHX-Md-OyU"/>
@@ -311,7 +311,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="btW-Dp-HJl" userLabel="Item">
                             <connections>
-                                <segue destination="vtK-DM-sUt" kind="show" id="VQu-XC-bj5"/>
+                                <segue destination="hnv-xI-KV7" kind="show" id="VQu-XC-bj5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -320,7 +320,7 @@
             </objects>
             <point key="canvasLocation" x="1539" y="-1046"/>
         </scene>
-        <!--View Controller-->
+        <!--Grabar-->
         <scene sceneID="dGl-vK-2rE">
             <objects>
                 <viewController id="vtK-DM-sUt" sceneMemberID="viewController">
@@ -365,10 +365,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Grabar" id="7vT-7d-rbD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="K6l-jf-ikf"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxG-jU-tIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2407.5" y="-1671"/>
+            <point key="canvasLocation" x="3325.5" y="-1671"/>
         </scene>
         <!--Detalle Nota Audio View Controller-->
         <scene sceneID="Mfe-Hg-ae5">
@@ -465,7 +468,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="151" y="182" width="99" height="30"/>
+                                    <rect key="frame" x="151" y="163" width="99" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="flt-RV-jAx" kind="show" id="6SP-5u-UOM"/>
@@ -477,16 +480,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="73" y="280" width="99" height="30"/>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-ok-Adt">
-                                <rect key="frame" x="16" y="348" width="36" height="30"/>
-                                <state key="normal" title="Citas">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="56" y="453" width="99" height="30"/>
+                                    <rect key="frame" x="56" y="280" width="99" height="30"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QM9-WE-MW9">
@@ -495,25 +489,16 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="229" y="280" width="99" height="30"/>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56v-8k-Iob">
-                                <rect key="frame" x="253" y="348" width="51" height="30"/>
-                                <state key="normal" title="Cobros">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="245" y="453" width="99" height="30"/>
+                                    <rect key="frame" x="245" y="280" width="99" height="30"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUo-Kq-0TU">
                                 <rect key="frame" x="16" y="28" width="99" height="30"/>
-                                <state key="normal" title="Nota de Audio">
+                                <state key="normal" title="Notas de Voz">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="56" y="58" width="99" height="30"/>
+                                    <rect key="frame" x="16" y="58" width="99" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="DNV-TC-ueH" kind="show" id="Ino-Dy-5fN"/>
@@ -525,14 +510,54 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="245" y="58" width="99" height="30"/>
+                                    <rect key="frame" x="285" y="58" width="99" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="A2Q-AP-MvA" kind="show" id="xMZ-cC-QGc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-ok-Adt">
+                                <rect key="frame" x="16" y="348" width="36" height="30"/>
+                                <state key="normal" title="Citas">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="56" y="397" width="99" height="30"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56v-8k-Iob">
+                                <rect key="frame" x="253" y="348" width="51" height="30"/>
+                                <state key="normal" title="Cobros">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="245" y="397" width="99" height="30"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C7-a1-mZq">
+                                <rect key="frame" x="126" y="148" width="68" height="30"/>
+                                <state key="normal" title="Salir de Tiempos">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="529" width="116" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" id="rVk-oa-Bjk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="9C7-a1-mZq"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="9C7-a1-mZq"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3h-UL-a4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -582,7 +607,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zcx-TN-3mk">
                             <connections>
-                                <segue destination="VVd-ff-ixS" kind="show" id="oPF-Uk-AaQ"/>
+                                <segue destination="tia-tD-Z9Y" kind="show" id="oPF-Uk-AaQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -591,7 +616,7 @@
             </objects>
             <point key="canvasLocation" x="2407.5" y="21"/>
         </scene>
-        <!--View Controller-->
+        <!--Nuevo Contrato-->
         <scene sceneID="OD5-mZ-poM">
             <objects>
                 <viewController id="VVd-ff-ixS" sceneMemberID="viewController">
@@ -603,12 +628,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Nuevo Contrato" id="vpc-WI-2Iq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vOY-Ok-nDg"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ws3-9A-Lke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3226.5" y="-357"/>
+            <point key="canvasLocation" x="4144.5" y="-357"/>
         </scene>
-        <!--View Controller-->
+        <!--Nuevo Cliente-->
         <scene sceneID="Kds-u7-pZe">
             <objects>
                 <viewController id="oqT-5b-Lly" sceneMemberID="viewController">
@@ -620,10 +648,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Nuevo Cliente" id="zxY-FQ-j5H">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="M4A-T1-r1O"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opM-lV-FXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2407.5" y="716"/>
+            <point key="canvasLocation" x="3325.5" y="716"/>
         </scene>
         <!--Detalle Contrato View Controller-->
         <scene sceneID="yHb-vp-1Gb">
@@ -723,7 +754,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hot-VO-Wqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3226.5" y="387"/>
+            <point key="canvasLocation" x="4144.5" y="387"/>
         </scene>
         <!--Clientes-->
         <scene sceneID="d0N-8F-9Ue">
@@ -769,7 +800,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hhM-A2-L8S">
                             <connections>
-                                <segue destination="oqT-5b-Lly" kind="show" id="wof-KB-BB5"/>
+                                <segue destination="uvU-OQ-7SD" kind="show" id="wof-KB-BB5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -909,8 +940,63 @@
             </objects>
             <point key="canvasLocation" x="1539" y="21"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aKL-Z3-TcF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uvU-OQ-7SD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cBi-yN-kQx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oqT-5b-Lly" kind="relationship" relationship="rootViewController" id="EW8-U5-T2g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BU6-ox-Cf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2407.5" y="716"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Drq-Dv-bt6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tia-tD-Z9Y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JSe-Tl-FCk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VVd-ff-ixS" kind="relationship" relationship="rootViewController" id="7nv-no-uLy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EAd-BL-L4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3226.5" y="-357"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="z9k-aT-uZJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hnv-xI-KV7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cAl-K2-36a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vtK-DM-sUt" kind="relationship" relationship="rootViewController" id="zwY-VE-LGl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YR1-Md-Emo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2407.5" y="-1671"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bGB-90-Ixo"/>
+        <segue reference="bHX-Md-OyU"/>
+        <segue reference="5g1-Wt-T5H"/>
     </inferredMetricsTieBreakers>
 </document>
