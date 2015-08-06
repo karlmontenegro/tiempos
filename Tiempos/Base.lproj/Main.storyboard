@@ -304,14 +304,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Notas de Voz" id="QnS-Qm-Ym2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="s1b-vo-mqG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="s1b-vo-mqG">
                             <connections>
                                 <segue destination="p7q-Yq-PEJ" kind="showDetail" id="bHX-Md-OyU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="btW-Dp-HJl" userLabel="Item">
                             <connections>
-                                <segue destination="hnv-xI-KV7" kind="show" id="VQu-XC-bj5"/>
+                                <segue destination="vtK-DM-sUt" kind="show" id="8yJ-RX-Ut7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -366,12 +366,18 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Grabar" id="7vT-7d-rbD">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fNU-F6-skC">
+                            <connections>
+                                <segue destination="fTx-qM-ikv" kind="show" id="sNE-wM-TsL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="K6l-jf-ikf"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxG-jU-tIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3325.5" y="-1671"/>
+            <point key="canvasLocation" x="2407.5" y="-1633"/>
         </scene>
         <!--Detalle Nota Audio View Controller-->
         <scene sceneID="Mfe-Hg-ae5">
@@ -462,18 +468,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMM-6e-Kw6">
-                                <rect key="frame" x="126" y="148" width="68" height="30"/>
-                                <state key="normal" title="Contratos">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="151" y="163" width="99" height="30"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="flt-RV-jAx" kind="show" id="6SP-5u-UOM"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n44-uy-Ir1">
                                 <rect key="frame" x="56" y="262" width="59" height="30"/>
                                 <state key="normal" title="Tiempos">
@@ -498,7 +492,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="58" width="99" height="30"/>
+                                    <rect key="frame" x="16" y="28" width="99" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="DNV-TC-ueH" kind="show" id="Ino-Dy-5fN"/>
@@ -510,7 +504,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="285" y="58" width="99" height="30"/>
+                                    <rect key="frame" x="285" y="28" width="99" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="A2Q-AP-MvA" kind="show" id="xMZ-cC-QGc"/>
@@ -534,31 +528,22 @@
                                     <rect key="frame" x="245" y="397" width="99" height="30"/>
                                 </variation>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9C7-a1-mZq">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMM-6e-Kw6">
                                 <rect key="frame" x="126" y="148" width="68" height="30"/>
-                                <state key="normal" title="Salir de Tiempos">
+                                <state key="normal" title="Contratos">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="142" y="529" width="116" height="30"/>
+                                    <rect key="frame" x="151" y="74" width="99" height="30"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="showDetail" id="rVk-oa-Bjk"/>
+                                    <segue destination="flt-RV-jAx" kind="show" id="6SP-5u-UOM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="9C7-a1-mZq"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="9C7-a1-mZq"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3h-UL-a4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -600,41 +585,48 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contratos" id="uJa-BZ-w6m">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nsk-x6-rMb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="nsk-x6-rMb">
                             <connections>
                                 <segue destination="p7q-Yq-PEJ" kind="showDetail" id="bGB-90-Ixo"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zcx-TN-3mk">
                             <connections>
-                                <segue destination="tia-tD-Z9Y" kind="show" id="oPF-Uk-AaQ"/>
+                                <segue destination="404-kR-2II" kind="show" id="hH5-tD-RH6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iud-o6-ewT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2407.5" y="21"/>
         </scene>
         <!--Nuevo Contrato-->
-        <scene sceneID="OD5-mZ-poM">
+        <scene sceneID="7Oz-f5-fio">
             <objects>
-                <viewController id="VVd-ff-ixS" sceneMemberID="viewController">
+                <viewController id="404-kR-2II" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kVx-wx-bor"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Dg-IF-cfX"/>
+                        <viewControllerLayoutGuide type="top" id="f4J-vp-XIi"/>
+                        <viewControllerLayoutGuide type="bottom" id="2IY-hO-nrH"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5IJ-FM-Ygs">
+                    <view key="view" contentMode="scaleToFill" id="fWz-Dk-qle">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Nuevo Contrato" id="vpc-WI-2Iq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vOY-Ok-nDg"/>
+                    <navigationItem key="navigationItem" title="Nuevo Contrato" id="duf-HL-7S1">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="flw-vn-bF3">
+                            <connections>
+                                <segue destination="g6F-wt-9K9" kind="show" id="ee1-bl-OnD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6gX-SK-M8U"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ws3-9A-Lke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VJl-ew-jch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4144.5" y="-357"/>
+            <point key="canvasLocation" x="3442.5" y="-307"/>
         </scene>
         <!--Nuevo Cliente-->
         <scene sceneID="Kds-u7-pZe">
@@ -649,12 +641,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Nuevo Cliente" id="zxY-FQ-j5H">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BJn-PV-nSF">
+                            <connections>
+                                <segue destination="SG3-nr-eLY" kind="show" id="vjv-50-TbC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="M4A-T1-r1O"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opM-lV-FXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3325.5" y="716"/>
+            <point key="canvasLocation" x="2407.5" y="719"/>
         </scene>
         <!--Detalle Contrato View Controller-->
         <scene sceneID="yHb-vp-1Gb">
@@ -754,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hot-VO-Wqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4144.5" y="387"/>
+            <point key="canvasLocation" x="3442.5" y="381"/>
         </scene>
         <!--Clientes-->
         <scene sceneID="d0N-8F-9Ue">
@@ -793,14 +790,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Clientes" id="sWs-Li-BG3">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9hZ-bb-ROP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="9hZ-bb-ROP">
                             <connections>
                                 <segue destination="p7q-Yq-PEJ" kind="showDetail" id="Fbg-11-CmD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hhM-A2-L8S">
                             <connections>
-                                <segue destination="uvU-OQ-7SD" kind="show" id="wof-KB-BB5"/>
+                                <segue destination="oqT-5b-Lly" kind="show" id="h1j-cV-RFX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -940,63 +937,11 @@
             </objects>
             <point key="canvasLocation" x="1539" y="21"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="aKL-Z3-TcF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uvU-OQ-7SD" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cBi-yN-kQx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="oqT-5b-Lly" kind="relationship" relationship="rootViewController" id="EW8-U5-T2g"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BU6-ox-Cf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2407.5" y="716"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Drq-Dv-bt6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tia-tD-Z9Y" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JSe-Tl-FCk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="VVd-ff-ixS" kind="relationship" relationship="rootViewController" id="7nv-no-uLy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EAd-BL-L4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3226.5" y="-357"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="z9k-aT-uZJ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hnv-xI-KV7" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cAl-K2-36a">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vtK-DM-sUt" kind="relationship" relationship="rootViewController" id="zwY-VE-LGl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YR1-Md-Emo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2407.5" y="-1671"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bHX-Md-OyU"/>
-        <segue reference="5g1-Wt-T5H"/>
+        <segue reference="Fbg-11-CmD"/>
+        <segue reference="vjv-50-TbC"/>
+        <segue reference="sNE-wM-TsL"/>
+        <segue reference="ee1-bl-OnD"/>
     </inferredMetricsTieBreakers>
 </document>
