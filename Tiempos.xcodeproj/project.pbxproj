@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */; };
+		0C2C1E5A1B72CE4B009CEB43 /* Contratos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E591B72CE4B009CEB43 /* Contratos.swift */; };
 		0C4731641B6FDB1600944D7C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C47315B1B6FDB1600944D7C /* FMDatabase.m */; };
 		0C4731651B6FDB1600944D7C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C47315D1B6FDB1600944D7C /* FMResultSet.m */; };
 		0C4731661B6FDB1600944D7C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C47315F1B6FDB1600944D7C /* FMDatabaseQueue.m */; };
@@ -20,6 +22,7 @@
 		0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */; };
 		0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589C1B72869B0091B578 /* NotaAudio.swift */; };
 		0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */; };
+		0CAE76521B72B2B500BB09F7 /* ContratosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */; };
 		526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567C1B5D57BF000F323D /* AppDelegate.swift */; };
 		526D567F1B5D57BF000F323D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567E1B5D57BF000F323D /* ViewController.swift */; };
 		526D56821B5D57BF000F323D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526D56801B5D57BF000F323D /* Main.storyboard */; };
@@ -39,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleContratoViewController.swift; path = Tiempos/DetalleContratoViewController.swift; sourceTree = "<group>"; };
+		0C2C1E591B72CE4B009CEB43 /* Contratos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contratos.swift; sourceTree = "<group>"; };
 		0C4731581B6FDB1500944D7C /* Tiempos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tiempos-Bridging-Header.h"; sourceTree = "<group>"; };
 		0C4731591B6FDB1600944D7C /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		0C47315A1B6FDB1600944D7C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -59,6 +64,7 @@
 		0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotaAudioTableViewController.swift; path = Tiempos/NotaAudioTableViewController.swift; sourceTree = "<group>"; };
 		0C9C589C1B72869B0091B578 /* NotaAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaAudio.swift; sourceTree = "<group>"; };
 		0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleNotaAudioViewController.swift; path = Tiempos/DetalleNotaAudioViewController.swift; sourceTree = "<group>"; };
+		0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContratosTableViewController.swift; path = Tiempos/ContratosTableViewController.swift; sourceTree = "<group>"; };
 		526D56771B5D57BF000F323D /* Tiempos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiempos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526D567B1B5D57BF000F323D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526D567C1B5D57BF000F323D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
+				0C2C1E591B72CE4B009CEB43 /* Contratos.swift */,
+				0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */,
+				0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */,
 				0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */,
 				0C9C589C1B72869B0091B578 /* NotaAudio.swift */,
 				0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */,
@@ -279,17 +288,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C4731661B6FDB1600944D7C /* FMDatabaseQueue.m in Sources */,
+				0CAE76521B72B2B500BB09F7 /* ContratosTableViewController.swift in Sources */,
 				0C4731641B6FDB1600944D7C /* FMDatabase.m in Sources */,
 				0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */,
 				526D567F1B5D57BF000F323D /* ViewController.swift in Sources */,
 				0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */,
 				0C9C58951B726A0E0091B578 /* TableViewController.swift in Sources */,
+				0C2C1E5A1B72CE4B009CEB43 /* Contratos.swift in Sources */,
 				0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */,
 				0C9C58991B727AC20091B578 /* Cliente.swift in Sources */,
 				0C4731651B6FDB1600944D7C /* FMResultSet.m in Sources */,
 				0C4731681B6FDB1600944D7C /* FMDatabasePool.m in Sources */,
 				526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */,
 				0C4731671B6FDB1600944D7C /* FMDatabaseAdditions.m in Sources */,
+				0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */,
 				0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

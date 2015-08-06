@@ -1,5 +1,5 @@
 //
-//  NotaAudioControllerTableViewController.swift
+//  ContratosTableViewController.swift
 //  Tiempos
 //
 //  Created by Isabel Dunin Borkowski on 5/08/15.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class NotaAudioTableViewController: UITableViewController {
+class ContratosTableViewController: UITableViewController {
 
-    var arreglo:[NotaAudio] = [NotaAudio(filename: "Nota 001", duration: "01:30"),NotaAudio(filename: "Nota 002", duration: "02:45")]
+    var arreglos:[Contrato] = [Contrato(name: "Gerencia", cliente: "Carlos", tipo: "Por Contrato"),Contrato(name: "Asesoria", cliente: "Isabel", tipo: "Por Horas")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,35 +38,36 @@ class NotaAudioTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.arreglo.count
+        return self.arreglos.count
     }
-	
-    
+
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NotaAudioCell", forIndexPath: indexPath) as! UITableViewCell
-        
-        cell.textLabel!.text = self.arreglo[indexPath.row].filename
+        let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath) as! UITableViewCell
+
+        cell.textLabel!.text = self.arreglos[indexPath.row].name
 
         return cell
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "NotaAudioDetalle"){
-            let vc:DetalleNotaAudioViewController = segue.destinationViewController as! DetalleNotaAudioViewController
+        if(segue.identifier == "ContratoDetalle"){
+            let vc:DetalleContratoViewController = segue.destinationViewController as! DetalleContratoViewController
             
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
-            vc.data = self.arreglo[indexpath.row]
+            vc.datas = self.arreglos[indexpath.row]
         }
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+
+
+// Override to support conditional editing of the table view.
+   // override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
+//        return true
+//    }
+//    */
 
     /*
     // Override to support editing the table view.

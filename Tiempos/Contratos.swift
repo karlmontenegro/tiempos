@@ -1,5 +1,5 @@
 //
-//  NotaAudioControllerTableViewController.swift
+//  Contratos.swift
 //  Tiempos
 //
 //  Created by Isabel Dunin Borkowski on 5/08/15.
@@ -8,10 +8,8 @@
 
 import UIKit
 
-class NotaAudioTableViewController: UITableViewController {
+class Contratos: UITableViewController {
 
-    var arreglo:[NotaAudio] = [NotaAudio(filename: "Nota 001", duration: "01:30"),NotaAudio(filename: "Nota 002", duration: "02:45")]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,33 +30,24 @@ class NotaAudioTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.arreglo.count
+        return 0
     }
-	
-    
+
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NotaAudioCell", forIndexPath: indexPath) as! UITableViewCell
-        
-        cell.textLabel!.text = self.arreglo[indexPath.row].filename
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+
+        // Configure the cell...
 
         return cell
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "NotaAudioDetalle"){
-            let vc:DetalleNotaAudioViewController = segue.destinationViewController as! DetalleNotaAudioViewController
-            
-            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
-            
-            vc.data = self.arreglo[indexpath.row]
-        }
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
