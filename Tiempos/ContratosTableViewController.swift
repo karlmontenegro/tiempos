@@ -56,7 +56,7 @@ class ContratosTableViewController: UITableViewController {
             
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
-            vc.datas = self.arreglos[indexpath.row]
+            vc.data = self.arreglos[indexpath.row]
         }
     }
 

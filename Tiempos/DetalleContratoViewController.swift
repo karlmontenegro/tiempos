@@ -10,7 +10,7 @@ import UIKit
 
 class DetalleContratoViewController: UIViewController {
 
-    var datas = Contrato(name: "", cliente: "", tipo: "")
+    var data = Contrato(name: "", cliente: "", tipo: "")
     
     @IBOutlet weak var nombre: UILabel!
     @IBOutlet weak var cliente: UILabel!
@@ -18,9 +18,9 @@ class DetalleContratoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nombre.text = datas.name
-        cliente.text = datas.cliente
-        tipo.text = datas.tipo
+        nombre.text = data.name
+        cliente.text = data.cliente
+        tipo.text = data.tipo
 
         // Do any additional setup after loading the view.
     }
