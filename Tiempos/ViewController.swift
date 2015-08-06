@@ -13,31 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let filemgr = NSFileManager.defaultManager()
+        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let path = documents.stringByAppendingPathComponent("tiempos.sqlite")
         
-        let documentsFolder = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        let databasePath = documentsFolder.stringByAppendingPathComponent("tiempos.sqlite")
+        // open database
         
-        if filemgr.fileExistsAtPath(databasePath as String){
-
-            let contactDB = FMDatabase(path: databasePath as String)
-            
-            if contactDB == nil{
-                println("Error: \(contactDB.lastErrorMessage())")
-            }
-            
-            if contactDB.open(){
-                let sql_stmt = "SELECT * FROM 'Usuario'"
-                
-                let results: FMResultSet? = contactDB.executeQuery(sql_stmt, withArgumentsInArray: nil)
-                
-                if results?.next() == true {
-                    println(results)
-                } else {
-                    println("not found")
-                }
-            }
+        var db: COpaquePointer = nil
+        if sqlite3_open(path, &db) != SQLITE_OK {
+            println("Error opening database")
         }
+        
     }
 
     override func didReceiveMemoryWarning() {

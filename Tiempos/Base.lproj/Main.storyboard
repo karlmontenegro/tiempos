@@ -268,7 +268,7 @@
             </objects>
             <point key="canvasLocation" x="-178.5" y="751"/>
         </scene>
-        <!--Title-->
+        <!--Notas de Audio-->
         <scene sceneID="jEy-51-7c1">
             <objects>
                 <tableViewController id="fTx-qM-ikv" customClass="NotaAudioTableViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,13 +303,74 @@
                             <outlet property="delegate" destination="fTx-qM-ikv" id="Ncq-4p-zIc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="QnS-Qm-Ym2"/>
+                    <navigationItem key="navigationItem" title="Notas de Audio" id="QnS-Qm-Ym2">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="s1b-vo-mqG">
+                            <connections>
+                                <segue destination="p7q-Yq-PEJ" kind="showDetail" id="bHX-Md-OyU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="btW-Dp-HJl" userLabel="Item">
+                            <connections>
+                                <segue destination="vtK-DM-sUt" kind="show" id="VQu-XC-bj5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwM-ZH-3pp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1515" y="-1380"/>
+            <point key="canvasLocation" x="1539" y="-1046"/>
         </scene>
-        <!--Info de Nota de Audio-->
+        <!--View Controller-->
+        <scene sceneID="dGl-vK-2rE">
+            <objects>
+                <viewController id="vtK-DM-sUt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PMF-F5-USA"/>
+                        <viewControllerLayoutGuide type="bottom" id="ugN-r3-xhM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QaE-W9-ieB">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOO-ZK-hEZ">
+                                <rect key="frame" x="42" y="294" width="31" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="REC">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.14118574388358063" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="172" y="247" width="65" height="54"/>
+                                </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGv-UH-7Lv">
+                                <rect key="frame" x="109" y="137" width="103" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="133" y="175" width="143" height="49"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="SOO-ZK-hEZ"/>
+                                <exclude reference="TGv-UH-7Lv"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="SOO-ZK-hEZ"/>
+                                <include reference="TGv-UH-7Lv"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxG-jU-tIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2407.5" y="-1671"/>
+        </scene>
+        <!--Detalle Nota Audio View Controller-->
         <scene sceneID="Mfe-Hg-ae5">
             <objects>
                 <viewController id="DVH-nw-b1w" customClass="DetalleNotaAudioViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
@@ -376,7 +437,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Info de Nota de Audio" id="uxh-GN-rVg"/>
+                    <navigationItem key="navigationItem" id="uxh-GN-rVg"/>
                     <connections>
                         <outlet property="lblDuracion" destination="4Wq-bh-0oa" id="61E-Qn-JiX"/>
                         <outlet property="lblFilename" destination="upF-wt-Z28" id="2MB-h9-Cbm"/>
@@ -384,67 +445,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvN-Es-8Sk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2242.5" y="-1380"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="PXx-ID-nxs">
-            <objects>
-                <viewController id="2lG-El-6bV" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="z0h-zo-zid"/>
-                        <viewControllerLayoutGuide type="bottom" id="wkK-Mm-d0s"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YBG-Gg-Mfd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQp-fV-vdd">
-                                <rect key="frame" x="111" y="20" width="99" height="30"/>
-                                <state key="normal" title="Nota de Audio">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="138" y="28" width="99" height="30"/>
-                                </variation>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIs-Qv-G5G">
-                                <rect key="frame" x="109" y="137" width="103" height="49"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="136" y="145" width="103" height="49"/>
-                                </variation>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhc-kb-wZW">
-                                <rect key="frame" x="42" y="294" width="31" height="30"/>
-                                <state key="normal" title="REC">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="69" y="302" width="31" height="30"/>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWa-4E-YSI">
-                                <rect key="frame" x="175" y="294" width="129" height="30"/>
-                                <state key="normal" title="Ver notas de audio">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="202" y="302" width="129" height="30"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="DNV-TC-ueH" kind="show" id="DMN-NB-EWx"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dRm-Sm-O5L"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IaO-ak-bb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="742.5" y="-675"/>
+            <point key="canvasLocation" x="2407.5" y="-930"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JDH-5W-38a">
@@ -464,7 +465,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="166" y="148" width="68" height="30"/>
+                                    <rect key="frame" x="151" y="182" width="99" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="flt-RV-jAx" kind="show" id="6SP-5u-UOM"/>
@@ -476,7 +477,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="96" y="262" width="59" height="30"/>
+                                    <rect key="frame" x="73" y="280" width="99" height="30"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-ok-Adt">
@@ -485,7 +486,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="56" y="348" width="36" height="30"/>
+                                    <rect key="frame" x="56" y="453" width="99" height="30"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QM9-WE-MW9">
@@ -494,7 +495,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="232" y="262" width="56" height="30"/>
+                                    <rect key="frame" x="229" y="280" width="99" height="30"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56v-8k-Iob">
@@ -503,7 +504,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="293" y="348" width="51" height="30"/>
+                                    <rect key="frame" x="245" y="453" width="99" height="30"/>
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUo-Kq-0TU">
@@ -511,8 +512,11 @@
                                 <state key="normal" title="Nota de Audio">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="56" y="58" width="99" height="30"/>
+                                </variation>
                                 <connections>
-                                    <segue destination="2lG-El-6bV" kind="show" id="AGf-CR-wqy"/>
+                                    <segue destination="DNV-TC-ueH" kind="show" id="Ino-Dy-5fN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKg-R5-yjT">
@@ -521,7 +525,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="323" y="33" width="56" height="30"/>
+                                    <rect key="frame" x="245" y="58" width="99" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="A2Q-AP-MvA" kind="show" id="xMZ-cC-QGc"/>
@@ -570,13 +574,58 @@
                             <outlet property="delegate" destination="g6F-wt-9K9" id="lZK-ej-2Il"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Contratos" id="uJa-BZ-w6m"/>
+                    <navigationItem key="navigationItem" title="Contratos" id="uJa-BZ-w6m">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nsk-x6-rMb">
+                            <connections>
+                                <segue destination="p7q-Yq-PEJ" kind="showDetail" id="bGB-90-Ixo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zcx-TN-3mk">
+                            <connections>
+                                <segue destination="VVd-ff-ixS" kind="show" id="oPF-Uk-AaQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iud-o6-ewT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2242.5" y="21"/>
+            <point key="canvasLocation" x="2407.5" y="21"/>
         </scene>
-        <!--Detalle de Contrato-->
+        <!--View Controller-->
+        <scene sceneID="OD5-mZ-poM">
+            <objects>
+                <viewController id="VVd-ff-ixS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kVx-wx-bor"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Dg-IF-cfX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5IJ-FM-Ygs">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ws3-9A-Lke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3226.5" y="-357"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kds-u7-pZe">
+            <objects>
+                <viewController id="oqT-5b-Lly" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="owr-Ea-fac"/>
+                        <viewControllerLayoutGuide type="bottom" id="z1X-G3-aao"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZUd-ht-cVk">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="opM-lV-FXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2407.5" y="716"/>
+        </scene>
+        <!--Detalle Contrato View Controller-->
         <scene sceneID="yHb-vp-1Gb">
             <objects>
                 <viewController id="p83-4N-gNe" customClass="DetalleContratoViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
@@ -665,7 +714,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Detalle de Contrato" id="s6c-O5-fx4"/>
+                    <navigationItem key="navigationItem" id="s6c-O5-fx4"/>
                     <connections>
                         <outlet property="cliente" destination="KXj-Lb-9HE" id="gov-xv-mJN"/>
                         <outlet property="nombre" destination="jnf-GI-nj9" id="HhL-sK-vNg"/>
@@ -674,7 +723,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hot-VO-Wqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2932.5" y="21"/>
+            <point key="canvasLocation" x="3226.5" y="387"/>
         </scene>
         <!--Clientes-->
         <scene sceneID="d0N-8F-9Ue">
@@ -712,13 +761,24 @@
                             <outlet property="delegate" destination="SG3-nr-eLY" id="dBW-ST-AhZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Clientes" id="sWs-Li-BG3"/>
+                    <navigationItem key="navigationItem" title="Clientes" id="sWs-Li-BG3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9hZ-bb-ROP">
+                            <connections>
+                                <segue destination="p7q-Yq-PEJ" kind="showDetail" id="Fbg-11-CmD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hhM-A2-L8S">
+                            <connections>
+                                <segue destination="oqT-5b-Lly" kind="show" id="wof-KB-BB5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HH-UC-rcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1425" y="967"/>
         </scene>
-        <!--Datos del Cliente-->
+        <!--Detalle Cliente View Controller-->
         <scene sceneID="G59-Uy-jOZ">
             <objects>
                 <viewController id="QYB-cG-wW5" customClass="DetalleClienteViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
@@ -785,7 +845,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Datos del Cliente" id="hth-IK-DeK"/>
+                    <navigationItem key="navigationItem" id="hth-IK-DeK"/>
                     <connections>
                         <outlet property="lblAddress" destination="5FD-1j-6Pv" id="jTU-Ag-QXJ"/>
                         <outlet property="lblName" destination="Ycn-L2-8gz" id="qFI-nO-SN1"/>
@@ -793,7 +853,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vl4-EP-x5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2119.5" y="967"/>
+            <point key="canvasLocation" x="2407.5" y="1377"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RTu-LN-k5U">
@@ -829,7 +889,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0In-Nj-jj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-1380"/>
+            <point key="canvasLocation" x="742.5" y="-1046"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0GT-4e-TzG">
@@ -850,4 +910,7 @@
             <point key="canvasLocation" x="1539" y="21"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bGB-90-Ixo"/>
+    </inferredMetricsTieBreakers>
 </document>
