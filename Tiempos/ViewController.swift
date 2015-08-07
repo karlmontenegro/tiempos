@@ -13,23 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        let path = documents.stringByAppendingPathComponent("tiempos.sqlite")
-        
-        // open database
-        
-        var db: COpaquePointer = nil
-        if sqlite3_open(path, &db) != SQLITE_OK {
-            println("Error opening database")
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
