@@ -609,27 +609,89 @@
         <!--Nuevo Cliente-->
         <scene sceneID="Kds-u7-pZe">
             <objects>
-                <viewController id="oqT-5b-Lly" sceneMemberID="viewController">
+                <viewController id="oqT-5b-Lly" customClass="NuevoCliente" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="owr-Ea-fac"/>
                         <viewControllerLayoutGuide type="bottom" id="z1X-G3-aao"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZUd-ht-cVk">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5y-SH-heV">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="82" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="RUC" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnP-po-Lf9">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="129" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Razón Social" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ZJ-Dc-WqP">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="177" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dirección" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="89X-gI-2zY">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="224" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="B5y-SH-heV"/>
+                                <exclude reference="vnP-po-Lf9"/>
+                                <exclude reference="2ZJ-Dc-WqP"/>
+                                <exclude reference="89X-gI-2zY"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="B5y-SH-heV"/>
+                                <include reference="vnP-po-Lf9"/>
+                                <include reference="2ZJ-Dc-WqP"/>
+                                <include reference="89X-gI-2zY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Nuevo Cliente" id="zxY-FQ-j5H">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BJn-PV-nSF">
                             <connections>
+                                <action selector="cancelTapped:" destination="oqT-5b-Lly" id="pEo-zQ-hol"/>
                                 <segue destination="SG3-nr-eLY" kind="show" id="vjv-50-TbC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="M4A-T1-r1O"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="M4A-T1-r1O">
+                            <connections>
+                                <action selector="saveTapped:" destination="oqT-5b-Lly" id="bGA-Ra-Dxq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="txtDireccion" destination="89X-gI-2zY" id="vyH-Ep-z9w"/>
+                        <outlet property="txtNombre" destination="B5y-SH-heV" id="Lff-4f-tlg"/>
+                        <outlet property="txtRUC" destination="vnP-po-Lf9" id="heu-NR-xnw"/>
+                        <outlet property="txtRazonSocial" destination="2ZJ-Dc-WqP" id="rmb-SN-VHG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opM-lV-FXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3325.5" y="790.5"/>
+            <point key="canvasLocation" x="3325.5" y="790"/>
         </scene>
         <!--Detalle Contrato View Controller-->
         <scene sceneID="yHb-vp-1Gb">
@@ -779,6 +841,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HH-UC-rcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -852,6 +915,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="hth-IK-DeK"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="lblAddress" destination="5FD-1j-6Pv" id="jTU-Ag-QXJ"/>
                         <outlet property="lblName" destination="Ycn-L2-8gz" id="qFI-nO-SN1"/>
@@ -935,10 +999,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tRt-RW-GFi"/>
-        <segue reference="1IV-ww-Ek3"/>
         <segue reference="sNE-wM-TsL"/>
-        <segue reference="vjv-50-TbC"/>
+        <segue reference="bHX-Md-OyU"/>
         <segue reference="ee1-bl-OnD"/>
+        <segue reference="vjv-50-TbC"/>
+        <segue reference="1IV-ww-Ek3"/>
     </inferredMetricsTieBreakers>
 </document>

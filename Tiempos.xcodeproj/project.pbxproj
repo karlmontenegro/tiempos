@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */; };
 		0C2C1E5A1B72CE4B009CEB43 /* Contratos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E591B72CE4B009CEB43 /* Contratos.swift */; };
+		0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */; };
+		0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF31B751BB600191AEF /* NuevoCliente.swift */; };
+		0C705BF81B751D1B00191AEF /* ClientesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF71B751D1B00191AEF /* ClientesModel.swift */; };
+		0C705BFB1B752C3500191AEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C705BF91B75284000191AEF /* CoreData.framework */; };
 		0C9C58951B726A0E0091B578 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58941B726A0E0091B578 /* TableViewController.swift */; };
 		0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */; };
 		0C9C58991B727AC20091B578 /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58981B727AC20091B578 /* Cliente.swift */; };
@@ -37,8 +41,12 @@
 /* Begin PBXFileReference section */
 		0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleContratoViewController.swift; path = Tiempos/DetalleContratoViewController.swift; sourceTree = "<group>"; };
 		0C2C1E591B72CE4B009CEB43 /* Contratos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contratos.swift; sourceTree = "<group>"; };
-		0C9C58941B726A0E0091B578 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleClienteViewController.swift; sourceTree = "<group>"; };
+		0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tiemposdb.xcdatamodel; sourceTree = "<group>"; };
+		0C705BF31B751BB600191AEF /* NuevoCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoCliente.swift; path = Tiempos/NuevoCliente.swift; sourceTree = "<group>"; };
+		0C705BF71B751D1B00191AEF /* ClientesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientesModel.swift; sourceTree = "<group>"; };
+		0C705BF91B75284000191AEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0C9C58941B726A0E0091B578 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = Tiempos/TableViewController.swift; sourceTree = "<group>"; };
+		0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleClienteViewController.swift; path = Tiempos/DetalleClienteViewController.swift; sourceTree = "<group>"; };
 		0C9C58981B727AC20091B578 /* Cliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cliente.swift; sourceTree = "<group>"; };
 		0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotaAudioTableViewController.swift; path = Tiempos/NotaAudioTableViewController.swift; sourceTree = "<group>"; };
 		0C9C589C1B72869B0091B578 /* NotaAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaAudio.swift; sourceTree = "<group>"; };
@@ -61,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C705BFB1B752C3500191AEF /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +86,9 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
+				0C705BF91B75284000191AEF /* CoreData.framework */,
+				0C705BF71B751D1B00191AEF /* ClientesModel.swift */,
+				0C705BF31B751BB600191AEF /* NuevoCliente.swift */,
 				0C2C1E591B72CE4B009CEB43 /* Contratos.swift */,
 				0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */,
 				0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */,
@@ -84,6 +96,8 @@
 				0C9C589C1B72869B0091B578 /* NotaAudio.swift */,
 				0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */,
 				0C9C58981B727AC20091B578 /* Cliente.swift */,
+				0C9C58941B726A0E0091B578 /* TableViewController.swift */,
+				0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */,
 				526D56791B5D57BF000F323D /* Tiempos */,
 				526D568F1B5D57C0000F323D /* TiemposTests */,
 				526D56781B5D57BF000F323D /* Products */,
@@ -102,10 +116,9 @@
 		526D56791B5D57BF000F323D /* Tiempos */ = {
 			isa = PBXGroup;
 			children = (
+				0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */,
 				526D567C1B5D57BF000F323D /* AppDelegate.swift */,
 				526D567E1B5D57BF000F323D /* ViewController.swift */,
-				0C9C58941B726A0E0091B578 /* TableViewController.swift */,
-				0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */,
 				526D56801B5D57BF000F323D /* Main.storyboard */,
 				526D56831B5D57BF000F323D /* Images.xcassets */,
 				526D56851B5D57BF000F323D /* LaunchScreen.xib */,
@@ -258,8 +271,11 @@
 				0C2C1E5A1B72CE4B009CEB43 /* Contratos.swift in Sources */,
 				0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */,
 				0C9C58991B727AC20091B578 /* Cliente.swift in Sources */,
+				0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */,
 				526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */,
+				0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */,
 				0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */,
+				0C705BF81B751D1B00191AEF /* ClientesModel.swift in Sources */,
 				0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +493,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */,
+			);
+			currentVersion = 0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */;
+			name = tiemposdb.xcdatamodeld;
+			path = ../tiemposdb.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 526D566F1B5D57BF000F323D /* Project object */;
 }
