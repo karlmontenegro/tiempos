@@ -11,9 +11,6 @@ import CoreData
 
 class TableViewController: UITableViewController {
     
-    //var arreglo:[Cliente] = [Cliente(name:"Carlos",address:"Av. Venezuela 256"),Cliente(name:"Isabel", address:"Calle Los Robles")]
-    
-    
     var arreglo = daoCliente().getAllClients()
     
     override func viewDidLoad() {

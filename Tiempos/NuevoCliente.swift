@@ -35,8 +35,8 @@ class NuevoCliente: UIViewController {
         
         context.save(nil)
         
-        println(newClient)
-        println("Object Saved")
+        //println(newClient)
+        //println("Object Saved")
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
