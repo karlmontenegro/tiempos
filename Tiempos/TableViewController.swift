@@ -7,19 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewController: UITableViewController {
     
-    var arreglo:[Cliente] = [Cliente(name:"Carlos",address:"Av. Venezuela 256"),Cliente(name:"Isabel", address:"Calle Los Robles")]
+    //var arreglo:[Cliente] = [Cliente(name:"Carlos",address:"Av. Venezuela 256"),Cliente(name:"Isabel", address:"Calle Los Robles")]
+    
+    
+    var arreglo = daoCliente().getAllClients()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,13 +36,18 @@ class TableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.arreglo.count
+        if(arreglo.count > 0){
+            return self.arreglo.count
+        }else{
+            return 0
+        }
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ClientesCell", forIndexPath: indexPath) as! UITableViewCell
-            cell.textLabel!.text = self.arreglo[indexPath.row].name
+            cell.textLabel!.text = self.arreglo[indexPath.row].valueForKey("nombre") as! String?
+            cell.detailTextLabel!.text = self.arreglo[indexPath.row].valueForKey("razonSocial") as! String?
         return cell
     }
     

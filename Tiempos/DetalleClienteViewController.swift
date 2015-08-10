@@ -10,16 +10,19 @@ import UIKit
 
 class DetalleClienteViewController: UIViewController {
 
-    var data = Cliente(name:"",address:"")
+    var data:AnyObject = []
     
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var lblRazonSocial: UILabel!
+    @IBOutlet weak var lblRUC: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblName.text = data.name
-        lblAddress.text = data.address
-        // Do any additional setup after loading the view.
+        lblName.text = data.valueForKey("nombre") as! String?
+        lblAddress.text = data.valueForKey("direccion") as! String?
+        lblRazonSocial.text = data.valueForKey("razonSocial") as! String?
+        lblRUC.text = data.valueForKey("ruc") as! String?
     }
 
     override func didReceiveMemoryWarning() {

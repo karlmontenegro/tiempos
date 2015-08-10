@@ -23,34 +23,20 @@ class NuevoCliente: UIViewController {
     }
 
     @IBAction func saveTapped(sender: AnyObject) {
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
         
-        // Reference to our app delegate
+        var newClient = NSEntityDescription.insertNewObjectForEntityForName("Cliente",inManagedObjectContext: context) as!NSManagedObject
         
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        newClient.setValue(txtRUC.text, forKey: "ruc")
+        newClient.setValue(txtNombre.text, forKey: "nombre")
+        newClient.setValue(txtRazonSocial.text, forKey: "razonSocial")
+        newClient.setValue(txtDireccion.text, forKey: "direccion")
         
-        // Reference Managed Object Context
+        context.save(nil)
         
-        let contxt:NSManagedObjectContext = appDel.managedObjectContext!
-        let en = NSEntityDescription.entityForName("Clientes", inManagedObjectContext: contxt)
-        
-        // Create an instance of our data model and initialize
-        
-        var newCliente = ClientesModel()
-        
-        // Map our properties
-        
-        newCliente.nombre = txtNombre.text
-        newCliente.ruc = txtRUC.text
-        newCliente.direccion = txtDireccion.text
-        newCliente.razonSocial = txtRazonSocial.text
-        
-        // Save our context
-        
-        contxt.save(nil)
-        
-        println(newCliente)
-        
-        // Navigate back to our root view controller
+        println(newClient)
+        println("Object Saved")
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
