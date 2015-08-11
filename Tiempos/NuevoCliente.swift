@@ -23,27 +23,18 @@ class NuevoCliente: UIViewController {
     }
 
     @IBAction func saveTapped(sender: AnyObject) {
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
         
-        var newClient = NSEntityDescription.insertNewObjectForEntityForName("Cliente",inManagedObjectContext: context) as!NSManagedObject
-        
-        newClient.setValue(txtRUC.text, forKey: "ruc")
-        newClient.setValue(txtNombre.text, forKey: "nombre")
-        newClient.setValue(txtRazonSocial.text, forKey: "razonSocial")
-        newClient.setValue(txtDireccion.text, forKey: "direccion")
-        
-        context.save(nil)
-        
-        //println(newClient)
-        //println("Object Saved")
+        var daoClient:daoCliente = daoCliente()
+        daoClient.newClient(txtNombre.text, ruc: txtRUC.text, razonSoc: txtRazonSocial.text, direccion: txtDireccion.text)
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
+
     @IBAction func cancelTapped(sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

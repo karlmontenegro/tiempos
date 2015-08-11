@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //var daoCount:daoPais = daoPais()
+        //daoCount.seedCountries()
     }
 
     override func didReceiveMemoryWarning() {

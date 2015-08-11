@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Cliente" syncable="YES">
+    <entity name="Cliente" representedClassName="PRODUCT_MODULE_NAME.Cliente" syncable="YES">
         <attribute name="direccion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="razonSocial" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ruc" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Pais" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombrePais" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="usuarios" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Usuario" inverseName="pais" inverseEntity="Usuario" syncable="YES"/>
+    </entity>
+    <entity name="Usuario" representedClassName="PRODUCT_MODULE_NAME.Usuario" syncable="YES">
+        <attribute name="apellidos" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fechaAlta" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="nombres" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pais" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pais" inverseName="usuarios" inverseEntity="Pais" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Cliente" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Cliente" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="Usuario" positionX="-36" positionY="-288" width="108" height="148"/>
+        <element name="Pais" positionX="-297" positionY="-168" width="144" height="88"/>
     </elements>
 </model>
