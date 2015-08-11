@@ -13,6 +13,7 @@ import UIKit
 
 class daoPais{
     
+    //Only one run
     func seedCountries(){
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
