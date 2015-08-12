@@ -108,6 +108,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pac-Oi-xtl"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,12 +223,12 @@
                         <barButtonItem key="backBarButtonItem" title="Cancelar" id="SN5-xq-yLG"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="zPA-uE-Wzd">
                             <connections>
-                                <action selector="trashTapped:" destination="wdB-De-QzM" id="lZo-Ko-LLQ"/>
+                                <action selector="trashTapped:" destination="wdB-De-QzM" id="ckG-NB-vb5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Crear" id="kbh-X3-qUh">
                             <connections>
-                                <action selector="crearTapped:" destination="wdB-De-QzM" id="YfB-1M-oHC"/>
+                                <action selector="crearTapped:" destination="wdB-De-QzM" id="77w-oN-voa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1056,9 +1057,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tRt-RW-GFi"/>
-        <segue reference="ee1-bl-OnD"/>
         <segue reference="sNE-wM-TsL"/>
+        <segue reference="ee1-bl-OnD"/>
+        <segue reference="tRt-RW-GFi"/>
         <segue reference="vjv-50-TbC"/>
     </inferredMetricsTieBreakers>
 </document>

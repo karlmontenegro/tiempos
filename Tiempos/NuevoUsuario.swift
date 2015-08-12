@@ -49,7 +49,8 @@ class NuevoUsuario: UIViewController, UIPickerViewDelegate{
         if(verifyData()){
             var daoUser:daoUsuario = daoUsuario()
             daoUser.newUser(txtNombres.text, apellidos: txtApellidos.text, email: txtEmail.text, pais: "PE", username: txtUsername.text, pass: txtPassword.text)
-            self.navigationController?.popToRootViewControllerAnimated(true)
+            //Code for debugging
+            daoUser.getAllUsers()
         }else{
             println("ERROR: Las contrasenas no coinciden")
         }
@@ -67,7 +68,6 @@ class NuevoUsuario: UIViewController, UIPickerViewDelegate{
         txtUsername.text = ""
         txtPassword.text = ""
         txtPasswordVer.text = ""
-        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
     //Extend for checking everything
