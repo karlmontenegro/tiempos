@@ -48,10 +48,10 @@ class daoUsuario {
         
         //Se consigue el país seleccionado como parámetro
         
-        
         var results = context.executeFetchRequest(request, error: &error)
         
-        nuevo.setValue(results?.first as! NSManagedObject, forKey: "pais")
+        nuevo.setValue(results?.first as! Pais, forKey: "pais")
+        nuevo.setValue(nil, forKey: "clientes")
         
         //Paso 4: Guardar el objeto en la entidad, controlando errores
         
@@ -63,9 +63,30 @@ class daoUsuario {
         }
     }
     
-    func signInUser(username:String, password:String)->Bool{
+    func signInUser(username:String, password:String)->(Bool,String,NSManagedObjectID?){
         
-        return true
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        var entityUsuario = NSEntityDescription.entityForName("Usuario", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(username = %@)", username)
+        var error: NSError?
+        
+        request.predicate = pred
+        request.entity = entityUsuario
+        
+        var results = context.executeFetchRequest(request, error: &error)
+        
+        if results?.count > 0{
+            if (results?.first as! Usuario).password == password{
+                return (true,"Login success!",(results?.first as! Usuario).objectID)
+            }else{
+                return (false,"Contraseña incorrecta, por favor intente nuevamente",nil)
+            }
+        }else{
+            return (false,"Usuario incorrecto, por favor ingreselo nuevamente",nil)
+        }
     }
     
     func signOutUser()->Bool{
@@ -92,7 +113,7 @@ class daoUsuario {
             println("- Nombre: " + result.nombres)
             println("- Apellidos: " + result.apellidos)
             println("- Email: " + result.email)
-            println("- Pais: " + (result.pais as! Pais).id)
+            println("- Pais: " + (result.pais).id)
             println("- Username: " + result.username)
             println("- Password: " + result.password)
         }

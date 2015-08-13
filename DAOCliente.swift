@@ -12,9 +12,21 @@ import CoreData
 
 class daoCliente{
     
-    func newClient(nombre: String, ruc: String, razonSoc: String, direccion:String){
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    func newClient(nombre: String, ruc: String, razonSoc: String, direccion:String, usuario: String){
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var entityUsuario = NSEntityDescription.entityForName("Usuario",
+            inManagedObjectContext:context)
+        let request = NSFetchRequest()
+        request.entity = entityUsuario
+        
+        let pred = NSPredicate(format: "(objectID = %@)", defaults.stringForKey(usuario)!)
+        request.predicate = pred
+
+        
         
         var newClient = NSEntityDescription.insertNewObjectForEntityForName("Cliente",inManagedObjectContext: context) as!NSManagedObject
         
@@ -22,6 +34,12 @@ class daoCliente{
         newClient.setValue(nombre, forKey: "nombre")
         newClient.setValue(razonSoc, forKey: "razonSocial")
         newClient.setValue(direccion, forKey: "direccion")
+        
+        //Extraer el usuario usando el stringForKey
+        
+        
+        
+        //newClient.setValue(defaults.stringForKey(usuario), forKey: "usuario")
         
         context.save(nil)
     }

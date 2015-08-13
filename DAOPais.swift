@@ -24,9 +24,11 @@ class daoPais{
         
         pais1.setValue("PE", forKey: "id")
         pais1.setValue("Peru", forKey: "nombrePais")
+        pais1.setValue(nil, forKey: "usuarios")
         
         pais2.setValue("BR", forKey: "id")
         pais2.setValue("Brasil", forKey: "nombrePais")
+        pais2.setValue(nil, forKey: "usuarios")
         
         context.save(nil)
     }

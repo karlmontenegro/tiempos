@@ -25,7 +25,7 @@ class NuevoCliente: UIViewController {
     @IBAction func saveTapped(sender: AnyObject) {
         
         var daoClient:daoCliente = daoCliente()
-        daoClient.newClient(txtNombre.text, ruc: txtRUC.text, razonSoc: txtRazonSocial.text, direccion: txtDireccion.text)
+        daoClient.newClient(txtNombre.text, ruc: txtRUC.text, razonSoc: txtRazonSocial.text, direccion: txtDireccion.text, usuario: "")
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }

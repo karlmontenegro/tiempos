@@ -86,7 +86,8 @@
                                     <rect key="frame" x="78" y="453" width="110" height="30"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="p7q-Yq-PEJ" kind="show" id="tRt-RW-GFi"/>
+                                    <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RAH-ee-7gs"/>
+                                    <segue destination="p7q-Yq-PEJ" kind="show" identifier="loginDashboard" id="tRt-RW-GFi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etg-GX-X3t">
@@ -109,6 +110,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="pac-Oi-xtl"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="txtPass" destination="Cxq-ar-LTl" id="DMA-e1-p3E"/>
+                        <outlet property="txtUser" destination="rKH-e7-bct" id="2hu-np-IJk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
