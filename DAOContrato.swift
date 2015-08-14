@@ -10,5 +10,7 @@ import Foundation
 import CoreData
 
 class daoContrato{
-    
+    func newContract(){
+        
+    }
 }

@@ -10,5 +10,11 @@ import Foundation
 import CoreData
 
 class daoDireccion{
+    func newAddress(cliente:Cliente, dir:String, p:Bool){
+        
+    }
     
+    func setMainAddress(dir:Direccion){
+        
+    }
 }

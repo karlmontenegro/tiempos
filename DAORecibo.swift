@@ -10,5 +10,11 @@ import Foundation
 import CoreData
 
 class daoRecibo{
+    func getAllReceiptsByUser()->NSArray?{
+        return nil
+    }
     
+    func getAllReceiptsByClient()->NSArray?{
+        return nil
+    }
 }

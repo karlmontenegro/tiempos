@@ -11,4 +11,16 @@ import CoreData
 
 class daoMoneda{
     
+    //run only once!!
+    func seedCurrency(){
+        
+    }
+    
+    func getAllCurrency()->NSArray?{
+        return nil
+    }
+    
+    func getCurrencyByID()->Moneda?{
+        return nil
+    }
 }
