@@ -14,17 +14,22 @@
     </entity>
     <entity name="Usuario" representedClassName="Usuario" syncable="YES">
         <attribute name="apellidos" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="claveSol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="direccionSunat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fechaAlta" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nombres" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombreSunat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ruc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="usuarioSol" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="clientes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cliente" inverseName="usuario" inverseEntity="Cliente" syncable="YES"/>
         <relationship name="pais" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pais" inverseName="usuarios" inverseEntity="Pais" syncable="YES"/>
     </entity>
     <elements>
         <element name="Cliente" positionX="-54" positionY="-9" width="128" height="120"/>
         <element name="Pais" positionX="-297" positionY="-168" width="144" height="90"/>
-        <element name="Usuario" positionX="-36" positionY="-288" width="108" height="165"/>
+        <element name="Usuario" positionX="-36" positionY="-288" width="108" height="240"/>
     </elements>
 </model>

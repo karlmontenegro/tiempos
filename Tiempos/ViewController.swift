@@ -27,11 +27,11 @@ class ViewController: UIViewController {
     @IBAction func loginTapped(sender: AnyObject) {
         var daoUser:daoUsuario = daoUsuario()
         var tup = daoUser.signInUser(txtUser.text, password: txtPass.text)
-        let defaults = NSUserDefaults.standardUserDefaults()
+        //let defaults = NSUserDefaults.standardUserDefaults()
         
         if tup.0{
             println(tup.1)
-            defaults.setObject((tup.2)?.URIRepresentation(), forKey: "currentUserKey")
+            //defaults.setObject((tup.2)?.URIRepresentation(), forKey: "currentUserKey")
             performSegueWithIdentifier("loginDashboard", sender: sender)
         }else{
             println(tup.1)

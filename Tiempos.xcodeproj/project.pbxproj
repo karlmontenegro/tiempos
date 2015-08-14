@@ -13,7 +13,6 @@
 		0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */; };
 		0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */; };
 		0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68081B7A59700002CE49 /* DAOPais.swift */; };
-		0C4E68211B7CF4200002CE49 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68201B7CF4200002CE49 /* Usuario.swift */; };
 		0C4E68231B7CF43B0002CE49 /* Pais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68221B7CF43B0002CE49 /* Pais.swift */; };
 		0C4E68251B7CF45C0002CE49 /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68241B7CF45C0002CE49 /* Cliente.swift */; };
 		0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */; };
@@ -24,6 +23,7 @@
 		0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589C1B72869B0091B578 /* NotaAudio.swift */; };
 		0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */; };
 		0CAE76521B72B2B500BB09F7 /* ContratosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */; };
+		0CAF58F91B7E3D0500DE9CF8 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF58F81B7E3D0500DE9CF8 /* Usuario.swift */; };
 		526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567C1B5D57BF000F323D /* AppDelegate.swift */; };
 		526D567F1B5D57BF000F323D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567E1B5D57BF000F323D /* ViewController.swift */; };
 		526D56821B5D57BF000F323D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526D56801B5D57BF000F323D /* Main.storyboard */; };
@@ -49,7 +49,6 @@
 		0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoUsuario.swift; path = Tiempos/NuevoUsuario.swift; sourceTree = "<group>"; };
 		0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOUsuario.swift; sourceTree = "<group>"; };
 		0C4E68081B7A59700002CE49 /* DAOPais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOPais.swift; sourceTree = "<group>"; };
-		0C4E68201B7CF4200002CE49 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		0C4E68221B7CF43B0002CE49 /* Pais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pais.swift; sourceTree = "<group>"; };
 		0C4E68241B7CF45C0002CE49 /* Cliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cliente.swift; sourceTree = "<group>"; };
 		0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tiemposdb.xcdatamodel; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		0C9C589C1B72869B0091B578 /* NotaAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaAudio.swift; sourceTree = "<group>"; };
 		0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleNotaAudioViewController.swift; path = Tiempos/DetalleNotaAudioViewController.swift; sourceTree = "<group>"; };
 		0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContratosTableViewController.swift; path = Tiempos/ContratosTableViewController.swift; sourceTree = "<group>"; };
+		0CAF58F81B7E3D0500DE9CF8 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		526D56771B5D57BF000F323D /* Tiempos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiempos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526D567B1B5D57BF000F323D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526D567C1B5D57BF000F323D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,9 +93,9 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
+				0CAF58F81B7E3D0500DE9CF8 /* Usuario.swift */,
 				0C4E68241B7CF45C0002CE49 /* Cliente.swift */,
 				0C4E68221B7CF43B0002CE49 /* Pais.swift */,
-				0C4E68201B7CF4200002CE49 /* Usuario.swift */,
 				0C4E68081B7A59700002CE49 /* DAOPais.swift */,
 				0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */,
 				0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */,
@@ -279,10 +279,10 @@
 				0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */,
 				526D567F1B5D57BF000F323D /* ViewController.swift in Sources */,
 				0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */,
-				0C4E68211B7CF4200002CE49 /* Usuario.swift in Sources */,
 				0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */,
 				0C9C58951B726A0E0091B578 /* TableViewController.swift in Sources */,
 				0C2C1E5A1B72CE4B009CEB43 /* Contratos.swift in Sources */,
+				0CAF58F91B7E3D0500DE9CF8 /* Usuario.swift in Sources */,
 				0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */,
 				0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */,
 				0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */,

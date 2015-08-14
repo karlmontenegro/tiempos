@@ -20,11 +20,11 @@ class daoCliente{
         let defaults = NSUserDefaults.standardUserDefaults()
         var entityUsuario = NSEntityDescription.entityForName("Usuario",
             inManagedObjectContext:context)
-        let request = NSFetchRequest()
-        request.entity = entityUsuario
+        //let request = NSFetchRequest()
+        //request.entity = entityUsuario
         
-        let pred = NSPredicate(format: "(objectID = %@)", defaults.stringForKey(usuario)!)
-        request.predicate = pred
+        //let pred = NSPredicate(format: "(objectID = %@)", defaults.stringForKey(usuario)!)
+        //request.predicate = pred
 
         
         

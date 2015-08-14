@@ -20,7 +20,7 @@ class Usuario: NSManagedObject {
     @NSManaged var username: String
     @NSManaged var pais: Pais
     @NSManaged var clientes: NSSet
-
+    
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
