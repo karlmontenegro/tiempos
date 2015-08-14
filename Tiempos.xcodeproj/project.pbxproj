@@ -33,6 +33,16 @@
 		0CAF59191B7E5C2700DE9CF8 /* Recibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59181B7E5C2700DE9CF8 /* Recibo.swift */; };
 		0CAF591B1B7E5C2700DE9CF8 /* Moneda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF591A1B7E5C2700DE9CF8 /* Moneda.swift */; };
 		0CAF591D1B7E5C2700DE9CF8 /* Entregable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF591C1B7E5C2700DE9CF8 /* Entregable.swift */; };
+		0CAF591F1B7E5E2900DE9CF8 /* DAOCita.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF591E1B7E5E2900DE9CF8 /* DAOCita.swift */; };
+		0CAF59211B7E5E4C00DE9CF8 /* DAOMoneda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59201B7E5E4C00DE9CF8 /* DAOMoneda.swift */; };
+		0CAF59231B7E5E5E00DE9CF8 /* DAORecibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59221B7E5E5E00DE9CF8 /* DAORecibo.swift */; };
+		0CAF59251B7E5E6E00DE9CF8 /* DAODireccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59241B7E5E6E00DE9CF8 /* DAODireccion.swift */; };
+		0CAF59271B7E5E8200DE9CF8 /* DAOContrato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59261B7E5E8200DE9CF8 /* DAOContrato.swift */; };
+		0CAF59291B7E5E9A00DE9CF8 /* DAOContacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59281B7E5E9A00DE9CF8 /* DAOContacto.swift */; };
+		0CAF592B1B7E5EAD00DE9CF8 /* DAOInfoContacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF592A1B7E5EAD00DE9CF8 /* DAOInfoContacto.swift */; };
+		0CAF592D1B7E5EC500DE9CF8 /* DAOTiempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF592C1B7E5EC500DE9CF8 /* DAOTiempo.swift */; };
+		0CAF592F1B7E5EF900DE9CF8 /* DAOContratoHoras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF592E1B7E5EF900DE9CF8 /* DAOContratoHoras.swift */; };
+		0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */; };
 		526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567C1B5D57BF000F323D /* AppDelegate.swift */; };
 		526D567F1B5D57BF000F323D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567E1B5D57BF000F323D /* ViewController.swift */; };
 		526D56821B5D57BF000F323D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526D56801B5D57BF000F323D /* Main.storyboard */; };
@@ -78,6 +88,16 @@
 		0CAF59181B7E5C2700DE9CF8 /* Recibo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recibo.swift; path = Tiempos/Recibo.swift; sourceTree = "<group>"; };
 		0CAF591A1B7E5C2700DE9CF8 /* Moneda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Moneda.swift; path = Tiempos/Moneda.swift; sourceTree = "<group>"; };
 		0CAF591C1B7E5C2700DE9CF8 /* Entregable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entregable.swift; path = Tiempos/Entregable.swift; sourceTree = "<group>"; };
+		0CAF591E1B7E5E2900DE9CF8 /* DAOCita.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOCita.swift; sourceTree = "<group>"; };
+		0CAF59201B7E5E4C00DE9CF8 /* DAOMoneda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOMoneda.swift; sourceTree = "<group>"; };
+		0CAF59221B7E5E5E00DE9CF8 /* DAORecibo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAORecibo.swift; sourceTree = "<group>"; };
+		0CAF59241B7E5E6E00DE9CF8 /* DAODireccion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAODireccion.swift; sourceTree = "<group>"; };
+		0CAF59261B7E5E8200DE9CF8 /* DAOContrato.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOContrato.swift; sourceTree = "<group>"; };
+		0CAF59281B7E5E9A00DE9CF8 /* DAOContacto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOContacto.swift; sourceTree = "<group>"; };
+		0CAF592A1B7E5EAD00DE9CF8 /* DAOInfoContacto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOInfoContacto.swift; sourceTree = "<group>"; };
+		0CAF592C1B7E5EC500DE9CF8 /* DAOTiempo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTiempo.swift; sourceTree = "<group>"; };
+		0CAF592E1B7E5EF900DE9CF8 /* DAOContratoHoras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOContratoHoras.swift; sourceTree = "<group>"; };
+		0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOEntregable.swift; sourceTree = "<group>"; };
 		526D56771B5D57BF000F323D /* Tiempos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiempos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526D567B1B5D57BF000F323D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526D567C1B5D57BF000F323D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +155,16 @@
 				0C4E68081B7A59700002CE49 /* DAOPais.swift */,
 				0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */,
 				0C3749BF1B7903D900EBD075 /* DAOCliente.swift */,
+				0CAF591E1B7E5E2900DE9CF8 /* DAOCita.swift */,
+				0CAF59201B7E5E4C00DE9CF8 /* DAOMoneda.swift */,
+				0CAF59221B7E5E5E00DE9CF8 /* DAORecibo.swift */,
+				0CAF59241B7E5E6E00DE9CF8 /* DAODireccion.swift */,
+				0CAF59261B7E5E8200DE9CF8 /* DAOContrato.swift */,
+				0CAF59281B7E5E9A00DE9CF8 /* DAOContacto.swift */,
+				0CAF592A1B7E5EAD00DE9CF8 /* DAOInfoContacto.swift */,
+				0CAF592C1B7E5EC500DE9CF8 /* DAOTiempo.swift */,
+				0CAF592E1B7E5EF900DE9CF8 /* DAOContratoHoras.swift */,
+				0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */,
 			);
 			name = DAO;
 			sourceTree = "<group>";
@@ -321,9 +351,11 @@
 				0CAE76521B72B2B500BB09F7 /* ContratosTableViewController.swift in Sources */,
 				0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */,
 				0CAF590F1B7E5C2600DE9CF8 /* Usuario.swift in Sources */,
+				0CAF59211B7E5E4C00DE9CF8 /* DAOMoneda.swift in Sources */,
 				0CAF591D1B7E5C2700DE9CF8 /* Entregable.swift in Sources */,
 				526D567F1B5D57BF000F323D /* ViewController.swift in Sources */,
 				0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */,
+				0CAF592D1B7E5EC500DE9CF8 /* DAOTiempo.swift in Sources */,
 				0CAF590D1B7E5C2600DE9CF8 /* Cliente.swift in Sources */,
 				0CAF59051B7E5C2600DE9CF8 /* Contacto.swift in Sources */,
 				0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */,
@@ -331,20 +363,28 @@
 				0CAF59111B7E5C2600DE9CF8 /* ContratoHoras.swift in Sources */,
 				0CAF591B1B7E5C2700DE9CF8 /* Moneda.swift in Sources */,
 				0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */,
+				0CAF591F1B7E5E2900DE9CF8 /* DAOCita.swift in Sources */,
 				0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */,
+				0CAF59291B7E5E9A00DE9CF8 /* DAOContacto.swift in Sources */,
+				0CAF59251B7E5E6E00DE9CF8 /* DAODireccion.swift in Sources */,
 				0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */,
 				0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */,
 				526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */,
+				0CAF592B1B7E5EAD00DE9CF8 /* DAOInfoContacto.swift in Sources */,
 				0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */,
 				0CAF59171B7E5C2600DE9CF8 /* InfoContacto.swift in Sources */,
+				0CAF592F1B7E5EF900DE9CF8 /* DAOContratoHoras.swift in Sources */,
 				0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */,
 				0CAF59191B7E5C2700DE9CF8 /* Recibo.swift in Sources */,
 				0CAF59091B7E5C2600DE9CF8 /* Pais.swift in Sources */,
 				0CAF59151B7E5C2600DE9CF8 /* Contrato.swift in Sources */,
 				0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */,
+				0CAF59271B7E5E8200DE9CF8 /* DAOContrato.swift in Sources */,
+				0CAF59231B7E5E5E00DE9CF8 /* DAORecibo.swift in Sources */,
 				0CAF59071B7E5C2600DE9CF8 /* Tiempo.swift in Sources */,
 				0CAF590B1B7E5C2600DE9CF8 /* Cita.swift in Sources */,
 				0C3749C01B7903D900EBD075 /* DAOCliente.swift in Sources */,
+				0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
