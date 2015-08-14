@@ -1,16 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Cita" representedClassName="Cita" syncable="YES">
+        <attribute name="convertido" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="cita" inverseEntity="Cliente" syncable="YES"/>
+        <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="cita" inverseEntity="Contrato" syncable="YES"/>
+        <relationship name="entregable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entregable" inverseName="cita" inverseEntity="Entregable" syncable="YES"/>
+        <relationship name="tiempo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tiempo" inverseName="cita" inverseEntity="Tiempo" syncable="YES"/>
+    </entity>
     <entity name="Cliente" representedClassName="Cliente" syncable="YES">
-        <attribute name="direccion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="razonSocial" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ruc" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cita" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cita" inverseName="cliente" inverseEntity="Cita" syncable="YES"/>
+        <relationship name="contacto" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contacto" inverseName="cliente" inverseEntity="Contacto" syncable="YES"/>
+        <relationship name="contrato" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contrato" inverseName="cliente" inverseEntity="Contrato" syncable="YES"/>
+        <relationship name="direccion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Direccion" inverseName="cliente" inverseEntity="Direccion" syncable="YES"/>
+        <relationship name="recibo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recibo" inverseName="cliente" inverseEntity="Recibo" syncable="YES"/>
+        <relationship name="tiempo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tiempo" inverseName="cliente" inverseEntity="Tiempo" syncable="YES"/>
         <relationship name="usuario" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Usuario" inverseName="clientes" inverseEntity="Usuario" syncable="YES"/>
+    </entity>
+    <entity name="Contacto" representedClassName="Contacto" syncable="YES">
+        <attribute name="nombreContacto" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="contacto" inverseEntity="Cliente" syncable="YES"/>
+        <relationship name="infoContacto" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="InfoContacto" inverseName="contacto" inverseEntity="InfoContacto" syncable="YES"/>
+    </entity>
+    <entity name="Contrato" representedClassName="Contrato" syncable="YES">
+        <attribute name="nombreContrato" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipoFacturacion" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cita" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cita" inverseName="contrato" inverseEntity="Cita" syncable="YES"/>
+        <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="contrato" inverseEntity="Cliente" syncable="YES"/>
+        <relationship name="contratoHoras" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ContratoHoras" inverseName="contrato" inverseEntity="ContratoHoras" syncable="YES"/>
+        <relationship name="entregables" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entregable" inverseName="contrato" inverseEntity="Entregable" syncable="YES"/>
+        <relationship name="recibo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recibo" inverseName="contrato" inverseEntity="Recibo" syncable="YES"/>
+        <relationship name="tiempo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tiempo" inverseName="contrato" inverseEntity="Tiempo" syncable="YES"/>
+    </entity>
+    <entity name="ContratoHoras" representedClassName="ContratoHoras" syncable="YES">
+        <attribute name="horasInc" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="tarifaHora" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="contratoHoras" inverseEntity="Contrato" syncable="YES"/>
+        <relationship name="moneda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Moneda" inverseName="contratoHoras" inverseEntity="Moneda" syncable="YES"/>
+    </entity>
+    <entity name="Direccion" representedClassName="Direccion" syncable="YES">
+        <attribute name="direccion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="principal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="direccion" inverseEntity="Cliente" syncable="YES"/>
+    </entity>
+    <entity name="Entregable" representedClassName="Entregable" syncable="YES">
+        <attribute name="nombreEntreg" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nroHorasInc" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="tarifa" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="cita" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cita" inverseName="entregable" inverseEntity="Cita" syncable="YES"/>
+        <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="entregables" inverseEntity="Contrato" syncable="YES"/>
+        <relationship name="moneda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Moneda" inverseName="entregable" inverseEntity="Moneda" syncable="YES"/>
+        <relationship name="recibo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recibo" inverseName="entregable" inverseEntity="Recibo" syncable="YES"/>
+        <relationship name="tiempo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tiempo" inverseName="entregable" inverseEntity="Tiempo" syncable="YES"/>
+    </entity>
+    <entity name="InfoContacto" representedClassName="InfoContacto" syncable="YES">
+        <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valor" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contacto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contacto" inverseName="infoContacto" inverseEntity="Contacto" syncable="YES"/>
+    </entity>
+    <entity name="Moneda" representedClassName="Moneda" syncable="YES">
+        <attribute name="descripcion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contratoHoras" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ContratoHoras" inverseName="moneda" inverseEntity="ContratoHoras" syncable="YES"/>
+        <relationship name="entregable" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entregable" inverseName="moneda" inverseEntity="Entregable" syncable="YES"/>
+        <relationship name="recibo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recibo" inverseName="moneda" inverseEntity="Recibo" syncable="YES"/>
     </entity>
     <entity name="Pais" representedClassName="Pais" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nombrePais" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="usuarios" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Usuario" inverseName="pais" inverseEntity="Usuario" syncable="YES"/>
+    </entity>
+    <entity name="Recibo" representedClassName="Recibo" syncable="YES">
+        <attribute name="cobrado" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="descripcion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fechaCobro" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fechaEmision" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="reciboExterno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valor" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="recibo" inverseEntity="Cliente" syncable="YES"/>
+        <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="recibo" inverseEntity="Contrato" syncable="YES"/>
+        <relationship name="entregable" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entregable" inverseName="recibo" inverseEntity="Entregable" syncable="YES"/>
+        <relationship name="moneda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Moneda" inverseName="recibo" inverseEntity="Moneda" syncable="YES"/>
+        <relationship name="tiempo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tiempo" inverseName="recibo" inverseEntity="Tiempo" syncable="YES"/>
+    </entity>
+    <entity name="Tiempo" representedClassName="Tiempo" syncable="YES">
+        <attribute name="convertido" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="horaFin" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="horaIni" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lugar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipoFac" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cita" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cita" inverseName="tiempo" inverseEntity="Cita" syncable="YES"/>
+        <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="tiempo" inverseEntity="Cliente" syncable="YES"/>
+        <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="tiempo" inverseEntity="Contrato" syncable="YES"/>
+        <relationship name="entregable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entregable" inverseName="tiempo" inverseEntity="Entregable" syncable="YES"/>
+        <relationship name="recibo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recibo" inverseName="tiempo" inverseEntity="Recibo" syncable="YES"/>
     </entity>
     <entity name="Usuario" representedClassName="Usuario" syncable="YES">
         <attribute name="apellidos" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,8 +114,18 @@
         <relationship name="pais" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pais" inverseName="usuarios" inverseEntity="Pais" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cliente" positionX="-54" positionY="-9" width="128" height="120"/>
-        <element name="Pais" positionX="-297" positionY="-168" width="144" height="90"/>
-        <element name="Usuario" positionX="-36" positionY="-288" width="108" height="240"/>
+        <element name="Cliente" positionX="-461" positionY="-117" width="128" height="193"/>
+        <element name="Pais" positionX="-972" positionY="-531" width="144" height="90"/>
+        <element name="Usuario" positionX="-738" positionY="-720" width="108" height="238"/>
+        <element name="Contacto" positionX="-810" positionY="-171" width="128" height="88"/>
+        <element name="InfoContacto" positionX="-1008" positionY="-144" width="128" height="88"/>
+        <element name="Contrato" positionX="-29" positionY="-234" width="128" height="163"/>
+        <element name="ContratoHoras" positionX="-263" positionY="-294" width="128" height="103"/>
+        <element name="Moneda" positionX="-378" positionY="-630" width="128" height="118"/>
+        <element name="Direccion" positionX="-216" positionY="38" width="128" height="88"/>
+        <element name="Entregable" positionX="-108" positionY="-531" width="128" height="163"/>
+        <element name="Cita" positionX="-828" positionY="-345" width="128" height="118"/>
+        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="208"/>
+        <element name="Recibo" positionX="-702" positionY="-1002" width="144" height="208"/>
     </elements>
 </model>
