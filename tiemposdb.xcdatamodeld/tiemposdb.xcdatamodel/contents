@@ -124,7 +124,7 @@
         <element name="Moneda" positionX="-378" positionY="-630" width="128" height="118"/>
         <element name="Direccion" positionX="-216" positionY="38" width="128" height="88"/>
         <element name="Entregable" positionX="-108" positionY="-531" width="128" height="163"/>
-        <element name="Cita" positionX="-828" positionY="-345" width="128" height="118"/>
+        <element name="Cita" positionX="-828" positionY="-378" width="128" height="118"/>
         <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="208"/>
         <element name="Recibo" positionX="-702" positionY="-1002" width="144" height="208"/>
     </elements>
