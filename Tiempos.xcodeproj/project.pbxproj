@@ -14,7 +14,8 @@
 		0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68081B7A59700002CE49 /* DAOPais.swift */; };
 		0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */; };
 		0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF31B751BB600191AEF /* NuevoCliente.swift */; };
-		0C9C58951B726A0E0091B578 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58941B726A0E0091B578 /* TableViewController.swift */; };
+		0C8BDE151B87993500EDBC9C /* EditarCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8BDE141B87993500EDBC9C /* EditarCliente.swift */; };
+		0C9C58951B726A0E0091B578 /* ClientesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58941B726A0E0091B578 /* ClientesTableViewController.swift */; };
 		0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */; };
 		0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */; };
 		0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589C1B72869B0091B578 /* NotaAudio.swift */; };
@@ -69,7 +70,8 @@
 		0C4E68081B7A59700002CE49 /* DAOPais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOPais.swift; sourceTree = "<group>"; };
 		0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tiemposdb.xcdatamodel; sourceTree = "<group>"; };
 		0C705BF31B751BB600191AEF /* NuevoCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoCliente.swift; path = Tiempos/NuevoCliente.swift; sourceTree = "<group>"; };
-		0C9C58941B726A0E0091B578 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = Tiempos/TableViewController.swift; sourceTree = "<group>"; };
+		0C8BDE141B87993500EDBC9C /* EditarCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarCliente.swift; sourceTree = "<group>"; };
+		0C9C58941B726A0E0091B578 /* ClientesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientesTableViewController.swift; path = Tiempos/ClientesTableViewController.swift; sourceTree = "<group>"; };
 		0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleClienteViewController.swift; path = Tiempos/DetalleClienteViewController.swift; sourceTree = "<group>"; };
 		0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotaAudioTableViewController.swift; path = Tiempos/NotaAudioTableViewController.swift; sourceTree = "<group>"; };
 		0C9C589C1B72869B0091B578 /* NotaAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaAudio.swift; sourceTree = "<group>"; };
@@ -131,6 +133,15 @@
 		0C742C361B8228020046BC31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */,
+				0C705BF31B751BB600191AEF /* NuevoCliente.swift */,
+				0C8BDE141B87993500EDBC9C /* EditarCliente.swift */,
+				0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */,
+				0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */,
+				0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */,
+				0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */,
+				0C9C58941B726A0E0091B578 /* ClientesTableViewController.swift */,
+				0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -182,14 +193,6 @@
 				0C742C361B8228020046BC31 /* Controller */,
 				0CAF58FE1B7E4A3200DE9CF8 /* Model */,
 				0CAF58FF1B7E4A5000DE9CF8 /* DAO */,
-				0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */,
-				0C705BF31B751BB600191AEF /* NuevoCliente.swift */,
-				0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */,
-				0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */,
-				0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */,
-				0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */,
-				0C9C58941B726A0E0091B578 /* TableViewController.swift */,
-				0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */,
 				526D56791B5D57BF000F323D /* Tiempos */,
 				526D568F1B5D57C0000F323D /* TiemposTests */,
 				526D56781B5D57BF000F323D /* Products */,
@@ -367,7 +370,7 @@
 				0CAF590D1B7E5C2600DE9CF8 /* Cliente.swift in Sources */,
 				0CAF59051B7E5C2600DE9CF8 /* Contacto.swift in Sources */,
 				0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */,
-				0C9C58951B726A0E0091B578 /* TableViewController.swift in Sources */,
+				0C9C58951B726A0E0091B578 /* ClientesTableViewController.swift in Sources */,
 				0CAF59111B7E5C2600DE9CF8 /* ContratoHoras.swift in Sources */,
 				0CAF591B1B7E5C2700DE9CF8 /* Moneda.swift in Sources */,
 				0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */,
@@ -381,6 +384,7 @@
 				0CAF592B1B7E5EAD00DE9CF8 /* DAOInfoContacto.swift in Sources */,
 				0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */,
 				0CAF59171B7E5C2600DE9CF8 /* InfoContacto.swift in Sources */,
+				0C8BDE151B87993500EDBC9C /* EditarCliente.swift in Sources */,
 				0CAF592F1B7E5EF900DE9CF8 /* DAOContratoHoras.swift in Sources */,
 				0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */,
 				0CAF59191B7E5C2700DE9CF8 /* Recibo.swift in Sources */,

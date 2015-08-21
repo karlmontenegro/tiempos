@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -698,7 +698,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opM-lV-FXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3325.5" y="790"/>
+            <point key="canvasLocation" x="3673.5" y="676"/>
+        </scene>
+        <!--Editar Cliente-->
+        <scene sceneID="LGt-nm-ut1">
+            <objects>
+                <viewController id="Ntm-mY-Ov9" customClass="EditarCliente" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XHl-th-Vbw"/>
+                        <viewControllerLayoutGuide type="bottom" id="xSE-2k-Gru"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YK6-VG-yo6">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="RUC" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maS-sv-2Qm">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="131" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Razón Social" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHi-R9-1lK">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="179" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dirección" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jcb-fD-yoO">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="226" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cV0-3O-QeK">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="84" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="maS-sv-2Qm"/>
+                                <exclude reference="jHi-R9-1lK"/>
+                                <exclude reference="Jcb-fD-yoO"/>
+                                <exclude reference="cV0-3O-QeK"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="maS-sv-2Qm"/>
+                                <include reference="jHi-R9-1lK"/>
+                                <include reference="Jcb-fD-yoO"/>
+                                <include reference="cV0-3O-QeK"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Editar Cliente" id="wAg-4j-4yG">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="Gsz-Jz-VWn"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="lblClientAddress" destination="Jcb-fD-yoO" id="m79-QX-4ir"/>
+                        <outlet property="lblClientName" destination="cV0-3O-QeK" id="Cx2-Hs-coG"/>
+                        <outlet property="lblClientRUC" destination="maS-sv-2Qm" id="cdT-Nx-D6Y"/>
+                        <outlet property="lblClientRazSoc" destination="jHi-R9-1lK" id="icH-k4-ztB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4b-vh-lxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4110" y="1376"/>
         </scene>
         <!--Detalle Contrato View Controller-->
         <scene sceneID="yHb-vp-1Gb">
@@ -803,7 +880,7 @@
         <!--Clientes-->
         <scene sceneID="d0N-8F-9Ue">
             <objects>
-                <tableViewController id="SG3-nr-eLY" customClass="TableViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="SG3-nr-eLY" customClass="ClientesTableViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="R3f-ZF-hdO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -858,6 +935,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <segue destination="r4F-Cv-vp8" kind="show" identifier="editClientSegue" id="ATI-7f-0Kz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HH-UC-rcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="OGP-SN-hn2"/>
@@ -948,6 +1028,38 @@
                                     <rect key="frame" x="163" y="169" width="207" height="21"/>
                                 </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="RUC" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSI-dj-69w">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="288" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Razón Social" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rje-hz-Iqf">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="336" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dirección" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="urg-cM-veT">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="383" width="346" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEO-VZ-lzW">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="241" width="346" height="30"/>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -960,6 +1072,10 @@
                                 <exclude reference="5FD-1j-6Pv"/>
                                 <exclude reference="uq0-t6-WPA"/>
                                 <exclude reference="px6-C9-5wX"/>
+                                <exclude reference="VSI-dj-69w"/>
+                                <exclude reference="rje-hz-Iqf"/>
+                                <exclude reference="urg-cM-veT"/>
+                                <exclude reference="XEO-VZ-lzW"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -972,6 +1088,10 @@
                                 <include reference="5FD-1j-6Pv"/>
                                 <include reference="uq0-t6-WPA"/>
                                 <include reference="px6-C9-5wX"/>
+                                <include reference="VSI-dj-69w"/>
+                                <include reference="rje-hz-Iqf"/>
+                                <include reference="urg-cM-veT"/>
+                                <include reference="XEO-VZ-lzW"/>
                             </mask>
                         </variation>
                     </view>
@@ -986,7 +1106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vl4-EP-x5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3325.5" y="1537"/>
+            <point key="canvasLocation" x="2182.5" y="1542"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RTu-LN-k5U">
@@ -1060,11 +1180,29 @@
             </objects>
             <point key="canvasLocation" x="-448.5" y="791"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BfI-tv-Ttb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r4F-Cv-vp8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="o6Q-cU-jQJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ntm-mY-Ov9" kind="relationship" relationship="rootViewController" id="ABp-J7-fIg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eaf-5e-ybi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3192" y="1376"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sNE-wM-TsL"/>
-        <segue reference="ee1-bl-OnD"/>
-        <segue reference="tRt-RW-GFi"/>
         <segue reference="vjv-50-TbC"/>
+        <segue reference="Fbg-11-CmD"/>
+        <segue reference="SFa-OI-c09"/>
+        <segue reference="sNE-wM-TsL"/>
     </inferredMetricsTieBreakers>
 </document>

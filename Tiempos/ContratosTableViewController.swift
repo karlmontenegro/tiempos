@@ -10,7 +10,7 @@ import UIKit
 
 class ContratosTableViewController: UITableViewController {
 
-    var arreglos:[Contrato] = [Contrato(name: "Gerencia", cliente: "Carlos", tipo: "Por Contrato"),Contrato(name: "Asesoria", cliente: "Isabel", tipo: "Por Horas")]
+    //var arreglos:[Contrato] = [Contrato(name: "Gerencia", cliente: "Carlos", tipo: "Por Contrato"),Contrato(name: "Asesoria", cliente: "Isabel", tipo: "Por Horas")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +38,14 @@ class ContratosTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.arreglos.count
+        return 1
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath) as! UITableViewCell
 
-        cell.textLabel!.text = self.arreglos[indexPath.row].name
+        //cell.textLabel!.text = self.arreglos[indexPath.row].name
 
         return cell
     }
@@ -56,7 +56,7 @@ class ContratosTableViewController: UITableViewController {
             
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
-            vc.data = self.arreglos[indexpath.row]
+            //vc.data = self.arreglos[indexpath.row]
         }
     }
 

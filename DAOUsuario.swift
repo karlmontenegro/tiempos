@@ -63,7 +63,7 @@ class daoUsuario {
         }
     }
     
-    func signInUser(username:String, password:String)->(Bool,String,NSManagedObjectID?){
+    func signInUser(username:String, password:String)->(Bool,String,String?){
         
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
@@ -80,14 +80,14 @@ class daoUsuario {
         
         if results?.count > 0{
             if (results?.first as! Usuario).password == password{
-                return (true,"Login success!",(results?.first as! Usuario).objectID)
+                return (true,"Login success!", (results?.first as! Usuario).username)
             }else{
                 return (false,"Contraseña incorrecta, por favor intente nuevamente",nil)
             }
         }else{
             return (false,"Usuario incorrecto, por favor ingreselo nuevamente",nil)
         }
-    }
+    }   
     
     func signOutUser()->Bool{
         

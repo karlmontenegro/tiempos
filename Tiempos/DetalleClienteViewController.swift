@@ -20,7 +20,7 @@ class DetalleClienteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblName.text = data.valueForKey("nombre") as! String?
-        lblAddress.text = data.valueForKey("direccion") as! String?
+        //lblAddress.text = data.valueForKey("direccion") as! String?
         lblRazonSocial.text = data.valueForKey("razonSocial") as! String?
         lblRUC.text = data.valueForKey("ruc") as! String?
     }
