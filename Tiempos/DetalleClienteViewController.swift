@@ -12,16 +12,16 @@ class DetalleClienteViewController: UIViewController {
 
     var data:AnyObject = []
     
-    @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblRazonSocial: UILabel!
     @IBOutlet weak var lblRUC: UILabel!
+    @IBOutlet weak var viewTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lblName.text = data.valueForKey("nombre") as! String?
-        lblRazonSocial.text = data.valueForKey("razonSocial") as! String?
-        lblRUC.text = data.valueForKey("ruc") as! String?
+        viewTitle.title = data.valueForKey("nombre") as! String?
+        lblRazonSocial.text = "Razón Social: " + (data.valueForKey("razonSocial") as! String?)!
+        lblRUC.text = "RUC: " + (data.valueForKey("ruc") as! String?)!
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +29,9 @@ class DetalleClienteViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func addAddressTapped(sender: AnyObject) {
+
+    }
     /*
     // MARK: - Navigation
 
@@ -38,5 +41,20 @@ class DetalleClienteViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if(segue.identifier == "contactTableSegue"){
+            let tvc:ContactosPorClienteTableViewController = segue.destinationViewController as! ContactosPorClienteTableViewController
+            
+            tvc.contactData = (self.data as! Cliente).contacto
+        }
+        if(segue.identifier == "addressTableSegue"){
+            let tvc:DireccionesPorClienteTableViewController = segue.destinationViewController as! DireccionesPorClienteTableViewController
+            
+            tvc.addressData = (self.data as! Cliente).direccion
+        }
+    }
 
 }

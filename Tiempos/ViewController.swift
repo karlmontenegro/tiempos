@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //var daoCount:daoPais = daoPais()
         //daoCount.seedCountries()
+        txtPass.secureTextEntry = true
     }
 
     override func didReceiveMemoryWarning() {
