@@ -1,33 +1,26 @@
 //
-//  DetalleClienteViewController.swift
+//  AddressDetailViewController.swift
 //  Tiempos
 //
-//  Created by Isabel Dunin Borkowski on 5/08/15.
+//  Created by Isabel Dunin Borkowski on 24/08/15.
 //  Copyright (c) 2015 Isabel Dunin-Borkowski. All rights reserved.
 //
 
 import UIKit
 
-class DetalleClienteViewController: UIViewController {
+class AddressDetailViewController: UIViewController {
 
-    var data:AnyObject = []
-    
-    @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblRazonSocial: UILabel!
-    @IBOutlet weak var lblRUC: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        lblName.text = data.valueForKey("nombre") as! String?
-        lblRazonSocial.text = data.valueForKey("razonSocial") as! String?
-        lblRUC.text = data.valueForKey("ruc") as! String?
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     /*
     // MARK: - Navigation
