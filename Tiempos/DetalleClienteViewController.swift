@@ -65,7 +65,6 @@ class DetalleClienteViewController: UIViewController {
         
         var tv : UITableViewController = self.childViewControllers[1] as! UITableViewController
         tv.tableView.reloadData()
-        tv.viewWillAppear(true)
         
         
         UIView.transitionWithView(self.modalAddress, duration: 0.7, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {

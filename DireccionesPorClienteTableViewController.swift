@@ -112,7 +112,7 @@ class DireccionesPorClienteTableViewController: UITableViewController {
         
         
         var edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            self.performSegueWithIdentifier("editClientSegue", sender: self)
+            //self.performSegueWithIdentifier("editClientSegue", sender: self)
         })
         edit.backgroundColor = UIColor.orangeColor()
         
