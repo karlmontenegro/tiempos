@@ -14,7 +14,6 @@
 		0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68081B7A59700002CE49 /* DAOPais.swift */; };
 		0C5DBC2A1B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5DBC291B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift */; };
 		0C5DBC2C1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5DBC2B1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift */; };
-		0C5DBC2E1B8CDD2F00FF1D26 /* NuevaDireccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5DBC2D1B8CDD2F00FF1D26 /* NuevaDireccionViewController.swift */; };
 		0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */; };
 		0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF31B751BB600191AEF /* NuevoCliente.swift */; };
 		0C8BDE151B87993500EDBC9C /* EditarCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8BDE141B87993500EDBC9C /* EditarCliente.swift */; };
@@ -73,7 +72,6 @@
 		0C4E68081B7A59700002CE49 /* DAOPais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOPais.swift; sourceTree = "<group>"; };
 		0C5DBC291B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactosPorClienteTableViewController.swift; sourceTree = "<group>"; };
 		0C5DBC2B1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DireccionesPorClienteTableViewController.swift; sourceTree = "<group>"; };
-		0C5DBC2D1B8CDD2F00FF1D26 /* NuevaDireccionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevaDireccionViewController.swift; sourceTree = "<group>"; };
 		0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tiemposdb.xcdatamodel; sourceTree = "<group>"; };
 		0C705BF31B751BB600191AEF /* NuevoCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoCliente.swift; path = Tiempos/NuevoCliente.swift; sourceTree = "<group>"; };
 		0C8BDE141B87993500EDBC9C /* EditarCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarCliente.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */,
 				0C5DBC291B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift */,
 				0C5DBC2B1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift */,
-				0C5DBC2D1B8CDD2F00FF1D26 /* NuevaDireccionViewController.swift */,
 			);
 			name = "Client View";
 			sourceTree = "<group>";
@@ -416,7 +413,6 @@
 				0CAF590B1B7E5C2600DE9CF8 /* Cita.swift in Sources */,
 				0C3749C01B7903D900EBD075 /* DAOCliente.swift in Sources */,
 				0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */,
-				0C5DBC2E1B8CDD2F00FF1D26 /* NuevaDireccionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

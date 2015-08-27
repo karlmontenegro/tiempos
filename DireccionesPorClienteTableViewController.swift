@@ -38,8 +38,8 @@ class DireccionesPorClienteTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if(addressData.count > 0){
-            return self.addressData.count
+        if((addressData as! Cliente).direccion.count > 0){
+            return (self.addressData as! Cliente).direccion.count
         }else{
             return 0
         }
@@ -47,8 +47,18 @@ class DireccionesPorClienteTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
+        
+        if (addressData as! Cliente).direccion.count > 0 {
+            
+            let lista = (addressData as! Cliente).direccion.allObjects as! Array<Direccion>
+            cell.textLabel!.text = lista[indexPath.row].direccion
+        
+            if lista[indexPath.row].principal == 1 {
+                cell.detailTextLabel!.text = "Principal"
+            } else {
+                cell.detailTextLabel!.text = ""
+            }
+        }
 
         return cell
     }
@@ -61,7 +71,7 @@ class DireccionesPorClienteTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -71,7 +81,44 @@ class DireccionesPorClienteTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+        
+        var delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            // Alerts before the delete just in case it wasn't meant to be
+            let alertController = UIAlertController(title: "Atención", message:
+                "¿Estás seguro que quieres borrar esta dirección?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // Delete action
+            alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                // Deletes the row from the DAO
+                
+                daoDireccion().deleteAddressAt(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
+                // Deletes the element from the array
+
+                
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }))
+            
+            // Cancel action
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+                self.tableView.reloadData()
+            }))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        })
+        delete.backgroundColor = UIColor.redColor()
+        
+        
+        var edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            self.performSegueWithIdentifier("editClientSegue", sender: self)
+        })
+        edit.backgroundColor = UIColor.orangeColor()
+        
+        
+        return [delete,edit]
+    }
 
     /*
     // Override to support rearranging the table view.

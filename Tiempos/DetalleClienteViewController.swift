@@ -15,7 +15,14 @@ class DetalleClienteViewController: UIViewController {
     @IBOutlet weak var lblRazonSocial: UILabel!
     @IBOutlet weak var lblRUC: UILabel!
     @IBOutlet weak var viewTitle: UINavigationItem!
-    
+    @IBOutlet weak var modalAddress: UIView!
+    @IBOutlet weak var modalAddressFX: UIVisualEffectView!
+
+    @IBOutlet weak var lblDireccion: UITextField!
+    @IBOutlet weak var lblRefUno: UITextField!
+    @IBOutlet weak var lblRefDos: UITextField!
+    @IBOutlet weak var swMainAddress: UISwitch!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +37,44 @@ class DetalleClienteViewController: UIViewController {
     }
 
     @IBAction func addAddressTapped(sender: AnyObject) {
-
+        UIView.transitionWithView(self.modalAddress, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            self.modalAddress.hidden = false
+            self.modalAddressFX.hidden = false
+            }, completion: { finished in
+                // any code entered here will be applied
+                // .once the animation has completed
+        })
+    }
+    
+    @IBAction func cancelNewAddress(sender: AnyObject) {
+        UIView.transitionWithView(self.modalAddress, duration: 0.7, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            self.modalAddress.hidden = true
+            self.modalAddressFX.hidden = true
+            }, completion: { finished in
+                // any code entered here will be applied
+                // .once the animation has completed
+        })
+    }
+    
+    @IBAction func saveNewAddress(sender: AnyObject) {
+        
+        let DAODireccion = daoDireccion()
+        let direccionF:String = (lblDireccion.text) as String + " " + (lblRefUno.text) as String + " " + (lblRefDos.text) as String
+        
+        DAODireccion.newAddress(data.valueForKey("usuario") as! Usuario, cliente: data as! Cliente, dir: direccionF, p: swMainAddress.on)
+        
+        var tv : UITableViewController = self.childViewControllers[1] as! UITableViewController
+        tv.tableView.reloadData()
+        tv.viewWillAppear(true)
+        
+        
+        UIView.transitionWithView(self.modalAddress, duration: 0.7, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            self.modalAddress.hidden = true
+            self.modalAddressFX.hidden = true
+            }, completion: { finished in
+                // any code entered here will be applied
+                // .once the animation has completed
+        })
     }
     /*
     // MARK: - Navigation
@@ -53,7 +97,9 @@ class DetalleClienteViewController: UIViewController {
         if(segue.identifier == "addressTableSegue"){
             let tvc:DireccionesPorClienteTableViewController = segue.destinationViewController as! DireccionesPorClienteTableViewController
             
-            tvc.addressData = (self.data as! Cliente).direccion
+            tvc.addressData = self.data as! Cliente
+        }
+        if(segue.identifier == "cancelAddAddress"){
         }
     }
 

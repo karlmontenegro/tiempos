@@ -26,4 +26,13 @@ class Cliente: NSManagedObject {
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
+    
+    func addAddress(dir: Direccion){
+        var addresses = self.mutableSetValueForKey("direccion")
+        addresses.addObject(dir)
+    }
+    
+    func allAddresses(){
+        
+    }
 }
