@@ -16,8 +16,6 @@ class ClientesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        swipeRec.addTarget(self, action: "swipedView")
-        self.tableView.addGestureRecognizer(swipeRec)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -30,10 +28,6 @@ class ClientesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func swipedView(){
-        
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -68,12 +62,6 @@ class ClientesTableViewController: UITableViewController {
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
             
             vc.data = self.arreglo[indexpath.row]
-        }
-        if(segue.identifier == "editClientSegue"){
-            //let indexpath:NSIndexPath = self.tableView.
-            //let navController = segue.destinationViewController as! UINavigationController
-            //let detailController = navController.topViewController as! EditarCliente
-            //detailController.data = self.arreglo[indexpath.row]
         }
     }
     
@@ -124,14 +112,8 @@ class ClientesTableViewController: UITableViewController {
         })
         delete.backgroundColor = UIColor.redColor()
         
-       
-        var edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            self.performSegueWithIdentifier("editClientSegue", sender: self)
-        })
-        edit.backgroundColor = UIColor.orangeColor()
         
-        
-        return [delete,edit]
+        return [delete]
     }
     
 

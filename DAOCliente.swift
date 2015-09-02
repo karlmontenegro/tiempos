@@ -11,7 +11,6 @@ import UIKit
 import CoreData
 
 class daoCliente{
-    
     func newClient(nombre: String, ruc: String, razonSoc: String, direccion:String, usuario: String){
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
@@ -56,7 +55,33 @@ class daoCliente{
         context.save(nil)
     }
     
-    func updateClient(object: Cliente){
-        //TODO!!!
+    func updateClient(object: Cliente, nombre: String, razSoc: String, ruc: String){
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        var entityCliente = NSEntityDescription.entityForName("Cliente", inManagedObjectContext: context)
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "self = %@", object)
+        request.entity = entityCliente
+        
+        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        
+        (results.firstObject as! Cliente).setValue(nombre, forKey: "nombre")
+        (results.firstObject as! Cliente).setValue(razSoc, forKey: "razonSocial")
+        (results.firstObject as! Cliente).setValue(ruc, forKey: "ruc")
+        
+        context.save(nil)
+    }
+    
+    func getClientById(object: Cliente)->Cliente{
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        var entityCliente = NSEntityDescription.entityForName("Cliente", inManagedObjectContext: context)
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "self = %@", object)
+        request.entity = entityCliente
+        
+        var result:NSArray = context.executeFetchRequest(request, error: nil)!
+        
+        return result[0] as! Cliente
     }
 }

@@ -12,8 +12,11 @@
 		0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */; };
 		0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */; };
 		0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68081B7A59700002CE49 /* DAOPais.swift */; };
+		0C598F901B90C3390023FBB2 /* NuevoContactoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C598F8F1B90C3390023FBB2 /* NuevoContactoViewController.swift */; };
+		0C598F921B90CFFA0023FBB2 /* NuevaDireccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C598F911B90CFFA0023FBB2 /* NuevaDireccionViewController.swift */; };
 		0C5DBC2A1B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5DBC291B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift */; };
 		0C5DBC2C1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5DBC2B1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift */; };
+		0C6D63D41B9748B1004C99C4 /* EditarDireccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D63D31B9748B1004C99C4 /* EditarDireccionViewController.swift */; };
 		0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */; };
 		0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF31B751BB600191AEF /* NuevoCliente.swift */; };
 		0C8BDE151B87993500EDBC9C /* EditarCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8BDE141B87993500EDBC9C /* EditarCliente.swift */; };
@@ -70,8 +73,11 @@
 		0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoUsuario.swift; path = Tiempos/NuevoUsuario.swift; sourceTree = "<group>"; };
 		0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOUsuario.swift; sourceTree = "<group>"; };
 		0C4E68081B7A59700002CE49 /* DAOPais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOPais.swift; sourceTree = "<group>"; };
+		0C598F8F1B90C3390023FBB2 /* NuevoContactoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoContactoViewController.swift; sourceTree = "<group>"; };
+		0C598F911B90CFFA0023FBB2 /* NuevaDireccionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevaDireccionViewController.swift; sourceTree = "<group>"; };
 		0C5DBC291B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactosPorClienteTableViewController.swift; sourceTree = "<group>"; };
 		0C5DBC2B1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DireccionesPorClienteTableViewController.swift; sourceTree = "<group>"; };
+		0C6D63D31B9748B1004C99C4 /* EditarDireccionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarDireccionViewController.swift; sourceTree = "<group>"; };
 		0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tiemposdb.xcdatamodel; sourceTree = "<group>"; };
 		0C705BF31B751BB600191AEF /* NuevoCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoCliente.swift; path = Tiempos/NuevoCliente.swift; sourceTree = "<group>"; };
 		0C8BDE141B87993500EDBC9C /* EditarCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarCliente.swift; sourceTree = "<group>"; };
@@ -140,6 +146,10 @@
 				0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */,
 				0C5DBC291B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift */,
 				0C5DBC2B1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift */,
+				0C598F8F1B90C3390023FBB2 /* NuevoContactoViewController.swift */,
+				0C598F911B90CFFA0023FBB2 /* NuevaDireccionViewController.swift */,
+				0C8BDE141B87993500EDBC9C /* EditarCliente.swift */,
+				0C6D63D31B9748B1004C99C4 /* EditarDireccionViewController.swift */,
 			);
 			name = "Client View";
 			sourceTree = "<group>";
@@ -150,7 +160,6 @@
 				0C5DBC281B8CCC3000FF1D26 /* Client View */,
 				0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */,
 				0C705BF31B751BB600191AEF /* NuevoCliente.swift */,
-				0C8BDE141B87993500EDBC9C /* EditarCliente.swift */,
 				0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */,
 				0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */,
 				0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */,
@@ -379,6 +388,7 @@
 				0CAF59211B7E5E4C00DE9CF8 /* DAOMoneda.swift in Sources */,
 				0CAF591D1B7E5C2700DE9CF8 /* Entregable.swift in Sources */,
 				526D567F1B5D57BF000F323D /* ViewController.swift in Sources */,
+				0C598F921B90CFFA0023FBB2 /* NuevaDireccionViewController.swift in Sources */,
 				0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */,
 				0CAF592D1B7E5EC500DE9CF8 /* DAOTiempo.swift in Sources */,
 				0CAF590D1B7E5C2600DE9CF8 /* Cliente.swift in Sources */,
@@ -391,7 +401,9 @@
 				0CAF591F1B7E5E2900DE9CF8 /* DAOCita.swift in Sources */,
 				0C5DBC2A1B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift in Sources */,
 				0C5DBC2C1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift in Sources */,
+				0C598F901B90C3390023FBB2 /* NuevoContactoViewController.swift in Sources */,
 				0C9C589F1B72899A0091B578 /* DetalleNotaAudioViewController.swift in Sources */,
+				0C6D63D41B9748B1004C99C4 /* EditarDireccionViewController.swift in Sources */,
 				0CAF59291B7E5E9A00DE9CF8 /* DAOContacto.swift in Sources */,
 				0CAF59251B7E5E6E00DE9CF8 /* DAODireccion.swift in Sources */,
 				0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */,

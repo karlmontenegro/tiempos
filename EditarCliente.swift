@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class EditarCliente: UIViewController {
 
@@ -16,12 +15,22 @@ class EditarCliente: UIViewController {
     @IBOutlet weak var lblClientName: UITextField!
     @IBOutlet weak var lblClientRUC: UITextField!
     @IBOutlet weak var lblClientRazSoc: UITextField!
-    @IBOutlet weak var lblClientAddress: UITextField!
+
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
+    @IBAction func save(sender: UIBarButtonItem) {
+        daoCliente().updateClient(self.data as! Cliente, nombre:lblClientName.text, razSoc:lblClientRazSoc.text, ruc:lblClientRUC.text)
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        self.lblClientName.text = (data as! Cliente).nombre as String
+        self.lblClientRazSoc.text = (data as! Cliente).razonSocial as String
+        self.lblClientRUC.text = (data as! Cliente).ruc as String
     }
 
     override func didReceiveMemoryWarning() {
