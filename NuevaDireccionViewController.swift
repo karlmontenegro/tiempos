@@ -9,9 +9,14 @@
 import UIKit
 import CoreData
 
+protocol refreshAddressTable{
+    func refreshAddressesDelegate()
+}
+
 class NuevaDireccionViewController: UIViewController {
 
     var data:AnyObject = []
+    var delegateAddress:refreshAddressTable? = nil
     
     @IBOutlet weak var direccion: UITextField!
     @IBOutlet weak var refUno: UITextField!
@@ -41,16 +46,18 @@ class NuevaDireccionViewController: UIViewController {
         
         self.parentViewController?.childViewControllers[1].refreshControl?!.beginRefreshing()
         
+        delegateAddress!.refreshAddressesDelegate()
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     */
-
 }

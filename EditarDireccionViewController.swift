@@ -28,7 +28,13 @@ class EditarDireccionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func saveTapped(sender: UIBarButtonItem) {
+        
+    }
 
+    @IBAction func cancelTapped(sender: UIBarButtonItem) {
+        
+    }
     /*
     // MARK: - Navigation
 

@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol refreshClientData{
+    func refreshClientDelegate()
+}
+
 class EditarCliente: UIViewController {
 
     var data:AnyObject = []
+    var delegateClient:refreshClientData? = nil
     
     @IBOutlet weak var lblClientName: UITextField!
     @IBOutlet weak var lblClientRUC: UITextField!
@@ -22,7 +27,7 @@ class EditarCliente: UIViewController {
     
     @IBAction func save(sender: UIBarButtonItem) {
         daoCliente().updateClient(self.data as! Cliente, nombre:lblClientName.text, razSoc:lblClientRazSoc.text, ruc:lblClientRUC.text)
-        
+        delegateClient!.refreshClientDelegate()
         dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidLoad() {

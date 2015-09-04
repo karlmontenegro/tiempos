@@ -8,7 +8,8 @@
 
 import UIKit
 
-class DireccionesPorClienteTableViewController: UITableViewController {
+
+class DireccionesPorClienteTableViewController: UITableViewController{
 
     var addressData:AnyObject = []
     
@@ -20,6 +21,10 @@ class DireccionesPorClienteTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func refreshAddress() {
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -139,10 +144,10 @@ class DireccionesPorClienteTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
     }
-    */
+*/
 
 }
