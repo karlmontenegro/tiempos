@@ -37,7 +37,7 @@ class daoDireccion{
             println("Could not save \(error), \(error?.userInfo)")
         }else{
             //Descomentar para debugging
-            println(newDir)
+            //println(newDir)
         }
     }
     

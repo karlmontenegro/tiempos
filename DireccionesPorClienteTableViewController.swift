@@ -12,10 +12,15 @@ protocol editAddress{
     func editAddressDelegate(AnyObject)
 }
 
+protocol showAddress{
+    func showAddressModal(AnyObject)
+}
+
 class DireccionesPorClienteTableViewController: UITableViewController{
 
     var addressData:AnyObject = []
     var delegateAddress:editAddress? = nil
+    var delegateShow:showAddress? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +132,10 @@ class DireccionesPorClienteTableViewController: UITableViewController{
         return [delete,edit]
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        self.delegateShow!.showAddressModal(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
+    }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {

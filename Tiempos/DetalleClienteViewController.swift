@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress {
+class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress,showAddress {
 
     var data:AnyObject = []
     var direccion:AnyObject = []
@@ -31,6 +31,17 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     func editAddressDelegate(direccion: AnyObject){
         self.direccion = direccion
         self.performSegueWithIdentifier("editAddressSegue", sender: self)
+    }
+    
+    func showAddressModal(direccion: AnyObject){
+        
+        let dir:String = (direccion as! Direccion).direccion as String + ", " + (direccion as! Direccion).referenciaUno as String + ", " + (direccion as! Direccion).referenciaDos as String
+        
+        let alertController = UIAlertController(title: "Direccion", message:
+            dir, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -68,6 +79,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
             let tvc:DireccionesPorClienteTableViewController = segue.destinationViewController as! DireccionesPorClienteTableViewController
             tvc.delegateAddress = self
             tvc.addressData = data as! Cliente
+            tvc.delegateShow = self
         }
         if(segue.identifier == "addAddress"){
 

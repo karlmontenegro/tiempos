@@ -22,10 +22,8 @@ class NuevoCliente: UIViewController {
     }
 
     @IBAction func saveTapped(sender: AnyObject) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var daoClient:daoCliente = daoCliente()
-        
-        daoClient.newClient(txtNombre.text, ruc: txtRUC.text, razonSoc: txtRazonSocial.text, direccion: "",usuario: "")
+        //let defaults = NSUserDefaults.standardUserDefaults()
+        daoCliente().newClient(txtNombre.text, ruc: txtRUC.text, razonSoc: txtRazonSocial.text, direccion: "",usuario: "")
         
         //usuario: defaults.objectForKey("loggedUserKey") as! String
         

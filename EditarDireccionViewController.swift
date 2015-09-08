@@ -28,6 +28,9 @@ class EditarDireccionViewController: UIViewController {
         self.txtReferencia1.text = (data as! Direccion).referenciaUno as String
         self.txtReferencia2.text = (data as! Direccion).referenciaDos as String
         
+        if (data as! Direccion).principal as Bool {
+            self.prinSwitch.setOn(true, animated:true)
+        }
     }
 
     override func didReceiveMemoryWarning() {

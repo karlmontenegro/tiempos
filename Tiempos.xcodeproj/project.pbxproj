@@ -49,6 +49,7 @@
 		0CAF592F1B7E5EF900DE9CF8 /* DAOContratoHoras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF592E1B7E5EF900DE9CF8 /* DAOContratoHoras.swift */; };
 		0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */; };
 		0CE406701B9F3FA80096CE36 /* Direccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4066F1B9F3FA80096CE36 /* Direccion.swift */; };
+		0CE406721B9F53900096CE36 /* VerDireccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */; };
 		526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567C1B5D57BF000F323D /* AppDelegate.swift */; };
 		526D567F1B5D57BF000F323D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567E1B5D57BF000F323D /* ViewController.swift */; };
 		526D56821B5D57BF000F323D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526D56801B5D57BF000F323D /* Main.storyboard */; };
@@ -110,6 +111,7 @@
 		0CAF592E1B7E5EF900DE9CF8 /* DAOContratoHoras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOContratoHoras.swift; sourceTree = "<group>"; };
 		0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOEntregable.swift; sourceTree = "<group>"; };
 		0CE4066F1B9F3FA80096CE36 /* Direccion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direccion.swift; sourceTree = "<group>"; };
+		0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerDireccionViewController.swift; sourceTree = "<group>"; };
 		526D56771B5D57BF000F323D /* Tiempos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiempos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526D567B1B5D57BF000F323D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526D567C1B5D57BF000F323D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				0C598F911B90CFFA0023FBB2 /* NuevaDireccionViewController.swift */,
 				0C8BDE141B87993500EDBC9C /* EditarCliente.swift */,
 				0C6D63D31B9748B1004C99C4 /* EditarDireccionViewController.swift */,
+				0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */,
 			);
 			name = "Client View";
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				0CAF59151B7E5C2600DE9CF8 /* Contrato.swift in Sources */,
 				0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */,
 				0CAF59271B7E5E8200DE9CF8 /* DAOContrato.swift in Sources */,
+				0CE406721B9F53900096CE36 /* VerDireccionViewController.swift in Sources */,
 				0CAF59231B7E5E5E00DE9CF8 /* DAORecibo.swift in Sources */,
 				0CAF59071B7E5C2600DE9CF8 /* Tiempo.swift in Sources */,
 				0CAF590B1B7E5C2600DE9CF8 /* Cita.swift in Sources */,
