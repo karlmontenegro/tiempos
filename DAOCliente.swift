@@ -15,25 +15,24 @@ class daoCliente{
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
 
-        var entityUsuario = NSEntityDescription.entityForName("Usuario",inManagedObjectContext:context)
-        let request = NSFetchRequest()
-        request.entity = entityUsuario
+        //var entityUsuario = NSEntityDescription.entityForName("Usuario",inManagedObjectContext:context)
+        //let request = NSFetchRequest()
+        //request.entity = entityUsuario
         
-        let pred = NSPredicate(format: "(username = %@)", usuario)
-        request.predicate = pred
+        //let pred = NSPredicate(format: "(username = %@)", usuario)
+        //request.predicate = pred
         
-        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        //var results:NSArray = context.executeFetchRequest(request, error: nil)!
 
         var newClient = NSEntityDescription.insertNewObjectForEntityForName("Cliente",inManagedObjectContext: context) as!NSManagedObject
         
         newClient.setValue(ruc, forKey: "ruc")
         newClient.setValue(nombre, forKey: "nombre")
         newClient.setValue(razonSoc, forKey: "razonSocial")
-        //newClient.setValue(direccion, forKey: "direccion")
         
         //Extraer el usuario usando el stringForKey
         
-        newClient.setValue(results.firstObject as! Usuario, forKey: "usuario")
+        //newClient.setValue(results.firstObject as! Usuario, forKey: "usuario")
         
         context.save(nil)
     }
@@ -58,16 +57,10 @@ class daoCliente{
     func updateClient(object: Cliente, nombre: String, razSoc: String, ruc: String){
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
-        var entityCliente = NSEntityDescription.entityForName("Cliente", inManagedObjectContext: context)
-        let request = NSFetchRequest()
-        let pred = NSPredicate(format: "self = %@", object)
-        request.entity = entityCliente
         
-        var results:NSArray = context.executeFetchRequest(request, error: nil)!
-        
-        (results.firstObject as! Cliente).setValue(nombre, forKey: "nombre")
-        (results.firstObject as! Cliente).setValue(razSoc, forKey: "razonSocial")
-        (results.firstObject as! Cliente).setValue(ruc, forKey: "ruc")
+        object.setValue(nombre, forKey: "nombre")
+        object.setValue(razSoc, forKey: "razonSocial")
+        object.setValue(ruc, forKey: "ruc")
         
         context.save(nil)
     }

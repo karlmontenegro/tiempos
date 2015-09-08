@@ -39,10 +39,8 @@ class NuevaDireccionViewController: UIViewController {
     }
 
     @IBAction func saveButton(sender: UIBarButtonItem) {
-        let DAODireccion = daoDireccion()
-        let direccionF:String = (direccion.text) as String + " - " + (refUno.text) as String + " - " + (refDos.text) as String
-        
-        DAODireccion.newAddress(data.valueForKey("usuario") as! Usuario, cliente: data as! Cliente, dir: direccionF, p: prinSwitch.on)
+       
+        daoDireccion().newAddress(data as! Cliente, dir: self.direccion.text as String,ref1: self.refUno.text as String,ref2: self.refDos.text as String, p: prinSwitch.on)
         
         self.parentViewController?.childViewControllers[1].refreshControl?!.beginRefreshing()
         

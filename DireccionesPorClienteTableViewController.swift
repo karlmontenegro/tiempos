@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol editAddress{
+    func editAddressDelegate(AnyObject)
+}
 
 class DireccionesPorClienteTableViewController: UITableViewController{
 
     var addressData:AnyObject = []
+    var delegateAddress:editAddress? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +60,7 @@ class DireccionesPorClienteTableViewController: UITableViewController{
         if (addressData as! Cliente).direccion.count > 0 {
             
             let lista = (addressData as! Cliente).direccion.allObjects as! Array<Direccion>
-            cell.textLabel!.text = lista[indexPath.row].direccion
+            cell.textLabel!.text = lista[indexPath.row].direccion + ", " + lista[indexPath.row].referenciaUno + ", " + lista[indexPath.row].referenciaDos
         
             if lista[indexPath.row].principal == 1 {
                 cell.detailTextLabel!.text = "Principal"
@@ -100,8 +104,6 @@ class DireccionesPorClienteTableViewController: UITableViewController{
                 
                 daoDireccion().deleteAddressAt(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
                 // Deletes the element from the array
-
-                
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
             
@@ -115,12 +117,12 @@ class DireccionesPorClienteTableViewController: UITableViewController{
         })
         delete.backgroundColor = UIColor.redColor()
         
-        
+        //Edit action
         var edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            //self.performSegueWithIdentifier("editClientSegue", sender: self)
+            self.delegateAddress!.editAddressDelegate(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
+            self.tableView.reloadData()
         })
         edit.backgroundColor = UIColor.orangeColor()
-        
         
         return [delete,edit]
     }

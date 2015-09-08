@@ -25,7 +25,9 @@ class NuevoCliente: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         var daoClient:daoCliente = daoCliente()
         
-        daoClient.newClient(txtNombre.text, ruc: txtRUC.text, razonSoc: txtRazonSocial.text, direccion: "", usuario: defaults.objectForKey("loggedUserKey") as! String)
+        daoClient.newClient(txtNombre.text, ruc: txtRUC.text, razonSoc: txtRazonSocial.text, direccion: "",usuario: "")
+        
+        //usuario: defaults.objectForKey("loggedUserKey") as! String
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }

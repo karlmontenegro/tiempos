@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol refreshAddressTableAfterEdit{
+    func refreshAddressesDelegate()
+}
 class EditarDireccionViewController: UIViewController {
 
     var data:AnyObject = []
+    var delegateAddress:refreshAddressTable? = nil
     
     @IBOutlet weak var txtDireccion: UITextField!
     @IBOutlet weak var txtReferencia1: UITextField!
@@ -20,6 +24,9 @@ class EditarDireccionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.txtDireccion.text = (data as! Direccion).direccion as String
+        self.txtReferencia1.text = (data as! Direccion).referenciaUno as String
+        self.txtReferencia2.text = (data as! Direccion).referenciaDos as String
         
     }
 
@@ -29,11 +36,17 @@ class EditarDireccionViewController: UIViewController {
     }
     
     @IBAction func saveTapped(sender: UIBarButtonItem) {
+        daoDireccion().updateAddressAt(self.data as! Direccion, newDir: self.txtDireccion.text as String, newRef1: self.txtReferencia1.text as String, newRef2: self.txtReferencia2.text as String, p: self.prinSwitch.on)
         
+        self.parentViewController?.childViewControllers[1].refreshControl?!.beginRefreshing()
+        
+        delegateAddress!.refreshAddressesDelegate()
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func cancelTapped(sender: UIBarButtonItem) {
-        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // MARK: - Navigation

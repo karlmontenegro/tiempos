@@ -8,9 +8,10 @@
 
 import UIKit
 
-class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable {
+class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress {
 
     var data:AnyObject = []
+    var direccion:AnyObject = []
     
     @IBOutlet weak var lblRazonSocial: UILabel!
     @IBOutlet weak var lblRUC: UILabel!
@@ -25,6 +26,11 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     func refreshAddressesDelegate() {
         var tbc:UITableViewController = self.childViewControllers[0] as! UITableViewController
         tbc.tableView.reloadData()
+    }
+    
+    func editAddressDelegate(direccion: AnyObject){
+        self.direccion = direccion
+        self.performSegueWithIdentifier("editAddressSegue", sender: self)
     }
     
     override func viewDidLoad() {
@@ -60,6 +66,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         if(segue.identifier == "addressTableSegue"){
 
             let tvc:DireccionesPorClienteTableViewController = segue.destinationViewController as! DireccionesPorClienteTableViewController
+            tvc.delegateAddress = self
             tvc.addressData = data as! Cliente
         }
         if(segue.identifier == "addAddress"){
@@ -75,7 +82,9 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
             tvc.delegateClient = self
         }
         if(segue.identifier == "editAddressSegue"){
-            
+            let tvc:EditarDireccionViewController = segue.destinationViewController as! EditarDireccionViewController
+            tvc.data = self.direccion as! Direccion
+            tvc.delegateAddress = self
         }
     }
 }

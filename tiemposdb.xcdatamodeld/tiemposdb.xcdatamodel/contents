@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Cita" representedClassName="Cita" syncable="YES">
         <attribute name="convertido" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="cita" inverseEntity="Cliente" syncable="YES"/>
@@ -43,6 +43,8 @@
     <entity name="Direccion" representedClassName="Direccion" syncable="YES">
         <attribute name="direccion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="principal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="referenciaDos" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="referenciaUno" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="direccion" inverseEntity="Cliente" syncable="YES"/>
     </entity>
     <entity name="Entregable" representedClassName="Entregable" syncable="YES">
@@ -114,18 +116,18 @@
         <relationship name="pais" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pais" inverseName="usuarios" inverseEntity="Pais" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Cita" positionX="-828" positionY="-361" width="128" height="118"/>
         <element name="Cliente" positionX="-434" positionY="-130" width="128" height="193"/>
-        <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
-        <element name="Usuario" positionX="-738" positionY="-706" width="108" height="238"/>
         <element name="Contacto" positionX="-810" positionY="-171" width="128" height="88"/>
-        <element name="InfoContacto" positionX="-1008" positionY="-144" width="128" height="88"/>
         <element name="Contrato" positionX="-29" positionY="-234" width="128" height="163"/>
         <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="103"/>
-        <element name="Moneda" positionX="-389" positionY="-657" width="128" height="118"/>
-        <element name="Direccion" positionX="-216" positionY="38" width="128" height="88"/>
+        <element name="Direccion" positionX="-216" positionY="38" width="128" height="120"/>
         <element name="Entregable" positionX="-108" positionY="-531" width="128" height="163"/>
-        <element name="Cita" positionX="-828" positionY="-361" width="128" height="118"/>
-        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="208"/>
+        <element name="InfoContacto" positionX="-1008" positionY="-144" width="128" height="88"/>
+        <element name="Moneda" positionX="-389" positionY="-657" width="128" height="118"/>
+        <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
         <element name="Recibo" positionX="-738" positionY="-954" width="144" height="208"/>
+        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="208"/>
+        <element name="Usuario" positionX="-738" positionY="-706" width="108" height="238"/>
     </elements>
 </model>

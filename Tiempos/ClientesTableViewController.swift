@@ -111,8 +111,7 @@ class ClientesTableViewController: UITableViewController {
 
         })
         delete.backgroundColor = UIColor.redColor()
-        
-        
+       
         return [delete]
     }
     

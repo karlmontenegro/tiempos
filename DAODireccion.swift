@@ -11,14 +11,14 @@ import CoreData
 import UIKit
 
 class daoDireccion{
-    
-    var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    
-    func newAddress(usuario: Usuario, cliente:Cliente, dir:String, p:Bool){
+    func newAddress(cliente:Cliente, dir:String, ref1:String, ref2:String, p:Bool){
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         
         var entityAddress = NSEntityDescription.entityForName("Direccion", inManagedObjectContext: context)
+        
+        //Para uso de usuarios:usuario: Usuario
         //var entityCliente = NSEntityDescription.entityForName("Cliente", inManagedObjectContext: context)
         
         var error: NSError?
@@ -28,6 +28,8 @@ class daoDireccion{
         newDir.setValue(cliente, forKey: "cliente")
         newDir.setValue(dir, forKey: "direccion")
         newDir.setValue(p, forKey: "principal")
+        newDir.setValue(ref1, forKey: "referenciaUno")
+        newDir.setValue(ref2, forKey: "referenciaDos")
         
         cliente.addAddress(newDir)
         
@@ -44,8 +46,20 @@ class daoDireccion{
     }
     
     func deleteAddressAt(dir:Direccion){
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext!
         context.deleteObject(dir)
+        context.save(nil)
+    }
+    func updateAddressAt(object: Direccion, newDir: String, newRef1: String, newRef2: String, p: Bool){
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        object.setValue(newDir, forKey: "direccion")
+        object.setValue(newRef1, forKey: "referenciaUno")
+        object.setValue(newRef2, forKey: "referenciaDos")
+        object.setValue(p, forKey: "principal")
+        
         context.save(nil)
     }
 }
