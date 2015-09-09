@@ -50,6 +50,8 @@
 		0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */; };
 		0CE406701B9F3FA80096CE36 /* Direccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4066F1B9F3FA80096CE36 /* Direccion.swift */; };
 		0CE406721B9F53900096CE36 /* VerDireccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */; };
+		0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3BA1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift */; };
+		0CE4B3BD1BA091E700FCC736 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */; };
 		526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567C1B5D57BF000F323D /* AppDelegate.swift */; };
 		526D567F1B5D57BF000F323D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567E1B5D57BF000F323D /* ViewController.swift */; };
 		526D56821B5D57BF000F323D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526D56801B5D57BF000F323D /* Main.storyboard */; };
@@ -112,6 +114,8 @@
 		0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOEntregable.swift; sourceTree = "<group>"; };
 		0CE4066F1B9F3FA80096CE36 /* Direccion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direccion.swift; sourceTree = "<group>"; };
 		0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerDireccionViewController.swift; sourceTree = "<group>"; };
+		0CE4B3BA1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsociarContactosTableViewController.swift; sourceTree = "<group>"; };
+		0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		526D56771B5D57BF000F323D /* Tiempos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiempos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526D567B1B5D57BF000F323D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526D567C1B5D57BF000F323D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				0C8BDE141B87993500EDBC9C /* EditarCliente.swift */,
 				0C6D63D31B9748B1004C99C4 /* EditarDireccionViewController.swift */,
 				0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */,
+				0CE4B3BA1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift */,
 			);
 			name = "Client View";
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 				0C9C589E1B72899A0091B578 /* DetalleNotaAudioViewController.swift */,
 				0C9C589A1B7285EC0091B578 /* NotaAudioTableViewController.swift */,
 				0C9C58941B726A0E0091B578 /* ClientesTableViewController.swift */,
+				0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -399,9 +405,11 @@
 				0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */,
 				0C9C58951B726A0E0091B578 /* ClientesTableViewController.swift in Sources */,
 				0CAF59111B7E5C2600DE9CF8 /* ContratoHoras.swift in Sources */,
+				0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */,
 				0CAF591B1B7E5C2700DE9CF8 /* Moneda.swift in Sources */,
 				0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */,
 				0CAF591F1B7E5E2900DE9CF8 /* DAOCita.swift in Sources */,
+				0CE4B3BD1BA091E700FCC736 /* HomeViewController.swift in Sources */,
 				0C5DBC2A1B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift in Sources */,
 				0C5DBC2C1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift in Sources */,
 				0C598F901B90C3390023FBB2 /* NuevoContactoViewController.swift in Sources */,

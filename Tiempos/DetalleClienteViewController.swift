@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import AddressBook
 
 class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress,showAddress {
 
     var data:AnyObject = []
     var direccion:AnyObject = []
+    let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
     
     @IBOutlet weak var lblRazonSocial: UILabel!
     @IBOutlet weak var lblRUC: UILabel!
@@ -66,7 +68,55 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     }
     
     @IBAction func addNewContact(sender: UIButton) {
+        
+        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
+        
+        switch authorizationStatus {
+        case .Denied, .Restricted:
+            displayCantAddContactAlert()
+            //println("Denied")
+        case .Authorized:
+            println("Authorized")
+        case .NotDetermined:
+            promptForAddressBookRequestAccess(sender)
+            //println("Not Determined")
+        }
+        
         performSegueWithIdentifier("addContact", sender: sender)
+    }
+    
+    func promptForAddressBookRequestAccess(addButton: UIButton) {
+        var err: Unmanaged<CFError>? = nil
+        
+        ABAddressBookRequestAccessWithCompletion(addressBookRef) {
+            (granted: Bool, error: CFError!) in
+            dispatch_async(dispatch_get_main_queue()) {
+                if !granted {
+                    self.displayCantAddContactAlert()
+                    println("Just denied")
+                } else {
+                    println("Just authorized")
+                }
+            }
+        }
+    }
+    
+    func displayCantAddContactAlert() {
+        let cantAddContactAlert = UIAlertController(title: "Cannot Add Contact",
+            message: "You must give the app permission to add the contact first.",
+            preferredStyle: .Alert)
+        cantAddContactAlert.addAction(UIAlertAction(title: "Change Settings",
+            style: .Default,
+            handler: { action in
+                self.openSettings()
+        }))
+        cantAddContactAlert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        presentViewController(cantAddContactAlert, animated: true, completion: nil)
+    }
+    
+    func openSettings() {
+        let url = NSURL(string: UIApplicationOpenSettingsURLString)
+        UIApplication.sharedApplication().openURL(url!)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
