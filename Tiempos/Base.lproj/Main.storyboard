@@ -1253,7 +1253,7 @@
             </objects>
             <point key="canvasLocation" x="2407.5" y="1527.75"/>
         </scene>
-        <!--Contactos-->
+        <!--Asociar Contactos-->
         <scene sceneID="v1N-Tr-uH9">
             <objects>
                 <tableViewController id="VRG-s4-FhD" customClass="AsociarContactosTableViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
@@ -1273,7 +1273,7 @@
                             <outlet property="delegate" destination="VRG-s4-FhD" id="1BP-LY-2oX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Contactos" id="2Xp-a1-iTk">
+                    <navigationItem key="navigationItem" title="Asociar Contactos" id="2Xp-a1-iTk">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3ef-e3-8WH">
                             <connections>
                                 <action selector="cancelTapped:" destination="VRG-s4-FhD" id="MGH-9k-gHO"/>
@@ -1671,8 +1671,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="SFa-OI-c09"/>
-        <segue reference="bGB-90-Ixo"/>
-        <segue reference="sNE-wM-TsL"/>
+        <segue reference="Fbg-11-CmD"/>
         <segue reference="vjv-50-TbC"/>
+        <segue reference="sNE-wM-TsL"/>
     </inferredMetricsTieBreakers>
 </document>

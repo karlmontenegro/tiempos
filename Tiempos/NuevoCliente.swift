@@ -27,12 +27,12 @@ class NuevoCliente: UIViewController {
         
         //usuario: defaults.objectForKey("loggedUserKey") as! String
         
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 
     @IBAction func cancelTapped(sender: AnyObject) {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
