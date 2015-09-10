@@ -11,7 +11,9 @@ import AddressBook
 import AddressBookUI
 
 class AsociarContactosTableViewController: UITableViewController {
-       
+    
+    var addressBook:NSArray = daoContacto().getAllContacts()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +22,7 @@ class AsociarContactosTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
     @IBAction func saveTapped(sender: UIBarButtonItem) {
@@ -38,24 +41,26 @@ class AsociarContactosTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        
+        return self.addressBook.count
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
 
-        // Configure the cell...
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as! UITableViewCell
+
+        var firstName = ABRecordCopyValue(self.addressBook[indexPath.row], kABPersonFirstNameProperty).takeUnretainedValue() as? String
+        var lastName = ABRecordCopyValue(self.addressBook[indexPath.row],
+            kABPersonLastNameProperty).takeUnretainedValue() as? String
+        
+        cell.textLabel!.text = firstName! + " " + lastName!
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

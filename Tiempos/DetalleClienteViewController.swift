@@ -8,11 +8,13 @@
 
 import UIKit
 import AddressBook
+import AddressBookUI
 
-class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress,showAddress {
+class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress,showAddress,ABPeoplePickerNavigationControllerDelegate {
 
     var data:AnyObject = []
     var direccion:AnyObject = []
+    
     let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
     
     @IBOutlet weak var lblRazonSocial: UILabel!
@@ -52,6 +54,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         viewTitle.title = data.valueForKey("nombre") as! String?
         lblRazonSocial.text = "Razón Social: " + (self.data.valueForKey("razonSocial") as! String?)!
         lblRUC.text = "RUC: " + (self.data.valueForKey("ruc") as! String?)!
+
     }
     
     @IBAction func editClient(sender: UIButton) {
@@ -76,13 +79,15 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
             displayCantAddContactAlert()
             //println("Denied")
         case .Authorized:
-            println("Authorized")
+            var people = ABPeoplePickerNavigationController()
+            people.editing = true
+            people.peoplePickerDelegate = self
+            presentViewController(people, animated: true, completion: nil)
+            //println("Authorized")
         case .NotDetermined:
             promptForAddressBookRequestAccess(sender)
             //println("Not Determined")
         }
-        
-        performSegueWithIdentifier("addContact", sender: sender)
     }
     
     func promptForAddressBookRequestAccess(addButton: UIButton) {

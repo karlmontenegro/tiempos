@@ -907,6 +907,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PHY-Qy-DuD"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="Dtl-Fl-DGq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2g-26-iIN">
@@ -1182,7 +1183,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="addNewContact:" destination="QYB-cG-wW5" eventType="touchUpInside" id="TMK-n2-mQA"/>
-                                    <segue destination="oyk-VY-A1c" kind="presentation" identifier="addContact" id="GLd-er-Qsi"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZT-P6-kgg">
@@ -1252,43 +1252,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vl4-EP-x5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2407.5" y="1527.75"/>
-        </scene>
-        <!--Asociar Contactos-->
-        <scene sceneID="v1N-Tr-uH9">
-            <objects>
-                <tableViewController id="VRG-s4-FhD" customClass="AsociarContactosTableViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yie-gZ-d28">
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" id="rkO-Js-u3w">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rkO-Js-u3w" id="mnX-dK-J69">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="VRG-s4-FhD" id="qWZ-wt-D2A"/>
-                            <outlet property="delegate" destination="VRG-s4-FhD" id="1BP-LY-2oX"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Asociar Contactos" id="2Xp-a1-iTk">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3ef-e3-8WH">
-                            <connections>
-                                <action selector="cancelTapped:" destination="VRG-s4-FhD" id="MGH-9k-gHO"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Qj8-wF-frN">
-                            <connections>
-                                <action selector="saveTapped:" destination="VRG-s4-FhD" id="Ypu-Av-dFp"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sh4-KB-7NI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3930" y="1530"/>
         </scene>
         <!--Editar Cliente-->
         <scene sceneID="qXq-sc-xYq">
@@ -1649,24 +1612,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oss-Ba-Yn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-448.5" y="791"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9YU-m6-6nv">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oyk-VY-A1c" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0RW-fv-x6n">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="VRG-s4-FhD" kind="relationship" relationship="rootViewController" id="8Sz-qM-AAj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uCk-fS-h33" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3169.5" y="1530"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

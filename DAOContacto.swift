@@ -8,9 +8,18 @@
 
 import Foundation
 import CoreData
+import AddressBook
 
 class daoContacto{
+    
+    let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
+    
     func newContact(){
         
+    }
+    
+    func getAllContacts()->NSArray{
+        var contactArray:NSArray = ABAddressBookCopyArrayOfAllPeople(self.addressBookRef).takeRetainedValue()
+        return contactArray
     }
 }
