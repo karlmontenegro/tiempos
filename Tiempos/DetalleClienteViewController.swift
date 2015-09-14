@@ -17,9 +17,36 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     
     let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
     
+    var arrContactsData:NSMutableArray = []
+    
     @IBOutlet weak var lblRazonSocial: UILabel!
     @IBOutlet weak var lblRUC: UILabel!
     @IBOutlet weak var viewTitle: UINavigationItem!
+    
+    
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecord!) {
+        var contact:NSMutableDictionary = ["firstName":"","lastName":"","mobileNumber":"","homeNumber":"","homeEmail":"","workEmail":"","address":"","zipCode":"","city":""]
+        
+        var names = ABRecordCopyValue(person, kABPersonFirstNameProperty)
+        var phones = ABRecordCopyValue(person, kABPersonPhoneProperty)
+        
+        if names != nil{
+            contact.setValue(names.takeRetainedValue() as! String, forKey: "firstName")
+        }
+        
+        names = ABRecordCopyValue(person, kABPersonLastNameProperty)
+        if names != nil{
+            contact.setValue(names.takeRetainedValue() as! String, forKey: "lastName")
+        }
+        
+        for var i = 0; (phones.takeRetainedValue().count != nil); ++i{
+            var label = ABMultiValueCopyLabelAtIndex(phones.takeRetainedValue(), i)
+            var val = ABMultiValueCopyValueAtIndex(phones.takeRetainedValue(), i)
+        }
+        //daoAddContact
+        
+        println(contact.valueForKey("firstName"))
+    }
     
     func refreshClientDelegate() {
         viewTitle.title = data.valueForKey("nombre") as! String?
@@ -41,7 +68,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         
         let dir:String = (direccion as! Direccion).direccion as String + ", " + (direccion as! Direccion).referenciaUno as String + ", " + (direccion as! Direccion).referenciaDos as String
         
-        let alertController = UIAlertController(title: "Direccion", message:
+        let alertController = UIAlertController(title: "Dirección", message:
             dir, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default,handler: nil))
         
@@ -80,8 +107,8 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
             //println("Denied")
         case .Authorized:
             var people = ABPeoplePickerNavigationController()
-            people.editing = true
             people.peoplePickerDelegate = self
+            people.editing = true
             presentViewController(people, animated: true, completion: nil)
             //println("Authorized")
         case .NotDetermined:
