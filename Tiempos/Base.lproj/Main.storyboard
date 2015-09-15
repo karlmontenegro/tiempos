@@ -302,7 +302,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwM-ZH-3pp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1539" y="-1121.25"/>
+            <point key="canvasLocation" x="1539" y="-1046.25"/>
         </scene>
         <!--Grabar-->
         <scene sceneID="dGl-vK-2rE">
@@ -361,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxG-jU-tIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2407.5" y="-1633"/>
+            <point key="canvasLocation" x="2308.5" y="-1653"/>
         </scene>
         <!--Detalle Nota Audio View Controller-->
         <scene sceneID="Mfe-Hg-ae5">
@@ -438,7 +438,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvN-Es-8Sk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2407.5" y="-930"/>
+            <point key="canvasLocation" x="2308.5" y="-876"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="JDH-5W-38a">
@@ -542,7 +542,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContratoCell" textLabel="kxv-6k-hRz" style="IBUITableViewCellStyleDefault" id="lEZ-qK-Z9i">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContratoCell" textLabel="kxv-6k-hRz" detailTextLabel="Twv-vU-g3r" style="IBUITableViewCellStyleValue1" id="lEZ-qK-Z9i">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lEZ-qK-Z9i" id="sBO-7o-Izz">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -553,6 +553,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Twv-vU-g3r">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             </variation>
                                         </label>
@@ -589,7 +598,7 @@
         <!--Nuevo Contrato-->
         <scene sceneID="7Oz-f5-fio">
             <objects>
-                <viewController id="404-kR-2II" sceneMemberID="viewController">
+                <viewController id="404-kR-2II" customClass="NuevoContratoViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f4J-vp-XIi"/>
                         <viewControllerLayoutGuide type="bottom" id="2IY-hO-nrH"/>
@@ -597,17 +606,79 @@
                     <view key="view" contentMode="scaleToFill" id="fWz-Dk-qle">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre del Contrato" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CtL-Lp-l0K">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="82" width="324" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tipo de Facturación" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lND-WE-AeB">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="120" width="324" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cliente" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssw-aA-xC8">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="170" width="62" height="21"/>
+                                </variation>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coi-2H-yxx">
+                                <rect key="frame" x="0.0" y="-162" width="320" height="162"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="179" width="324" height="162"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="404-kR-2II" id="7Tc-b7-HZK"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="CtL-Lp-l0K"/>
+                                <exclude reference="lND-WE-AeB"/>
+                                <exclude reference="ssw-aA-xC8"/>
+                                <exclude reference="coi-2H-yxx"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="CtL-Lp-l0K"/>
+                                <include reference="lND-WE-AeB"/>
+                                <include reference="ssw-aA-xC8"/>
+                                <include reference="coi-2H-yxx"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Nuevo Contrato" id="duf-HL-7S1">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="flw-vn-bF3">
                             <connections>
+                                <action selector="cancelTapped:" destination="404-kR-2II" id="hTk-ui-u4r"/>
                                 <segue destination="g6F-wt-9K9" kind="show" id="ee1-bl-OnD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6gX-SK-M8U"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6gX-SK-M8U">
+                            <connections>
+                                <action selector="saveTapped:" destination="404-kR-2II" id="kj7-nf-iL9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="nomContrato" destination="CtL-Lp-l0K" id="NT8-A9-2rX"/>
+                        <outlet property="tipoFac" destination="lND-WE-AeB" id="WZr-i2-GTT"/>
+                        <outletCollection property="clientePicker" destination="coi-2H-yxx" collectionClass="NSMutableArray" id="6kR-YB-API"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJl-ew-jch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -783,11 +854,12 @@
                         <outlet property="cliente" destination="KXj-Lb-9HE" id="gov-xv-mJN"/>
                         <outlet property="nombre" destination="jnf-GI-nj9" id="HhL-sK-vNg"/>
                         <outlet property="tipo" destination="USx-wh-ggM" id="sob-rD-IuL"/>
+                        <outlet property="viewTitle" destination="s6c-O5-fx4" id="Umc-dO-2yV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hot-VO-Wqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3673.5" y="16.5"/>
+            <point key="canvasLocation" x="3276" y="21"/>
         </scene>
         <!--Clientes-->
         <scene sceneID="d0N-8F-9Ue">
@@ -1615,9 +1687,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SFa-OI-c09"/>
-        <segue reference="Fbg-11-CmD"/>
-        <segue reference="vjv-50-TbC"/>
         <segue reference="sNE-wM-TsL"/>
+        <segue reference="vjv-50-TbC"/>
+        <segue reference="Fbg-11-CmD"/>
+        <segue reference="ee1-bl-OnD"/>
     </inferredMetricsTieBreakers>
 </document>

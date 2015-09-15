@@ -12,7 +12,6 @@ import CoreData
 class ClientesTableViewController: UITableViewController {
     
     var arreglo = daoCliente().getAllClients()
-    let swipeRec = UISwipeGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()

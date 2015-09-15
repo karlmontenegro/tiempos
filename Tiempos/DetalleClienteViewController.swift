@@ -13,6 +13,7 @@ import AddressBookUI
 class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress,showAddress,ABPeoplePickerNavigationControllerDelegate {
 
     var data:AnyObject = []
+    
     var direccion:AnyObject = []
     
     let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()

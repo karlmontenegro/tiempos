@@ -9,17 +9,11 @@
 import UIKit
 
 class ContratosTableViewController: UITableViewController {
-
-    //var arreglos:[Contrato] = [Contrato(name: "Gerencia", cliente: "Carlos", tipo: "Por Contrato"),Contrato(name: "Asesoria", cliente: "Isabel", tipo: "Por Horas")]
+    
+    var arreglo = daoContrato().getAllActiveContracts()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,25 +32,27 @@ class ContratosTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 1
+        if(arreglo.count > 0){
+            return self.arreglo.count
+        }else{
+            return 0
+        }
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath) as! UITableViewCell
 
-        //cell.textLabel!.text = self.arreglos[indexPath.row].name
-
+        cell.textLabel!.text = self.arreglo[indexPath.row].valueForKey("nombreContrato") as! String?
+        cell.detailTextLabel!.text = self.arreglo[indexPath.row].valueForKey("tipoFacturacion") as! String?
         return cell
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "ContratoDetalle"){
             let vc:DetalleContratoViewController = segue.destinationViewController as! DetalleContratoViewController
-            
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
-            
-            //vc.data = self.arreglos[indexpath.row]
+            vc.data = self.arreglo[indexpath.row]
         }
     }
 

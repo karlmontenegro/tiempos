@@ -10,19 +10,18 @@ import UIKit
 
 class DetalleContratoViewController: UIViewController {
 
-    //var data = Contrato(name: "", cliente: "", tipo: "")
+    var data:AnyObject = []
     
     @IBOutlet weak var nombre: UILabel!
     @IBOutlet weak var cliente: UILabel!
     @IBOutlet weak var tipo: UILabel!
+    @IBOutlet weak var viewTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //nombre.text = data.name
-        //cliente.text = data.cliente
-        //tipo.text = data.tipo
-
-        // Do any additional setup after loading the view.
+        viewTitle.title = (self.data as! Contrato).valueForKey("nombreContrato") as! String?
+        tipo.text = (self.data as! Contrato).valueForKey("tipoFacturacion") as! String?
+        cliente.text = (((self.data as! Contrato).valueForKey("cliente")) as! Cliente).valueForKey("nombre") as! String?
     }
 
     override func didReceiveMemoryWarning() {

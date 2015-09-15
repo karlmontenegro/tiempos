@@ -31,4 +31,8 @@ class daoContacto{
             println(newContact)
         }
     }
+    
+    func getAllContacts()->Array<Contacto>{
+        return []
+    }
 }

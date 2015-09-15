@@ -41,7 +41,7 @@ class daoCliente{
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var request = NSFetchRequest(entityName: "Cliente")
-        request.returnsObjectsAsFaults = false;
+        request.returnsObjectsAsFaults = false
         
         var results:Array = context.executeFetchRequest(request, error: nil)! as! Array<Cliente>
         return results

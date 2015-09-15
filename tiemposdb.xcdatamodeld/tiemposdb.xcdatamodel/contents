@@ -26,6 +26,7 @@
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="contacto" inverseEntity="Cliente" syncable="YES"/>
     </entity>
     <entity name="Contrato" representedClassName="Contrato" syncable="YES">
+        <attribute name="estado" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="nombreContrato" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tipoFacturacion" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cita" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cita" inverseName="contrato" inverseEntity="Cita" syncable="YES"/>
@@ -115,7 +116,7 @@
         <element name="Cita" positionX="-828" positionY="-361" width="128" height="118"/>
         <element name="Cliente" positionX="-434" positionY="-130" width="128" height="195"/>
         <element name="Contacto" positionX="-810" positionY="-171" width="128" height="105"/>
-        <element name="Contrato" positionX="-29" positionY="-234" width="128" height="163"/>
+        <element name="Contrato" positionX="-29" positionY="-234" width="128" height="178"/>
         <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="103"/>
         <element name="Direccion" positionX="-216" positionY="38" width="128" height="120"/>
         <element name="Entregable" positionX="-108" positionY="-531" width="128" height="163"/>
