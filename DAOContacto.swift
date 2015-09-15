@@ -8,18 +8,27 @@
 
 import Foundation
 import CoreData
-import AddressBook
+import UIKit
 
 class daoContacto{
     
-    let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
-    
-    func newContact(){
+    func newContact(firstName: String, lastName: String, recordRef: NSNumber){
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        var entityAddress = NSEntityDescription.entityForName("Contacto", inManagedObjectContext: context)
         
-    }
-    
-    func getAllContacts()->NSArray{
-        var contactArray:NSArray = ABAddressBookCopyArrayOfAllPeople(self.addressBookRef).takeRetainedValue()
-        return contactArray
+        var error:NSError?
+        
+        let newContact = Contacto(entity: entityAddress!, insertIntoManagedObjectContext: context)
+        
+        newContact.setValue(firstName, forKey: "firstName")
+        newContact.setValue(lastName, forKey: "lastName")
+        //newContact.recordRef = recordRef
+        
+        if !context.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }else{
+            println(newContact)
+        }
     }
 }

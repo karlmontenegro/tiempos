@@ -20,6 +20,8 @@
         <relationship name="usuario" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Usuario" inverseName="clientes" inverseEntity="Usuario" syncable="YES"/>
     </entity>
     <entity name="Contacto" representedClassName="Contacto" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recordRef" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="contacto" inverseEntity="Cliente" syncable="YES"/>
     </entity>
@@ -112,7 +114,7 @@
     <elements>
         <element name="Cita" positionX="-828" positionY="-361" width="128" height="118"/>
         <element name="Cliente" positionX="-434" positionY="-130" width="128" height="195"/>
-        <element name="Contacto" positionX="-810" positionY="-171" width="128" height="75"/>
+        <element name="Contacto" positionX="-810" positionY="-171" width="128" height="105"/>
         <element name="Contrato" positionX="-29" positionY="-234" width="128" height="163"/>
         <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="103"/>
         <element name="Direccion" positionX="-216" positionY="38" width="128" height="120"/>

@@ -50,7 +50,7 @@
 		0CE406721B9F53900096CE36 /* VerDireccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */; };
 		0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3BA1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift */; };
 		0CE4B3BD1BA091E700FCC736 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */; };
-		0CE4B3C11BA1EDA900FCC736 /* Contacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3C01BA1EDA900FCC736 /* Contacto.swift */; };
+		0CE4B3C31BA86F1300FCC736 /* Contacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3C21BA86F1300FCC736 /* Contacto.swift */; };
 		526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567C1B5D57BF000F323D /* AppDelegate.swift */; };
 		526D567F1B5D57BF000F323D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526D567E1B5D57BF000F323D /* ViewController.swift */; };
 		526D56821B5D57BF000F323D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 526D56801B5D57BF000F323D /* Main.storyboard */; };
@@ -113,7 +113,7 @@
 		0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerDireccionViewController.swift; sourceTree = "<group>"; };
 		0CE4B3BA1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsociarContactosTableViewController.swift; sourceTree = "<group>"; };
 		0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		0CE4B3C01BA1EDA900FCC736 /* Contacto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacto.swift; sourceTree = "<group>"; };
+		0CE4B3C21BA86F1300FCC736 /* Contacto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacto.swift; sourceTree = "<group>"; };
 		526D56771B5D57BF000F323D /* Tiempos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiempos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526D567B1B5D57BF000F323D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526D567C1B5D57BF000F323D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +179,7 @@
 		0CAF58FE1B7E4A3200DE9CF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0CE4B3C21BA86F1300FCC736 /* Contacto.swift */,
 				0CE4066F1B9F3FA80096CE36 /* Direccion.swift */,
 				0CAF591C1B7E5C2700DE9CF8 /* Entregable.swift */,
 				0CAF591A1B7E5C2700DE9CF8 /* Moneda.swift */,
@@ -218,7 +219,6 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
-				0CE4B3C01BA1EDA900FCC736 /* Contacto.swift */,
 				0C742C361B8228020046BC31 /* Controller */,
 				0CAF58FE1B7E4A3200DE9CF8 /* Model */,
 				0CAF58FF1B7E4A5000DE9CF8 /* DAO */,
@@ -399,6 +399,7 @@
 				0CAF592D1B7E5EC500DE9CF8 /* DAOTiempo.swift in Sources */,
 				0CAF590D1B7E5C2600DE9CF8 /* Cliente.swift in Sources */,
 				0C9C589B1B7285EC0091B578 /* NotaAudioTableViewController.swift in Sources */,
+				0CE4B3C31BA86F1300FCC736 /* Contacto.swift in Sources */,
 				0C9C58951B726A0E0091B578 /* ClientesTableViewController.swift in Sources */,
 				0CAF59111B7E5C2600DE9CF8 /* ContratoHoras.swift in Sources */,
 				0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */,
@@ -415,7 +416,6 @@
 				0CAF59251B7E5E6E00DE9CF8 /* DAODireccion.swift in Sources */,
 				0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */,
 				0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */,
-				0CE4B3C11BA1EDA900FCC736 /* Contacto.swift in Sources */,
 				526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */,
 				0CAF592B1B7E5EAD00DE9CF8 /* DAOInfoContacto.swift in Sources */,
 				0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */,

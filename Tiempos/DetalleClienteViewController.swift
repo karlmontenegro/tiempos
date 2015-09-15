@@ -29,6 +29,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         
         var names = ABRecordCopyValue(person, kABPersonFirstNameProperty)
         var phones = ABRecordCopyValue(person, kABPersonPhoneProperty)
+        var recordId:ABRecordID = ABRecordGetRecordID(person)
         
         if names != nil{
             contact.setValue(names.takeRetainedValue() as! String, forKey: "firstName")
@@ -39,11 +40,16 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
             contact.setValue(names.takeRetainedValue() as! String, forKey: "lastName")
         }
         
+        /*
         for var i = 0; (phones.takeRetainedValue().count != nil); ++i{
             var label = ABMultiValueCopyLabelAtIndex(phones.takeRetainedValue(), i)
             var val = ABMultiValueCopyValueAtIndex(phones.takeRetainedValue(), i)
         }
-        //daoAddContact
+        */
+        
+        var idNumber:NSNumber = NSNumber(int: recordId)
+        
+        daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber)
         
         println(contact.valueForKey("firstName"))
     }
