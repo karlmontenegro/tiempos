@@ -12,7 +12,7 @@ import UIKit
 
 class daoContacto{
     
-    func newContact(firstName: String, lastName: String, recordRef: NSNumber){
+    func newContact(firstName: String, lastName: String, recordRef: NSNumber, cliente: Cliente){
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var entityAddress = NSEntityDescription.entityForName("Contacto", inManagedObjectContext: context)
@@ -23,13 +23,22 @@ class daoContacto{
         
         newContact.setValue(firstName, forKey: "firstName")
         newContact.setValue(lastName, forKey: "lastName")
-        //newContact.recordRef = recordRef
+        newContact.setValue(cliente, forKey: "cliente")
+        newContact.recordRef = recordRef
         
         if !context.save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
         }else{
             println(newContact)
         }
+    }
+    
+    func deleteContactAt(contacto: Contacto){
+        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        context.deleteObject(contacto)
+        context.save(nil)
     }
     
     func getAllContacts()->Array<Contacto>{

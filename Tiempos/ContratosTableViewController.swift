@@ -41,7 +41,7 @@ class ContratosTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath)
 
         cell.textLabel!.text = self.arreglo[indexPath.row].valueForKey("nombreContrato") as! String?
         cell.detailTextLabel!.text = self.arreglo[indexPath.row].valueForKey("tipoFacturacion") as! String?
@@ -51,9 +51,41 @@ class ContratosTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "ContratoDetalle"){
             let vc:DetalleContratoViewController = segue.destinationViewController as! DetalleContratoViewController
-            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             vc.data = self.arreglo[indexpath.row]
         }
+    }
+
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+        
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            // Alerts before the delete just in case it wasn't meant to be
+            let alertController = UIAlertController(title: "Atención", message:
+                "¿Estás seguro que quieres borrar este contrato? Esto borrará toda la información relacionada con el contrato.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // Delete action
+            alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                // Deletes the row from the DAO
+                daoContrato().deleteContractAt(self.arreglo[indexPath.row])
+                
+                // Deletes the element from the array
+                self.arreglo.removeAtIndex(indexPath.row)
+                
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }))
+            
+            // Cancel action
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+                self.tableView.reloadData()
+            }))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        })
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [delete]
     }
 
 
@@ -65,7 +97,7 @@ class ContratosTableViewController: UITableViewController {
 //    }
 //    */
 
-    /*
+  
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -75,7 +107,7 @@ class ContratosTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.

@@ -9,11 +9,11 @@
 import UIKit
 
 protocol editAddress{
-    func editAddressDelegate(AnyObject)
+    func editAddressDelegate(_: AnyObject)
 }
 
 protocol showAddress{
-    func showAddressModal(AnyObject)
+    func showAddressModal(_: AnyObject)
 }
 
 class DireccionesPorClienteTableViewController: UITableViewController{

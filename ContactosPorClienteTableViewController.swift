@@ -10,10 +10,11 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
-class ContactosPorClienteTableViewController: UITableViewController {
+class ContactosPorClienteTableViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate{
     
     var contactData:AnyObject = []
-
+    let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,8 +41,8 @@ class ContactosPorClienteTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if(contactData.count > 0){
-            return self.contactData.count
+        if(contactData as! Cliente).contacto.count > 0 {
+            return (self.contactData as! Cliente).contacto.count
         }else{
             return 0
         }
@@ -49,13 +50,55 @@ class ContactosPorClienteTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath)
+        
+        let listaContacto = (contactData as! Cliente).contacto.allObjects as! Array<Contacto>
+        
+        if listaContacto.count > 0 {
+            
+            cell.textLabel!.text = listaContacto[indexPath.row].firstName as String + " " + listaContacto[indexPath.row].lastName as String
+            
+        }
 
-        // Configure the cell...
 
         return cell
     }
     
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+        
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            // Alerts before the delete just in case it wasn't meant to be
+            let alertController = UIAlertController(title: "Atención", message:
+                "¿Estás seguro que quieres borrar este contacto?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // Delete action
+            alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                // Deletes the row from the DAO
+                
+                daoContacto().deleteContactAt((self.contactData as! Cliente).contacto.allObjects[indexPath.row] as! Contacto)
+                // Deletes the element from the array
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }))
+            
+            // Cancel action
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+                self.tableView.reloadData()
+            }))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        })
+        delete.backgroundColor = UIColor.redColor()
+        
+        //Edit action
+        let edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            //self.delegateAddress!.editAddressDelegate(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
+            self.tableView.reloadData()
+        })
+        edit.backgroundColor = UIColor.orangeColor()
+        
+        return [delete]
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -65,7 +108,7 @@ class ContactosPorClienteTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -75,7 +118,7 @@ class ContactosPorClienteTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

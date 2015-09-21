@@ -12,7 +12,7 @@ import CoreData
 @objc(Contacto)
 class Contacto: NSManagedObject {
 
-    @NSManaged var recordRef: Int32
+    @NSManaged var recordRef: NSNumber
     @NSManaged var firstName: String
     @NSManaged var lastName: String
     @NSManaged var cliente: Cliente

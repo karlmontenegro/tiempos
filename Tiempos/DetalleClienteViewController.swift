@@ -50,7 +50,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         
         var idNumber:NSNumber = NSNumber(int: recordId)
         
-        daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber)
+        daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber,cliente: self.data as! Cliente)
         
         println(contact.valueForKey("firstName"))
     }
@@ -161,7 +161,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "contactTableSegue"){
             let tvc:ContactosPorClienteTableViewController = segue.destinationViewController as! ContactosPorClienteTableViewController
-            tvc.contactData = (data as! Cliente).contacto
+            tvc.contactData = data as! Cliente
         }
         if(segue.identifier == "addressTableSegue"){
 
