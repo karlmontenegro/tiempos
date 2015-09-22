@@ -52,8 +52,8 @@ class DireccionesPorClienteTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if((addressData as! Cliente).direccion.count > 0){
-            return (self.addressData as! Cliente).direccion.count
+        if((addressData as! Cliente).direccion!.count > 0){
+            return (self.addressData as! Cliente).direccion!.count
         }else{
             return 0
         }
@@ -62,10 +62,10 @@ class DireccionesPorClienteTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath)
         
-        if (addressData as! Cliente).direccion.count > 0 {
+        if (addressData as! Cliente).direccion!.count > 0 {
             
-            let lista = (addressData as! Cliente).direccion.allObjects as! Array<Direccion>
-            cell.textLabel!.text = lista[indexPath.row].direccion + ", " + lista[indexPath.row].referenciaUno + ", " + lista[indexPath.row].referenciaDos
+            let lista = (addressData as! Cliente).direccion!.allObjects as! Array<Direccion>
+            cell.textLabel!.text = lista[indexPath.row].direccion! + ", " + lista[indexPath.row].referenciaUno! + ", " + lista[indexPath.row].referenciaDos!
         
             if lista[indexPath.row].principal == 1 {
                 cell.detailTextLabel!.text = "Principal"
@@ -107,7 +107,7 @@ class DireccionesPorClienteTableViewController: UITableViewController{
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                daoDireccion().deleteAddressAt(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
+                daoDireccion().deleteAddressAt(((self.addressData as! Cliente).direccion!.allObjects as! Array<Direccion>)[indexPath.row])
                 // Deletes the element from the array
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
@@ -124,7 +124,7 @@ class DireccionesPorClienteTableViewController: UITableViewController{
         
         //Edit action
         let edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            self.delegateAddress!.editAddressDelegate(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
+            self.delegateAddress!.editAddressDelegate(((self.addressData as! Cliente).direccion!.allObjects as! Array<Direccion>)[indexPath.row])
             self.tableView.reloadData()
         })
         edit.backgroundColor = UIColor.orangeColor()
@@ -133,7 +133,7 @@ class DireccionesPorClienteTableViewController: UITableViewController{
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        self.delegateShow!.showAddressModal(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
+        self.delegateShow!.showAddressModal(((self.addressData as! Cliente).direccion!.allObjects as! Array<Direccion>)[indexPath.row])
     }
     
     /*

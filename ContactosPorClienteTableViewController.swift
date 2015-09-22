@@ -41,8 +41,8 @@ class ContactosPorClienteTableViewController: UITableViewController, ABPeoplePic
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if(contactData as! Cliente).contacto.count > 0 {
-            return (self.contactData as! Cliente).contacto.count
+        if(contactData as! Cliente).contacto!.count > 0 {
+            return (self.contactData as! Cliente).contacto!.count
         }else{
             return 0
         }
@@ -52,11 +52,11 @@ class ContactosPorClienteTableViewController: UITableViewController, ABPeoplePic
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath)
         
-        let listaContacto = (contactData as! Cliente).contacto.allObjects as! Array<Contacto>
+        let listaContacto = (contactData as! Cliente).contacto!.allObjects as! Array<Contacto>
         
         if listaContacto.count > 0 {
             
-            cell.textLabel!.text = listaContacto[indexPath.row].firstName as String + " " + listaContacto[indexPath.row].lastName as String
+            cell.textLabel!.text = listaContacto[indexPath.row].firstName! as String + " " + listaContacto[indexPath.row].lastName! as String
             
         }
 
@@ -75,7 +75,7 @@ class ContactosPorClienteTableViewController: UITableViewController, ABPeoplePic
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                daoContacto().deleteContactAt((self.contactData as! Cliente).contacto.allObjects[indexPath.row] as! Contacto)
+                daoContacto().deleteContactAt((self.contactData as! Cliente).contacto!.allObjects[indexPath.row] as! Contacto)
                 // Deletes the element from the array
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))

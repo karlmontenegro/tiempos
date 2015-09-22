@@ -12,12 +12,6 @@ import CoreData
 @objc(Direccion)
 class Direccion: NSManagedObject {
 
-    @NSManaged var direccion: String
-    @NSManaged var principal: NSNumber
-    @NSManaged var referenciaUno: String
-    @NSManaged var referenciaDos: String
-    @NSManaged var cliente: Cliente
-
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }

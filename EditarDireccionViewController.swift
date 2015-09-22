@@ -24,11 +24,11 @@ class EditarDireccionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.txtDireccion.text = (data as! Direccion).direccion as String
-        self.txtReferencia1.text = (data as! Direccion).referenciaUno as String
-        self.txtReferencia2.text = (data as! Direccion).referenciaDos as String
+        self.txtDireccion.text = (data as! Direccion).direccion!
+        self.txtReferencia1.text = (data as! Direccion).referenciaUno!
+        self.txtReferencia2.text = (data as! Direccion).referenciaDos!
         
-        if (data as! Direccion).principal as Bool {
+        if (data as! Direccion).principal as! Bool {
             self.prinSwitch.setOn(true, animated:true)
         }
     }

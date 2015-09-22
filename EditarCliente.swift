@@ -33,9 +33,9 @@ class EditarCliente: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.lblClientName.text = (data as! Cliente).nombre as String
-        self.lblClientRazSoc.text = (data as! Cliente).razonSocial as String
-        self.lblClientRUC.text = (data as! Cliente).ruc as String
+        self.lblClientName.text = (data as! Cliente).nombre!
+        self.lblClientRazSoc.text = (data as! Cliente).razonSocial!
+        self.lblClientRUC.text = (data as! Cliente).ruc!
     }
 
     override func didReceiveMemoryWarning() {

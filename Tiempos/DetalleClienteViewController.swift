@@ -73,7 +73,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     
     func showAddressModal(direccion: AnyObject){
         
-        let dir:String = (direccion as! Direccion).direccion as String + ", " + (direccion as! Direccion).referenciaUno as String + ", " + (direccion as! Direccion).referenciaDos as String
+        let dir:String = (direccion as! Direccion).direccion! as String + ", " + (direccion as! Direccion).referenciaUno! as String + ", " + (direccion as! Direccion).referenciaDos! as String
         
         let alertController = UIAlertController(title: "Dirección", message:
             dir, preferredStyle: UIAlertControllerStyle.Alert)
