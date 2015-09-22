@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         
         if identifier == "contractView"{
-            var clientes = daoCliente().getAllClients()
+            let clientes = daoCliente().getAllClients()
             
             if clientes.count > 0 {
                 return true

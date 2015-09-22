@@ -25,12 +25,12 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     @IBOutlet weak var viewTitle: UINavigationItem!
     
     
-    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController!, didSelectPerson person: ABRecord!) {
-        var contact:NSMutableDictionary = ["firstName":"","lastName":"","mobileNumber":"","homeNumber":"","homeEmail":"","workEmail":"","address":"","zipCode":"","city":""]
+    func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
+        let contact:NSMutableDictionary = ["firstName":"","lastName":"","mobileNumber":"","homeNumber":"","homeEmail":"","workEmail":"","address":"","zipCode":"","city":""]
         
         var names = ABRecordCopyValue(person, kABPersonFirstNameProperty)
-        var phones = ABRecordCopyValue(person, kABPersonPhoneProperty)
-        var recordId:ABRecordID = ABRecordGetRecordID(person)
+        let phones = ABRecordCopyValue(person, kABPersonPhoneProperty)
+        let recordId:ABRecordID = ABRecordGetRecordID(person)
         
         if names != nil{
             contact.setValue(names.takeRetainedValue() as! String, forKey: "firstName")
@@ -48,11 +48,11 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         }
         */
         
-        var idNumber:NSNumber = NSNumber(int: recordId)
+        let idNumber:NSNumber = NSNumber(int: recordId)
         
         daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber,cliente: self.data as! Cliente)
         
-        println(contact.valueForKey("firstName"))
+        print(contact.valueForKey("firstName"))
     }
     
     func refreshClientDelegate() {
@@ -62,7 +62,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     }
     
     func refreshAddressesDelegate() {
-        var tbc:UITableViewController = self.childViewControllers[0] as! UITableViewController
+        let tbc:UITableViewController = self.childViewControllers[0] as! UITableViewController
         tbc.tableView.reloadData()
     }
     
@@ -113,7 +113,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
             displayCantAddContactAlert()
             //println("Denied")
         case .Authorized:
-            var people = ABPeoplePickerNavigationController()
+            let people = ABPeoplePickerNavigationController()
             people.peoplePickerDelegate = self
             people.editing = true
             presentViewController(people, animated: true, completion: nil)
@@ -132,9 +132,9 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
             dispatch_async(dispatch_get_main_queue()) {
                 if !granted {
                     self.displayCantAddContactAlert()
-                    println("Just denied")
+                    print("Just denied")
                 } else {
-                    println("Just authorized")
+                    print("Just authorized")
                 }
             }
         }

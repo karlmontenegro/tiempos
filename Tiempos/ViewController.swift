@@ -26,8 +26,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func loginTapped(sender: AnyObject) {
-        var daoUser:daoUsuario = daoUsuario()
-        var tup = daoUser.signInUser(txtUser.text, password: txtPass.text)
+        /*var daoUser:daoUsuario = daoUsuario()
+        var tup = daoUser.signInUser(txtUser.text!, password: txtPass.text)
         let defaults = NSUserDefaults.standardUserDefaults()
         
         if tup.0{
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
             performSegueWithIdentifier("loginDashboard", sender: sender)
         }else{
             println(tup.1)
-        }
+        }*/
         
     }
 }

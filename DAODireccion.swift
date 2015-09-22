@@ -12,16 +12,14 @@ import UIKit
 
 class daoDireccion{
     func newAddress(cliente:Cliente, dir:String, ref1:String, ref2:String, p:Bool){
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        var entityAddress = NSEntityDescription.entityForName("Direccion", inManagedObjectContext: context)
+        let entityAddress = NSEntityDescription.entityForName("Direccion", inManagedObjectContext: context)
         
         //Para uso de usuarios:usuario: Usuario
         //var entityCliente = NSEntityDescription.entityForName("Cliente", inManagedObjectContext: context)
-        
-        var error: NSError?
         
         let newDir = Direccion(entity: entityAddress!, insertIntoManagedObjectContext: context)
         
@@ -33,11 +31,10 @@ class daoDireccion{
         
         cliente.addAddress(newDir)
         
-        if !context.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
-        }else{
-            //Descomentar para debugging
-            //println(newDir)
+        do{
+            try context.save()
+        }catch{
+            print(error)
         }
     }
     
@@ -46,20 +43,29 @@ class daoDireccion{
     }
     
     func deleteAddressAt(dir:Direccion){
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
         context.deleteObject(dir)
-        context.save(nil)
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
     }
     func updateAddressAt(object: Direccion, newDir: String, newRef1: String, newRef2: String, p: Bool){
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
         
         object.setValue(newDir, forKey: "direccion")
         object.setValue(newRef1, forKey: "referenciaUno")
         object.setValue(newRef2, forKey: "referenciaDos")
         object.setValue(p, forKey: "principal")
         
-        context.save(nil)
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
     }
 }

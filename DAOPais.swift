@@ -2,7 +2,6 @@
 //
 //  DAOPais.swift
 //  Tiempos
-//
 //  Created by Isabel Dunin Borkowski on 11/08/15.
 //  Copyright (c) 2015 Isabel Dunin-Borkowski. All rights reserved.
 //
@@ -15,12 +14,12 @@ class daoPais{
     
     //Only one run
     func seedCountries(){
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        var pais1 = NSEntityDescription.insertNewObjectForEntityForName("Pais", inManagedObjectContext: context) as! NSManagedObject
+        let pais1 = NSEntityDescription.insertNewObjectForEntityForName("Pais", inManagedObjectContext: context)
         
-        var pais2 = NSEntityDescription.insertNewObjectForEntityForName("Pais", inManagedObjectContext: context) as! NSManagedObject
+        let pais2 = NSEntityDescription.insertNewObjectForEntityForName("Pais", inManagedObjectContext: context)
         
         pais1.setValue("PE", forKey: "id")
         pais1.setValue("Peru", forKey: "nombrePais")
@@ -30,17 +29,26 @@ class daoPais{
         pais2.setValue("Brasil", forKey: "nombrePais")
         pais2.setValue(nil, forKey: "usuarios")
         
-        context.save(nil)
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
     }
     
     func getAllCountries()->NSArray{
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
-        
-        var request = NSFetchRequest(entityName: "Pais")
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        let request = NSFetchRequest(entityName: "Pais")
         request.returnsObjectsAsFaults = false;
         
-        var results:NSArray = context.executeFetchRequest(request, error: nil)!
+        let results:NSArray = []
+        
+        do{
+            try context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
         return results
     }
 }

@@ -27,7 +27,7 @@ class NuevoUsuario: UIViewController, UIPickerViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        var daoCount:daoPais = daoPais()
+        let daoCount:daoPais = daoPais()
         paises = daoCount.getAllCountries()
     }
 
@@ -41,19 +41,20 @@ class NuevoUsuario: UIViewController, UIPickerViewDelegate{
         return paises.count
     }
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!{
-        return paises[row].valueForKey("nombrePais") as! String
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return paises[row].valueForKey("nombrePais") as? String
     }
     
     @IBAction func crearTapped(sender: AnyObject) {
+        /*
         if(verifyData()){
             var daoUser:daoUsuario = daoUsuario()
             daoUser.newUser(txtNombres.text, apellidos: txtApellidos.text, email: txtEmail.text, pais: "PE", username: txtUsername.text, pass: txtPassword.text)
             //Code for debugging
             daoUser.getAllUsers()
         }else{
-            println("ERROR: Las contrasenas no coinciden")
-        }
+            print("ERROR: Las contrasenas no coinciden")
+        }*/
     }
     
     override func didReceiveMemoryWarning() {

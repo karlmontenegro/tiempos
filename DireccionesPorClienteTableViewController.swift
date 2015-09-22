@@ -60,7 +60,7 @@ class DireccionesPorClienteTableViewController: UITableViewController{
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath)
         
         if (addressData as! Cliente).direccion.count > 0 {
             
@@ -96,9 +96,9 @@ class DireccionesPorClienteTableViewController: UITableViewController{
         }    
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
         
-        var delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alerts before the delete just in case it wasn't meant to be
             let alertController = UIAlertController(title: "Atención", message:
                 "¿Estás seguro que quieres borrar esta dirección?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -123,7 +123,7 @@ class DireccionesPorClienteTableViewController: UITableViewController{
         delete.backgroundColor = UIColor.redColor()
         
         //Edit action
-        var edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             self.delegateAddress!.editAddressDelegate(((self.addressData as! Cliente).direccion.allObjects as! Array<Direccion>)[indexPath.row])
             self.tableView.reloadData()
         })

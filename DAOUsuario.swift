@@ -13,7 +13,7 @@ import UIKit
 class daoUsuario {
     
     func newUser(nombres:String, apellidos:String,email:String,pais:String,username:String,pass:String){
-        
+        /*
         //Paso 1: Conseguir contexto y entidad destino
         
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -61,10 +61,11 @@ class daoUsuario {
             //Descomentar para debugging
             //println(nuevo)
         }
+*/
     }
-    
+    /*
     func signInUser(username:String, password:String)->(Bool,String,String?){
-        
+       /*
         var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var entityUsuario = NSEntityDescription.entityForName("Usuario", inManagedObjectContext: context)
@@ -76,18 +77,26 @@ class daoUsuario {
         request.predicate = pred
         request.entity = entityUsuario
         
-        var results = context.executeFetchRequest(request, error: &error)
+        var results = []
         
-        if results?.count > 0{
-            if (results?.first as! Usuario).password == password{
-                return (true,"Login success!", (results?.first as! Usuario).username)
+        do{
+            try results = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        if results.count > 0{
+            if (results.first as! Usuario).password == password{
+                return (true,"Login success!", (results.first as! Usuario).username)
             }else{
                 return (false,"Contraseña incorrecta, por favor intente nuevamente",nil)
             }
         }else{
             return (false,"Usuario incorrecto, por favor ingreselo nuevamente",nil)
         }
+
     }   
+*/
     
     func signOutUser()->Bool{
         
@@ -97,25 +106,34 @@ class daoUsuario {
     //Funciones para debugging
     
     func getAllUsers(){
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        /*
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext!
         var entityUsuario = NSEntityDescription.entityForName("Usuario", inManagedObjectContext: context)
         
         let request = NSFetchRequest()
         request.entity = entityUsuario
         
-        var error: NSError?
+        var results = []
         
-        var results = context.executeFetchRequest(request, error: &error)
-        
-        for result in results! as! [Usuario]{
-            println("OBJ - USUARIO")
-            println("- Nombre: " + result.nombres)
-            println("- Apellidos: " + result.apellidos)
-            println("- Email: " + result.email)
-            println("- Pais: " + (result.pais).id)
-            println("- Username: " + result.username)
-            println("- Password: " + result.password)
+        do{
+            try results = context.executeFetchRequest(request)
+            
+        }catch{
+            print(error)
         }
+        
+        
+        for result in results as! [Usuario]{
+            print("OBJ - USUARIO")
+            print("- Nombre: " + result.nombres)
+            print("- Apellidos: " + result.apellidos)
+            print("- Email: " + result.email)
+            print("- Pais: " + (result.pais).id)
+            print("- Username: " + result.username)
+            print("- Password: " + result.password)
+        }
+*/
     }
+}*/
 }

@@ -51,10 +51,10 @@ class AsociarContactosTableViewController: UITableViewController {
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) 
 
-        var firstName = ABRecordCopyValue(self.addressBook[indexPath.row], kABPersonFirstNameProperty).takeUnretainedValue() as? String
-        var lastName = ABRecordCopyValue(self.addressBook[indexPath.row],
+        let firstName = ABRecordCopyValue(self.addressBook[indexPath.row], kABPersonFirstNameProperty).takeUnretainedValue() as? String
+        let lastName = ABRecordCopyValue(self.addressBook[indexPath.row],
             kABPersonLastNameProperty).takeUnretainedValue() as? String
         
         cell.textLabel!.text = firstName! + " " + lastName!

@@ -28,7 +28,7 @@ class Cliente: NSManagedObject {
     }
     
     func addAddress(dir: Direccion){
-        var addresses = self.mutableSetValueForKey("direccion")
+        let addresses = self.mutableSetValueForKey("direccion")
         addresses.addObject(dir)
     }
     

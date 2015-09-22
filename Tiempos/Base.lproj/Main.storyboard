@@ -317,6 +317,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ugN-r3-xhM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QaE-W9-ieB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOO-ZK-hEZ">
@@ -701,6 +702,7 @@
                         <viewControllerLayoutGuide type="bottom" id="z1X-G3-aao"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZUd-ht-cVk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="RUC" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnP-po-Lf9">
@@ -942,18 +944,19 @@
             <objects>
                 <tableViewController id="bKw-P9-tL1" customClass="ContactosPorClienteTableViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mBk-34-uKb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" textLabel="2bu-Ms-sPa" style="IBUITableViewCellStyleDefault" id="orp-40-4T8">
-                                <rect key="frame" x="0.0" y="22" width="0.0" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="orp-40-4T8" id="6AG-na-qX4">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2bu-Ms-sPa">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1055,6 +1058,7 @@
                         <viewControllerLayoutGuide type="bottom" id="AiC-xM-toq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0kB-Ey-6yp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zV-sM-q3x">
@@ -1343,6 +1347,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Wzj-G8-9MM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JsP-F3-cJT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVt-Uv-n7H">
@@ -1440,14 +1445,15 @@
             <objects>
                 <tableViewController id="Jy6-Fq-mZb" customClass="DireccionesPorClienteTableViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qHt-C8-eGf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressCell" textLabel="rP8-zM-6l3" detailTextLabel="CrB-OW-6ah" style="IBUITableViewCellStyleValue1" id="gBc-l0-Qij">
-                                <rect key="frame" x="0.0" y="22" width="0.0" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBc-l0-Qij" id="h1F-nF-kAM">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rP8-zM-6l3">
@@ -1464,7 +1470,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CrB-OW-6ah">
-                                            <rect key="frame" x="253" y="10" width="52" height="24"/>
+                                            <rect key="frame" x="533" y="10" width="52" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -1499,6 +1505,7 @@
                         <viewControllerLayoutGuide type="bottom" id="SyL-DK-Mdp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HlE-Hq-NRh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAD-FX-T67">
@@ -1700,9 +1707,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ee1-bl-OnD"/>
-        <segue reference="sNE-wM-TsL"/>
         <segue reference="vjv-50-TbC"/>
         <segue reference="Fbg-11-CmD"/>
+        <segue reference="sNE-wM-TsL"/>
+        <segue reference="ee1-bl-OnD"/>
     </inferredMetricsTieBreakers>
 </document>

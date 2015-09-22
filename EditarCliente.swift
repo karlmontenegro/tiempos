@@ -26,7 +26,7 @@ class EditarCliente: UIViewController {
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
-        daoCliente().updateClient(self.data as! Cliente, nombre:lblClientName.text, razSoc:lblClientRazSoc.text, ruc:lblClientRUC.text)
+        daoCliente().updateClient(self.data as! Cliente, nombre:lblClientName.text!, razSoc:lblClientRazSoc.text!, ruc:lblClientRUC.text!)
         delegateClient!.refreshClientDelegate()
         dismissViewControllerAnimated(true, completion: nil)
     }

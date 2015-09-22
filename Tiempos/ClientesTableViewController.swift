@@ -47,7 +47,7 @@ class ClientesTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClientesCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClientesCell", forIndexPath: indexPath) 
             cell.textLabel!.text = self.arreglo[indexPath.row].valueForKey("nombre") as! String?
             cell.detailTextLabel!.text = self.arreglo[indexPath.row].valueForKey("razonSocial") as! String?
         return cell
@@ -58,7 +58,7 @@ class ClientesTableViewController: UITableViewController {
         if(segue.identifier == "sendClient"){
             let vc: DetalleClienteViewController = segue.destinationViewController as! DetalleClienteViewController
             
-            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             
             vc.data = self.arreglo[indexpath.row]
         }
@@ -83,9 +83,9 @@ class ClientesTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
         
-        var delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alerts before the delete just in case it wasn't meant to be
             let alertController = UIAlertController(title: "Atención", message:
                 "¿Estás seguro que quieres borrar este cliente? Esto borrará toda la información relacionada con el cliente.", preferredStyle: UIAlertControllerStyle.Alert)

@@ -12,8 +12,8 @@ import CoreData
 
 class daoCliente{
     func newClient(nombre: String, ruc: String, razonSoc: String, direccion:String, usuario: String){
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
 
         //var entityUsuario = NSEntityDescription.entityForName("Usuario",inManagedObjectContext:context)
         //let request = NSFetchRequest()
@@ -24,7 +24,7 @@ class daoCliente{
         
         //var results:NSArray = context.executeFetchRequest(request, error: nil)!
 
-        var newClient = NSEntityDescription.insertNewObjectForEntityForName("Cliente",inManagedObjectContext: context) as!NSManagedObject
+        let newClient = NSEntityDescription.insertNewObjectForEntityForName("Cliente",inManagedObjectContext: context)
         
         newClient.setValue(ruc, forKey: "ruc")
         newClient.setValue(nombre, forKey: "nombre")
@@ -34,46 +34,72 @@ class daoCliente{
         
         //newClient.setValue(results.firstObject as! Usuario, forKey: "usuario")
         
-        context.save(nil)
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
     }
     
     func getAllClients()->Array<Cliente>{
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
-        var request = NSFetchRequest(entityName: "Cliente")
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        let request = NSFetchRequest(entityName: "Cliente")
+        
         request.returnsObjectsAsFaults = false
         
-        var results:Array = context.executeFetchRequest(request, error: nil)! as! Array<Cliente>
+        var results:Array<Cliente> = []
+        
+        do{
+            try results = context.executeFetchRequest(request) as! Array<Cliente>
+        }catch{
+            print(error)
+        }
         return results
     }
     
     func deleteClientAt(object: Cliente){
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext!
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
         context.deleteObject(object)
-        context.save(nil)
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
     }
     
     func updateClient(object: Cliente, nombre: String, razSoc: String, ruc: String){
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
         
         object.setValue(nombre, forKey: "nombre")
         object.setValue(razSoc, forKey: "razonSocial")
         object.setValue(ruc, forKey: "ruc")
         
-        context.save(nil)
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
     }
     
     func getClientById(object: Cliente)->Cliente{
-        var appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
-        var entityCliente = NSEntityDescription.entityForName("Cliente", inManagedObjectContext: context)
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        let entityCliente = NSEntityDescription.entityForName("Cliente", inManagedObjectContext: context)
         let request = NSFetchRequest()
         let pred = NSPredicate(format: "self = %@", object)
         request.entity = entityCliente
         
-        var result:NSArray = context.executeFetchRequest(request, error: nil)!
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
         
         return result[0] as! Cliente
     }

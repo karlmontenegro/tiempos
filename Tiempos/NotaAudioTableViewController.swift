@@ -43,7 +43,7 @@ class NotaAudioTableViewController: UITableViewController {
 	
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NotaAudioCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("NotaAudioCell", forIndexPath: indexPath) 
         
         cell.textLabel!.text = self.arreglo[indexPath.row].filename
 
@@ -54,7 +54,7 @@ class NotaAudioTableViewController: UITableViewController {
         if(segue.identifier == "NotaAudioDetalle"){
             let vc:DetalleNotaAudioViewController = segue.destinationViewController as! DetalleNotaAudioViewController
             
-            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow()!
+            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             
             vc.data = self.arreglo[indexpath.row]
         }

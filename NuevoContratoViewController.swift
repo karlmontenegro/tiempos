@@ -20,7 +20,7 @@ class NuevoContratoViewController: UIViewController, UIPickerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var daocliente = daoCliente()
+        let daocliente = daoCliente()
         self.listaClientes = daocliente.getAllClients()
         // Do any additional setup after loading the view.
     }
@@ -39,8 +39,8 @@ class NuevoContratoViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!{
-        return listaClientes[row].valueForKey("nombre") as! String
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return listaClientes[row].valueForKey("nombre") as? String
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -54,7 +54,7 @@ class NuevoContratoViewController: UIViewController, UIPickerViewDelegate {
     
     @IBAction func saveTapped(sender: UIBarButtonItem) {
         
-        daoContrato().newContract(self.nomContrato.text as String, tipoFact: self.tipoFac.text as String, client: self.cliente as! Cliente)
+        daoContrato().newContract(self.nomContrato.text!, tipoFact: self.tipoFac.text!, client: self.cliente as! Cliente)
         
         dismissViewControllerAnimated(true, completion: nil)
     }
