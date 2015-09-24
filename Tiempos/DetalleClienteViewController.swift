@@ -10,13 +10,13 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
-class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress,showAddress,ABPeoplePickerNavigationControllerDelegate {
+class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress,showAddress,showContact,ABPeoplePickerNavigationControllerDelegate {
 
     var data:AnyObject = []
     
     var direccion:AnyObject = []
     
-    let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
+    var addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil , nil).takeRetainedValue()
     
     var arrContactsData:NSMutableArray = []
     
@@ -24,12 +24,32 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     @IBOutlet weak var lblRUC: UILabel!
     @IBOutlet weak var viewTitle: UINavigationItem!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewTitle.title = data.valueForKey("nombre") as! String?
+        lblRazonSocial.text = "Razón Social: " + (self.data.valueForKey("razonSocial") as! String?)!
+        lblRUC.text = "RUC: " + (self.data.valueForKey("ruc") as! String?)!
+    }
+    
+    func showContactInterface(contacto: AnyObject) {
+        print(self.addressBookRef)
+        
+        let peopleViewController = ABPersonViewController()
+        
+        let recordID:ABRecordID = (((contacto as! Contacto).valueForKey("recordRef")?.intValue) as ABRecordID?)!
+        
+        var recordRef:ABRecordRef? = ABAddressBookGetPersonWithRecordID(self.addressBookRef, recordID).takeRetainedValue()
+        
+        peopleViewController.displayedPerson = recordRef!
+        self.navigationController?.pushViewController(peopleViewController, animated: true)
+    }
+    
     
     func peoplePickerNavigationController(peoplePicker: ABPeoplePickerNavigationController, didSelectPerson person: ABRecord) {
         let contact:NSMutableDictionary = ["firstName":"","lastName":"","mobileNumber":"","homeNumber":"","homeEmail":"","workEmail":"","address":"","zipCode":"","city":""]
         
         var names = ABRecordCopyValue(person, kABPersonFirstNameProperty)
-        let phones = ABRecordCopyValue(person, kABPersonPhoneProperty)
         let recordId:ABRecordID = ABRecordGetRecordID(person)
         
         if names != nil{
@@ -51,8 +71,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         let idNumber:NSNumber = NSNumber(int: recordId)
         
         daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber,cliente: self.data as! Cliente)
-        
-        print(contact.valueForKey("firstName"))
+        self.refreshAddressesDelegate()
     }
     
     func refreshClientDelegate() {
@@ -63,7 +82,9 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     
     func refreshAddressesDelegate() {
         let tbc:UITableViewController = self.childViewControllers[0] as! UITableViewController
+        let tbd:UITableViewController = self.childViewControllers[1] as! UITableViewController
         tbc.tableView.reloadData()
+        tbd.tableView.reloadData()
     }
     
     func editAddressDelegate(direccion: AnyObject){
@@ -82,14 +103,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        viewTitle.title = data.valueForKey("nombre") as! String?
-        lblRazonSocial.text = "Razón Social: " + (self.data.valueForKey("razonSocial") as! String?)!
-        lblRUC.text = "RUC: " + (self.data.valueForKey("ruc") as! String?)!
 
-    }
     
     @IBAction func editClient(sender: UIButton) {
         performSegueWithIdentifier("editClientSegue", sender: sender)
@@ -162,6 +176,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         if(segue.identifier == "contactTableSegue"){
             let tvc:ContactosPorClienteTableViewController = segue.destinationViewController as! ContactosPorClienteTableViewController
             tvc.contactData = data as! Cliente
+            tvc.delegateContact = self
         }
         if(segue.identifier == "addressTableSegue"){
 

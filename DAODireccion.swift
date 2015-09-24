@@ -36,10 +36,25 @@ class daoDireccion{
         }catch{
             print(error)
         }
+        
+        self.setMainAddress(cliente, dir: newDir)
     }
     
-    func setMainAddress(dir:Direccion){
+    func setMainAddress(obj: Cliente, dir:Direccion){
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
         
+        for direccion in obj.allAddresses() {
+            direccion.setValue(false, forKey: "principal")
+        }
+
+        dir.setValue(true, forKey: "principal")
+
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
     }
     
     func deleteAddressAt(dir:Direccion){
@@ -53,7 +68,7 @@ class daoDireccion{
             print(error)
         }
     }
-    func updateAddressAt(object: Direccion, newDir: String, newRef1: String, newRef2: String, p: Bool){
+    func updateAddressAt(cli: Cliente, object: Direccion, newDir: String, newRef1: String, newRef2: String, p: Bool){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -61,6 +76,8 @@ class daoDireccion{
         object.setValue(newRef1, forKey: "referenciaUno")
         object.setValue(newRef2, forKey: "referenciaDos")
         object.setValue(p, forKey: "principal")
+        
+        self.setMainAddress(cli, dir: object)
         
         do{
             try context.save()

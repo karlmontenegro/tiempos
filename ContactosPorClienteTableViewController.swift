@@ -10,10 +10,15 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
+protocol showContact{
+    func showContactInterface(contacto:AnyObject)
+}
+
 class ContactosPorClienteTableViewController: UITableViewController, ABPeoplePickerNavigationControllerDelegate{
     
     var contactData:AnyObject = []
     let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
+    var delegateContact:showContact? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +124,15 @@ class ContactosPorClienteTableViewController: UITableViewController, ABPeoplePic
         }    
     }
     
-
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let listaContacto = (contactData as! Cliente).contacto!.allObjects as! Array<Contacto>
+        
+        if listaContacto.count > 0 {
+            self.delegateContact!.showContactInterface(listaContacto[indexPath.row])
+        }
+    }
+    
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {

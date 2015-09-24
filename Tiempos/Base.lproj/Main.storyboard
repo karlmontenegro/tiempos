@@ -955,7 +955,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2bu-Ms-sPa">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2bu-Ms-sPa">
                                             <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -980,7 +980,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWe-O2-WbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2137.5" y="2257.5"/>
+            <point key="canvasLocation" x="2085" y="2249.25"/>
         </scene>
         <!--Nuevo Contacto View Controller-->
         <scene sceneID="gh1-IL-UYT">
@@ -1494,7 +1494,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42r-pO-2up" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2785.5" y="2249.25"/>
+            <point key="canvasLocation" x="2731.5" y="2249.25"/>
         </scene>
         <!--Nueva Direccion View Controller-->
         <scene sceneID="ed7-V1-sbb">
@@ -1709,7 +1709,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="vjv-50-TbC"/>
         <segue reference="Fbg-11-CmD"/>
-        <segue reference="sNE-wM-TsL"/>
         <segue reference="ee1-bl-OnD"/>
+        <segue reference="sNE-wM-TsL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -39,7 +39,7 @@ class EditarDireccionViewController: UIViewController {
     }
     
     @IBAction func saveTapped(sender: UIBarButtonItem) {
-        daoDireccion().updateAddressAt(self.data as! Direccion, newDir: self.txtDireccion.text!, newRef1: self.txtReferencia1.text!, newRef2: self.txtReferencia2.text!, p: self.prinSwitch.on)
+        daoDireccion().updateAddressAt((self.data as! Direccion).valueForKey("cliente") as! Cliente,object: self.data as! Direccion, newDir: self.txtDireccion.text!, newRef1: self.txtReferencia1.text!, newRef2: self.txtReferencia2.text!, p: self.prinSwitch.on)
         
         //self.parentViewController?.childViewControllers[1].beginRefreshing()
         

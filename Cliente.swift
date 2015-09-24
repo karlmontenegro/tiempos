@@ -22,7 +22,7 @@ class Cliente: NSManagedObject {
         addresses.addObject(dir)
     }
     
-    func allAddresses(){
-        
+    func allAddresses()->NSSet{
+        return self.mutableSetValueForKey("direccion")
     }
 }

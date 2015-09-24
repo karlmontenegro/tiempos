@@ -90,7 +90,7 @@ class daoCliente{
         let context:NSManagedObjectContext = appDel.managedObjectContext
         let entityCliente = NSEntityDescription.entityForName("Cliente", inManagedObjectContext: context)
         let request = NSFetchRequest()
-        let pred = NSPredicate(format: "self = %@", object)
+        //let pred = NSPredicate(format: "self = %@", object)
         request.entity = entityCliente
         
         var result:NSArray = []

@@ -56,11 +56,11 @@ class NuevoContratoViewController: UIViewController, UIPickerViewDelegate {
         
         daoContrato().newContract(self.nomContrato.text!, tipoFact: self.tipoFac.text!, client: self.cliente as! Cliente)
         
-        dismissViewControllerAnimated(true, completion: nil)
+         self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
     @IBAction func cancelTapped(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     /*
     // MARK: - Navigation
