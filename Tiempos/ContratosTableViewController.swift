@@ -15,6 +15,11 @@ class ContratosTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        arreglo = daoContrato().getAllActiveContracts()
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

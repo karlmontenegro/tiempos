@@ -9,25 +9,35 @@
 import UIKit
 import CoreData
 
-class NuevoCliente: UIViewController {
+class NuevoCliente: UIViewController{
 
     @IBOutlet weak var txtRUC: UITextField!
     @IBOutlet weak var txtNombre: UITextField!
     @IBOutlet weak var txtRazonSocial: UITextField!
+    
+    var nuevoCliente:AnyObject = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func addContactButton(sender: UIButton) {
+        
+    }
+    
+    @IBAction func addAddressButton(sender: UIButton) {
+        performSegueWithIdentifier("addAddressToNewClient", sender: sender)
+    }
 
     @IBAction func saveTapped(sender: AnyObject) {
         //let defaults = NSUserDefaults.standardUserDefaults()
-        daoCliente().newClient(txtNombre.text!, ruc: txtRUC.text!, razonSoc: txtRazonSocial.text!, direccion: "",usuario: "")
+        self.nuevoCliente = daoCliente().newClient(txtNombre.text!, ruc: txtRUC.text!, razonSoc: txtRazonSocial.text!, direccion: "",usuario: "")
         
-        //usuario: defaults.objectForKey("loggedUserKey") as! String
+        performSegueWithIdentifier("stepTwoNewClient", sender: sender)
         
-         self.navigationController?.popToRootViewControllerAnimated(true)
+         //self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
 
@@ -38,5 +48,14 @@ class NuevoCliente: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "stepTwoNewClient" {
+            let tvc:DetalleClienteViewController = segue.destinationViewController as! DetalleClienteViewController
+            
+            tvc.data = self.nuevoCliente
+            tvc.origin = "NEW"
+        }
     }
 }

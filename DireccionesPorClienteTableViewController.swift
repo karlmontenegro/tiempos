@@ -22,14 +22,9 @@ class DireccionesPorClienteTableViewController: UITableViewController{
     var delegateAddress:editAddress? = nil
     var delegateShow:showAddress? = nil
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func refreshAddress() {
@@ -52,6 +47,7 @@ class DireccionesPorClienteTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
+       
         if((addressData as! Cliente).direccion!.count > 0){
             return (self.addressData as! Cliente).direccion!.count
         }else{
@@ -63,17 +59,16 @@ class DireccionesPorClienteTableViewController: UITableViewController{
         let cell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath)
         
         if (addressData as! Cliente).direccion!.count > 0 {
-            
             let lista = (addressData as! Cliente).direccion!.allObjects as! Array<Direccion>
             cell.textLabel!.text = lista[indexPath.row].direccion! + ", " + lista[indexPath.row].referenciaUno! + ", " + lista[indexPath.row].referenciaDos!
-        
+            
             if lista[indexPath.row].principal == 1 {
                 cell.detailTextLabel!.text = "Principal"
             } else {
                 cell.detailTextLabel!.text = ""
             }
         }
-
+    
         return cell
     }
 
@@ -107,8 +102,12 @@ class DireccionesPorClienteTableViewController: UITableViewController{
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
+                
+                    
                 daoDireccion().deleteAddressAt(((self.addressData as! Cliente).direccion!.allObjects as! Array<Direccion>)[indexPath.row])
+                
                 // Deletes the element from the array
+                
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
             

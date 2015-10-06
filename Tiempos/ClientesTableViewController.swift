@@ -61,6 +61,7 @@ class ClientesTableViewController: UITableViewController {
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             
             vc.data = self.arreglo[indexpath.row]
+            vc.origin = "EDIT"
         }
     }
     

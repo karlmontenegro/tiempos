@@ -12,7 +12,7 @@ class DetalleContratoViewController: UIViewController {
 
     var data:AnyObject = []
     
-    @IBOutlet weak var nombre: UILabel!
+    
     @IBOutlet weak var cliente: UILabel!
     @IBOutlet weak var tipo: UILabel!
     @IBOutlet weak var viewTitle: UINavigationItem!

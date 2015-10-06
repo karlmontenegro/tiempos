@@ -12,6 +12,8 @@
 		0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */; };
 		0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */; };
 		0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68081B7A59700002CE49 /* DAOPais.swift */; };
+		0C581E1E1BC2F57C00D2C297 /* ClientModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C581E1D1BC2F57C00D2C297 /* ClientModal.swift */; settings = {ASSET_TAGS = (); }; };
+		0C581E201BC3011000D2C297 /* MonedaModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C581E1F1BC3011000D2C297 /* MonedaModal.swift */; settings = {ASSET_TAGS = (); }; };
 		0C598F901B90C3390023FBB2 /* NuevoContactoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C598F8F1B90C3390023FBB2 /* NuevoContactoViewController.swift */; };
 		0C598F921B90CFFA0023FBB2 /* NuevaDireccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C598F911B90CFFA0023FBB2 /* NuevaDireccionViewController.swift */; };
 		0C5DBC2A1B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5DBC291B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift */; };
@@ -88,6 +90,8 @@
 		0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoUsuario.swift; path = Tiempos/NuevoUsuario.swift; sourceTree = "<group>"; };
 		0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOUsuario.swift; sourceTree = "<group>"; };
 		0C4E68081B7A59700002CE49 /* DAOPais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOPais.swift; sourceTree = "<group>"; };
+		0C581E1D1BC2F57C00D2C297 /* ClientModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientModal.swift; sourceTree = "<group>"; };
+		0C581E1F1BC3011000D2C297 /* MonedaModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonedaModal.swift; sourceTree = "<group>"; };
 		0C598F8F1B90C3390023FBB2 /* NuevoContactoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoContactoViewController.swift; sourceTree = "<group>"; };
 		0C598F911B90CFFA0023FBB2 /* NuevaDireccionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevaDireccionViewController.swift; sourceTree = "<group>"; };
 		0C5DBC291B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactosPorClienteTableViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				0CE4B3C61BA898E900FCC736 /* NuevoContratoViewController.swift */,
 				0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */,
 				0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */,
+				0C581E1D1BC2F57C00D2C297 /* ClientModal.swift */,
+				0C581E1F1BC3011000D2C297 /* MonedaModal.swift */,
 			);
 			name = "Contract View";
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				0CAE76521B72B2B500BB09F7 /* ContratosTableViewController.swift in Sources */,
 				0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */,
 				0CFB8DD01BB1C0310044D0F5 /* ContratoHoras+CoreDataProperties.swift in Sources */,
+				0C581E201BC3011000D2C297 /* MonedaModal.swift in Sources */,
 				0CFB8DC21BB1C0310044D0F5 /* Entregable+CoreDataProperties.swift in Sources */,
 				0CFB8DCC1BB1C0310044D0F5 /* Cliente+CoreDataProperties.swift in Sources */,
 				0CFB8DC81BB1C0310044D0F5 /* Cita+CoreDataProperties.swift in Sources */,
@@ -459,6 +466,7 @@
 				0CE4B3C71BA898E900FCC736 /* NuevoContratoViewController.swift in Sources */,
 				0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */,
 				0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */,
+				0C581E1E1BC2F57C00D2C297 /* ClientModal.swift in Sources */,
 				0CAF591F1B7E5E2900DE9CF8 /* DAOCita.swift in Sources */,
 				0CFB8DC91BB1C0310044D0F5 /* Cita.swift in Sources */,
 				0CE4B3BD1BA091E700FCC736 /* HomeViewController.swift in Sources */,

@@ -15,7 +15,7 @@ protocol refreshAddressTable{
 
 class NuevaDireccionViewController: UIViewController {
 
-    var data:AnyObject = []
+    var data:AnyObject = []    
     var delegateAddress:refreshAddressTable? = nil
     
     @IBOutlet weak var direccion: UITextField!
@@ -25,7 +25,6 @@ class NuevaDireccionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -40,22 +39,9 @@ class NuevaDireccionViewController: UIViewController {
 
     @IBAction func saveButton(sender: UIBarButtonItem) {
        
-        daoDireccion().newAddress(data as! Cliente, dir: self.direccion.text!,ref1: self.refUno.text!,ref2: self.refDos.text!, p: prinSwitch.on)
-        
-        //self.parentViewController?.childViewControllers[1].refreshControl?!.beginRefreshing()
-        
+            daoDireccion().newAddress(data as! Cliente, dir: self.direccion.text!,ref1: self.refUno.text!,ref2: self.refDos.text!, p: prinSwitch.on)
+    
         delegateAddress!.refreshAddressesDelegate()
-        
         dismissViewControllerAnimated(true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

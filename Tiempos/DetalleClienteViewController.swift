@@ -13,6 +13,7 @@ import AddressBookUI
 class DetalleClienteViewController: UIViewController,refreshClientData,refreshAddressTable,refreshAddressTableAfterEdit,editAddress,showAddress,showContact,ABPeoplePickerNavigationControllerDelegate {
 
     var data:AnyObject = []
+    var origin:String = ""
     
     var direccion:AnyObject = []
     
@@ -27,9 +28,23 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Change button names depending on the origin
+        
+        switch origin{
+            case "NEW":self.viewTitle.leftBarButtonItem?.title = "Save"
+            self.viewTitle.rightBarButtonItem?.title = "Cancel"
+            case "EDIT":
+                self.viewTitle.rightBarButtonItem?.enabled = false
+                self.viewTitle.leftBarButtonItem?.title = "Clientes"
+                self.viewTitle.rightBarButtonItem?.title = ""
+        default:
+            self.viewTitle.rightBarButtonItem?.title = ""
+            self.viewTitle.leftBarButtonItem?.title = ""
+        }
+ 
         viewTitle.title = data.valueForKey("nombre") as! String?
         lblRazonSocial.text = "Razón Social: " + (self.data.valueForKey("razonSocial") as! String?)!
-        lblRUC.text = "RUC: " + (self.data.valueForKey("ruc") as! String?)!
+        lblRUC.text = "RUC: " + (self.data.valueForKey("ruc") as! String?)!        
     }
     
     func showContactInterface(contacto: AnyObject) {
@@ -139,7 +154,6 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     }
     
     func promptForAddressBookRequestAccess(addButton: UIButton) {
-        var err: Unmanaged<CFError>? = nil
         
         ABAddressBookRequestAccessWithCompletion(addressBookRef) {
             (granted: Bool, error: CFError!) in
@@ -172,6 +186,32 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         UIApplication.sharedApplication().openURL(url!)
     }
     
+    @IBAction func rightButtonPressed(sender: UIBarButtonItem) {
+        
+        switch origin{
+            case "NEW":
+            //delete the client
+            daoCliente().deleteClientAt(self.data as! Cliente)
+            self.navigationController?.popToRootViewControllerAnimated(true)
+            
+            case "EDIT": print("none")
+        default: print("none")
+        }
+    }
+    
+    @IBAction func leftButtonPressed(sender: UIBarButtonItem) {
+        
+        switch origin{
+            case "NEW":
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            case "EDIT":
+                //save the object
+                self.navigationController?.popToRootViewControllerAnimated(true)
+        default: print("none")
+        }
+        
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "contactTableSegue"){
             let tvc:ContactosPorClienteTableViewController = segue.destinationViewController as! ContactosPorClienteTableViewController

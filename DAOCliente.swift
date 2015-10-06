@@ -11,34 +11,23 @@ import UIKit
 import CoreData
 
 class daoCliente{
-    func newClient(nombre: String, ruc: String, razonSoc: String, direccion:String, usuario: String){
+    func newClient(nombre: String, ruc: String, razonSoc: String, direccion:String, usuario: String)->Cliente{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
-
-        //var entityUsuario = NSEntityDescription.entityForName("Usuario",inManagedObjectContext:context)
-        //let request = NSFetchRequest()
-        //request.entity = entityUsuario
-        
-        //let pred = NSPredicate(format: "(username = %@)", usuario)
-        //request.predicate = pred
-        
-        //var results:NSArray = context.executeFetchRequest(request, error: nil)!
 
         let newClient = NSEntityDescription.insertNewObjectForEntityForName("Cliente",inManagedObjectContext: context)
         
         newClient.setValue(ruc, forKey: "ruc")
         newClient.setValue(nombre, forKey: "nombre")
         newClient.setValue(razonSoc, forKey: "razonSocial")
-        
-        //Extraer el usuario usando el stringForKey
-        
-        //newClient.setValue(results.firstObject as! Usuario, forKey: "usuario")
-        
+              
         do{
             try context.save()
         }catch{
             print(error)
         }
+        
+        return newClient as! Cliente
     }
     
     func getAllClients()->Array<Cliente>{
