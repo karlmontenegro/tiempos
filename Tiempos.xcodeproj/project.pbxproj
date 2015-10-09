@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C173E3E1BC71926001D361C /* EntregablesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C173E3D1BC71926001D361C /* EntregablesTVC.swift */; settings = {ASSET_TAGS = (); }; };
 		0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */; };
 		0C3749C01B7903D900EBD075 /* DAOCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3749BF1B7903D900EBD075 /* DAOCliente.swift */; };
 		0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */; };
@@ -85,6 +86,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C173E3D1BC71926001D361C /* EntregablesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregablesTVC.swift; sourceTree = "<group>"; };
 		0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleContratoViewController.swift; path = Tiempos/DetalleContratoViewController.swift; sourceTree = "<group>"; };
 		0C3749BF1B7903D900EBD075 /* DAOCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOCliente.swift; sourceTree = "<group>"; };
 		0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoUsuario.swift; path = Tiempos/NuevoUsuario.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */,
 				0C581E1D1BC2F57C00D2C297 /* ClientModal.swift */,
 				0C581E1F1BC3011000D2C297 /* MonedaModal.swift */,
+				0C173E3D1BC71926001D361C /* EntregablesTVC.swift */,
 			);
 			name = "Contract View";
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				0CAF59231B7E5E5E00DE9CF8 /* DAORecibo.swift in Sources */,
 				0CFB8DC41BB1C0310044D0F5 /* Tiempo+CoreDataProperties.swift in Sources */,
 				0C3749C01B7903D900EBD075 /* DAOCliente.swift in Sources */,
+				0C173E3E1BC71926001D361C /* EntregablesTVC.swift in Sources */,
 				0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
