@@ -49,15 +49,26 @@ class ContratosTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath)
 
         cell.textLabel!.text = self.arreglo[indexPath.row].valueForKey("nombreContrato") as! String?
-        cell.detailTextLabel!.text = self.arreglo[indexPath.row].valueForKey("tipoFacturacion") as! String?
+        cell.detailTextLabel!.text = self.arreglo[indexPath.row].valueForKey("cliente")?.valueForKey("nombre") as! String?
         return cell
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "ContratoDetalle"){
-            let vc:DetalleContratoViewController = segue.destinationViewController as! DetalleContratoViewController
+            let vc:NuevoContratoViewController = segue.destinationViewController as! NuevoContratoViewController
+            
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
+            
             vc.data = self.arreglo[indexpath.row]
+            vc.origin = "EDIT"
+        }
+        if(segue.identifier == "nuevoContratoSegue"){
+            let vc:NuevoContratoViewController = segue.destinationViewController as! NuevoContratoViewController
+            
+            //Aquí se crea el nuevo contrato
+            let nuevoContrato:Contrato = daoContrato().genericContract()
+            vc.data = nuevoContrato
+            vc.origin = "NEW"
         }
     }
 
@@ -92,8 +103,6 @@ class ContratosTableViewController: UITableViewController {
         
         return [delete]
     }
-
-
 
 // Override to support conditional editing of the table view.
    // override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -137,6 +146,7 @@ class ContratosTableViewController: UITableViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-    */
+
+*/
 
 }

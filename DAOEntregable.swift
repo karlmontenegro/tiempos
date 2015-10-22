@@ -8,7 +8,67 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class daoEntregable{
+    func genericEntregable()->Entregable{ //Entregable vacio
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let newEntregable = NSEntityDescription.insertNewObjectForEntityForName("Entregable", inManagedObjectContext: context)
+        
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+        return newEntregable as! Entregable
+    }
+    func deleteEntregableAt(object: Entregable){
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        context.deleteObject(object)
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+    }
     
+    func deleteAllEntregables(object: Contrato){
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let set = object.allEntregables()
+        
+        for s in set{
+            context.deleteObject(s as! NSManagedObject)
+        }
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+    }
+    
+    func updateEntregable(nombre: String, tarifa: String, object: Entregable){
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let numTarifa = Float(tarifa)
+        let num = NSNumber(float: numTarifa!)
+        
+        object.setValue(nombre, forKey: "nombreEntreg")
+        object.setValue(num, forKey: "tarifa")
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+        
+    }
 }

@@ -15,4 +15,13 @@ class Contrato: NSManagedObject {
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
+    
+    func addEntregable(e: Entregable){
+        let entregables = self.mutableSetValueForKey("entregables")
+        entregables.addObject(e)
+    }
+    
+    func allEntregables()->NSSet{
+        return self.mutableSetValueForKey("entregables")
+    }
 }

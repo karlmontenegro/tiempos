@@ -12,6 +12,26 @@ import CoreData
 
 class daoContrato{
     
+    func genericContract()->Contrato{ //Contrato vacio
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let newContract = NSEntityDescription.insertNewObjectForEntityForName("Contrato", inManagedObjectContext: context)
+        
+        
+        newContract.setValue("", forKey: "nombreContrato")
+        newContract.setValue("", forKey: "tipoFacturacion")
+        newContract.setValue(true, forKey: "estado")
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+        
+        return newContract as! Contrato
+    }
+    
     func newContract(nombre: String, tipoFact: String, client: Cliente){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -30,6 +50,19 @@ class daoContrato{
         }
     }
     
+    func newContract(nombre:String, tipoFact: String, client: Cliente, entregables: Int, moneda: String){
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let newContract = NSEntityDescription.insertNewObjectForEntityForName("Contrato", inManagedObjectContext: context)
+        
+        newContract.setValue(nombre, forKey: "nombreContrato")
+        newContract.setValue(tipoFact, forKey: "tipoFacturacion")
+        newContract.setValue(true, forKey: "estado")
+        newContract.setValue(client, forKey: "cliente")
+        
+    }
+    
     func deleteContractAt(object: Contrato){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -42,12 +75,13 @@ class daoContrato{
         }
     }
     
-    func updateContract(nombre:String, tipoFact: String, object: Contrato){
+    func updateContract(nombre:String, tipoFact: String, client: Cliente, object: Contrato){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         object.setValue(nombre, forKey: "nombreContrato")
         object.setValue(tipoFact, forKey: "tipoFacturacion")
+        object.setValue(client, forKey: "cliente")
         
         do{
             try context.save()
