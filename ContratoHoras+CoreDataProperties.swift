@@ -2,7 +2,7 @@
 //  ContratoHoras+CoreDataProperties.swift
 //  Tiempos
 //
-//  Created by Isabel Dunin Borkowski on 22/09/15.
+//  Created by Isabel Dunin Borkowski on 27/10/15.
 //  Copyright © 2015 Isabel Dunin-Borkowski. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,6 +16,7 @@ extension ContratoHoras {
 
     @NSManaged var horasInc: NSDate?
     @NSManaged var tarifaHora: NSNumber?
+    @NSManaged var totalHoras: NSNumber?
     @NSManaged var contrato: Contrato?
     @NSManaged var moneda: Moneda?
 

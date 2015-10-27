@@ -16,7 +16,7 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
     var origin:String = ""
     
     var arreglo:Array<Entregable> = []
-    var arr:NSSet = []
+    var arrReal:NSSet = []
     
     let animationDuration:NSTimeInterval = 0.25
     
@@ -43,43 +43,71 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet weak var entregablesViewHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     @IBOutlet weak var navbar: UINavigationItem!
+    @IBOutlet weak var factSwitch: UISwitch!
+    @IBOutlet weak var PorHorasLabel: UILabel!
+    @IBOutlet weak var PorEntregablesLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
 
 
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         hideView()
+        let daocliente = daoCliente()
+        self.listaClientes = daocliente.getAllClients()
+        self.view.layoutIfNeeded()
+        self.arrReal = (self.data as! Contrato).entregables!
+        
+        
+        if self.origin == "NEW"{
+            //Nuevo Contrato
+            
+            self.navbar.title = "Nuevo Contrato"
+            self.txtCliente.text = ""
+            self.txtMoneda.text = ""
+            
+        }else{
+            //Editar Contrato
+            
+            let contrato:Contrato = self.data as! Contrato
+            let tipoDeFacturacion:String = contrato.valueForKey("tipoFacturacion") as! String
+            let clienteDeContrato:Cliente = ((self.data as! Contrato).valueForKey("cliente") as! Cliente)
+            self.hideSwitchArea()
+            self.navbar.title = "Editar Contrato"
+            self.nomContrato.text = contrato.valueForKey("nombreContrato") as? String
+            self.txtCliente.text = clienteDeContrato.valueForKey("nombre") as? String
+            self.cliente = contrato.valueForKey("cliente")!
+            self.txtMoneda.text = contrato.valueForKey("moneda") as? String
+            
+            if tipoDeFacturacion == "HRS"{
+                let horasDeContrato:ContratoHoras = (self.data as! Contrato).valueForKey("contratoHoras") as! ContratoHoras
+                showView()
+                self.tarifaPorHora.text = (horasDeContrato.valueForKey("tarifaHora") as! Float).description
+                self.nroHoras.text = (horasDeContrato.valueForKey("totalHoras") as! Float).description
+                
+                let nHoras:Double = horasDeContrato.valueForKey("totalHoras") as! Double
+                let tHoras:Double = horasDeContrato.valueForKey("tarifaHora") as! Double
+            
+                self.totalLabel.text = "Total Referencial: " +  self.txtMoneda.text! as String + " " + (tHoras * nHoras).description
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let daocliente = daoCliente()
-        self.listaClientes = daocliente.getAllClients()
-        self.view.layoutIfNeeded()
-        self.arr = (self.data as! Contrato).entregables!
-        
-        if self.origin == "NEW"{
-            self.navbar.title = "Nuevo Contrato"
-            self.txtCliente.text = ""
-            
-            
-        }else{
-            self.navbar.title = "Editar Contrato"
-            self.nomContrato.text = (self.data as! Contrato).valueForKey("nombreContrato") as? String
-            self.txtCliente.text = ((self.data as! Contrato).valueForKey("cliente") as! Cliente).valueForKey("nombre") as? String
-            self.cliente = (self.data as! Contrato).valueForKey("cliente")!
-            
-        }
     }
     
     @IBAction func factSwitchChanged(sender: UISwitch) {
        
         if sender.on{
             self.tipoFact = "ENT"
+            daoContratoHoras().deleteAllContractHoras(self.data as! Contrato)
             hideView()
         }else{
             self.tipoFact = "HRS"
             daoEntregable().deleteAllEntregables(self.data as! Contrato)
+            let e:ContratoHoras = daoContratoHoras().genericContratoHoras()
+            (self.data as! Contrato).addContratoHoras(e)
             self.entregables.reloadData()
             showView()
         }
@@ -87,6 +115,9 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
         //Display container
         
     }
+    
+    
+    //Utility Functions
     
     func hideView(){
         UIView.animateWithDuration(animationDuration) { () -> Void in
@@ -112,6 +143,12 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
         }
     }
     
+    func hideSwitchArea(){
+        self.factSwitch.hidden = true
+        self.PorEntregablesLabel.hidden = true
+        self.PorHorasLabel.hidden = true
+    }
+    
     func returnClientToContract(client: Cliente) {
         self.cliente = client
         self.txtCliente.text = client.valueForKey("Nombre") as? String
@@ -123,13 +160,19 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
     
     @IBAction func saveTapped(sender: UIBarButtonItem) {
         
-        daoContrato().updateContract(self.nomContrato.text as String!, tipoFact: self.tipoFact, client: self.cliente as! Cliente, object: self.data as! Contrato)
-        print(self.data as! Contrato)
+        daoContrato().updateContract(self.nomContrato.text as String!, tipoFact: self.tipoFact, moneda: self.txtMoneda.text as String!, client: self.cliente as! Cliente, object: self.data as! Contrato)
+        
+        if self.tipoFact == "HRS" {
+            daoContratoHoras().updateContractHoras(Double(self.nroHoras.text as String!)!,horasInc: "", tarifaHora: Double(self.tarifaPorHora.text as String!)!, moneda: self.txtMoneda.text as String!, object: (self.data as! Contrato).valueForKey("contratoHoras") as! ContratoHoras)
+        }
+        
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
     @IBAction func cancelTapped(sender: UIBarButtonItem) {
-        daoContrato().deleteContractAt(self.data as! Contrato)
+        if self.origin == "NEW"{
+            daoContrato().deleteContractAt(self.data as! Contrato)
+        }
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     @IBAction func selectClient(sender: UIButton) {
@@ -138,6 +181,8 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
     @IBAction func selectCurrency(sender: UIButton) {
         performSegueWithIdentifier("currencyPickerModal", sender: sender)
     }
+    
+    
     //Table View Functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -146,8 +191,7 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-            return self.arr.count
+            return self.arrReal.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -161,7 +205,7 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            daoEntregable().deleteEntregableAt(self.arr.allObjects[indexPath.row] as! Entregable)
+            daoEntregable().deleteEntregableAt(self.arrReal.allObjects[indexPath.row] as! Entregable)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             print(self.data as! Contrato)
             
@@ -171,10 +215,10 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("entregableDetail", sender: self)
     }
     
     @IBAction func addCell(sender: AnyObject) {
-        //let elem:String = " "
         let e:Entregable = daoEntregable().genericEntregable()
         (self.data as! Contrato).addEntregable(e)
         self.arreglo.append(e)
@@ -192,9 +236,8 @@ class NuevoContratoViewController: UIViewController,UITableViewDataSource,UITabl
         }
         if segue.identifier == "entregableDetail"{
             let vc:EntregableVC = segue.destinationViewController as! EntregableVC
-            
             let indexpath:NSIndexPath = self.entregables.indexPathForSelectedRow!
-            vc.data = self.arreglo[indexpath.row]
+            vc.data = self.arrReal.allObjects[indexpath.row]
             vc.moneda = self.txtMoneda.text as String!
             vc.nro = indexpath.row + 1
         }

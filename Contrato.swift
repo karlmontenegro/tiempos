@@ -24,4 +24,10 @@ class Contrato: NSManagedObject {
     func allEntregables()->NSSet{
         return self.mutableSetValueForKey("entregables")
     }
+    
+
+    
+    func addContratoHoras(e:ContratoHoras){
+        self.contratoHoras = e
+    }
 }

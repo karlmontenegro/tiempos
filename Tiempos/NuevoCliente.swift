@@ -23,13 +23,6 @@ class NuevoCliente: UIViewController{
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func addContactButton(sender: UIButton) {
-        
-    }
-    
-    @IBAction func addAddressButton(sender: UIButton) {
-        performSegueWithIdentifier("addAddressToNewClient", sender: sender)
-    }
 
     @IBAction func saveTapped(sender: AnyObject) {
         //let defaults = NSUserDefaults.standardUserDefaults()

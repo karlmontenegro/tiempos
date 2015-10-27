@@ -22,6 +22,7 @@ class daoContrato{
         newContract.setValue("", forKey: "nombreContrato")
         newContract.setValue("", forKey: "tipoFacturacion")
         newContract.setValue(true, forKey: "estado")
+        newContract.setValue("",forKey: "moneda")
         
         do{
             try context.save()
@@ -75,13 +76,14 @@ class daoContrato{
         }
     }
     
-    func updateContract(nombre:String, tipoFact: String, client: Cliente, object: Contrato){
+    func updateContract(nombre:String, tipoFact: String, moneda: String, client: Cliente, object: Contrato){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         object.setValue(nombre, forKey: "nombreContrato")
         object.setValue(tipoFact, forKey: "tipoFacturacion")
         object.setValue(client, forKey: "cliente")
+        object.setValue(moneda, forKey: "moneda")
         
         do{
             try context.save()
@@ -115,4 +117,21 @@ class daoContrato{
         return result as! Array<Contrato>
     }
     
+    func getAllContracts()->Array<Contrato>{
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Contrato")
+        
+        request.returnsObjectsAsFaults = false
+        
+        var results:Array<Contrato> = []
+        
+        do{
+            try results = context.executeFetchRequest(request) as! Array<Contrato>
+        }catch{
+            print(error)
+        }
+        return results
+    }
 }

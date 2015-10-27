@@ -20,7 +20,7 @@ class MonedaModal: UIViewController,UIPickerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.moneda = listaMonedas[0] as! String
         // Do any additional setup after loading the view.
     }
 

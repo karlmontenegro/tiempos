@@ -17,12 +17,14 @@ class ClientModal: UIViewController, UIPickerViewDelegate{
     var listaClientes:NSArray = []
     var cliente:AnyObject? = []
     var delegateAddress:clientOperations? = nil
-    @IBOutlet var clientPicker: [UIPickerView]!
     
+    @IBOutlet var clientPicker: [UIPickerView]!
+    @IBOutlet weak var clientPickerOut: UIPickerView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.listaClientes = daoCliente().getAllClients()
-
+        self.cliente = listaClientes[0]
         // Do any additional setup after loading the view.
     }
 
@@ -52,7 +54,6 @@ class ClientModal: UIViewController, UIPickerViewDelegate{
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.cliente = listaClientes[row] as! Cliente
     }
-
     
     @IBAction func doneTapped(sender: UIButton) {
         self.delegateAddress!.returnClientToContract(self.cliente as! Cliente)
