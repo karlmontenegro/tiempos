@@ -134,4 +134,13 @@ class daoContrato{
         }
         return results
     }
+    
+    func getAllContractsByClient(client: Cliente)->Array<Contrato>{
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        
+        
+        return []
+    }
 }

@@ -36,13 +36,15 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         let date = NSDate()
         var endDate = date.dateByAddingTimeInterval(2 * 60 * 60)
         
+        /*
+        
         daoCalendar().addEvent("1", start: date, end: endDate, calendar: self.defaultCalendar!, eventStore: self.eventStore)
         
         endDate = endDate.dateByAddingTimeInterval(2 * 60 * 60)
         
         daoCalendar().addEvent("2", start: date, end: endDate, calendar: self.defaultCalendar!, eventStore: self.eventStore)
-        
-        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
+        */
+        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)        
     }
     
     override func viewDidLoad() {
@@ -59,7 +61,7 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         // Do any additional setup after loading the view.
         
         checkAccessForCalendar()
-        self.dateTableView.reloadData()
+                self.dateTableView.reloadData()
         
     }
     

@@ -12,13 +12,15 @@ import UIKit
 
 class daoCalendar{
     
-    //Corregir, crea multiples veces el calendario
     func getCalendar(calendarName:String, store:EKEventStore)->EKCalendar?{
-        let defaults = NSUserDefaults.standardUserDefaults()
         
-        if let id = defaults.stringForKey(calendarName) {
-            return store.calendarWithIdentifier(id)
-        } else {
+        let calendarList:[EKCalendar] = store.calendarsForEntityType(EKEntityType.Event)
+        
+        let cal:EKCalendar? = self.searchCalendarByTitle(calendarName, list: calendarList)
+        
+        if cal != nil {
+            return cal
+        }else{
             let calendar = EKCalendar(forEntityType: EKEntityType.Event, eventStore: store)
             
             calendar.title = "Freelo Calendar"
@@ -63,5 +65,17 @@ class daoCalendar{
         let predicate:NSPredicate = eventStore.predicateForEventsWithStartDate(date, endDate: endDate, calendars: [calendar])
         let result:Array<EKEvent> = eventStore.eventsMatchingPredicate(predicate)
         return result
+    }
+    
+    //Aux Functions
+    
+    func searchCalendarByTitle(title:String, list: [EKCalendar])->EKCalendar?{
+        
+        for cal in list{
+            if (cal.valueForKey("title") as! String) == title {
+                return cal
+            }
+        }
+        return nil
     }
 }

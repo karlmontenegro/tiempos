@@ -11,6 +11,7 @@ import UIKit
 
 class CitaViewController: UIViewController {
     
+    @IBOutlet weak var txtDateName: UITextField!
     
     override func viewWillAppear(animated: Bool) {
 
