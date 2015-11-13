@@ -13,6 +13,7 @@ import CoreData
 class daoContrato{
     
     func genericContract()->Contrato{ //Contrato vacio
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -34,6 +35,7 @@ class daoContrato{
     }
     
     func newContract(nombre: String, tipoFact: String, client: Cliente){
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -52,6 +54,7 @@ class daoContrato{
     }
     
     func newContract(nombre:String, tipoFact: String, client: Cliente, entregables: Int, moneda: String){
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -65,6 +68,7 @@ class daoContrato{
     }
     
     func deleteContractAt(object: Contrato){
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -77,6 +81,7 @@ class daoContrato{
     }
     
     func updateContract(nombre:String, tipoFact: String, moneda: String, client: Cliente, object: Contrato){
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -95,6 +100,7 @@ class daoContrato{
     
     
     func getAllActiveContracts()->Array<Contrato>{
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -118,6 +124,7 @@ class daoContrato{
     }
     
     func getAllContracts()->Array<Contrato>{
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -139,8 +146,22 @@ class daoContrato{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
+        let entityContract = NSEntityDescription.entityForName("Contrato", inManagedObjectContext: context)
         
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(estado = %@) AND (cliente = %@)", true, client)
         
-        return []
+        request.entity = entityContract
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as! Array<Contrato>
     }
 }

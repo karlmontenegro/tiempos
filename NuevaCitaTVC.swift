@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Foundation
 
-class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp {
+class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp {
 
     @IBOutlet weak var txtCliente: UITextField!
 
@@ -16,12 +17,12 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp {
     var cliente:AnyObject? = []
     var startDate:NSDate? = nil
     var endDate:NSDate? = nil
-    
-
+    var contrato:AnyObject? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtCliente.enabled = false;
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,13 +53,24 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp {
         }
     }
     
-    func returnContractToDate() {
+    func returnContractToDate(contract: Contrato) {
+        
+        let cellContract:UITableViewCell = tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!)!
+        self.contrato = contract
+        cellContract.textLabel!.text = (contrato as! Contrato).nombreContrato
+        cellContract.detailTextLabel!.text = (contrato as! Contrato).tipoFacturacion!
+    }
+    
+    func returnReminderToDate(number: Int, measure: String) {
         
     }
     
     // MARK: - Table view data source
 
     @IBAction func saveTapped(sender: AnyObject) {
+        
+        //daoCita().newDate(...data)
+        
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -73,6 +85,9 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp {
         }
         if indexPath.section == 2 {
             self.performSegueWithIdentifier("contractPicker", sender: self)
+        }
+        if indexPath.section == 3{
+            self.performSegueWithIdentifier("addAlarmSegue", sender: self)
         }
     }
 
@@ -101,7 +116,13 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp {
             vc.delegateAddress = self
         }
         if segue.identifier == "contractPicker" {
-            
+            let vc:ContractPicker = segue.destinationViewController as! ContractPicker
+            vc.cliente = self.cliente
+            vc.delegateAddress = self
+        }
+        if segue.identifier == "addAlarmSegue"{
+            let vc:AlarmPicker = segue.destinationViewController as! AlarmPicker
+            vc.delegateAddress = self
         }
     }
 }

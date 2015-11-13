@@ -11,4 +11,15 @@ import CoreData
 
 class daoCita{
     
+    //newDate(...data)
+    
+    //crear la cita en la base de datos
+    //crear el evento en el calendario
+    //asociar el id del evento con la cita
+    
+    //guardar la cita
+    
+    func addAlarmToDate(date:Cita){
+        
+    }
 }

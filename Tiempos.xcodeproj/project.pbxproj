@@ -27,6 +27,7 @@
 		0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */; };
 		0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF31B751BB600191AEF /* NuevoCliente.swift */; };
 		0C8BDE151B87993500EDBC9C /* EditarCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8BDE141B87993500EDBC9C /* EditarCliente.swift */; };
+		0C909A131BF6563C00B93046 /* AlarmPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C909A121BF6563C00B93046 /* AlarmPicker.swift */; };
 		0C9C58951B726A0E0091B578 /* ClientesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58941B726A0E0091B578 /* ClientesTableViewController.swift */; };
 		0C9C58971B7277920091B578 /* DetalleClienteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */; };
 		0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C589C1B72869B0091B578 /* NotaAudio.swift */; };
@@ -124,6 +125,7 @@
 		0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tiemposdb.xcdatamodel; sourceTree = "<group>"; };
 		0C705BF31B751BB600191AEF /* NuevoCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoCliente.swift; path = Tiempos/NuevoCliente.swift; sourceTree = "<group>"; };
 		0C8BDE141B87993500EDBC9C /* EditarCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarCliente.swift; sourceTree = "<group>"; };
+		0C909A121BF6563C00B93046 /* AlarmPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmPicker.swift; sourceTree = "<group>"; };
 		0C9C58941B726A0E0091B578 /* ClientesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientesTableViewController.swift; path = Tiempos/ClientesTableViewController.swift; sourceTree = "<group>"; };
 		0C9C58961B7277920091B578 /* DetalleClienteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleClienteViewController.swift; path = Tiempos/DetalleClienteViewController.swift; sourceTree = "<group>"; };
 		0C9C589C1B72869B0091B578 /* NotaAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaAudio.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				0CF4D3151BF26CDE00306397 /* ClientePicker.swift */,
 				0C0F91E51BF4F19A00C1872D /* DateTimePicker.swift */,
 				0C0F91E71BF50E5A00C1872D /* ContractPicker.swift */,
+				0C909A121BF6563C00B93046 /* AlarmPicker.swift */,
 			);
 			name = "Cita View";
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 			files = (
 				0CAE76521B72B2B500BB09F7 /* ContratosTableViewController.swift in Sources */,
 				0C9C589D1B72869B0091B578 /* NotaAudio.swift in Sources */,
+				0C909A131BF6563C00B93046 /* AlarmPicker.swift in Sources */,
 				0C581E201BC3011000D2C297 /* MonedaModal.swift in Sources */,
 				0CFB8DC21BB1C0310044D0F5 /* Entregable+CoreDataProperties.swift in Sources */,
 				0C9CF8521BE92A9500712067 /* WeekHeaderView.swift in Sources */,

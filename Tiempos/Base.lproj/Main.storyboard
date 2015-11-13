@@ -2601,17 +2601,18 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YOU-bm-0sg">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir fecha de inicio" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YOU-bm-0sg">
                                                     <rect key="frame" x="541" y="12" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -2634,17 +2635,18 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYk-LV-Sap">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir fecha de fin" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYk-LV-Sap">
                                                     <rect key="frame" x="541" y="12" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -2666,18 +2668,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="&lt;NombreContrato&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fJ1-ZF-t62">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir contrato" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fJ1-ZF-t62">
                                                     <rect key="frame" x="15" y="12" width="150" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="&lt;TipoContrato&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lZB-0D-bPg">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lZB-0D-bPg">
                                                     <rect key="frame" x="462" y="12" width="123" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
@@ -2704,14 +2706,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;TiempoAlarma&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJG-3V-Jl6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Añadir alarma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJG-3V-Jl6">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-k5-U5O">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-k5-U5O">
                                                     <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                                     <animations/>
                                                 </switch>
@@ -2781,11 +2783,12 @@
                         <outlet property="txtCliente" destination="wyd-Ud-Uxh" id="fqR-dB-KhI"/>
                         <segue destination="EDM-aX-XF8" kind="presentation" identifier="datePickerSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="8vE-Kv-g5c"/>
                         <segue destination="JYd-PL-BCv" kind="presentation" identifier="contractPicker" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="oyW-Uv-Djb"/>
+                        <segue destination="vq7-Mu-zJP" kind="presentation" identifier="addAlarmSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="QM7-Ye-Xhr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djf-Tv-kQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3127.5" y="-728.25"/>
+            <point key="canvasLocation" x="3162" y="-711"/>
         </scene>
         <!--Citas-->
         <scene sceneID="5Im-l1-65E">
@@ -2950,6 +2953,133 @@
             </objects>
             <point key="canvasLocation" x="3162" y="-639"/>
         </scene>
+        <!--Alarm Picker-->
+        <scene sceneID="vuP-aO-E6l">
+            <objects>
+                <viewController id="vq7-Mu-zJP" customClass="AlarmPicker" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lsz-hg-RYr"/>
+                        <viewControllerLayoutGuide type="bottom" id="hzr-Ii-40X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WJa-Uh-uVY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvl-Cn-CQi">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X92-03-ZaW">
+                                        <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="vq7-Mu-zJP" id="VGs-Sw-cMx"/>
+                                            <outlet property="delegate" destination="vq7-Mu-zJP" id="7pq-TL-0MZ"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="X92-03-ZaW" secondAttribute="trailing" constant="20" id="0Ua-Mh-oYi"/>
+                                    <constraint firstItem="X92-03-ZaW" firstAttribute="top" secondItem="yvl-Cn-CQi" secondAttribute="top" constant="14" id="NbM-ut-6SE"/>
+                                    <constraint firstItem="X92-03-ZaW" firstAttribute="leading" secondItem="yvl-Cn-CQi" secondAttribute="leading" constant="22" id="TiO-Sg-vAf"/>
+                                    <constraint firstAttribute="height" constant="258" id="ep4-us-nKp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="X92-03-ZaW"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="ep4-us-nKp"/>
+                                        <exclude reference="0Ua-Mh-oYi"/>
+                                        <exclude reference="NbM-ut-6SE"/>
+                                        <exclude reference="TiO-Sg-vAf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="X92-03-ZaW"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="ep4-us-nKp"/>
+                                        <include reference="0Ua-Mh-oYi"/>
+                                        <include reference="NbM-ut-6SE"/>
+                                        <include reference="TiO-Sg-vAf"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJl-UG-CwZ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="AT7-U6-Dj2"/>
+                                    <constraint firstAttribute="width" constant="92" id="BvD-56-ytc"/>
+                                </constraints>
+                                <state key="normal" title="Done"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AT7-U6-Dj2"/>
+                                        <exclude reference="BvD-56-ytc"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="AT7-U6-Dj2"/>
+                                        <include reference="BvD-56-ytc"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="doneTapped:" destination="vq7-Mu-zJP" eventType="touchUpInside" id="Qrs-9i-OJn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="yvl-Cn-CQi" secondAttribute="leading" id="2pX-2S-yHR"/>
+                            <constraint firstItem="yvl-Cn-CQi" firstAttribute="centerY" secondItem="WJa-Uh-uVY" secondAttribute="centerY" id="89O-mS-Gm5"/>
+                            <constraint firstItem="oJl-UG-CwZ" firstAttribute="centerX" secondItem="WJa-Uh-uVY" secondAttribute="centerX" id="9dH-s3-T2h"/>
+                            <constraint firstItem="oJl-UG-CwZ" firstAttribute="top" secondItem="X92-03-ZaW" secondAttribute="bottom" constant="17" id="Juj-BV-sP9"/>
+                            <constraint firstItem="yvl-Cn-CQi" firstAttribute="centerX" secondItem="WJa-Uh-uVY" secondAttribute="centerX" id="WyV-fZ-pBT"/>
+                            <constraint firstItem="oJl-UG-CwZ" firstAttribute="top" secondItem="yvl-Cn-CQi" secondAttribute="bottom" constant="-56" id="bNh-Fd-qgn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yvl-Cn-CQi" secondAttribute="trailing" id="tf8-Tx-sq4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="yvl-Cn-CQi"/>
+                                <exclude reference="oJl-UG-CwZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="9dH-s3-T2h"/>
+                                <exclude reference="Juj-BV-sP9"/>
+                                <exclude reference="bNh-Fd-qgn"/>
+                                <exclude reference="2pX-2S-yHR"/>
+                                <exclude reference="89O-mS-Gm5"/>
+                                <exclude reference="WyV-fZ-pBT"/>
+                                <exclude reference="tf8-Tx-sq4"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="yvl-Cn-CQi"/>
+                                <include reference="oJl-UG-CwZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="9dH-s3-T2h"/>
+                                <include reference="Juj-BV-sP9"/>
+                                <include reference="bNh-Fd-qgn"/>
+                                <include reference="2pX-2S-yHR"/>
+                                <include reference="89O-mS-Gm5"/>
+                                <include reference="WyV-fZ-pBT"/>
+                                <include reference="tf8-Tx-sq4"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MxY-ib-KmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4090.5" y="-729.75"/>
+        </scene>
         <!--Contract Picker-->
         <scene sceneID="LxX-BE-p7k">
             <objects>
@@ -2959,6 +3089,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2dR-GI-aYB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="C6X-dG-qhH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7g-DM-wte">
@@ -3082,7 +3213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1k-c4-BTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4003.5" y="-774.75"/>
+            <point key="canvasLocation" x="3936" y="-683.25"/>
         </scene>
         <!--Date Time Picker-->
         <scene sceneID="Ttc-NK-G2l">
@@ -3214,7 +3345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE0-9f-8vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3924" y="-752.25"/>
+            <point key="canvasLocation" x="4009.5" y="-707.25"/>
         </scene>
         <!--Cliente Picker-->
         <scene sceneID="8lf-zj-sW2">
@@ -3347,7 +3478,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7A-qH-rd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868.5" y="-728.25"/>
+            <point key="canvasLocation" x="3867" y="-661.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0GT-4e-TzG">
