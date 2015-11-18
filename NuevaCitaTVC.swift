@@ -8,21 +8,25 @@
 
 import UIKit
 import Foundation
+import EventKitUI
 
 class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp {
 
     @IBOutlet weak var txtCliente: UITextField!
+    @IBOutlet weak var txtNomCita: UITextField!
+    @IBOutlet var alarmSwitch: UISwitch!
 
     
     var cliente:AnyObject? = []
     var startDate:NSDate? = nil
     var endDate:NSDate? = nil
     var contrato:AnyObject? = []
+    let eventStore = EKEventStore()
+    var alarm:EKAlarm? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.txtCliente.enabled = false;
-        
+        self.txtCliente.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,19 +67,44 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     
     func returnReminderToDate(number: Int, measure: String) {
         
+        var alarmOffset:NSTimeInterval
+        var offset:Double = 0
+        self.alarm = EKAlarm()
+        
+        if measure == "Minutos" {
+            offset = Double(number * -60)
+        }
+        if measure == "Horas" {
+            offset = Double(number * -3600)
+        }
+        if measure == "Días" {
+            offset = Double(number * -86400)
+        }
+        alarmOffset = offset
+        self.alarm?.relativeOffset = alarmOffset
+        
     }
     
     // MARK: - Table view data source
 
     @IBAction func saveTapped(sender: AnyObject) {
         
-        //daoCita().newDate(...data)
+        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente as! Cliente, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato, activateAlarm: self.alarmSwitch.on, alarm: self.alarm!, store: self.eventStore)
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     @IBAction func cancelTapped(sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 2{
+            if !self.txtCliente.hasText(){
+                return 44.0
+            }
+        }
+        return 44.0
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

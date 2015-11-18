@@ -73,6 +73,9 @@ class ClientesTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     // Override to support editing the table view.
     

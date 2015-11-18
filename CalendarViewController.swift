@@ -27,24 +27,14 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
     let eventStore = EKEventStore()
     
     var eventArray:Array<EKEvent> = []
-    var arreglo:Array<String> = ["2:00 PM","2:30 PM","4:00 PM","5:00 PM"]
     
     override func viewWillAppear(animated: Bool) {
         //Creamos el calendario
         self.defaultCalendar = daoCalendar().getCalendar(calendarName, store: self.eventStore)
         
         let date = NSDate()
-        var endDate = date.dateByAddingTimeInterval(2 * 60 * 60)
-        
-        /*
-        
-        daoCalendar().addEvent("1", start: date, end: endDate, calendar: self.defaultCalendar!, eventStore: self.eventStore)
-        
-        endDate = endDate.dateByAddingTimeInterval(2 * 60 * 60)
-        
-        daoCalendar().addEvent("2", start: date, end: endDate, calendar: self.defaultCalendar!, eventStore: self.eventStore)
-        */
-        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)        
+        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
+        self.dateTableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -104,7 +94,8 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
     }
     
     func didSelectDate(date: NSDate) {
-        print("date selected!")
+        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
+        self.dateTableView.reloadData()
     }
     
     //Table View Functions
@@ -124,10 +115,15 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CitaCell", forIndexPath: indexPath)
-        
+
         if !self.eventArray.isEmpty{
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "HH:mm a"
+            dateFormatter.AMSymbol = "AM"
+            dateFormatter.PMSymbol = "PM"
+            let startTimeStr:String = dateFormatter.stringFromDate(self.eventArray[indexPath.row].startDate)
             cell.detailTextLabel?.text = self.eventArray[indexPath.row].title
-            cell.textLabel?.text = self.eventArray[indexPath.row].startDate.description
+            cell.textLabel?.text = startTimeStr
         }
         
         return cell
@@ -146,6 +142,9 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         self.performSegueWithIdentifier("showDateDetail", sender: self)
     }
     
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation
@@ -154,7 +153,9 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDateDetail" {
-            
+            let vc:CitaDetailTVC = segue.destinationViewController as! CitaDetailTVC
+            let indexpath:NSIndexPath = self.dateTableView.indexPathForSelectedRow!
+            vc.event = self.eventArray[indexpath.row]
         }
     }
 

@@ -19,5 +19,6 @@ extension Cita {
     @NSManaged var contrato: Contrato?
     @NSManaged var entregable: Entregable?
     @NSManaged var tiempo: Tiempo?
+    @NSManaged var eventRef: String?
 
 }

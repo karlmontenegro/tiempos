@@ -67,8 +67,6 @@ class AlarmPicker: UIViewController, UIPickerViewDelegate {
     }
 
     @IBAction func doneTapped(sender: AnyObject) {
-        print(self.number)
-        print(self.measure)
         self.delegateAddress!.returnReminderToDate(self.number, measure: self.measure)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
