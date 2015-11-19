@@ -10,34 +10,39 @@ import UIKit
 import EventKit
 
 class CitaDetailTVC: UITableViewController {
-
-    @IBOutlet weak var txtNomCita: UILabel!
-    @IBOutlet weak var txtNomCliente: UILabel!
-    @IBOutlet weak var txtStartDate: UILabel!
-    @IBOutlet weak var txtEndDate: UILabel!
-    @IBOutlet weak var txtNomContract: UILabel!
-    @IBOutlet weak var txtTypeContract: UILabel!
-    @IBOutlet weak var txtAlarmInfo: UILabel!
-    
     
     var event:AnyObject? = []
     var cita:Cita? = nil
     
+    @IBOutlet weak var nomCita: UILabel!
+    @IBOutlet weak var nomCliente: UILabel!
+    @IBOutlet weak var startDate: UILabel!
+    @IBOutlet weak var endDate: UILabel!
+    @IBOutlet weak var nomContrato: UILabel!
+    @IBOutlet weak var tipoFacturacion: UILabel!
+    @IBOutlet weak var nomEntregable: UILabel!
+    @IBOutlet weak var alerts: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
+        
         self.cita = daoCita().getDateByEventId(self.event as! EKEvent)
+        self.nomCita.text = (self.event as! EKEvent).title
+        self.nomCliente.text = self.cita?.cliente?.nombre
+        self.startDate.text = dateFormatter.stringFromDate((self.event as! EKEvent).startDate)
+        self.endDate.text = dateFormatter.stringFromDate((self.event as! EKEvent).endDate)
+        self.nomContrato.text = self.cita?.contrato?.nombreContrato
         
-        self.txtNomCita.text = (self.event as! EKEvent).title
-        self.txtNomCliente.text = self.cita?.cliente?.nombre
-        self.txtStartDate.text = (self.event as! EKEvent).startDate.description
-        self.txtEndDate.text = (self.event as! EKEvent).endDate.description
-        self.txtNomContract.text = self.cita?.contrato?.nombreContrato
-        self.txtTypeContract.text = self.cita?.contrato?.tipoFacturacion
-        self.txtAlarmInfo.text = (self.event as! EKEvent).alarms![0].relativeOffset.description
+        if self.cita?.contrato?.tipoFacturacion == "HRS" {
+            self.tipoFacturacion.text = "Por Horas"
+        }else{
+            self.tipoFacturacion.text = "Por Entregables"
+        }
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.alerts.text = self.getOffsetText((self.event as! EKEvent).alarms![0].relativeOffset)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,48 +52,20 @@ class CitaDetailTVC: UITableViewController {
 
     // MARK: - Table view data source
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 2{
+            if indexPath.row == 1{
+                if self.cita?.contrato?.tipoFacturacion == "HRS"{
+                    return 0.0
+                }
+            }
         }
-    }
-    */
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
-        
-        let edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            
-            //Perform editing actions
-            
-        })
-        edit.backgroundColor = UIColor.orangeColor()
-        
-        return [edit]
+        return 44.0
     }
 
+    @IBAction func editTapped(sender: UIBarButtonItem) {
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -99,5 +76,20 @@ class CitaDetailTVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func getOffsetText(offset: NSTimeInterval)->String{
+        let interval = Int(offset * -1.0)
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        
+        if minutes != 0 && hours == 0 {
+            return "" + minutes.description + " minutos"
+        }
+        
+        if hours != 0 {
+            return "" + hours.description + " horas"
+        }
+        
+        return "Ninguno"
+    }
 }

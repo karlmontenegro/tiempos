@@ -15,6 +15,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     @IBOutlet weak var txtCliente: UITextField!
     @IBOutlet weak var txtNomCita: UITextField!
     @IBOutlet var alarmSwitch: UISwitch!
+    @IBOutlet weak var entregableCell: UITableViewCell!
 
     
     var cliente:AnyObject? = []
@@ -60,9 +61,17 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     func returnContractToDate(contract: Contrato) {
         
         let cellContract:UITableViewCell = tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!)!
+        
         self.contrato = contract
         cellContract.textLabel!.text = (contrato as! Contrato).nombreContrato
         cellContract.detailTextLabel!.text = (contrato as! Contrato).tipoFacturacion!
+        
+        if (contrato as! Contrato).tipoFacturacion! == "HRS" {
+            entregableCell.hidden = true
+
+        }else{
+            entregableCell.hidden = false
+        }
     }
     
     func returnReminderToDate(number: Int, measure: String) {
@@ -98,14 +107,6 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 2{
-            if !self.txtCliente.hasText(){
-                return 44.0
-            }
-        }
-        return 44.0
-    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 

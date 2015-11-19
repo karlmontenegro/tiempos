@@ -57,7 +57,37 @@ class daoCita{
         }catch{
             print(error)
         }
-        print(newCita)
+    }
+    
+    func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato, alarm: EKAlarm, store: EKEventStore){
+        
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        cita.setValue(cliente, forKey: "cliente")
+        cita.setValue(contract, forKey: "contrato")
+        
+        let event:EKEvent? = store.eventWithIdentifier(cita.eventRef!)
+        
+        event?.title = nomDate
+        event?.startDate = start
+        event?.endDate = end
+        event?.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract.nombreContrato!
+        event?.alarms = []
+        event?.addAlarm(alarm)
+        
+        do{
+            try store.saveEvent(event!, span: EKSpan.ThisEvent)
+        }catch{
+            print(error)
+        }
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+        print(cita)
     }
     
     func getDateByEventId(event:EKEvent)->Cita?{

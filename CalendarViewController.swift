@@ -118,7 +118,7 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
 
         if !self.eventArray.isEmpty{
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "HH:mm a"
+            dateFormatter.dateFormat = "h:mm a"
             dateFormatter.AMSymbol = "AM"
             dateFormatter.PMSymbol = "PM"
             let startTimeStr:String = dateFormatter.stringFromDate(self.eventArray[indexPath.row].startDate)

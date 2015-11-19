@@ -78,4 +78,8 @@ class daoCalendar{
         }
         return nil
     }
+    
+    func getDateById()->EKEvent?{
+        return nil
+    }
 }
