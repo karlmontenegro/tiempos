@@ -37,7 +37,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
 
     func returnClientToDate(client: Cliente) {
         self.cliente = client
-        self.txtCliente.text = client.valueForKey("Nombre") as? String
+        self.txtCliente.text = client.nombre
     }
     
     func returnDateTimeToDate(date: NSDate, type: String) {
@@ -98,7 +98,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
 
     @IBAction func saveTapped(sender: AnyObject) {
         
-        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente as! Cliente, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato, activateAlarm: self.alarmSwitch.on, alarm: self.alarm!, store: self.eventStore)
+        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente as! Cliente, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }

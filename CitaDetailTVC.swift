@@ -23,9 +23,9 @@ class CitaDetailTVC: UITableViewController {
     @IBOutlet weak var nomEntregable: UILabel!
     @IBOutlet weak var alerts: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
         
@@ -42,7 +42,11 @@ class CitaDetailTVC: UITableViewController {
             self.tipoFacturacion.text = "Por Entregables"
         }
         
-        self.alerts.text = self.getOffsetText((self.event as! EKEvent).alarms![0].relativeOffset)
+        if (self.event as! EKEvent).hasAlarms{
+            self.alerts.text = self.getOffsetText((self.event as! EKEvent).alarms![0].relativeOffset)
+        }else{
+            self.alerts.text = "Sin recordatorios"
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,20 +66,6 @@ class CitaDetailTVC: UITableViewController {
         }
         return 44.0
     }
-
-    @IBAction func editTapped(sender: UIBarButtonItem) {
-        
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func getOffsetText(offset: NSTimeInterval)->String{
         let interval = Int(offset * -1.0)
@@ -83,13 +73,28 @@ class CitaDetailTVC: UITableViewController {
         let hours = (interval / 3600)
         
         if minutes != 0 && hours == 0 {
-            return "" + minutes.description + " minutos"
+            return "" + minutes.description + " minutos antes"
         }
         
         if hours != 0 {
-            return "" + hours.description + " horas"
+            return "" + hours.description + " horas antes"
         }
         
         return "Ninguno"
     }
+    
+    /*
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation*/
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "editDateSegue"{
+            let navVC = segue.destinationViewController as! UINavigationController
+            let tableVC = navVC.viewControllers.first as! EditCitaTVC
+            tableVC.cita = self.cita
+            tableVC.event = self.event as! EKEvent
+        }
+    }
+
 }

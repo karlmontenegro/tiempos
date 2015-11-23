@@ -21,7 +21,7 @@ class daoCita{
     
     //guardar la cita
     
-    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato,activateAlarm:Bool,alarm:EKAlarm,store:EKEventStore){
+    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -41,13 +41,14 @@ class daoCita{
         calEvent?.calendar = calendar
         calEvent?.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract.nombreContrato!
         
-        if activateAlarm{
-            calEvent?.addAlarm(alarm)
+        if alarm != nil{
+            if activateAlarm{
+                calEvent?.addAlarm(alarm!)
+            }
         }
         
         do{
             try store.saveEvent(calEvent!, span: EKSpan.ThisEvent)
-            
         }catch{
             print(error)
         }
@@ -59,7 +60,7 @@ class daoCita{
         }
     }
     
-    func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato, alarm: EKAlarm, store: EKEventStore){
+    func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato, alarm: EKAlarm?, event: EKEvent){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -67,17 +68,21 @@ class daoCita{
         cita.setValue(cliente, forKey: "cliente")
         cita.setValue(contract, forKey: "contrato")
         
-        let event:EKEvent? = store.eventWithIdentifier(cita.eventRef!)
+        let store:EKEventStore = event.valueForKey("eventStore") as! EKEventStore
         
-        event?.title = nomDate
-        event?.startDate = start
-        event?.endDate = end
-        event?.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract.nombreContrato!
-        event?.alarms = []
-        event?.addAlarm(alarm)
+        event.title = nomDate
+        event.startDate = start
+        event.endDate = end
+        event.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract.nombreContrato!
+        
+        
+        if alarm != nil{
+            event.alarms = []
+            event.addAlarm(alarm!)
+        }
         
         do{
-            try store.saveEvent(event!, span: EKSpan.ThisEvent)
+            try store.saveEvent(event, span: EKSpan.ThisEvent)
         }catch{
             print(error)
         }
@@ -87,7 +92,6 @@ class daoCita{
         }catch{
             print(error)
         }
-        print(cita)
     }
     
     func getDateByEventId(event:EKEvent)->Cita?{
