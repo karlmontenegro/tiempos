@@ -71,4 +71,26 @@ class daoEntregable{
         }
         
     }
+    func getEntregablesByContract(contract:Contrato)->Array<Entregable>{
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityEntregable = NSEntityDescription.entityForName("Entregable", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(contrato = %@)", contract)
+        
+        request.entity = entityEntregable
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as! Array<Entregable>
+    }
 }

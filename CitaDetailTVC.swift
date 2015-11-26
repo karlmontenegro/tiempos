@@ -22,7 +22,7 @@ class CitaDetailTVC: UITableViewController {
     @IBOutlet weak var tipoFacturacion: UILabel!
     @IBOutlet weak var nomEntregable: UILabel!
     @IBOutlet weak var alerts: UILabel!
-    
+    @IBOutlet weak var entregableCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +38,10 @@ class CitaDetailTVC: UITableViewController {
         
         if self.cita?.contrato?.tipoFacturacion == "HRS" {
             self.tipoFacturacion.text = "Por Horas"
+            self.entregableCell.hidden = true
         }else{
             self.tipoFacturacion.text = "Por Entregables"
+            self.entregableCell.detailTextLabel?.text = self.cita?.entregable?.nombreEntreg
         }
         
         if (self.event as! EKEvent).hasAlarms{
@@ -93,7 +95,8 @@ class CitaDetailTVC: UITableViewController {
             let navVC = segue.destinationViewController as! UINavigationController
             let tableVC = navVC.viewControllers.first as! EditCitaTVC
             tableVC.cita = self.cita
-            tableVC.event = self.event as! EKEvent
+            tableVC.event = self.event as? EKEvent
+            tableVC.entregable = self.cita?.entregable
         }
     }
 

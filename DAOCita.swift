@@ -21,7 +21,7 @@ class daoCita{
     
     //guardar la cita
     
-    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore){
+    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato,entregable:Entregable?,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -47,6 +47,10 @@ class daoCita{
             }
         }
         
+        if entregable != nil{
+            newCita.setValue(entregable, forKey: "entregable")
+        }
+        
         do{
             try store.saveEvent(calEvent!, span: EKSpan.ThisEvent)
         }catch{
@@ -60,7 +64,7 @@ class daoCita{
         }
     }
     
-    func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato, alarm: EKAlarm?, event: EKEvent){
+    func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato,entregable:Entregable?, alarm: EKAlarm?, event: EKEvent){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -79,6 +83,10 @@ class daoCita{
         if alarm != nil{
             event.alarms = []
             event.addAlarm(alarm!)
+        }
+        
+        if entregable != nil {
+            cita.setValue(entregable, forKey: "entregable")
         }
         
         do{

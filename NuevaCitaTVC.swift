@@ -10,18 +10,20 @@ import UIKit
 import Foundation
 import EventKitUI
 
-class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp {
+class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp,entregableOp {
 
     @IBOutlet weak var txtCliente: UITextField!
     @IBOutlet weak var txtNomCita: UITextField!
     @IBOutlet var alarmSwitch: UISwitch!
     @IBOutlet weak var entregableCell: UITableViewCell!
+    @IBOutlet weak var lblAlarm: UILabel!
 
     
     var cliente:AnyObject? = []
     var startDate:NSDate? = nil
     var endDate:NSDate? = nil
     var contrato:AnyObject? = []
+    var entregable:Entregable? = nil
     let eventStore = EKEventStore()
     var alarm:EKAlarm? = nil
     
@@ -91,14 +93,19 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         }
         alarmOffset = offset
         self.alarm?.relativeOffset = alarmOffset
-        
+        self.lblAlarm.text = number.description + " " + measure + " antes"
+    }
+    
+    func returnEntregableToDate(entregable: Entregable) {
+        self.entregable = entregable
+        self.entregableCell.textLabel!.text = entregable.nombreEntreg
     }
     
     // MARK: - Table view data source
 
     @IBAction func saveTapped(sender: AnyObject) {
         
-        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente as! Cliente, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
+        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente as! Cliente, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato,entregable: self.entregable!, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
@@ -114,7 +121,12 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
             self.performSegueWithIdentifier("datePickerSegue", sender: self)
         }
         if indexPath.section == 2 {
-            self.performSegueWithIdentifier("contractPicker", sender: self)
+            if indexPath.row == 0 {
+                self.performSegueWithIdentifier("contractPicker", sender: self)
+            }
+            if indexPath.row == 1 {
+                self.performSegueWithIdentifier("entregablePicker", sender: self)
+            }
         }
         if indexPath.section == 3{
             self.performSegueWithIdentifier("addAlarmSegue", sender: self)
@@ -148,6 +160,11 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         if segue.identifier == "contractPicker" {
             let vc:ContractPicker = segue.destinationViewController as! ContractPicker
             vc.cliente = self.cliente
+            vc.delegateAddress = self
+        }
+        if segue.identifier == "entregablePicker" {
+            let vc:EntregablePicker = segue.destinationViewController as! EntregablePicker
+            vc.contract = self.contrato as? Contrato
             vc.delegateAddress = self
         }
         if segue.identifier == "addAlarmSegue"{

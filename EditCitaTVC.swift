@@ -10,7 +10,7 @@ import UIKit
 import EventKit
 import Foundation
 
-class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp{
+class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,entregableOp{
 
     @IBOutlet weak var txtNomCita: UITextField!
     @IBOutlet weak var lblNomCliente: UILabel!
@@ -21,10 +21,12 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp{
     @IBOutlet weak var lblEntregables: UILabel!
     @IBOutlet weak var lblAlarm: UILabel!
     @IBOutlet weak var AlarmState: UISwitch!
+    @IBOutlet weak var entregableCell: UITableViewCell!
     
     var cita:Cita? = nil
     var cliente:Cliente? = nil
     var contrato:Contrato? = nil
+    var entregable:Entregable? = nil
     var event:EKEvent? = nil
     var startDate:NSDate? = nil
     var endDate:NSDate? = nil
@@ -51,6 +53,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp{
             self.lblTipoFact.text = "Por Horas"
         }else{
             self.lblTipoFact.text = "Por Entregables"
+            self.entregableCell.textLabel!.text = self.entregable?.nombreEntreg
         }
         
         if (self.event?.hasAlarms)! {
@@ -117,16 +120,21 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp{
         self.AlarmState.enabled = true
         self.AlarmState.on = true
     }
+    
+    func returnEntregableToDate(entregable: Entregable) {
+        self.entregable = entregable
+        self.entregableCell.textLabel!.text = entregable.nombreEntreg!
+    }
 
     @IBAction func saveTapped(sender: AnyObject) {
-        daoCita().updateDate(self.cita!, nomDate: self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato!, alarm: self.alarm, event: self.event!)
+        daoCita().updateDate(self.cita!, nomDate: self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato!, entregable: self.entregable!, alarm: self.alarm, event: self.event!)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func cancelTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     /*
     // MARK: - Navigation
 
@@ -154,6 +162,12 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp{
         if segue.identifier == "editReminderSegue"{
             let vc:AlarmPicker = segue.destinationViewController as! AlarmPicker
             vc.delegateAddress = self
+        }
+        if segue.identifier == "editEntregableSegue"{
+            let vc:EntregablePicker = segue.destinationViewController as! EntregablePicker
+            vc.delegateAddress = self
+            vc.entregable = self.entregable
+            vc.contract = self.contrato
         }
     }
 }
