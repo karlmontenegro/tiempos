@@ -98,6 +98,13 @@ class CitaDetailTVC: UITableViewController {
             tableVC.event = self.event as? EKEvent
             tableVC.entregable = self.cita?.entregable
         }
+        if segue.identifier == "convertDateToTimeSegue" {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let tableVC = navVC.viewControllers.first as! ConvertirCitaTVC
+            tableVC.cita = self.cita
+            tableVC.event = self.event as? EKEvent
+            tableVC.entregable = self.cita?.entregable
+        }
     }
 
 }
