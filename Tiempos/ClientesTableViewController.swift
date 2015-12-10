@@ -13,8 +13,15 @@ class ClientesTableViewController: UITableViewController {
     
     var arreglo = daoCliente().getAllClients()
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.revealViewController() != nil {
+            self.menuButton.target = self.revealViewController()
+            self.menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -72,10 +79,6 @@ class ClientesTableViewController: UITableViewController {
         return true
     }
     */
-
-    @IBAction func backButtonTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
 
     // Override to support editing the table view.
     

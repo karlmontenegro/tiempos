@@ -10,6 +10,15 @@
 		0C0F91E61BF4F19A00C1872D /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0F91E51BF4F19A00C1872D /* DateTimePicker.swift */; };
 		0C0F91E81BF50E5A00C1872D /* ContractPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0F91E71BF50E5A00C1872D /* ContractPicker.swift */; };
 		0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */; };
+		0C3533E51C0F60E400D52D7A /* client-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533E41C0F60E400D52D7A /* client-32.png */; };
+		0C3533E71C0F61DB00D52D7A /* contract-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533E61C0F61DB00D52D7A /* contract-32.png */; };
+		0C3533E91C0F623300D52D7A /* date-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533E81C0F623300D52D7A /* date-32.png */; };
+		0C3533EB1C0F628800D52D7A /* time-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533EA1C0F628800D52D7A /* time-32.png */; };
+		0C3533ED1C0F633400D52D7A /* receipt-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533EC1C0F633400D52D7A /* receipt-32.png */; };
+		0C3533EF1C0F637300D52D7A /* payment-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533EE1C0F637300D52D7A /* payment-32.png */; };
+		0C3533F11C0F6BEA00D52D7A /* menu-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533F01C0F6BEA00D52D7A /* menu-32.png */; };
+		0C3533F41C0F6CA800D52D7A /* cancel-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533F21C0F6CA800D52D7A /* cancel-32.png */; };
+		0C3533F51C0F6CA800D52D7A /* save-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533F31C0F6CA800D52D7A /* save-32.png */; };
 		0C3749C01B7903D900EBD075 /* DAOCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3749BF1B7903D900EBD075 /* DAOCliente.swift */; };
 		0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */; };
 		0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */; };
@@ -46,6 +55,11 @@
 		0C9CF8511BE92A9500712067 /* NSDateAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CF8461BE92A9500712067 /* NSDateAdditions.swift */; };
 		0C9CF8521BE92A9500712067 /* WeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9CF8471BE92A9500712067 /* WeekHeaderView.swift */; };
 		0C9CF8531BE92A9500712067 /* WeekHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9CF8481BE92A9500712067 /* WeekHeaderView.xib */; };
+		0C9E2E851C11F489003BB112 /* menu-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C9E2E841C11F489003BB112 /* menu-25.png */; };
+		0C9E2E871C11FD43003BB112 /* menuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E2E861C11FD43003BB112 /* menuTVC.swift */; };
+		0C9E2E951C121A62003BB112 /* SWRevealViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C9E2E931C121A62003BB112 /* SWRevealViewController.h */; };
+		0C9E2E961C121A62003BB112 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E2E941C121A62003BB112 /* SWRevealViewController.m */; };
+		0C9E2E991C19D7F1003BB112 /* HorasLaboradasTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E2E981C19D7F1003BB112 /* HorasLaboradasTVC.swift */; };
 		0CAE76521B72B2B500BB09F7 /* ContratosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */; };
 		0CAF591F1B7E5E2900DE9CF8 /* DAOCita.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF591E1B7E5E2900DE9CF8 /* DAOCita.swift */; };
 		0CAF59211B7E5E4C00DE9CF8 /* DAOMoneda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59201B7E5E4C00DE9CF8 /* DAOMoneda.swift */; };
@@ -112,6 +126,15 @@
 		0C0F91E51BF4F19A00C1872D /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		0C0F91E71BF50E5A00C1872D /* ContractPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractPicker.swift; sourceTree = "<group>"; };
 		0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleContratoViewController.swift; path = Tiempos/DetalleContratoViewController.swift; sourceTree = "<group>"; };
+		0C3533E41C0F60E400D52D7A /* client-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "client-32.png"; path = "Iconos/client-32.png"; sourceTree = "<group>"; };
+		0C3533E61C0F61DB00D52D7A /* contract-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contract-32.png"; path = "Iconos/contract-32.png"; sourceTree = "<group>"; };
+		0C3533E81C0F623300D52D7A /* date-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "date-32.png"; path = "Iconos/date-32.png"; sourceTree = "<group>"; };
+		0C3533EA1C0F628800D52D7A /* time-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "time-32.png"; path = "Iconos/time-32.png"; sourceTree = "<group>"; };
+		0C3533EC1C0F633400D52D7A /* receipt-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "receipt-32.png"; path = "Iconos/receipt-32.png"; sourceTree = "<group>"; };
+		0C3533EE1C0F637300D52D7A /* payment-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "payment-32.png"; path = "Iconos/payment-32.png"; sourceTree = "<group>"; };
+		0C3533F01C0F6BEA00D52D7A /* menu-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu-32.png"; path = "Iconos/menu-32.png"; sourceTree = "<group>"; };
+		0C3533F21C0F6CA800D52D7A /* cancel-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cancel-32.png"; path = "Iconos/cancel-32.png"; sourceTree = "<group>"; };
+		0C3533F31C0F6CA800D52D7A /* save-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "save-32.png"; path = "Iconos/save-32.png"; sourceTree = "<group>"; };
 		0C3749BF1B7903D900EBD075 /* DAOCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOCliente.swift; sourceTree = "<group>"; };
 		0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoUsuario.swift; path = Tiempos/NuevoUsuario.swift; sourceTree = "<group>"; };
 		0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOUsuario.swift; sourceTree = "<group>"; };
@@ -148,6 +171,12 @@
 		0C9CF8461BE92A9500712067 /* NSDateAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateAdditions.swift; sourceTree = "<group>"; };
 		0C9CF8471BE92A9500712067 /* WeekHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekHeaderView.swift; sourceTree = "<group>"; };
 		0C9CF8481BE92A9500712067 /* WeekHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekHeaderView.xib; sourceTree = "<group>"; };
+		0C9E2E841C11F489003BB112 /* menu-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu-25.png"; path = "Iconos/menu-25.png"; sourceTree = "<group>"; };
+		0C9E2E861C11FD43003BB112 /* menuTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuTVC.swift; sourceTree = "<group>"; };
+		0C9E2E921C121A62003BB112 /* Tiempos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tiempos-Bridging-Header.h"; sourceTree = "<group>"; };
+		0C9E2E931C121A62003BB112 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
+		0C9E2E941C121A62003BB112 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
+		0C9E2E981C19D7F1003BB112 /* HorasLaboradasTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorasLaboradasTVC.swift; sourceTree = "<group>"; };
 		0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContratosTableViewController.swift; path = Tiempos/ContratosTableViewController.swift; sourceTree = "<group>"; };
 		0CAF591E1B7E5E2900DE9CF8 /* DAOCita.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOCita.swift; sourceTree = "<group>"; };
 		0CAF59201B7E5E4C00DE9CF8 /* DAOMoneda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOMoneda.swift; sourceTree = "<group>"; };
@@ -222,6 +251,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C3533681C0F5FA000D52D7A /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				0C3533E41C0F60E400D52D7A /* client-32.png */,
+				0C3533E61C0F61DB00D52D7A /* contract-32.png */,
+				0C9E2E841C11F489003BB112 /* menu-25.png */,
+				0C3533E81C0F623300D52D7A /* date-32.png */,
+				0C3533EA1C0F628800D52D7A /* time-32.png */,
+				0C3533EC1C0F633400D52D7A /* receipt-32.png */,
+				0C3533EE1C0F637300D52D7A /* payment-32.png */,
+				0C3533F01C0F6BEA00D52D7A /* menu-32.png */,
+				0C3533F21C0F6CA800D52D7A /* cancel-32.png */,
+				0C3533F31C0F6CA800D52D7A /* save-32.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		0C5DBC281B8CCC3000FF1D26 /* Client View */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +290,7 @@
 			children = (
 				0C5E8E5A1C0788C400869599 /* ConvertirCitaTVC.swift */,
 				0C5E8E5C1C0788D500869599 /* TimePicker.swift */,
+				0C9E2E981C19D7F1003BB112 /* HorasLaboradasTVC.swift */,
 			);
 			name = Tiempos;
 			sourceTree = "<group>";
@@ -258,6 +305,7 @@
 				0C4E68041B7A50D10002CE49 /* NuevoUsuario.swift */,
 				0C9C58941B726A0E0091B578 /* ClientesTableViewController.swift */,
 				0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */,
+				0C9E2E861C11FD43003BB112 /* menuTVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -278,6 +326,16 @@
 				0C9CF8481BE92A9500712067 /* WeekHeaderView.xib */,
 			);
 			path = CalendarKit;
+			sourceTree = "<group>";
+		};
+		0C9E2E8D1C1218F9003BB112 /* SWSidebarController */ = {
+			isa = PBXGroup;
+			children = (
+				0C9E2E931C121A62003BB112 /* SWRevealViewController.h */,
+				0C9E2E941C121A62003BB112 /* SWRevealViewController.m */,
+				0C9E2E921C121A62003BB112 /* Tiempos-Bridging-Header.h */,
+			);
+			name = SWSidebarController;
 			sourceTree = "<group>";
 		};
 		0CAF58FE1B7E4A3200DE9CF8 /* Model */ = {
@@ -367,6 +425,8 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
+				0C9E2E8D1C1218F9003BB112 /* SWSidebarController */,
+				0C3533681C0F5FA000D52D7A /* Icons */,
 				0C9CF83D1BE92A9500712067 /* CalendarKit */,
 				0C742C361B8228020046BC31 /* Controller */,
 				0CAF58FE1B7E4A3200DE9CF8 /* Model */,
@@ -432,6 +492,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9E2E951C121A62003BB112 /* SWRevealViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,12 +541,13 @@
 		526D566F1B5D57BF000F323D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Isabel Dunin-Borkowski";
 				TargetAttributes = {
 					526D56761B5D57BF000F323D = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = B4ZKBN238U;
 					};
 					526D568B1B5D57C0000F323D = {
 						CreatedOnToolsVersion = 6.4;
@@ -518,12 +580,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				526D56821B5D57BF000F323D /* Main.storyboard in Resources */,
+				0C3533E51C0F60E400D52D7A /* client-32.png in Resources */,
+				0C3533EF1C0F637300D52D7A /* payment-32.png in Resources */,
+				0C3533EB1C0F628800D52D7A /* time-32.png in Resources */,
 				526D56871B5D57BF000F323D /* LaunchScreen.xib in Resources */,
 				0C9CF8531BE92A9500712067 /* WeekHeaderView.xib in Resources */,
 				0C9CF84B1BE92A9500712067 /* CalendarView.xib in Resources */,
+				0C3533F11C0F6BEA00D52D7A /* menu-32.png in Resources */,
+				0C3533E71C0F61DB00D52D7A /* contract-32.png in Resources */,
+				0C3533ED1C0F633400D52D7A /* receipt-32.png in Resources */,
+				0C3533F41C0F6CA800D52D7A /* cancel-32.png in Resources */,
+				0C3533E91C0F623300D52D7A /* date-32.png in Resources */,
 				526D56841B5D57BF000F323D /* Images.xcassets in Resources */,
 				0C9CF8501BE92A9500712067 /* MonthCollectionCell.xib in Resources */,
+				0C9E2E851C11F489003BB112 /* menu-25.png in Resources */,
 				0C9CF84E1BE92A9500712067 /* DayCollectionCell.xib in Resources */,
+				0C3533F51C0F6CA800D52D7A /* save-32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,11 +634,13 @@
 				0CFB8DC61BB1C0310044D0F5 /* Pais+CoreDataProperties.swift in Sources */,
 				0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */,
 				0CAF592D1B7E5EC500DE9CF8 /* DAOTiempo.swift in Sources */,
+				0C9E2E991C19D7F1003BB112 /* HorasLaboradasTVC.swift in Sources */,
 				0CE4B3C31BA86F1300FCC736 /* Contacto.swift in Sources */,
 				0C0F91E81BF50E5A00C1872D /* ContractPicker.swift in Sources */,
 				0CE4B3C51BA8930100FCC736 /* Contrato.swift in Sources */,
 				0CFB8DD11BB1C0310044D0F5 /* ContratoHoras.swift in Sources */,
 				0C9C58951B726A0E0091B578 /* ClientesTableViewController.swift in Sources */,
+				0C9E2E871C11FD43003BB112 /* menuTVC.swift in Sources */,
 				0CE4B3C71BA898E900FCC736 /* NuevoContratoViewController.swift in Sources */,
 				0C5F050F1BD6C7EC00F80578 /* EntregableVC.swift in Sources */,
 				0C5E8E5B1C0788C400869599 /* ConvertirCitaTVC.swift in Sources */,
@@ -590,6 +664,7 @@
 				0CFB8DC51BB1C0310044D0F5 /* Tiempo.swift in Sources */,
 				0CFB8DBD1BB1C0310044D0F5 /* Recibo+CoreDataProperties.swift in Sources */,
 				0C6D63D41B9748B1004C99C4 /* EditarDireccionViewController.swift in Sources */,
+				0C9E2E961C121A62003BB112 /* SWRevealViewController.m in Sources */,
 				0CAF59291B7E5E9A00DE9CF8 /* DAOContacto.swift in Sources */,
 				0CAF59251B7E5E6E00DE9CF8 /* DAODireccion.swift in Sources */,
 				0C4E68091B7A59700002CE49 /* DAOPais.swift in Sources */,
@@ -752,11 +827,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Tiempos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "IDB.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tiempos/Tiempos-Bridging-Header.h";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tiempos-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -767,11 +845,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Tiempos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "IDB.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tiempos/Tiempos-Bridging-Header.h";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tiempos-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

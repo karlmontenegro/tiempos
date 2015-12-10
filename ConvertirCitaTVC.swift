@@ -15,6 +15,8 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
     var entregable:Entregable? = nil
     var event:EKEvent? = nil
     
+    var realStartTime:NSDate? = nil
+    var realEndTime:NSDate? = nil
     
     @IBOutlet weak var lblStartTime: UILabel!
     @IBOutlet weak var lblEndTime: UILabel!
@@ -29,12 +31,14 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         
+        self.realStartTime = self.event?.startDate
+        self.realEndTime = self.event?.endDate
+        
         self.lblStartTime.text = dateFormatter.stringFromDate((self.event?.startDate)!)
         self.lblEndTime.text = dateFormatter.stringFromDate((self.event?.endDate)!)
         self.lblNewStartTime.text = dateFormatter.stringFromDate((self.event?.startDate)!)
         self.lblNewEndTime.text = dateFormatter.stringFromDate((self.event?.endDate)!)
-        self.lblResultingHours.text = self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!.description
-        
+        self.lblResultingHours.text = self.stringFromTimeInterval(self.getTotalTime(self.realStartTime!, end: self.realEndTime!)!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,12 +65,26 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         
+        print(dateFormatter.stringFromDate(date))
+        
         if type == "start" {
             self.lblNewStartTime.text = dateFormatter.stringFromDate(date)
+            self.realStartTime = date
         }
         if type == "end" {
-            self.lblNewStartTime.text = dateFormatter.stringFromDate(date)
+            self.lblNewEndTime.text = dateFormatter.stringFromDate(date)
+            self.realEndTime = date
         }
+        
+        self.lblResultingHours.text = self.stringFromTimeInterval(self.getTotalTime(self.realStartTime!, end: self.realEndTime!)!)
+    }
+    
+    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d horas %02d minutos", hours, minutes)
     }
     
     /*

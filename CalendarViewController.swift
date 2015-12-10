@@ -21,6 +21,7 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
     
     @IBOutlet weak var dateTableView: UITableView!
     @IBOutlet weak var calendarV: UIView!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     let calendarName:String = "Freelo Calendar"
     var defaultCalendar:EKCalendar? = nil
@@ -38,8 +39,14 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
     }
     
     override func viewDidLoad() {
-        let date = NSDate()
+        super.viewDidLoad()
+        if self.revealViewController() != nil {
+            self.menuButton.target = self.revealViewController()
+            self.menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         
+        let date = NSDate()
         let calendarView = CalendarView.instance(date, selectedDate: date)
         calendarView.delegate = self
         calendarView.translatesAutoresizingMaskIntoConstraints = false
@@ -142,9 +149,6 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         self.performSegueWithIdentifier("showDateDetail", sender: self)
     }
     
-    @IBAction func backButtonTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     
     /*
     // MARK: - Navigation

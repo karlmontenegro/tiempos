@@ -24,13 +24,13 @@ class TimePicker: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.selectedDate = self.timePicker.date
-        
         if origin == "start" {
+           self.selectedDate = self.cita?.startDate
            self.timePicker.minimumDate = cita?.startDate
            self.timePicker.setDate((cita?.startDate)!, animated: true)
-        }else {
+        }
+        if origin == "end" {
+            self.selectedDate = self.cita?.endDate
             self.timePicker.minimumDate = cita?.endDate
             self.timePicker.setDate((cita?.endDate)!, animated: true)
         }
