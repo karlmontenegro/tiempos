@@ -126,4 +126,62 @@ class daoCita{
             return nil
         }
     }
+    
+    func getEventByDateId(cita:Cita, store:EKEventStore)->EKEvent? {
+        return daoCalendar().getDateById(cita.eventRef!, eventStore: store)
+    }
+    
+    func getUnconvertedDates()->Array<Cita> {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        let entityContract = NSEntityDescription.entityForName("Cita", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(convertido = %@)", false)
+        
+        request.returnsObjectsAsFaults = false
+        request.entity = entityContract
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as! Array<Cita>
+    }
+    
+    func deleteDate(cita:Cita, store:EKEventStore) {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        daoCalendar().deleteEventById(cita.eventRef!, eventStore: store)
+        
+        context.deleteObject(cita)
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+    }
+    
+    func deleteEventByDateId(event:EKEvent, store:EKEventStore) {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let cita:Cita = self.getDateByEventId(event)!
+        
+        context.deleteObject(cita)
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+        
+        daoCalendar().deleteEventById(event.eventIdentifier, eventStore: store)
+    }
 }

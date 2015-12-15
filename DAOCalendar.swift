@@ -79,7 +79,17 @@ class daoCalendar{
         return nil
     }
     
-    func getDateById()->EKEvent?{
-        return nil
+    func deleteEventById(id:String, eventStore:EKEventStore) {
+        let event:EKEvent = eventStore.eventWithIdentifier(id)!
+        do {
+            try eventStore.removeEvent(event, span: EKSpan.ThisEvent)
+        }catch {
+            print(error)
+        }
+    }
+    
+    func getDateById(id:String,eventStore:EKEventStore)->EKEvent?{
+        
+        return eventStore.eventWithIdentifier(id)
     }
 }

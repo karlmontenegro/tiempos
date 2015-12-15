@@ -1,42 +1,30 @@
 //
-//  CalendarViewController.swift
+//  HorasLaboradasVC.swift
 //  Tiempos
 //
-//  Created by Isabel Dunin Borkowski on 3/11/15.
+//  Created by Isabel Dunin Borkowski on 14/12/15.
 //  Copyright © 2015 Isabel Dunin-Borkowski. All rights reserved.
 //
-
-
-//TODO
-
-//Conseguir listado de calendarios, si no se encuentra, crear de nuevo el calendario.
-//Crear eventos desde la aplicación y setear alertas.
 
 import UIKit
 import CoreData
 import Foundation
 import EventKit
 
-class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewDataSource,UITableViewDelegate{
-    
-    @IBOutlet weak var dateTableView: UITableView!
+class HorasLaboradasVC: UIViewController,CalendarViewDelegate,UITableViewDataSource,UITableViewDelegate {
+
     @IBOutlet weak var calendarV: UIView!
+    @IBOutlet weak var datesWithoutTimeTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     let calendarName:String = "Freelo Calendar"
     var defaultCalendar:EKCalendar? = nil
     let eventStore = EKEventStore()
-    
     var eventArray:Array<EKEvent> = []
+    var dateArray:Array<Cita> = daoCita().getUnconvertedDates()
+    let dateFormatter = NSDateFormatter()
     
-    override func viewWillAppear(animated: Bool) {
-        //Creamos el calendario
-        self.defaultCalendar = daoCalendar().getCalendar(calendarName, store: self.eventStore)
-        
-        let date = NSDate()
-        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
-        self.dateTableView.reloadData()
-    }
+    var source:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +33,7 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
             self.menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        dateFormatter.dateFormat = "ccc, dd MMM"
         
         let date = NSDate()
         let calendarView = CalendarView.instance(date, selectedDate: date)
@@ -55,21 +44,18 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         // Constraints for calendar view - Fill the parent view.
         calendarV.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[calendarView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["calendarView": calendarView]))
         calendarV.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[calendarView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["calendarView": calendarView]))
-        // Do any additional setup after loading the view.
-        
-        self.dateTableView.reloadData()
-        
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func didSelectDate(date: NSDate) {
-        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
-        self.dateTableView.reloadData()
+        self.source = "Calendar"
+        //self.performSegueWithIdentifier("createNewTime", sender: self)
     }
+    
     
     //Table View Functions
     
@@ -79,25 +65,28 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         return 1
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Citas sin tiempo asociado"
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.eventArray.count
+        
+        if self.dateArray.isEmpty {
+            return 0
+        }else {
+            return self.dateArray.count
+        }
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CitaCell", forIndexPath: indexPath)
-
-        if !self.eventArray.isEmpty{
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "h:mm a"
-            dateFormatter.AMSymbol = "AM"
-            dateFormatter.PMSymbol = "PM"
-            let startTimeStr:String = dateFormatter.stringFromDate(self.eventArray[indexPath.row].startDate)
-            cell.detailTextLabel?.text = self.eventArray[indexPath.row].title
-            cell.textLabel?.text = startTimeStr
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("CitaUACell", forIndexPath: indexPath)
         
+        cell.textLabel!.text = self.dateFormatter.stringFromDate((daoCita().getEventByDateId(self.dateArray[indexPath.row], store: self.eventStore)?.startDate)!)
+        
+        cell.detailTextLabel!.text = daoCita().getEventByDateId(self.dateArray[indexPath.row], store: self.eventStore)?.title
         return cell
     }
     
@@ -112,17 +101,16 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                daoCita().deleteEventByDateId(self.eventArray[indexPath.row], store: self.eventStore)
-                
+                daoCita().deleteDate(self.dateArray[indexPath.row], store: self.eventStore)
                 // Deletes the element from the array
-                self.eventArray.removeAtIndex(indexPath.row)
+                self.dateArray.removeAtIndex(indexPath.row)
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
             
             // Cancel action
             alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
-                self.dateTableView.reloadData()
+                self.datesWithoutTimeTableView.reloadData()
             }))
             
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -132,10 +120,13 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         
         return [delete]
     }
-
+    
+    
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -143,21 +134,45 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("showDateDetail", sender: self)
+        self.source = "Date"
+        self.performSegueWithIdentifier("createNewTime", sender: self)
     }
-    
-    
+
+
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDateDetail" {
-            let vc:CitaDetailTVC = segue.destinationViewController as! CitaDetailTVC
-            let indexpath:NSIndexPath = self.dateTableView.indexPathForSelectedRow!
-            vc.event = self.eventArray[indexpath.row]
+        
+        if segue.identifier == "createNewTime" {
+            switch (self.source) {
+                case "Calendar": //The segue comes from the calendar
+                    
+                    let navVC = segue.destinationViewController as! UINavigationController
+                    let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
+                    tableVC.source = "Calendar"
+                    
+                    break
+                
+                case "Date": //The segue comes from an unassigned date
+                    
+                    let navVC = segue.destinationViewController as! UINavigationController
+                    let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
+                    let indexpath:NSIndexPath = self.datesWithoutTimeTableView.indexPathForSelectedRow!
+                    tableVC.source = "Date"
+                    tableVC.cita = self.dateArray[indexpath.row]
+                    break
+                
+                default: //The segue comes from the new time button
+                    
+                    let navVC = segue.destinationViewController as! UINavigationController
+                    let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
+                    tableVC.source = "New"
+                    
+                    break
+            }
         }
     }
-
 }

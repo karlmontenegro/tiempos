@@ -25,6 +25,25 @@ class menuTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        
+        if identifier == "contractView"{
+            let clientes = daoCliente().getAllClients()
+            
+            if clientes.count > 0 {
+                return true
+            }else{
+                let alert = UIAlertView()
+                alert.title = "Error"
+                alert.message = "Debe haber por lo menos un cliente al cual asociar el contrato"
+                alert.addButtonWithTitle("OK")
+                alert.show()
+                return false
+            }
+        }
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 

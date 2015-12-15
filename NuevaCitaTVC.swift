@@ -105,7 +105,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
 
     @IBAction func saveTapped(sender: AnyObject) {
         
-        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente as! Cliente, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato,entregable: self.entregable!, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
+        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente as! Cliente, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato,entregable: self.entregable, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
