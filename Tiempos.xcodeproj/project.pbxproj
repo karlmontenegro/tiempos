@@ -11,6 +11,7 @@
 		0C0F91E81BF50E5A00C1872D /* ContractPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0F91E71BF50E5A00C1872D /* ContractPicker.swift */; };
 		0C1446061C1F29530027BD80 /* HorasLaboradasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */; };
 		0C1446081C1F2D330027BD80 /* NuevoTiempoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1446071C1F2D330027BD80 /* NuevoTiempoTVC.swift */; };
+		0C16F69A1C21DE190015855A /* HoursModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C16F6991C21DE190015855A /* HoursModal.swift */; };
 		0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */; };
 		0C3533E51C0F60E400D52D7A /* client-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533E41C0F60E400D52D7A /* client-32.png */; };
 		0C3533E71C0F61DB00D52D7A /* contract-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533E61C0F61DB00D52D7A /* contract-32.png */; };
@@ -75,6 +76,7 @@
 		0CB1D31A1BED29AA00512744 /* NuevaCitaTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1D3191BED29AA00512744 /* NuevaCitaTVC.swift */; };
 		0CB2239D1C0610F700AF7656 /* EntregablePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB2239C1C0610F700AF7656 /* EntregablePicker.swift */; };
 		0CCF78F11BEBC1BF00D2B3A6 /* DAOCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCF78F01BEBC1BF00D2B3A6 /* DAOCalendar.swift */; };
+		0CD6D7DD1C247FC300A4CBCB /* Tiempo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD6D7DC1C247FC300A4CBCB /* Tiempo+CoreDataProperties.swift */; };
 		0CD84C931C19E5D700159373 /* home-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CD84C921C19E5D700159373 /* home-32.png */; };
 		0CD84C961C19E67900159373 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD84C951C19E67900159373 /* HomeVC.swift */; };
 		0CD8DB4D1BE3ED2F00AAA173 /* CitasTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8DB4C1BE3ED2F00AAA173 /* CitasTVC.swift */; };
@@ -94,7 +96,6 @@
 		0CFB8DC01BB1C0310044D0F5 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFB8DAB1BB1C0310044D0F5 /* Usuario.swift */; };
 		0CFB8DC21BB1C0310044D0F5 /* Entregable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFB8DAD1BB1C0310044D0F5 /* Entregable+CoreDataProperties.swift */; };
 		0CFB8DC31BB1C0310044D0F5 /* Entregable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFB8DAE1BB1C0310044D0F5 /* Entregable.swift */; };
-		0CFB8DC41BB1C0310044D0F5 /* Tiempo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFB8DAF1BB1C0310044D0F5 /* Tiempo+CoreDataProperties.swift */; };
 		0CFB8DC51BB1C0310044D0F5 /* Tiempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFB8DB01BB1C0310044D0F5 /* Tiempo.swift */; };
 		0CFB8DC61BB1C0310044D0F5 /* Pais+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFB8DB11BB1C0310044D0F5 /* Pais+CoreDataProperties.swift */; };
 		0CFB8DC71BB1C0310044D0F5 /* Pais.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFB8DB21BB1C0310044D0F5 /* Pais.swift */; };
@@ -130,6 +131,7 @@
 		0C0F91E71BF50E5A00C1872D /* ContractPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractPicker.swift; sourceTree = "<group>"; };
 		0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorasLaboradasVC.swift; sourceTree = "<group>"; };
 		0C1446071C1F2D330027BD80 /* NuevoTiempoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoTiempoTVC.swift; sourceTree = "<group>"; };
+		0C16F6991C21DE190015855A /* HoursModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoursModal.swift; sourceTree = "<group>"; };
 		0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleContratoViewController.swift; path = Tiempos/DetalleContratoViewController.swift; sourceTree = "<group>"; };
 		0C3533E41C0F60E400D52D7A /* client-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "client-32.png"; path = "Iconos/client-32.png"; sourceTree = "<group>"; };
 		0C3533E61C0F61DB00D52D7A /* contract-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contract-32.png"; path = "Iconos/contract-32.png"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		0CB1D3191BED29AA00512744 /* NuevaCitaTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevaCitaTVC.swift; sourceTree = "<group>"; };
 		0CB2239C1C0610F700AF7656 /* EntregablePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregablePicker.swift; sourceTree = "<group>"; };
 		0CCF78F01BEBC1BF00D2B3A6 /* DAOCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOCalendar.swift; sourceTree = "<group>"; };
+		0CD6D7DC1C247FC300A4CBCB /* Tiempo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tiempo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0CD84C921C19E5D700159373 /* home-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-32.png"; path = "Iconos/home-32.png"; sourceTree = "<group>"; };
 		0CD84C951C19E67900159373 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		0CD8DB4C1BE3ED2F00AAA173 /* CitasTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitasTVC.swift; sourceTree = "<group>"; };
@@ -214,7 +217,6 @@
 		0CFB8DAB1BB1C0310044D0F5 /* Usuario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		0CFB8DAD1BB1C0310044D0F5 /* Entregable+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entregable+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0CFB8DAE1BB1C0310044D0F5 /* Entregable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entregable.swift; sourceTree = "<group>"; };
-		0CFB8DAF1BB1C0310044D0F5 /* Tiempo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tiempo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0CFB8DB01BB1C0310044D0F5 /* Tiempo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tiempo.swift; sourceTree = "<group>"; };
 		0CFB8DB11BB1C0310044D0F5 /* Pais+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pais+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0CFB8DB21BB1C0310044D0F5 /* Pais.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pais.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				0CB2239C1C0610F700AF7656 /* EntregablePicker.swift */,
 				0C5E8E5C1C0788D500869599 /* TimePicker.swift */,
 				0C0F91E51BF4F19A00C1872D /* DateTimePicker.swift */,
+				0C16F6991C21DE190015855A /* HoursModal.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 		0CAF58FE1B7E4A3200DE9CF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0CD6D7DC1C247FC300A4CBCB /* Tiempo+CoreDataProperties.swift */,
 				0CFB8DA81BB1C0310044D0F5 /* Recibo+CoreDataProperties.swift */,
 				0CFB8DA91BB1C0310044D0F5 /* Recibo.swift */,
 				0CFB8DAA1BB1C0310044D0F5 /* Usuario+CoreDataProperties.swift */,
@@ -368,7 +372,6 @@
 				0CE4B3C41BA8930100FCC736 /* Contrato.swift */,
 				0CFB8DAD1BB1C0310044D0F5 /* Entregable+CoreDataProperties.swift */,
 				0CFB8DAE1BB1C0310044D0F5 /* Entregable.swift */,
-				0CFB8DAF1BB1C0310044D0F5 /* Tiempo+CoreDataProperties.swift */,
 				0CFB8DB01BB1C0310044D0F5 /* Tiempo.swift */,
 				0CFB8DB11BB1C0310044D0F5 /* Pais+CoreDataProperties.swift */,
 				0CFB8DB21BB1C0310044D0F5 /* Pais.swift */,
@@ -650,6 +653,7 @@
 				0CFB8DCC1BB1C0310044D0F5 /* Cliente+CoreDataProperties.swift in Sources */,
 				0CFB8DC81BB1C0310044D0F5 /* Cita+CoreDataProperties.swift in Sources */,
 				0CAF59211B7E5E4C00DE9CF8 /* DAOMoneda.swift in Sources */,
+				0CD6D7DD1C247FC300A4CBCB /* Tiempo+CoreDataProperties.swift in Sources */,
 				526D567F1B5D57BF000F323D /* ViewController.swift in Sources */,
 				0CE406701B9F3FA80096CE36 /* Direccion.swift in Sources */,
 				0CB2239D1C0610F700AF7656 /* EntregablePicker.swift in Sources */,
@@ -701,6 +705,7 @@
 				526D567D1B5D57BF000F323D /* AppDelegate.swift in Sources */,
 				0CAF592B1B7E5EAD00DE9CF8 /* DAOInfoContacto.swift in Sources */,
 				0CFB8DCD1BB1C0310044D0F5 /* Cliente.swift in Sources */,
+				0C16F69A1C21DE190015855A /* HoursModal.swift in Sources */,
 				0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */,
 				0C8BDE151B87993500EDBC9C /* EditarCliente.swift in Sources */,
 				0CAF592F1B7E5EF900DE9CF8 /* DAOContratoHoras.swift in Sources */,
@@ -718,7 +723,6 @@
 				0CE406721B9F53900096CE36 /* VerDireccionViewController.swift in Sources */,
 				0CAF59231B7E5E5E00DE9CF8 /* DAORecibo.swift in Sources */,
 				0CB1D31A1BED29AA00512744 /* NuevaCitaTVC.swift in Sources */,
-				0CFB8DC41BB1C0310044D0F5 /* Tiempo+CoreDataProperties.swift in Sources */,
 				0C9CF8491BE92A9500712067 /* CalendarLogic.swift in Sources */,
 				0C9CF84D1BE92A9500712067 /* DayCollectionCell.swift in Sources */,
 				0C3749C01B7903D900EBD075 /* DAOCliente.swift in Sources */,

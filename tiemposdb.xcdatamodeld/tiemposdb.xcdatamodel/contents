@@ -89,8 +89,7 @@
     </entity>
     <entity name="Tiempo" representedClassName="Tiempo" syncable="YES">
         <attribute name="convertido" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="horaFin" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="horaIni" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="horas" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lugar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tipoFac" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
@@ -126,7 +125,7 @@
         <element name="Moneda" positionX="-389" positionY="-657" width="128" height="118"/>
         <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
         <element name="Recibo" positionX="-738" positionY="-954" width="144" height="208"/>
-        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="208"/>
+        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="195"/>
         <element name="Usuario" positionX="-738" positionY="-706" width="108" height="238"/>
     </elements>
 </model>

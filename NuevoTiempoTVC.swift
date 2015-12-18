@@ -14,6 +14,7 @@ class NuevoTiempoTVC: UITableViewController {
     
     var date:NSDate? = nil
     var cita:Cita? = nil
+    var horas:String = ""
     var source:String = ""
     var event:EKEvent? = nil
     let eventStore = EKEventStore()
@@ -23,6 +24,7 @@ class NuevoTiempoTVC: UITableViewController {
     @IBOutlet weak var lblContrato: UILabel!
     @IBOutlet weak var lblCita: UILabel!
     @IBOutlet weak var lblFecha: UILabel!
+    @IBOutlet weak var lblHoras: UILabel!
     
     @IBOutlet weak var citaAsociada: UITableViewCell!
     
@@ -36,6 +38,9 @@ class NuevoTiempoTVC: UITableViewController {
             self.lblContrato.text = self.cita?.contrato?.nombreContrato
             self.lblCita.text = self.event?.title
             self.lblFecha.text = self.dateFormatter.stringFromDate((self.event?.startDate)!)
+            self.horas = self.stringFromTimeInterval(self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!)
+            self.lblHoras.text = self.horas
+
         }
     }
 
@@ -49,9 +54,41 @@ class NuevoTiempoTVC: UITableViewController {
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let alertController = UIAlertController(title: "Atención", message:
+            "Se guardarán " + self.horas + " como tiempo laborado. ¿Deseas continuar?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // Save action
+        alertController.addAction(UIAlertAction(title: "Guardar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+            
+            let alert = UIAlertView()
+            alert.title = "Tiempos"
+            alert.message = "El tiempo laborado se guardó exitosamente"
+            alert.addButtonWithTitle("OK")
+            alert.show()
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        // Cancel action
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d horas %02d minutos", hours, minutes)
     }
 
+    func getTotalTime(start:NSDate, end:NSDate)->NSTimeInterval?{
+        let interval:NSTimeInterval = end.timeIntervalSinceDate(start)
+        return interval
+    }
     /*
     // MARK: - Navigation
 

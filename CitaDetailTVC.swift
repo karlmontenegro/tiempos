@@ -13,6 +13,7 @@ class CitaDetailTVC: UITableViewController {
     
     var event:AnyObject? = []
     var cita:Cita? = nil
+    var hideTableSection:Bool = false
     
     @IBOutlet weak var nomCita: UILabel!
     @IBOutlet weak var nomCliente: UILabel!
@@ -23,6 +24,8 @@ class CitaDetailTVC: UITableViewController {
     @IBOutlet weak var nomEntregable: UILabel!
     @IBOutlet weak var alerts: UILabel!
     @IBOutlet weak var entregableCell: UITableViewCell!
+    
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,10 @@ class CitaDetailTVC: UITableViewController {
         }else{
             self.alerts.text = "Sin recordatorios"
         }
+        
+        if (self.cita!.convertido == 1) {
+            self.editButton.enabled = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +75,22 @@ class CitaDetailTVC: UITableViewController {
         }
         return 44.0
     }
+    
+    /*
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if(section == 4) //Index number of interested section
+        {
+            if (hideTableSection) {
+                return 0; //number of row in section when you click on hide
+            }else{
+                return 1; //number of row in section when you click on show (if it's higher than rows in Storyboard, app willcrash)
+            }
+        }else{
+            return 1//keeps inalterate all other rows
+        }
+    }
+    */
     
     func getOffsetText(offset: NSTimeInterval)->String{
         let interval = Int(offset * -1.0)

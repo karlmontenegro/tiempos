@@ -64,6 +64,20 @@ class daoCita{
         }
     }
     
+    func setConvertedStatus(cita: Cita, converted:Bool) {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        cita.setValue(converted, forKey: "convertido")
+        
+        do{
+            try context.save()
+        }catch {
+            print(error)
+        }
+    }
+    
+    
     func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato,entregable:Entregable?, alarm: EKAlarm?, event: EKEvent){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -108,10 +122,9 @@ class daoCita{
         let entityCita = NSEntityDescription.entityForName("Cita", inManagedObjectContext: context)
         
         let request = NSFetchRequest()
-        let pred = NSPredicate(format: "(eventRef = %@)", event.eventIdentifier)
+        let pred = NSPredicate(format: "(eventRef = %@)", event.eventIdentifier )
         request.entity = entityCita
         request.predicate = pred
-        request.returnsObjectsAsFaults = false
         
         var result:NSArray = []
         

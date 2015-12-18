@@ -17,6 +17,7 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
     
     var realStartTime:NSDate? = nil
     var realEndTime:NSDate? = nil
+    var resultingTime:String = ""
     
     @IBOutlet weak var lblStartTime: UILabel!
     @IBOutlet weak var lblEndTime: UILabel!
@@ -38,7 +39,8 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
         self.lblEndTime.text = dateFormatter.stringFromDate((self.event?.endDate)!)
         self.lblNewStartTime.text = dateFormatter.stringFromDate((self.event?.startDate)!)
         self.lblNewEndTime.text = dateFormatter.stringFromDate((self.event?.endDate)!)
-        self.lblResultingHours.text = self.stringFromTimeInterval(self.getTotalTime(self.realStartTime!, end: self.realEndTime!)!)
+        self.resultingTime = self.stringFromTimeInterval(self.getTotalTime(self.realStartTime!, end: self.realEndTime!)!)
+        self.lblResultingHours.text = self.resultingTime
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +49,34 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
     }
     
     @IBAction func convertTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //Do the conversion
+        
+        let interval:NSTimeInterval = self.getTotalTime(self.realStartTime!, end: self.realEndTime!)!
+        let numberInterval = Int(interval)
+        
+        let alertController = UIAlertController(title: "Atención", message:
+            "Se guardarán " + self.resultingTime + " como tiempo laborado. ¿Deseas continuar?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // Save action
+        alertController.addAction(UIAlertAction(title: "Guardar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+            
+            daoTiempo().newTiempo(self.cita!, title: (self.event?.title)!, converted: true, hours: NSNumber(integer: numberInterval), place: "", fact: (self.cita!.contrato?.tipoFacturacion)!)
+            
+            let alert = UIAlertView()
+            alert.title = "Tiempos"
+            alert.message = "El tiempo laborado se guardó exitosamente"
+            alert.addButtonWithTitle("OK")
+            alert.show()
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        // Cancel action
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
     @IBAction func cancelTapped(sender: UIBarButtonItem) {
@@ -76,7 +105,8 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
             self.realEndTime = date
         }
         
-        self.lblResultingHours.text = self.stringFromTimeInterval(self.getTotalTime(self.realStartTime!, end: self.realEndTime!)!)
+        self.resultingTime = self.stringFromTimeInterval(self.getTotalTime(self.realStartTime!, end: self.realEndTime!)!)
+        self.lblResultingHours.text = self.resultingTime
     }
     
     func stringFromTimeInterval(interval: NSTimeInterval) -> String {
