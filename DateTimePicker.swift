@@ -22,6 +22,7 @@ class DateTimePicker: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.selectedDate = self.dateTimePicker.date
         // Do any additional setup after loading the view.
     }
 

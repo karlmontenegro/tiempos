@@ -9,17 +9,18 @@
 import UIKit
 
 protocol hoursOp {
-    func returnHoursToTime()
+    func returnHoursToTime(time:NSDate, min:NSDate, max:NSDate)
 }
 
 class HoursModal: UIViewController {
-
-    @IBOutlet weak var txtHoras: UITextField!
-    @IBOutlet weak var txtMins: UITextField!
+    
+    @IBOutlet weak var timePicker: UIDatePicker!
+    var delegateAddress:hoursOp? = nil
+    var selectedTime:NSDate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.timePicker.datePickerMode = UIDatePickerMode.Time
         // Do any additional setup after loading the view.
     }
 
@@ -28,8 +29,15 @@ class HoursModal: UIViewController {
         // Dispose of any resources that can be recreated.
     }
         
+    @IBAction func timePickerAction(sender: AnyObject) {
+        self.selectedTime = self.timePicker.date
+    }
     
     @IBAction func doneTapped(sender: AnyObject) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm ZZZ"
+        self.delegateAddress!.returnHoursToTime(self.selectedTime!, min: self.timePicker.minimumDate! , max: self.timePicker.maximumDate!)
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

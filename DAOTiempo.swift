@@ -11,6 +11,32 @@ import CoreData
 
 class daoTiempo{
     
+    func newTiempo(cliente: Cliente?, contrato: Contrato?, title: String?, fecha: NSDate?, hours: NSNumber, place: String, fact: String, converted: Bool) {
+        
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let newTiempo = NSEntityDescription.insertNewObjectForEntityForName("Tiempo", inManagedObjectContext: context)
+        
+        newTiempo.setValue(title, forKey: "titulo")
+        newTiempo.setValue(converted, forKey: "convertido")
+        newTiempo.setValue(hours, forKey: "horas")
+        
+        newTiempo.setValue(cliente, forKey: "cliente")
+        newTiempo.setValue(contrato, forKey: "contrato")
+        //newTiempo.setValue(cita.entregable!, forKey: "entregable")
+        
+        newTiempo.setValue(nil, forKey: "recibo")
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+        
+        print(newTiempo)
+    }
+    
     func newTiempo(cita: Cita, title: String, converted: Bool, hours: NSNumber, place:String, fact:String) {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext

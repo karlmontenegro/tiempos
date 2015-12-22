@@ -10,7 +10,7 @@ import UIKit
 import EventKit
 import Foundation
 
-class NuevoTiempoTVC: UITableViewController {
+class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
     
     var date:NSDate? = nil
     var cita:Cita? = nil
@@ -20,11 +20,17 @@ class NuevoTiempoTVC: UITableViewController {
     let eventStore = EKEventStore()
     let dateFormatter = NSDateFormatter()
     
+    var cliente:Cliente? = nil
+    var contrato:Contrato? = nil
+    var fecha:NSDate? = nil
+    var interval = NSTimeInterval()
+    
     @IBOutlet weak var lblCliente: UILabel!
     @IBOutlet weak var lblContrato: UILabel!
     @IBOutlet weak var lblCita: UILabel!
     @IBOutlet weak var lblFecha: UILabel!
     @IBOutlet weak var lblHoras: UILabel!
+    @IBOutlet weak var txtTitulo: UITextField!
     
     @IBOutlet weak var citaAsociada: UITableViewCell!
     
@@ -54,11 +60,16 @@ class NuevoTiempoTVC: UITableViewController {
     }
     
     @IBAction func saveTapped(sender: AnyObject) {
+        
+        let numberInterval = Int(self.interval)
+        
         let alertController = UIAlertController(title: "Atención", message:
             "Se guardarán " + self.horas + " como tiempo laborado. ¿Deseas continuar?", preferredStyle: UIAlertControllerStyle.Alert)
         
         // Save action
         alertController.addAction(UIAlertAction(title: "Guardar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+            
+            daoTiempo().newTiempo(self.cliente, contrato: self.contrato, title: self.txtTitulo.text, fecha: self.date, hours: NSNumber(integer: numberInterval), place: "", fact: "HRS", converted: true)
             
             let alert = UIAlertView()
             alert.title = "Tiempos"
@@ -89,14 +100,52 @@ class NuevoTiempoTVC: UITableViewController {
         let interval:NSTimeInterval = end.timeIntervalSinceDate(start)
         return interval
     }
+    
+    func returnHoursToTime(time: NSDate, min: NSDate, max: NSDate) {
+        
+        interval = time.timeIntervalSinceDate(min)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm ZZZ"
+        self.horas = self.stringFromTimeInterval(interval)
+        self.lblHoras.text = self.horas
+    }
+    
+    func returnClientToDate(client: Cliente) {
+        self.lblCliente.text = client.nombre!
+        self.cliente = client
+    }
+    
+    func returnContractToDate(contract: Contrato) {
+        self.lblContrato.text = contract.nombreContrato!
+        self.contrato = contract
+    }
+    
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "hoursModalSegue" {
+            let vc:HoursModal = segue.destinationViewController as! HoursModal
+            vc.delegateAddress = self
+        }
+        
+        if segue.identifier == "clientModalSegue" {
+            let vc:ClientePicker = segue.destinationViewController as! ClientePicker
+            vc.delegateAddress = self
+        }
+        
+        if segue.identifier == "contractModalSegue" {
+            let vc:ContractPicker = segue.destinationViewController as! ContractPicker
+            vc.delegateAddress = self
+            vc.cliente = self.cliente
+        }
     }
-    */
+
 
 }

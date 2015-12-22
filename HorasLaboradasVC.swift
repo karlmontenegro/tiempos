@@ -53,7 +53,7 @@ class HorasLaboradasVC: UIViewController,CalendarViewDelegate,UITableViewDataSou
     
     func didSelectDate(date: NSDate) {
         self.source = "Calendar"
-        //self.performSegueWithIdentifier("createNewTime", sender: self)
+        self.performSegueWithIdentifier("createNewTime", sender: self)
     }
     
     

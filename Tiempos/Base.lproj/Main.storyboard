@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7MY-RO-itE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7MY-RO-itE">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -1037,7 +1037,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAf-R4-cRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3417" y="125.25"/>
+            <point key="canvasLocation" x="3627" y="147"/>
         </scene>
         <!--Nuevo Cliente-->
         <scene sceneID="Kds-u7-pZe">
@@ -3861,7 +3861,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGO-oa-FI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4426.5" y="219.75"/>
+            <point key="canvasLocation" x="4894.5" y="192.75"/>
         </scene>
         <!--Alarm Picker-->
         <scene sceneID="vuP-aO-E6l">
@@ -3988,7 +3988,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxY-ib-KmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4474.5" y="196.5"/>
+            <point key="canvasLocation" x="5266.5" y="147"/>
         </scene>
         <!--Contract Picker-->
         <scene sceneID="LxX-BE-p7k">
@@ -4123,7 +4123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1k-c4-BTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4533" y="171.75"/>
+            <point key="canvasLocation" x="3771" y="175.5"/>
         </scene>
         <!--Date Time Picker-->
         <scene sceneID="Ttc-NK-G2l">
@@ -4255,7 +4255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE0-9f-8vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4594.5" y="147"/>
+            <point key="canvasLocation" x="5410.5" y="118.5"/>
         </scene>
         <!--Cliente Picker-->
         <scene sceneID="8lf-zj-sW2">
@@ -4388,7 +4388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7A-qH-rd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4650" y="125.25"/>
+            <point key="canvasLocation" x="4773" y="219"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0GT-4e-TzG">
@@ -4593,16 +4593,66 @@
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Cita" footerTitle="Estas horas pertenecen a una cita específica?" id="dXL-67-6zy">
+                            <tableViewSection headerTitle="Concepto" footerTitle="Descripción del tiempo que se registrará" id="xjx-fg-BLc">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ct1-vK-5QH" style="IBUITableViewCellStyleDefault" id="7Wp-92-qpR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sVy-V8-FnU">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Wp-92-qpR" id="VNb-Be-ted">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sVy-V8-FnU" id="5rm-fG-uIz">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir cita asociada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ct1-vK-5QH">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z9O-Fw-Hl3">
+                                                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="Z9O-Fw-Hl3" firstAttribute="centerY" secondItem="5rm-fG-uIz" secondAttribute="centerY" id="2HW-fr-zW1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Z9O-Fw-Hl3" secondAttribute="trailing" constant="8" id="ILW-2b-sWX"/>
+                                                <constraint firstItem="Z9O-Fw-Hl3" firstAttribute="centerX" secondItem="5rm-fG-uIz" secondAttribute="centerX" id="eYc-Rj-JjT"/>
+                                                <constraint firstItem="Z9O-Fw-Hl3" firstAttribute="leading" secondItem="5rm-fG-uIz" secondAttribute="leadingMargin" constant="8" id="pk4-KV-2cE"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="Z9O-Fw-Hl3"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="2HW-fr-zW1"/>
+                                                    <exclude reference="ILW-2b-sWX"/>
+                                                    <exclude reference="eYc-Rj-JjT"/>
+                                                    <exclude reference="pk4-KV-2cE"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="Z9O-Fw-Hl3"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="2HW-fr-zW1"/>
+                                                    <include reference="ILW-2b-sWX"/>
+                                                    <include reference="eYc-Rj-JjT"/>
+                                                    <include reference="pk4-KV-2cE"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Cliente" footerTitle="Introduce el cliente para el cual trabajaste esas horas" id="jlP-6N-eSB">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4ex-7N-T5L" style="IBUITableViewCellStyleDefault" id="wEL-Du-4YH">
+                                        <rect key="frame" x="0.0" y="447" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wEL-Du-4YH" id="K1n-Wq-yNN">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir cliente asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ex-7N-T5L">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
@@ -4617,6 +4667,39 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <segue destination="Xkk-ah-PFB" kind="presentation" identifier="clientModalSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="0YH-12-9Rm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Horas Laboradas" footerTitle="Introduce las horas que trabajaste" id="ri3-yr-4R4">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3kx-Hf-ih1" style="IBUITableViewCellStyleDefault" id="CfZ-w5-wv4">
+                                        <rect key="frame" x="0.0" y="336" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CfZ-w5-wv4" id="TDn-ZH-JlP">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir horas laboradas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3kx-Hf-ih1">
+                                                    <rect key="frame" x="15" y="0.0" width="550" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <segue destination="eQ1-gc-jc7" kind="presentation" identifier="hoursModalSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="G98-Jh-kBT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -4647,16 +4730,16 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Horas Laboradas" footerTitle="Introduce las horas que trabajaste" id="ri3-yr-4R4">
+                            <tableViewSection headerTitle="Contrato" footerTitle="Introduce el contrato asociado, si lo hubiese" id="VRn-cL-LGV">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3kx-Hf-ih1" style="IBUITableViewCellStyleDefault" id="CfZ-w5-wv4">
-                                        <rect key="frame" x="0.0" y="336" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="la2-ot-DkX" style="IBUITableViewCellStyleDefault" id="mQs-sG-1an">
+                                        <rect key="frame" x="0.0" y="558" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CfZ-w5-wv4" id="TDn-ZH-JlP">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQs-sG-1an" id="CBc-4E-F4o">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir horas laboradas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3kx-Hf-ih1">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir contrato asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="la2-ot-DkX">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
@@ -4672,48 +4755,21 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="eQ1-gc-jc7" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="G98-Jh-kBT"/>
+                                            <segue destination="JYd-PL-BCv" kind="presentation" identifier="contractModalSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="ahy-Kc-bEb"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Cliente" footerTitle="Introduce el cliente para el cual trabajaste esas horas" id="jlP-6N-eSB">
+                            <tableViewSection headerTitle="Cita" footerTitle="Estas horas pertenecen a una cita específica?" id="dXL-67-6zy">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4ex-7N-T5L" style="IBUITableViewCellStyleDefault" id="wEL-Du-4YH">
-                                        <rect key="frame" x="0.0" y="447" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ct1-vK-5QH" style="IBUITableViewCellStyleDefault" id="7Wp-92-qpR">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wEL-Du-4YH" id="K1n-Wq-yNN">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Wp-92-qpR" id="VNb-Be-ted">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir cliente asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ex-7N-T5L">
-                                                    <rect key="frame" x="15" y="0.0" width="550" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Contrato" footerTitle="Introduce el contrato asociado, si lo hubiese" id="VRn-cL-LGV">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="la2-ot-DkX" style="IBUITableViewCellStyleDefault" id="mQs-sG-1an">
-                                        <rect key="frame" x="0.0" y="558" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQs-sG-1an" id="CBc-4E-F4o">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir contrato asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="la2-ot-DkX">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir cita asociada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ct1-vK-5QH">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
@@ -4758,6 +4814,7 @@
                         <outlet property="lblContrato" destination="la2-ot-DkX" id="Id5-bJ-mlt"/>
                         <outlet property="lblFecha" destination="mBT-m1-rp9" id="ZBF-eP-LsX"/>
                         <outlet property="lblHoras" destination="3kx-Hf-ih1" id="rxe-bh-tCc"/>
+                        <outlet property="txtTitulo" destination="Z9O-Fw-Hl3" id="gcu-Cu-oD0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YAC-SP-cTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4795,14 +4852,31 @@
                                             <action selector="cancelTapped:" destination="eQ1-gc-jc7" eventType="touchUpInside" id="MCY-z9-mua"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7j0-d8-QqT">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FW-Ml-Vli">
+                                        <rect key="frame" x="-160" y="-108" width="320" height="216"/>
+                                        <animations/>
+                                        <date key="date" timeIntervalSinceReferenceDate="472453200.49522799">
+                                            <!--2015-12-22 05:00:00 +0000-->
+                                        </date>
+                                        <date key="minimumDate" timeIntervalSinceReferenceDate="472453200">
+                                            <!--2015-12-22 05:00:00 +0000-->
+                                        </date>
+                                        <date key="maximumDate" timeIntervalSinceReferenceDate="472582800">
+                                            <!--2015-12-23 17:00:00 +0000-->
+                                        </date>
+                                        <locale key="locale" localeIdentifier="en_GB"/>
+                                        <connections>
+                                            <action selector="timePickerAction:" destination="eQ1-gc-jc7" eventType="valueChanged" id="bF1-hd-R5e"/>
+                                        </connections>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLK-Rk-nfR">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvx-0v-y7a">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjC-hO-RNV">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -4813,127 +4887,110 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Vvx-0v-y7a" secondAttribute="trailing" constant="223" id="3gZ-eS-piQ">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="215"/>
+                                    <constraint firstItem="0FW-Ml-Vli" firstAttribute="centerX" secondItem="dWV-E0-sL4" secondAttribute="centerX" id="1Oe-tY-oE4"/>
+                                    <constraint firstItem="Quw-tQ-d4g" firstAttribute="top" secondItem="0FW-Ml-Vli" secondAttribute="bottom" constant="23" id="3fe-qu-Nq9"/>
+                                    <constraint firstItem="0FW-Ml-Vli" firstAttribute="leading" secondItem="dWV-E0-sL4" secondAttribute="leading" constant="21" id="3v7-UZ-MsJ"/>
+                                    <constraint firstItem="NLK-Rk-nfR" firstAttribute="centerX" secondItem="GPO-ea-5la" secondAttribute="centerX" id="5qd-5F-s9X">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="25.5"/>
                                     </constraint>
                                     <constraint firstAttribute="trailing" secondItem="Quw-tQ-d4g" secondAttribute="trailing" constant="208" id="6aA-JA-IcL">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="201"/>
-                                    </constraint>
-                                    <constraint firstAttribute="bottom" secondItem="GPO-ea-5la" secondAttribute="bottom" constant="24" id="Azo-JZ-Ucg">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="29"/>
-                                    </constraint>
-                                    <constraint firstItem="GPO-ea-5la" firstAttribute="leading" secondItem="dWV-E0-sL4" secondAttribute="leading" constant="201" id="Bmd-xv-Ksx">
                                         <variation key="heightClass=regular-widthClass=compact" constant="208"/>
                                     </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="GPO-ea-5la" secondAttribute="bottom" constant="24" id="Azo-JZ-Ucg">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="17"/>
+                                    </constraint>
+                                    <constraint firstItem="GPO-ea-5la" firstAttribute="leading" secondItem="dWV-E0-sL4" secondAttribute="leading" constant="201" id="Bmd-xv-Ksx">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="201"/>
+                                    </constraint>
                                     <constraint firstItem="GPO-ea-5la" firstAttribute="top" secondItem="dWV-E0-sL4" secondAttribute="top" constant="218" id="Cnj-HD-0xn">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="213"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="225"/>
                                     </constraint>
-                                    <constraint firstAttribute="bottom" secondItem="Vvx-0v-y7a" secondAttribute="bottom" constant="161" id="FQa-u9-lW5"/>
                                     <constraint firstAttribute="trailing" secondItem="GPO-ea-5la" secondAttribute="trailing" constant="58" id="Ftj-7B-RIL">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="51"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="58"/>
                                     </constraint>
-                                    <constraint firstItem="Vvx-0v-y7a" firstAttribute="top" secondItem="dWV-E0-sL4" secondAttribute="top" constant="100" id="JuQ-hz-uen"/>
+                                    <constraint firstItem="0FW-Ml-Vli" firstAttribute="top" secondItem="dWV-E0-sL4" secondAttribute="top" constant="21" id="Iam-St-f5m">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="67"/>
+                                    </constraint>
                                     <constraint firstItem="Quw-tQ-d4g" firstAttribute="top" secondItem="dWV-E0-sL4" secondAttribute="top" constant="218" id="NDH-7O-Tng">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="213"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="225"/>
                                     </constraint>
                                     <constraint firstAttribute="height" constant="282" id="NFe-rB-gGc"/>
+                                    <constraint firstItem="0FW-Ml-Vli" firstAttribute="top" secondItem="NLK-Rk-nfR" secondAttribute="bottom" constant="20" id="O7m-rC-0e4">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                                    </constraint>
                                     <constraint firstAttribute="bottom" secondItem="Quw-tQ-d4g" secondAttribute="bottom" constant="24" id="Qrl-3T-xWu">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="29"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="17"/>
                                     </constraint>
-                                    <constraint firstAttribute="trailing" secondItem="7j0-d8-QqT" secondAttribute="trailing" constant="83" id="W9U-yX-XfB"/>
-                                    <constraint firstItem="Vvx-0v-y7a" firstAttribute="leading" secondItem="dWV-E0-sL4" secondAttribute="leading" constant="87" id="WU6-Y7-kAo">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="95"/>
+                                    <constraint firstItem="NLK-Rk-nfR" firstAttribute="baseline" secondItem="HjC-hO-RNV" secondAttribute="baseline" id="YL6-7i-9G7"/>
+                                    <constraint firstAttribute="trailing" secondItem="NLK-Rk-nfR" secondAttribute="trailing" constant="73" id="dXV-CN-t0f">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="21"/>
                                     </constraint>
-                                    <constraint firstItem="7j0-d8-QqT" firstAttribute="leading" secondItem="dWV-E0-sL4" secondAttribute="leading" constant="208" id="dye-nL-ln8"/>
-                                    <constraint firstItem="7j0-d8-QqT" firstAttribute="top" secondItem="dWV-E0-sL4" secondAttribute="top" constant="100" id="f4b-hG-Xhp"/>
+                                    <constraint firstItem="NLK-Rk-nfR" firstAttribute="leading" secondItem="HjC-hO-RNV" secondAttribute="trailing" constant="76" id="iXg-6m-3MS">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="111"/>
+                                    </constraint>
                                     <constraint firstItem="Quw-tQ-d4g" firstAttribute="leading" secondItem="dWV-E0-sL4" secondAttribute="leading" constant="58" id="jPg-6b-g8E">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="65"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="58"/>
                                     </constraint>
-                                    <constraint firstAttribute="bottom" secondItem="7j0-d8-QqT" secondAttribute="bottom" constant="161" id="zmt-MF-oD8"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="GPO-ea-5la"/>
                                         <exclude reference="Quw-tQ-d4g"/>
-                                        <exclude reference="7j0-d8-QqT"/>
-                                        <exclude reference="Vvx-0v-y7a"/>
+                                        <exclude reference="0FW-Ml-Vli"/>
+                                        <exclude reference="NLK-Rk-nfR"/>
+                                        <exclude reference="HjC-hO-RNV"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="NFe-rB-gGc"/>
-                                        <exclude reference="Azo-JZ-Ucg"/>
-                                        <exclude reference="Bmd-xv-Ksx"/>
-                                        <exclude reference="Cnj-HD-0xn"/>
-                                        <exclude reference="Ftj-7B-RIL"/>
+                                        <exclude reference="1Oe-tY-oE4"/>
+                                        <exclude reference="3v7-UZ-MsJ"/>
+                                        <exclude reference="Iam-St-f5m"/>
+                                        <exclude reference="O7m-rC-0e4"/>
+                                        <exclude reference="5qd-5F-s9X"/>
+                                        <exclude reference="YL6-7i-9G7"/>
+                                        <exclude reference="dXV-CN-t0f"/>
+                                        <exclude reference="iXg-6m-3MS"/>
+                                        <exclude reference="3fe-qu-Nq9"/>
                                         <exclude reference="6aA-JA-IcL"/>
                                         <exclude reference="NDH-7O-Tng"/>
                                         <exclude reference="Qrl-3T-xWu"/>
                                         <exclude reference="jPg-6b-g8E"/>
-                                        <exclude reference="W9U-yX-XfB"/>
-                                        <exclude reference="dye-nL-ln8"/>
-                                        <exclude reference="f4b-hG-Xhp"/>
-                                        <exclude reference="zmt-MF-oD8"/>
-                                        <exclude reference="3gZ-eS-piQ"/>
-                                        <exclude reference="FQa-u9-lW5"/>
-                                        <exclude reference="JuQ-hz-uen"/>
-                                        <exclude reference="WU6-Y7-kAo"/>
+                                        <exclude reference="Azo-JZ-Ucg"/>
+                                        <exclude reference="Bmd-xv-Ksx"/>
+                                        <exclude reference="Cnj-HD-0xn"/>
+                                        <exclude reference="Ftj-7B-RIL"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="GPO-ea-5la"/>
                                         <include reference="Quw-tQ-d4g"/>
-                                        <include reference="7j0-d8-QqT"/>
-                                        <include reference="Vvx-0v-y7a"/>
+                                        <include reference="0FW-Ml-Vli"/>
+                                        <include reference="NLK-Rk-nfR"/>
+                                        <include reference="HjC-hO-RNV"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="NFe-rB-gGc"/>
-                                        <include reference="Azo-JZ-Ucg"/>
-                                        <include reference="Bmd-xv-Ksx"/>
-                                        <include reference="Cnj-HD-0xn"/>
-                                        <include reference="Ftj-7B-RIL"/>
+                                        <include reference="1Oe-tY-oE4"/>
+                                        <include reference="3v7-UZ-MsJ"/>
+                                        <include reference="Iam-St-f5m"/>
+                                        <include reference="O7m-rC-0e4"/>
+                                        <include reference="5qd-5F-s9X"/>
+                                        <include reference="YL6-7i-9G7"/>
+                                        <include reference="dXV-CN-t0f"/>
+                                        <include reference="iXg-6m-3MS"/>
+                                        <include reference="3fe-qu-Nq9"/>
                                         <include reference="6aA-JA-IcL"/>
                                         <include reference="NDH-7O-Tng"/>
                                         <include reference="Qrl-3T-xWu"/>
                                         <include reference="jPg-6b-g8E"/>
-                                        <include reference="W9U-yX-XfB"/>
-                                        <include reference="dye-nL-ln8"/>
-                                        <include reference="f4b-hG-Xhp"/>
-                                        <include reference="zmt-MF-oD8"/>
-                                        <include reference="3gZ-eS-piQ"/>
-                                        <include reference="FQa-u9-lW5"/>
-                                        <include reference="JuQ-hz-uen"/>
-                                        <include reference="WU6-Y7-kAo"/>
+                                        <include reference="Azo-JZ-Ucg"/>
+                                        <include reference="Bmd-xv-Ksx"/>
+                                        <include reference="Cnj-HD-0xn"/>
+                                        <include reference="Ftj-7B-RIL"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69L-xV-fGF">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="197" y="389" width="15" height="21"/>
-                                </variation>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfh-Ki-HXS">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="212" y="385" width="97" height="30"/>
-                                </variation>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AMP-2f-NBZ">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="92" y="385" width="97" height="30"/>
-                                </variation>
-                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -4946,9 +5003,6 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="dWV-E0-sL4"/>
-                                <exclude reference="69L-xV-fGF"/>
-                                <exclude reference="sfh-Ki-HXS"/>
-                                <exclude reference="AMP-2f-NBZ"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="35O-2a-mrj"/>
@@ -4960,9 +5014,6 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="dWV-E0-sL4"/>
-                                <include reference="69L-xV-fGF"/>
-                                <include reference="sfh-Ki-HXS"/>
-                                <include reference="AMP-2f-NBZ"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="35O-2a-mrj"/>
@@ -4973,8 +5024,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="txtHoras" destination="AMP-2f-NBZ" id="Zz2-wh-flk"/>
-                        <outlet property="txtMins" destination="sfh-Ki-HXS" id="tpZ-ma-8b7"/>
+                        <outlet property="timePicker" destination="0FW-Ml-Vli" id="mKB-nQ-7Oz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHs-sj-CtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5861,15 +5911,15 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oyW-Uv-Djb"/>
         <segue reference="uOR-nE-Lvj"/>
         <segue reference="zBI-aX-Cde"/>
         <segue reference="zH6-Ok-qU1"/>
         <segue reference="NWw-8S-G1o"/>
-        <segue reference="fAi-QO-h1o"/>
+        <segue reference="ahy-Kc-bEb"/>
+        <segue reference="0YH-12-9Rm"/>
+        <segue reference="VN9-SP-Fso"/>
         <segue reference="8vE-Kv-g5c"/>
         <segue reference="QM7-Ye-Xhr"/>
-        <segue reference="VN9-SP-Fso"/>
-        <segue reference="Kis-3y-3Q5"/>
+        <segue reference="fAi-QO-h1o"/>
     </inferredMetricsTieBreakers>
 </document>
