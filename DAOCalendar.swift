@@ -53,9 +53,9 @@ class daoCalendar{
         
         let userCalendar = NSCalendar.currentCalendar()
         let endDateComponents = NSDateComponents()
-        endDateComponents.year = date.year
-        endDateComponents.month = date.month
-        endDateComponents.day = date.day
+        endDateComponents.year = date.year()
+        endDateComponents.month = date.month()
+        endDateComponents.day = date.day()
         endDateComponents.hour = 23
         endDateComponents.minute = 59
         endDateComponents.second = 59

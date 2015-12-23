@@ -17,23 +17,22 @@ import CoreData
 import Foundation
 import EventKit
 
-class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewDataSource,UITableViewDelegate{
+class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarPickerDelegate,UITableViewDelegate{
     
     @IBOutlet weak var dateTableView: UITableView!
-    @IBOutlet weak var calendarV: UIView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     let calendarName:String = "Freelo Calendar"
     var defaultCalendar:EKCalendar? = nil
     let eventStore = EKEventStore()
+    let dateFormatter = NSDateFormatter()
+    var date = NSDate()
     
     var eventArray:Array<EKEvent> = []
     
     override func viewWillAppear(animated: Bool) {
         //Creamos el calendario
         self.defaultCalendar = daoCalendar().getCalendar(calendarName, store: self.eventStore)
-        
-        let date = NSDate()
         self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
         self.dateTableView.reloadData()
     }
@@ -45,16 +44,8 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
             self.menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        dateFormatter.dateFormat = "ccc, dd MMM"
         
-        let date = NSDate()
-        let calendarView = CalendarView.instance(date, selectedDate: date)
-        calendarView.delegate = self
-        calendarView.translatesAutoresizingMaskIntoConstraints = false
-        calendarV.addSubview(calendarView)
-        
-        // Constraints for calendar view - Fill the parent view.
-        calendarV.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[calendarView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["calendarView": calendarView]))
-        calendarV.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[calendarView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["calendarView": calendarView]))
         // Do any additional setup after loading the view.
         
         self.dateTableView.reloadData()
@@ -66,9 +57,24 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    func didSelectDate(date: NSDate) {
-        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
+    @IBAction func calendarTapped(sender: AnyObject) {
+        let calendarPicker = EPCalendarPicker(startYear: 2015, endYear: 2040, multiSelection: false)
+        calendarPicker.calendarDelegate = self
+        
+        let calendarNavController = UINavigationController(rootViewController: calendarPicker)
+        self.presentViewController(calendarNavController, animated: true, completion: nil)
+    }
+    
+    func epCalendarPicker(_: EPCalendarPicker, didCancel error: NSError) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func epCalendarPicker(_: EPCalendarPicker, didSelectDate date: NSDate) {
+        self.date = date
+        self.eventArray = daoCalendar().getEventsForDate(self.date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
         self.dateTableView.reloadData()
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     //Table View Functions
@@ -77,6 +83,10 @@ class CalendarViewController: UIViewController,CalendarViewDelegate,UITableViewD
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Citas programadas para " + self.dateFormatter.stringFromDate(self.date)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -11,9 +11,8 @@ import CoreData
 import Foundation
 import EventKit
 
-class HorasLaboradasVC: UIViewController,CalendarViewDelegate,UITableViewDataSource,UITableViewDelegate {
+class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDataSource,UITableViewDelegate {
 
-    @IBOutlet weak var calendarV: UIView!
     @IBOutlet weak var datesWithoutTimeTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -23,11 +22,15 @@ class HorasLaboradasVC: UIViewController,CalendarViewDelegate,UITableViewDataSou
     var eventArray:Array<EKEvent> = []
     var dateArray:Array<Cita> = daoCita().getUnconvertedDates()
     let dateFormatter = NSDateFormatter()
+    var navControl:UINavigationController? = nil
     
     var source:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navControl = self.navigationController
+        
         if self.revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
             self.menuButton.action = "revealToggle:"
@@ -36,26 +39,13 @@ class HorasLaboradasVC: UIViewController,CalendarViewDelegate,UITableViewDataSou
         dateFormatter.dateFormat = "ccc, dd MMM"
         
         let date = NSDate()
-        let calendarView = CalendarView.instance(date, selectedDate: date)
-        calendarView.delegate = self
-        calendarView.translatesAutoresizingMaskIntoConstraints = false
-        calendarV.addSubview(calendarView)
         
-        // Constraints for calendar view - Fill the parent view.
-        calendarV.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[calendarView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["calendarView": calendarView]))
-        calendarV.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[calendarView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["calendarView": calendarView]))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func didSelectDate(date: NSDate) {
-        self.source = "Calendar"
-        self.performSegueWithIdentifier("createNewTime", sender: self)
-    }
-    
+    }    
     
     //Table View Functions
     
@@ -138,6 +128,23 @@ class HorasLaboradasVC: UIViewController,CalendarViewDelegate,UITableViewDataSou
         self.performSegueWithIdentifier("createNewTime", sender: self)
     }
 
+    @IBAction func calendarTapped(sender: AnyObject) {
+        let calendarPicker = EPCalendarPicker(startYear: 2015, endYear: 2040, multiSelection: false)
+        calendarPicker.calendarDelegate = self
+        
+        let calendarNavController = UINavigationController(rootViewController: calendarPicker)
+        self.presentViewController(calendarNavController, animated: true, completion: nil)
+    }
+    
+    func epCalendarPicker(_: EPCalendarPicker, didCancel error: NSError) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func epCalendarPicker(_: EPCalendarPicker, didSelectDate date: NSDate) {
+        self.source = "Calendar"
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("createNewTime", sender: self)
+    }
 
     /*
     // MARK: - Navigation
