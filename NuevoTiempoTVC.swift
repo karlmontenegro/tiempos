@@ -33,10 +33,12 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
     @IBOutlet weak var txtTitulo: UITextField!
     
     @IBOutlet weak var citaAsociada: UITableViewCell!
+    @IBOutlet weak var fechaAsociada: UITableViewCell!
+    @IBOutlet weak var contratoAsociado: UITableViewCell!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if self.source == "Date" {
             self.event = daoCita().getEventByDateId(self.cita!, store: self.eventStore)
             self.dateFormatter.dateFormat = "ccc, dd MMM"
@@ -46,7 +48,13 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
             self.lblFecha.text = self.dateFormatter.stringFromDate((self.event?.startDate)!)
             self.horas = self.stringFromTimeInterval(self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!)
             self.lblHoras.text = self.horas
-
+            
+        }
+        
+        if self.source == "New" {
+            self.citaAsociada.hidden = true
+            self.fechaAsociada.hidden = true
+            self.contratoAsociado.hidden = true
         }
     }
 

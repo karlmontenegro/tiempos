@@ -97,4 +97,50 @@ class daoTiempo{
             print(error)
         }
     }
+    
+    func getTiemposByClient(client: Cliente)->Array<Tiempo>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(cliente = %@)", client)
+        
+        request.entity = entityTiempo
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as? Array<Tiempo>
+    }
+    
+    func getTiemposByContract(contract: Contrato)->Array<Contrato>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(contrato = %@)", contract)
+        
+        request.entity = entityTiempo
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as? Array<Contrato>
+    }
 }
