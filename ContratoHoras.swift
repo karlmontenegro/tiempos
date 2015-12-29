@@ -16,5 +16,4 @@ class ContratoHoras: NSManagedObject {
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
-
 }

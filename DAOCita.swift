@@ -21,7 +21,7 @@ class daoCita{
     
     //guardar la cita
     
-    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato,entregable:Entregable?,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore){
+    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato?,entregable:Entregable?,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -32,15 +32,19 @@ class daoCita{
         let calendar:EKCalendar = daoCalendar().getCalendar("Freelo Calendar", store: store)!
         
         newCita.setValue(cliente, forKey: "cliente")
-        newCita.setValue(contract, forKey: "contrato")
+        if contract != nil {
+           newCita.setValue(contract, forKey: "contrato")
+        }
         newCita.setValue(false, forKey: "convertido")
         
         calEvent?.title = nomDate
         calEvent?.startDate = start
         calEvent?.endDate = end
         calEvent?.calendar = calendar
-        calEvent?.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract.nombreContrato!
         
+        if contract != nil {
+            calEvent?.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract!.nombreContrato!
+        }
         if alarm != nil{
             if activateAlarm{
                 calEvent?.addAlarm(alarm!)
@@ -63,6 +67,55 @@ class daoCita{
             print(error)
         }
     }
+    
+    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato?,entregable:Entregable?,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore,converted:Bool)->Cita{
+        
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let newCita = NSEntityDescription.insertNewObjectForEntityForName("Cita",inManagedObjectContext: context)
+        
+        let calEvent:EKEvent? = EKEvent(eventStore:store)
+        let calendar:EKCalendar = daoCalendar().getCalendar("Freelo Calendar", store: store)!
+        
+        newCita.setValue(cliente, forKey: "cliente")
+        if contract != nil {
+            newCita.setValue(contract, forKey: "contrato")
+        }
+        newCita.setValue(converted, forKey: "convertido")
+        
+        calEvent?.title = nomDate
+        calEvent?.startDate = start
+        calEvent?.endDate = end
+        calEvent?.calendar = calendar
+        
+        if contract != nil {
+            calEvent?.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract!.nombreContrato!
+        }
+        if alarm != nil{
+            if activateAlarm{
+                calEvent?.addAlarm(alarm!)
+            }
+        }
+        
+        if entregable != nil{
+            newCita.setValue(entregable, forKey: "entregable")
+        }
+        
+        do{
+            try store.saveEvent(calEvent!, span: EKSpan.ThisEvent)
+        }catch{
+            print(error)
+        }
+        newCita.setValue(calEvent?.eventIdentifier, forKey: "eventRef")
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+        return newCita as! Cita
+    }
+    
     
     func setConvertedStatus(cita: Cita, converted:Bool) {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

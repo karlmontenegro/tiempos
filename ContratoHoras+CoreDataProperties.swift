@@ -19,5 +19,4 @@ extension ContratoHoras {
     @NSManaged var totalHoras: NSNumber?
     @NSManaged var contrato: Contrato?
     @NSManaged var moneda: Moneda?
-
 }

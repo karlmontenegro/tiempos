@@ -12,6 +12,8 @@
 		0C1446061C1F29530027BD80 /* HorasLaboradasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */; };
 		0C1446081C1F2D330027BD80 /* NuevoTiempoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1446071C1F2D330027BD80 /* NuevoTiempoTVC.swift */; };
 		0C16F69A1C21DE190015855A /* HoursModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C16F6991C21DE190015855A /* HoursModal.swift */; };
+		0C2290701C32EDE800FCD448 /* Settings-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C22906F1C32EDE800FCD448 /* Settings-32.png */; };
+		0C2290731C32EEDA00FCD448 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2290721C32EEDA00FCD448 /* SettingsTVC.swift */; };
 		0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */; };
 		0C3533E51C0F60E400D52D7A /* client-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533E41C0F60E400D52D7A /* client-32.png */; };
 		0C3533E71C0F61DB00D52D7A /* contract-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C3533E61C0F61DB00D52D7A /* contract-32.png */; };
@@ -132,6 +134,8 @@
 		0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorasLaboradasVC.swift; sourceTree = "<group>"; };
 		0C1446071C1F2D330027BD80 /* NuevoTiempoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoTiempoTVC.swift; sourceTree = "<group>"; };
 		0C16F6991C21DE190015855A /* HoursModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoursModal.swift; sourceTree = "<group>"; };
+		0C22906F1C32EDE800FCD448 /* Settings-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings-32.png"; path = "Iconos/Settings-32.png"; sourceTree = "<group>"; };
+		0C2290721C32EEDA00FCD448 /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleContratoViewController.swift; path = Tiempos/DetalleContratoViewController.swift; sourceTree = "<group>"; };
 		0C3533E41C0F60E400D52D7A /* client-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "client-32.png"; path = "Iconos/client-32.png"; sourceTree = "<group>"; };
 		0C3533E61C0F61DB00D52D7A /* contract-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contract-32.png"; path = "Iconos/contract-32.png"; sourceTree = "<group>"; };
@@ -276,9 +280,18 @@
 			name = Modals;
 			sourceTree = "<group>";
 		};
+		0C2290711C32EEC300FCD448 /* Ajustes */ = {
+			isa = PBXGroup;
+			children = (
+				0C2290721C32EEDA00FCD448 /* SettingsTVC.swift */,
+			);
+			name = Ajustes;
+			sourceTree = "<group>";
+		};
 		0C3533681C0F5FA000D52D7A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				0C22906F1C32EDE800FCD448 /* Settings-32.png */,
 				0C9E67001C2B05D4000BC948 /* Calendar-32.png */,
 				0C9E66FE1C2B03F4000BC948 /* calendar-50.png */,
 				0C3533E41C0F60E400D52D7A /* client-32.png */,
@@ -334,6 +347,7 @@
 		0C742C361B8228020046BC31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0C2290711C32EEC300FCD448 /* Ajustes */,
 				0C6EA0A31C319C5500A061B5 /* Recibos */,
 				0CD84C941C19E65D00159373 /* Home */,
 				0C5E8E591C0788A500869599 /* Tiempos */,
@@ -627,6 +641,7 @@
 				0C3533E71C0F61DB00D52D7A /* contract-32.png in Resources */,
 				0C3533ED1C0F633400D52D7A /* receipt-32.png in Resources */,
 				0C3533F41C0F6CA800D52D7A /* cancel-32.png in Resources */,
+				0C2290701C32EDE800FCD448 /* Settings-32.png in Resources */,
 				0C3533E91C0F623300D52D7A /* date-32.png in Resources */,
 				526D56841B5D57BF000F323D /* Images.xcassets in Resources */,
 				0C9E2E851C11F489003BB112 /* menu-25.png in Resources */,
@@ -732,6 +747,7 @@
 				0CCF78F11BEBC1BF00D2B3A6 /* DAOCalendar.swift in Sources */,
 				0C0F91E61BF4F19A00C1872D /* DateTimePicker.swift in Sources */,
 				0CE406721B9F53900096CE36 /* VerDireccionViewController.swift in Sources */,
+				0C2290731C32EEDA00FCD448 /* SettingsTVC.swift in Sources */,
 				0CAF59231B7E5E5E00DE9CF8 /* DAORecibo.swift in Sources */,
 				0CB1D31A1BED29AA00512744 /* NuevaCitaTVC.swift in Sources */,
 				0C3749C01B7903D900EBD075 /* DAOCliente.swift in Sources */,

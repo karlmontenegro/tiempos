@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import EventKit
 
 class daoTiempo{
     
@@ -59,6 +60,41 @@ class daoTiempo{
         do{
             try context.save()
         }catch{
+            print(error)
+        }
+    }
+    
+    func newTiempo(title: String, hours: NSNumber, cita: Cita?, fecha: NSDate?, place: String?, contract: Contrato?, entregable:Entregable?, client: Cliente, store:EKEventStore) {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+        
+        let newTiempo = NSEntityDescription.insertNewObjectForEntityForName("Tiempo", inManagedObjectContext: context)
+        
+        newTiempo.setValue(title, forKey: "titulo")
+        newTiempo.setValue(client, forKey: "cliente")
+        newTiempo.setValue(hours, forKey: "horas")
+        
+        //Cita programada (Citas sin tiempo)
+        
+        if cita != nil {
+            daoCita().setConvertedStatus(cita!, converted: true)
+            if contract != nil {
+                newTiempo.setValue(cita?.contrato, forKey: "contrato")
+                if contract?.tipoFacturacion! == "ENT" && cita?.entregable != nil {
+                    //Contrato por entregables
+                    newTiempo.setValue(cita?.entregable, forKey: "entregable")
+                }
+                newTiempo.setValue(contract?.tipoFacturacion!, forKey: "tipoFac")
+            }
+            newTiempo.setValue(cita!, forKey: "cita")
+        } else {
+            //Fecha asignada (Tiempo sin nada mas que fecha)
+            newTiempo.setValue(daoCita().newDate(title, cliente: client, start: fecha!, end: fecha!, contract: nil, entregable: nil, activateAlarm: false, alarm: nil, store: store, converted:true), forKey: "cita")
+        }
+        
+        do {
+            try context.save()
+        } catch {
             print(error)
         }
     }
@@ -121,7 +157,7 @@ class daoTiempo{
         return result as? Array<Tiempo>
     }
     
-    func getTiemposByContract(contract: Contrato)->Array<Contrato>? {
+    func getTiemposByContract(contract: Contrato)->Array<Tiempo>? {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -141,6 +177,6 @@ class daoTiempo{
             print(error)
         }
         
-        return result as? Array<Contrato>
+        return result as? Array<Tiempo>
     }
 }

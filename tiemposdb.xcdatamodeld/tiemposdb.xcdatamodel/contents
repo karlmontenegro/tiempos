@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 4.3">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Xcode 4.3">
     <entity name="Cita" representedClassName="Cita" syncable="YES">
         <attribute name="convertido" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="eventRef" optional="YES" attributeType="String" syncable="YES"/>
@@ -119,13 +119,13 @@
         <element name="Cliente" positionX="-434" positionY="-130" width="128" height="195"/>
         <element name="Contacto" positionX="-810" positionY="-171" width="128" height="105"/>
         <element name="Contrato" positionX="-29" positionY="-234" width="128" height="195"/>
-        <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="120"/>
+        <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="118"/>
         <element name="Direccion" positionX="-216" positionY="38" width="128" height="120"/>
         <element name="Entregable" positionX="-108" positionY="-531" width="128" height="163"/>
         <element name="Moneda" positionX="-389" positionY="-657" width="128" height="118"/>
         <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
         <element name="Recibo" positionX="-738" positionY="-954" width="144" height="208"/>
-        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="195"/>
+        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="193"/>
         <element name="Usuario" positionX="-738" positionY="-706" width="108" height="238"/>
     </elements>
 </model>

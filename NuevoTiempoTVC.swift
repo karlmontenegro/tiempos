@@ -48,7 +48,10 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
             self.lblFecha.text = self.dateFormatter.stringFromDate((self.event?.startDate)!)
             self.horas = self.stringFromTimeInterval(self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!)
             self.lblHoras.text = self.horas
-            
+            self.fecha = self.event?.startDate
+            self.cliente = self.cita?.cliente
+            self.contrato = self.cita?.contrato
+            self.interval = self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!
         }
         
         if self.source == "New" {
@@ -77,7 +80,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
         // Save action
         alertController.addAction(UIAlertAction(title: "Guardar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
             
-            daoTiempo().newTiempo(self.cliente, contrato: self.contrato, title: self.txtTitulo.text, fecha: self.date, hours: NSNumber(integer: numberInterval), place: "", fact: "HRS", converted: true)
+            daoTiempo().newTiempo(self.txtTitulo.text!, hours: numberInterval, cita: self.cita, fecha: self.fecha, place: "", contract: self.contrato, entregable: nil, client: self.cliente!, store: self.eventStore)
             
             let alert = UIAlertView()
             alert.title = "Tiempos"
@@ -111,7 +114,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
     
     func returnHoursToTime(time: NSDate, min: NSDate, max: NSDate) {
         
-        interval = time.timeIntervalSinceDate(min)
+        self.interval = time.timeIntervalSinceDate(min)
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "HH:mm ZZZ"

@@ -18,7 +18,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     
     @IBOutlet weak var classifierItemsDetailTV: UITableView!
     
-    var classifierItemArray:Array<AnyObject>? = nil
+    var classifierItemArray:Array<Tiempo> = []
     var origin:String = ""
     
     override func viewDidLoad() {
@@ -46,21 +46,97 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        
+        if self.classifierItemArray.isEmpty {
+            return 0
+        }else {
+            return self.classifierItemArray.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("classifierItemCell", forIndexPath: indexPath)
         
+        if !self.classifierItemArray.isEmpty {
+            cell.textLabel?.text = self.classifierItemArray[indexPath.row].titulo!
+            cell.detailTextLabel?.text = self.stringFromTimeInterval(self.classifierItemArray[indexPath.row].horas! as Int)
+        }
         return cell
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
+        
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            // Alerts before the delete just in case it wasn't meant to be
+            let alertController = UIAlertController(title: "Atención", message:
+                "¿Estás seguro que quieres borrar este tiempo? Esto borrará toda la información relacionada con el tiempo.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // Delete action
+            alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                // Deletes the row from the DAO
+                
+                daoTiempo().deleteTiempo(self.classifierItemArray[indexPath.row])
+                
+                // Deletes the element from the array
+                self.classifierItemArray.removeAtIndex(indexPath.row)
+                
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }))
+            
+            // Cancel action
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+                self.classifierItemsDetailTV.reloadData()
+            }))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        })
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [delete]
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
+    func stringFromTimeInterval(interval: Int) -> String {
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d horas %02d minutos", hours, minutes)
+    }
+    
+    func getTotalTime(start:NSDate, end:NSDate)->NSTimeInterval?{
+        let interval:NSTimeInterval = end.timeIntervalSinceDate(start)
+        return interval
+    }
+
     func returnSelectedOption(selectedObject: AnyObject?, origin: String) {
         if origin == "Classifier" {
             self.txtClassifier.text = selectedObject as? String
             self.lblClassifier.text = selectedObject as? String
         } else {
-            
+            if self.lblClassifier.text! == "Clientes" {
+                self.txtClassifierItem.text = (selectedObject as? Cliente)?.nombre
+                
+                //Refresh table with times by client
+                self.classifierItemArray = daoTiempo().getTiemposByClient((selectedObject as? Cliente)!)!
+                self.classifierItemsDetailTV.reloadData()
+            }
+            if self.lblClassifier.text! == "Contratos" {
+                self.txtClassifierItem.text = (selectedObject as? Contrato)?.nombreContrato
+                
+                //Refresh table with times by contract
+                self.classifierItemArray = daoTiempo().getTiemposByContract((selectedObject as? Contrato)!)!
+                self.classifierItemsDetailTV.reloadData()
+            }
         }
     }
     
@@ -83,6 +159,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
             let vc:ClassifierPickerModal = segue.destinationViewController as! ClassifierPickerModal
             vc.delegateAddress = self
             vc.origin = self.origin
+            vc.classifier = self.lblClassifier.text!
         }
     }
 }

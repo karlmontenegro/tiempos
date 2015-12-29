@@ -26,7 +26,19 @@ class daoContratoHoras{
         
         return newContratoHoras as! ContratoHoras
     }
-       
+    
+    func newContratoHoras(nroHoras: Double, horasInc:String, tarifaHora: Double, moneda:String, object: Tiempo){
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+        
+        let newContratoHoras = NSEntityDescription.insertNewObjectForEntityForName("ContratoHoras", inManagedObjectContext: context)
+        
+        newContratoHoras.setValue(nroHoras, forKey: "totalHoras")
+        newContratoHoras.setValue(nil, forKey: "horasInc")
+        newContratoHoras.setValue(moneda, forKey: "moneda")
+        newContratoHoras.setValue(tarifaHora, forKey: "tarifaHora")
+    }
+    
     func deleteAllContractHoras(object: Contrato){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -46,7 +58,7 @@ class daoContratoHoras{
         object.setValue(nil, forKey: "horasInc")
         object.setValue(nroHoras, forKey: "totalHoras")
         object.setValue(tarifaHora, forKey: "tarifaHora")
-        object.setValue(nil, forKey: "moneda")
+        object.setValue(moneda, forKey: "moneda")
         
         do{
             try context.save()

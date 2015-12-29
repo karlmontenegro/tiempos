@@ -24,5 +24,4 @@ extension Tiempo {
     @NSManaged var contrato: Contrato?
     @NSManaged var entregable: Entregable?
     @NSManaged var recibo: Recibo?
-
 }
