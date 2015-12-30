@@ -2491,14 +2491,17 @@
             <objects>
                 <tableViewController id="nuN-tL-kNE" customClass="SettingsTVC" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="GuC-hh-6go">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Tarifa por Hora" footerTitle="Ingresa la tarifa que se cobra por hora laborada, de ser el caso" id="i36-tS-EFR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="jMs-Fx-Gfa">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jMs-Fx-Gfa" id="vVl-OS-Oho">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-0k-i4k">
@@ -2542,11 +2545,11 @@
                                                     <exclude reference="0Nk-5a-3jK"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="pcS-ns-zsz"/>
-                                                    <exclude reference="tgX-U4-9pC"/>
                                                     <exclude reference="AVT-Uk-NHe"/>
                                                     <exclude reference="gji-e4-68v"/>
                                                     <exclude reference="pHw-fO-9VT"/>
+                                                    <exclude reference="pcS-ns-zsz"/>
+                                                    <exclude reference="tgX-U4-9pC"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -2555,21 +2558,24 @@
                                                     <include reference="0Nk-5a-3jK"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="pcS-ns-zsz"/>
-                                                    <include reference="tgX-U4-9pC"/>
                                                     <include reference="AVT-Uk-NHe"/>
                                                     <include reference="gji-e4-68v"/>
                                                     <include reference="pHw-fO-9VT"/>
+                                                    <include reference="pcS-ns-zsz"/>
+                                                    <include reference="tgX-U4-9pC"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="h4w-hL-2LV" detailTextLabel="EfR-qT-Yx4" style="IBUITableViewCellStyleValue1" id="FaG-Gu-Z7u">
+                                        <rect key="frame" x="0.0" y="158" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FaG-Gu-Z7u" id="s85-qm-aq7">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir moneda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h4w-hL-2LV">
+                                                    <rect key="frame" x="15" y="11" width="131" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2579,6 +2585,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EfR-qT-Yx4">
+                                                    <rect key="frame" x="521" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -5209,7 +5216,7 @@
                                         <color key="backgroundColor" red="0.0" green="0.2731509868" blue="0.57575757579999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="5ds-03-EVq" imageView="g74-U3-Su8" rowHeight="50" style="IBUITableViewCellStyleDefault" id="CB7-wf-1nI">
-                                        <rect key="frame" x="0.0" y="450" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="500" width="600" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CB7-wf-1nI" id="tMK-uI-GyF">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>

@@ -96,6 +96,15 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         return [delete]
     }
     
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        //let oldIndex:NSIndexPath? = self.classifierItemsDetailTV.indexPathForSelectedRow
+        
+        //self.classifierItemsDetailTV.cellForRowAtIndexPath(oldIndex!)?.accessoryType = UITableViewCellAccessoryType.None
+        //self.classifierItemsDetailTV.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        
+        return indexPath
+    }
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
