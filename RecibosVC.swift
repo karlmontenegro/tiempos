@@ -19,7 +19,12 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     @IBOutlet weak var classifierItemsDetailTV: UITableView!
     
     var classifierItemArray:Array<Tiempo> = []
+    var selectedTimesArray:Array<Tiempo> = []
+    
     var origin:String = ""
+    var selectedObj:AnyObject? = nil
+    var selectedTyp:String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,13 +101,19 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         return [delete]
     }
     
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        //let oldIndex:NSIndexPath? = self.classifierItemsDetailTV.indexPathForSelectedRow
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        //self.classifierItemsDetailTV.cellForRowAtIndexPath(oldIndex!)?.accessoryType = UITableViewCellAccessoryType.None
-        //self.classifierItemsDetailTV.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
-        
-        return indexPath
+        if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
+            
+            cell!.accessoryType = UITableViewCellAccessoryType.None
+            
+        }else{
+            
+            cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+            self.selectedTimesArray.append(self.classifierItemArray[indexPath.row])
+        }
+        print(self.selectedTimesArray)
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -126,7 +137,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         let interval:NSTimeInterval = end.timeIntervalSinceDate(start)
         return interval
     }
-
+    
     func returnSelectedOption(selectedObject: AnyObject?, origin: String) {
         if origin == "Classifier" {
             self.txtClassifier.text = selectedObject as? String
@@ -138,6 +149,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
                 //Refresh table with times by client
                 self.classifierItemArray = daoTiempo().getTiemposByClient((selectedObject as? Cliente)!)!
                 self.classifierItemsDetailTV.reloadData()
+                self.selectedTyp = "Cliente"
             }
             if self.lblClassifier.text! == "Contratos" {
                 self.txtClassifierItem.text = (selectedObject as? Contrato)?.nombreContrato
@@ -145,7 +157,9 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
                 //Refresh table with times by contract
                 self.classifierItemArray = daoTiempo().getTiemposByContract((selectedObject as? Contrato)!)!
                 self.classifierItemsDetailTV.reloadData()
+                self.selectedTyp = "Contrato"
             }
+            self.selectedObj = selectedObject
         }
     }
     
@@ -158,6 +172,11 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         self.origin = "ClassifierItem"
         self.performSegueWithIdentifier("classifierPickerSegue", sender: nil)
     }
+    
+    @IBAction func createInvoiceTapped(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("createInvoiceSegue", sender: self)
+    }
     /*
     // MARK: - Navigation
 
@@ -169,6 +188,11 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
             vc.delegateAddress = self
             vc.origin = self.origin
             vc.classifier = self.lblClassifier.text!
+        }
+        if segue.identifier == "createInvoiceSegue" {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let vc:ReciboEmitidoVC = navVC.viewControllers.first as! ReciboEmitidoVC
+            vc.tiemposArray = self.selectedTimesArray
         }
     }
 }

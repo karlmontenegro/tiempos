@@ -89,7 +89,9 @@ class daoTiempo{
             newTiempo.setValue(cita!, forKey: "cita")
         } else {
             //Fecha asignada (Tiempo sin nada mas que fecha)
-            newTiempo.setValue(daoCita().newDate(title, cliente: client, start: fecha!, end: fecha!, contract: nil, entregable: nil, activateAlarm: false, alarm: nil, store: store, converted:true), forKey: "cita")
+            if fecha != nil {
+                newTiempo.setValue(daoCita().newDate(title, cliente: client, start: fecha!, end: fecha!, contract: nil, entregable: nil, activateAlarm: false, alarm: nil, store: store, converted:true), forKey: "cita")
+            }
         }
         
         do {

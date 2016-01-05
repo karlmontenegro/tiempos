@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0E71A71C3C2FA4006404CD /* ReciboEmitidoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E71A61C3C2FA4006404CD /* ReciboEmitidoVC.swift */; };
 		0C0F91E61BF4F19A00C1872D /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0F91E51BF4F19A00C1872D /* DateTimePicker.swift */; };
 		0C0F91E81BF50E5A00C1872D /* ContractPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0F91E71BF50E5A00C1872D /* ContractPicker.swift */; };
 		0C1446061C1F29530027BD80 /* HorasLaboradasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */; };
@@ -129,6 +130,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C0E71A61C3C2FA4006404CD /* ReciboEmitidoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReciboEmitidoVC.swift; sourceTree = "<group>"; };
 		0C0F91E51BF4F19A00C1872D /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		0C0F91E71BF50E5A00C1872D /* ContractPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractPicker.swift; sourceTree = "<group>"; };
 		0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorasLaboradasVC.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				0C6EA0AA1C31AD7C00A061B5 /* RecibosVC.swift */,
+				0C0E71A61C3C2FA4006404CD /* ReciboEmitidoVC.swift */,
 			);
 			name = Recibos;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				0C5F050F1BD6C7EC00F80578 /* EntregableVC.swift in Sources */,
 				0C5E8E5B1C0788C400869599 /* ConvertirCitaTVC.swift in Sources */,
 				0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */,
+				0C0E71A71C3C2FA4006404CD /* ReciboEmitidoVC.swift in Sources */,
 				0C1446081C1F2D330027BD80 /* NuevoTiempoTVC.swift in Sources */,
 				0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */,
 				0C581E1E1BC2F57C00D2C297 /* ClientModal.swift in Sources */,
