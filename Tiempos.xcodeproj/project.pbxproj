@@ -90,7 +90,9 @@
 		0CE4B3BD1BA091E700FCC736 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */; };
 		0CE4B3C31BA86F1300FCC736 /* Contacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3C21BA86F1300FCC736 /* Contacto.swift */; };
 		0CE4B3C51BA8930100FCC736 /* Contrato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3C41BA8930100FCC736 /* Contrato.swift */; };
-		0CE4B3C71BA898E900FCC736 /* NuevoContratoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3C61BA898E900FCC736 /* NuevoContratoViewController.swift */; };
+		0CECCF901C3D8408006C849A /* NuevoContratoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CECCF8F1C3D8408006C849A /* NuevoContratoTVC.swift */; };
+		0CECCFD01C3EC0BC006C849A /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CECCFCF1C3EC0BC006C849A /* edit-32.png */; };
+		0CECCFD41C3ECE68006C849A /* EntregableTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CECCFD31C3ECE68006C849A /* EntregableTVC.swift */; };
 		0CF4D3161BF26CDE00306397 /* ClientePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF4D3151BF26CDE00306397 /* ClientePicker.swift */; };
 		0CFA4B081BE1420B007F30B8 /* CitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFA4B071BE1420B007F30B8 /* CitaViewController.swift */; };
 		0CFB8DBD1BB1C0310044D0F5 /* Recibo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFB8DA81BB1C0310044D0F5 /* Recibo+CoreDataProperties.swift */; };
@@ -214,7 +216,9 @@
 		0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0CE4B3C21BA86F1300FCC736 /* Contacto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacto.swift; sourceTree = "<group>"; };
 		0CE4B3C41BA8930100FCC736 /* Contrato.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contrato.swift; sourceTree = "<group>"; };
-		0CE4B3C61BA898E900FCC736 /* NuevoContratoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoContratoViewController.swift; sourceTree = "<group>"; };
+		0CECCF8F1C3D8408006C849A /* NuevoContratoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoContratoTVC.swift; sourceTree = "<group>"; };
+		0CECCFCF1C3EC0BC006C849A /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit-32.png"; path = "Iconos/edit-32.png"; sourceTree = "<group>"; };
+		0CECCFD31C3ECE68006C849A /* EntregableTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregableTVC.swift; sourceTree = "<group>"; };
 		0CF4D3151BF26CDE00306397 /* ClientePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientePicker.swift; sourceTree = "<group>"; };
 		0CFA4B071BE1420B007F30B8 /* CitaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitaViewController.swift; sourceTree = "<group>"; };
 		0CFB8DA81BB1C0310044D0F5 /* Recibo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recibo+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 		0C3533681C0F5FA000D52D7A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				0CECCFCF1C3EC0BC006C849A /* edit-32.png */,
 				0C22906F1C32EDE800FCD448 /* Settings-32.png */,
 				0C9E67001C2B05D4000BC948 /* Calendar-32.png */,
 				0C9E66FE1C2B03F4000BC948 /* calendar-50.png */,
@@ -452,10 +457,11 @@
 		0CE4B3C81BA898EE00FCC736 /* Contract View */ = {
 			isa = PBXGroup;
 			children = (
-				0CE4B3C61BA898E900FCC736 /* NuevoContratoViewController.swift */,
 				0CAE76511B72B2B500BB09F7 /* ContratosTableViewController.swift */,
 				0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */,
 				0C5F050E1BD6C7EC00F80578 /* EntregableVC.swift */,
+				0CECCF8F1C3D8408006C849A /* NuevoContratoTVC.swift */,
+				0CECCFD31C3ECE68006C849A /* EntregableTVC.swift */,
 			);
 			name = "Contract View";
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 			files = (
 				526D56821B5D57BF000F323D /* Main.storyboard in Resources */,
 				0C9E66FF1C2B03F4000BC948 /* calendar-50.png in Resources */,
+				0CECCFD01C3EC0BC006C849A /* edit-32.png in Resources */,
 				0C3533E51C0F60E400D52D7A /* client-32.png in Resources */,
 				0C3533EF1C0F637300D52D7A /* payment-32.png in Resources */,
 				0C9E67011C2B05D4000BC948 /* Calendar-32.png in Resources */,
@@ -700,7 +707,6 @@
 				0CFB8DD11BB1C0310044D0F5 /* ContratoHoras.swift in Sources */,
 				0C9C58951B726A0E0091B578 /* ClientesTableViewController.swift in Sources */,
 				0C9E2E871C11FD43003BB112 /* menuTVC.swift in Sources */,
-				0CE4B3C71BA898E900FCC736 /* NuevoContratoViewController.swift in Sources */,
 				0C5F050F1BD6C7EC00F80578 /* EntregableVC.swift in Sources */,
 				0C5E8E5B1C0788C400869599 /* ConvertirCitaTVC.swift in Sources */,
 				0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */,
@@ -743,6 +749,7 @@
 				0CFB8DC01BB1C0310044D0F5 /* Usuario.swift in Sources */,
 				0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */,
 				0CFB8DCB1BB1C0310044D0F5 /* Moneda.swift in Sources */,
+				0CECCF901C3D8408006C849A /* NuevoContratoTVC.swift in Sources */,
 				0CFB8DC71BB1C0310044D0F5 /* Pais.swift in Sources */,
 				0CFB8DBF1BB1C0310044D0F5 /* Usuario+CoreDataProperties.swift in Sources */,
 				0C1446061C1F29530027BD80 /* HorasLaboradasVC.swift in Sources */,
@@ -755,6 +762,7 @@
 				0CAF59231B7E5E5E00DE9CF8 /* DAORecibo.swift in Sources */,
 				0CB1D31A1BED29AA00512744 /* NuevaCitaTVC.swift in Sources */,
 				0C3749C01B7903D900EBD075 /* DAOCliente.swift in Sources */,
+				0CECCFD41C3ECE68006C849A /* EntregableTVC.swift in Sources */,
 				0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */,
 				0C4EE5C31BDA995100803DCE /* Contrato+CoreDataProperties.swift in Sources */,
 			);

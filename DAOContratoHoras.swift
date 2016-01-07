@@ -58,7 +58,7 @@ class daoContratoHoras{
         object.setValue(nil, forKey: "horasInc")
         object.setValue(nroHoras, forKey: "totalHoras")
         object.setValue(tarifaHora, forKey: "tarifaHora")
-        object.setValue(moneda, forKey: "moneda")
+        object.setValue(moneda, forKey: "monedaNom")
         
         do{
             try context.save()

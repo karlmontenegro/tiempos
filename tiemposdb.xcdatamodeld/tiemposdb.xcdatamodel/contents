@@ -40,6 +40,7 @@
     </entity>
     <entity name="ContratoHoras" representedClassName="ContratoHoras" syncable="YES">
         <attribute name="horasInc" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="monedaNom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tarifaHora" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="totalHoras" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="contratoHoras" inverseEntity="Contrato" syncable="YES"/>
@@ -119,7 +120,7 @@
         <element name="Cliente" positionX="-434" positionY="-130" width="128" height="195"/>
         <element name="Contacto" positionX="-810" positionY="-171" width="128" height="105"/>
         <element name="Contrato" positionX="-29" positionY="-234" width="128" height="195"/>
-        <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="118"/>
+        <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="133"/>
         <element name="Direccion" positionX="-216" positionY="38" width="128" height="120"/>
         <element name="Entregable" positionX="-108" positionY="-531" width="128" height="163"/>
         <element name="Moneda" positionX="-389" positionY="-657" width="128" height="118"/>

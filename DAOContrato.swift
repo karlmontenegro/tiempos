@@ -95,7 +95,6 @@ class daoContrato{
         }catch{
             print(error)
         }
-        
     }
     
     

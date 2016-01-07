@@ -107,13 +107,12 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
             
             cell!.accessoryType = UITableViewCellAccessoryType.None
-            
+            self.removeFromArray(self.classifierItemArray[indexPath.row])
         }else{
             
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
             self.selectedTimesArray.append(self.classifierItemArray[indexPath.row])
         }
-        print(self.selectedTimesArray)
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -160,6 +159,14 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
                 self.selectedTyp = "Contrato"
             }
             self.selectedObj = selectedObject
+        }
+    }
+    
+    func removeFromArray(obj: Tiempo) {
+        for var index = 0; index < self.selectedTimesArray.count; ++index {
+            if self.selectedTimesArray[index] == obj {
+                self.selectedTimesArray.removeAtIndex(index)
+            }
         }
     }
     

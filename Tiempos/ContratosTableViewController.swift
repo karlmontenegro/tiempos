@@ -62,19 +62,19 @@ class ContratosTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "ContratoDetalle"){
-            let vc:NuevoContratoViewController = segue.destinationViewController as! NuevoContratoViewController
+            let vc:NuevoContratoTVC = segue.destinationViewController as! NuevoContratoTVC 
             
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             
-            vc.data = self.arreglo[indexpath.row]
+            vc.contrato = self.arreglo[indexpath.row]
             vc.origin = "EDIT"
         }
         if(segue.identifier == "nuevoContratoSegue"){
-            let vc:NuevoContratoViewController = segue.destinationViewController as! NuevoContratoViewController
+            let vc:NuevoContratoTVC = segue.destinationViewController as! NuevoContratoTVC
             
             //Aquí se crea el nuevo contrato
             let nuevoContrato:Contrato = daoContrato().genericContract()
-            vc.data = nuevoContrato
+            vc.contrato = nuevoContrato
             vc.origin = "NEW"
         }
     }

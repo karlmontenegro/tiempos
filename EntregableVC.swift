@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol entregableEditionOperations{
+    func refreshTableViewForEntregables()
+}
+
 class EntregableVC: UIViewController {
 
     var data:AnyObject? = [] //Entregable
     var moneda:String = ""
     var nro:Int = 0
     var mode:String = ""
+    var delegateAddress:entregableEditionOperations? = nil
     
     @IBOutlet weak var txtEntregable: UILabel!
     @IBOutlet weak var txtNomEntregable: UITextField!
@@ -21,10 +26,12 @@ class EntregableVC: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     @IBAction func cancelTapped(sender: UIButton) {
+        daoEntregable().deleteEntregableAt(self.data as! Entregable)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func saveTapped(sender: UIButton) {
         daoEntregable().updateEntregable(txtNomEntregable.text as String!, tarifa: txtTarifa.text as String!, object: self.data as! Entregable)
+        self.delegateAddress!.refreshTableViewForEntregables()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidLoad() {
@@ -32,7 +39,7 @@ class EntregableVC: UIViewController {
         self.saveButton.enabled = false
         
         if mode == "NEW" {
-            self.txtEntregable.text = "Entregable " + nro.description
+            self.txtEntregable.text = "Nuevo Entregable"
         }else{
             self.txtEntregable.text = "Editar Entregable " + nro.description
         }

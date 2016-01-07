@@ -12,15 +12,37 @@ import Foundation
 class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tiemposArray:Array<Tiempo> = []
+    let dateFormatter = NSDateFormatter()
 
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var lblNomCliente: UILabel!
     @IBOutlet weak var lblNomContrato: UILabel!
     @IBOutlet weak var lblTipoFact: UILabel!
+    @IBOutlet weak var lblFechaEmision: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.tiemposArray)
+        let today:NSDate = NSDate()
+        self.dateFormatter.dateFormat = "dd/MM/yyyy"
+        self.lblFechaEmision.text = self.dateFormatter.stringFromDate(today)
+        self.lblNomCliente.text = self.tiemposArray[0].cliente?.nombre
+        
+        if self.tiemposArray[0].contrato != nil {
+            let contrato = self.tiemposArray[0].contrato
+            
+            self.lblNomContrato.text = contrato?.nombreContrato
+            
+            if contrato?.tipoFacturacion == "HRS" {
+                self.lblTipoFact.text = "Por Horas"
+            } else {
+                self.lblTipoFact.text = "Por Entregables"
+            }
+        } else {
+            self.lblNomContrato.text = "Ninguno"
+            self.lblTipoFact.text = "Ninguna"
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -36,12 +58,14 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 0
+        return self.tiemposArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
+        
+        cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
+        cell.detailTextLabel!.text = self.tiemposArray[indexPath.row].horas?.description
         
         return cell
     }
