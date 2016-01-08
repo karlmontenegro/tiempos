@@ -24,9 +24,12 @@ class EntregableVC: UIViewController {
     @IBOutlet weak var txtNomEntregable: UITextField!
     @IBOutlet weak var txtTarifa: UITextField!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var lblCurrency: UILabel!
     
     @IBAction func cancelTapped(sender: UIButton) {
-        daoEntregable().deleteEntregableAt(self.data as! Entregable)
+        if self.mode == "NEW" {
+           daoEntregable().deleteEntregableAt(self.data as! Entregable)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func saveTapped(sender: UIButton) {
@@ -37,20 +40,17 @@ class EntregableVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.saveButton.enabled = false
-        
         if mode == "NEW" {
             self.txtEntregable.text = "Nuevo Entregable"
         }else{
-            self.txtEntregable.text = "Editar Entregable " + nro.description
+            self.txtEntregable.text = "Editar Entregable"
         }
         // Do any additional setup after loading the view.
         
-        if (data as! Entregable).valueForKey("nombreEntreg") != nil{
-            //Si el entregable está lleno, se colocan los valores en los text fields
-            
-            self.txtNomEntregable.text = (data as! Entregable).valueForKey("nombreEntreg") as? String
-            self.txtTarifa.text = ((data as! Entregable).valueForKey("tarifa") as! Float).description
-        }
+        self.txtNomEntregable.text = (data as! Entregable).valueForKey("nombreEntreg") as? String
+        self.txtTarifa.text = ((data as! Entregable).valueForKey("tarifa") as! Float).description
+        self.lblCurrency.text = (data as! Entregable).contrato?.moneda!
+        
     }
 
     override func didReceiveMemoryWarning() {

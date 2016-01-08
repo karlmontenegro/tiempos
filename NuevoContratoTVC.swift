@@ -10,13 +10,15 @@ import UIKit
 import Foundation
 
 class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperations, entOperations  {
+    
+    @IBOutlet weak var navigationTitle: UINavigationItem!
 
     var contrato:Contrato? = nil
     var origin:String = ""
     
     var cliente:Cliente? = nil
     var moneda:String = ""
-    var tipoFact:String = ""
+    var tipoFact:String = "ENT"
     var hideSectionHoras:Int = 1
     var hideSectionEnt:Int = 0
     
@@ -24,6 +26,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     @IBOutlet weak var lblCurrency: UILabel!
     @IBOutlet weak var lblTipoFacturacion: UILabel!
     @IBOutlet weak var factSwitch: UISwitch!
+    @IBOutlet weak var txtNombreContrato: UITextField!
 
     //FACTURACIÓN POR HORAS
     
@@ -37,23 +40,38 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     var numEntregables:Int = 0
     @IBOutlet weak var lblNumEntregables: UILabel!
     
+    override func viewWillAppear(animated: Bool) {
+        if self.origin == "EDIT" {
+            if self.contrato?.tipoFacturacion == "ENT" {
+                self.hideSectionHoras = 1
+                self.hideSectionEnt = 0
+            } else {
+                self.hideSectionEnt = 1
+                self.hideSectionHoras = 0
+            }
+            self.factSwitch.hidden = true
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if self.origin == "NEW" {
             self.lblTipoFacturacion.text = "Por Entregables"
             self.lblTotalReferencial.text = self.moneda + "0.0"
-            self.navigationController?.title = "Nuevo Contrato"
+            self.navigationTitle.title = "Nuevo Contrato"
         }
         
         if self.origin == "EDIT" {
             self.cliente = self.contrato?.cliente
             self.moneda = (self.contrato?.moneda)!
             self.tipoFact = (self.contrato?.tipoFacturacion)!
-            self.navigationController?.title = "Editar Contrato"
+            self.navigationTitle.title = "Editar Contrato"
             
             self.lblNombreCliente.text = self.cliente!.nombre
             self.lblCurrency.text = self.moneda
+            self.txtNombreContrato.text = self.contrato?.nombreContrato
             
             if self.contrato?.tipoFacturacion == "ENT" {
                 self.lblTipoFacturacion.text = "Por Entregables"
@@ -61,14 +79,14 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 self.lblNumEntregables.text = "Entregables: " + (self.contrato?.entregables!.count.description)!
             } else { //Por Horas
                 
-                let contratoHoras = self.contrato?.valueForKey("contratoHoras") as! ContratoHoras
-                let tH:Double? = Double(contratoHoras.tarifaHora!)
-                let tT:Double? = Double(contratoHoras.totalHoras!)
+                let contratoHoras = self.contrato?.contratoHoras
+                let tH:Double? = Double(contratoHoras!.tarifaHora!)
+                let tT:Double? = Double(contratoHoras!.totalHoras!)
                 
                 self.factSwitch.on = false
                 self.lblTipoFacturacion.text = "Por Horas"
-                self.txtTarifaPorHoras.text = contratoHoras.tarifaHora?.description
-                self.txtTotalHoras.text = contratoHoras.totalHoras?.description
+                self.txtTarifaPorHoras.text = contratoHoras!.tarifaHora?.description
+                self.txtTotalHoras.text = contratoHoras!.totalHoras?.description
                 
                 if tH != nil  && tT != nil {
                     self.lblTotalReferencial.text = self.moneda + " " + (tH! * tT!).description
@@ -112,13 +130,12 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     
     @IBAction func saveTapped(sender: AnyObject) {
-        daoContrato().updateContract((self.cliente?.nombre)!, tipoFact: self.tipoFact, moneda: self.moneda, client: self.cliente!, object: self.contrato!)
+        daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda, client: self.cliente!, object: self.contrato!)
         if self.tipoFact == "HRS" {
             self.contratoHoras = daoContratoHoras().genericContratoHoras()
             daoContratoHoras().updateContractHoras(Double(self.txtTotalHoras.text!)!, horasInc: "", tarifaHora: Double(self.txtTarifaPorHoras.text!)!, moneda: self.moneda, object: self.contratoHoras!)
-            self.contrato?.addContratoHoras(self.contratoHoras!)
+            daoContrato().addContratoHorasToContract(self.contratoHoras!, obj: self.contrato!)
         }
-        
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
@@ -148,7 +165,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 3 {
+        if section == 4 { //Sección por Horas
             if self.hideSectionHoras == 1 && self.hideSectionEnt == 0 {
                 return 0
             }
@@ -157,7 +174,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             }
         }
         
-        if section == 4 {
+        if section == 5 { //Sección por Entregables
             if self.hideSectionHoras == 1 && self.hideSectionEnt == 0 {
                 return 1
             }
@@ -170,11 +187,11 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        if self.hideSectionHoras == 1 && section == 3 {
+        if self.hideSectionHoras == 1 && section == 4 { //Sección por Horas
             return UIView.init(frame: CGRectZero)
         }
         
-        if self.hideSectionEnt == 1 && section == 4 {
+        if self.hideSectionEnt == 1 && section == 5 { //Sección por Entregables
             return UIView.init(frame: CGRectZero)
         }
         return nil
@@ -182,11 +199,11 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if section == 3 && self.hideSectionHoras == 1 {
+        if section == 4 && self.hideSectionHoras == 1 { //Sección por Horas
             return 1
         }
         
-        if section == 4 && self.hideSectionEnt == 1 {
+        if section == 5 && self.hideSectionEnt == 1 { //Sección por Entregables
             return 1
         }
         return 32
@@ -194,22 +211,22 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        if self.hideSectionHoras == 1 && section == 3 {
+        if self.hideSectionHoras == 1 && section == 4 { //Sección por Horas
             return UIView.init(frame: CGRectZero)
         }
         
-        if self.hideSectionEnt == 1 && section == 4 {
+        if self.hideSectionEnt == 1 && section == 5 { //Sección por Entregables
             return UIView.init(frame: CGRectZero)
         }
         return nil
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 3 && self.hideSectionHoras == 1 {
+        if section == 4 && self.hideSectionHoras == 1 { //Sección por Horas
             return 1
         }
         
-        if section == 4 && self.hideSectionEnt == 1 {
+        if section == 5 && self.hideSectionEnt == 1 { //Sección por Entregables
             return 1
         }
         return 32

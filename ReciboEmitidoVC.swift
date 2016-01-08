@@ -20,6 +20,11 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var lblTipoFact: UILabel!
     @IBOutlet weak var lblFechaEmision: UILabel!
     
+    //Facturación Por Horas
+    
+    var tarifaPorHora:Double = 0.0
+    var montoTotal:Double = 0.0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +39,9 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.lblNomContrato.text = contrato?.nombreContrato
             
             if contrato?.tipoFacturacion == "HRS" {
-                self.lblTipoFact.text = "Por Horas"
+                
+                self.tarifaPorHora = (contrato?.contratoHoras?.tarifaHora?.doubleValue)!
+                self.lblTipoFact.text = (contrato?.moneda)! + " " + self.tarifaPorHora.description + " por Hora"
             } else {
                 self.lblTipoFact.text = "Por Entregables"
             }
@@ -62,10 +69,13 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let interval = self.tiemposArray[indexPath.row].horas!
+        let timeInterval = NSTimeInterval(interval.doubleValue)
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
         
         cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
-        cell.detailTextLabel!.text = self.tiemposArray[indexPath.row].horas?.description
+        cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (self.tiemposArray[0].contrato?.moneda)! + "0.0"
         
         return cell
     }
@@ -110,6 +120,13 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d horas %02d minutos", hours, minutes)
+    }
     
     /*
     // MARK: - Navigation

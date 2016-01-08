@@ -163,4 +163,17 @@ class daoContrato{
         
         return result as! Array<Contrato>
     }
+    
+    func addContratoHorasToContract(ch: ContratoHoras, obj: Contrato) {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        obj.setValue(ch, forKey: "contratoHoras")
+        
+        do{
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
 }

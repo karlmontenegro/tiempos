@@ -85,22 +85,6 @@ class EntregableTVC: UITableViewController, entregableEditionOperations {
         }    
     }
 
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     /*
     // MARK: - Navigation
 
@@ -115,6 +99,16 @@ class EntregableTVC: UITableViewController, entregableEditionOperations {
             vc.data = nuevoEntregable
             vc.delegateAddress = self
             vc.mode = "NEW"
+        }
+        
+        if segue.identifier == "editEntregableSegue" {
+            
+            let vc:EntregableVC = segue.destinationViewController as! EntregableVC
+            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
+            vc.data = self.entregables![indexpath.row]
+            vc.delegateAddress = self
+            vc.mode = "EDIT"
+            
         }
     }
 }
