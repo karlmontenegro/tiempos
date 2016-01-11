@@ -10,11 +10,21 @@ import Foundation
 import CoreData
 
 class daoRecibo{
-    func getAllReceiptsByUser()->NSArray?{
-        return nil
+    
+    func createNewInvoice() {
+        
     }
     
-    func getAllReceiptsByClient()->NSArray?{
+    func updateInvoice(obj:Recibo) {
+        
+    }
+    
+    func deleteInvoice(obj:Recibo) {
+        
+    }
+    
+    func getAllInvoices()->Array<Recibo>? {
         return nil
     }
+
 }

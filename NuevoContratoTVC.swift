@@ -6,6 +6,12 @@
 //  Copyright © 2016 Isabel Dunin-Borkowski. All rights reserved.
 //
 
+/* Correcciones (11/01/16)
+
+- Horas Totales Opcional
+- 
+*/
+
 import UIKit
 import Foundation
 

@@ -166,7 +166,7 @@ class daoTiempo{
         let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
         
         let request = NSFetchRequest()
-        let pred = NSPredicate(format: "(contrato = %@)", contract)
+        let pred = NSPredicate(format: "contrato = %@ AND tipoFac = %@", contract, "HRS")
         
         request.entity = entityTiempo
         request.predicate = pred

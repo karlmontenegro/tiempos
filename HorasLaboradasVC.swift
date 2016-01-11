@@ -6,6 +6,12 @@
 //  Copyright © 2015 Isabel Dunin-Borkowski. All rights reserved.
 //
 
+/* Correcciones (11/01/16)
+
+- Listar citas sin tiempo en el pasado (hoy hacia atrás)
+
+*/
+
 import UIKit
 import CoreData
 import Foundation

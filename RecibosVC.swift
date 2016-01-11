@@ -59,6 +59,14 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         }
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Tiempos no facturados"
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 32
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("classifierItemCell", forIndexPath: indexPath)
         
@@ -181,7 +189,6 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     }
     
     @IBAction func createInvoiceTapped(sender: AnyObject) {
-        
         self.performSegueWithIdentifier("createInvoiceSegue", sender: self)
     }
     /*

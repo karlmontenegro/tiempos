@@ -7,10 +7,12 @@
 //
 
 
-//TODO
+/* Correcciones (11/01/16)
 
-//Conseguir listado de calendarios, si no se encuentra, crear de nuevo el calendario.
-//Crear eventos desde la aplicación y setear alertas.
+- Listar citas futuras a 5 días
+- 
+
+*/
 
 import UIKit
 import CoreData

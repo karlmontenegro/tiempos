@@ -11,7 +11,7 @@ import Foundation
 
 class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var tiemposArray:Array<Tiempo> = []
+    var contrato:Contrato? = nil
     let dateFormatter = NSDateFormatter()
 
     @IBOutlet weak var detailTableView: UITableView!
@@ -19,12 +19,15 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var lblNomContrato: UILabel!
     @IBOutlet weak var lblTipoFact: UILabel!
     @IBOutlet weak var lblFechaEmision: UILabel!
+    @IBOutlet weak var lblMontoTotal: UILabel!
     
     //Facturación Por Horas
     
     var tarifaPorHora:Double = 0.0
     var montoTotal:Double = 0.0
+    var tiemposArray:Array<Tiempo> = []
     
+    //Facturación Por Entregable
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +39,18 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if self.tiemposArray[0].contrato != nil {
             let contrato = self.tiemposArray[0].contrato
             
-            self.lblNomContrato.text = contrato?.nombreContrato
+            if self.multipleContracts(self.tiemposArray) {
+                self.lblNomContrato.text = "Varios Contratos"
+            } else {
+                self.lblNomContrato.text = contrato?.nombreContrato
+            }
             
             if contrato?.tipoFacturacion == "HRS" {
                 
                 self.tarifaPorHora = (contrato?.contratoHoras?.tarifaHora?.doubleValue)!
                 self.lblTipoFact.text = (contrato?.moneda)! + " " + self.tarifaPorHora.description + " por Hora"
             } else {
-                self.lblTipoFact.text = "Por Entregables"
+                self.lblTipoFact.text = "Por Entregable"
             }
         } else {
             self.lblNomContrato.text = "Ninguno"
@@ -71,11 +78,16 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let interval = self.tiemposArray[indexPath.row].horas!
         let timeInterval = NSTimeInterval(interval.doubleValue)
+        let subtotal = Double(Int(interval)/3600) * self.tarifaPorHora
         
         let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
         
         cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
-        cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (self.tiemposArray[0].contrato?.moneda)! + "0.0"
+        cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (self.tiemposArray[0].contrato?.moneda)! + " " + subtotal.description
+        
+        self.montoTotal += subtotal
+        
+        self.lblMontoTotal.text = (self.tiemposArray[0].contrato?.moneda)! + " " + self.montoTotal.description
         
         return cell
     }
@@ -126,6 +138,17 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         let minutes = (interval / 60) % 60
         let hours = (interval / 3600)
         return String(format: "%02d horas %02d minutos", hours, minutes)
+    }
+    
+    func multipleContracts(arr: Array<Tiempo>) -> Bool {
+        let nombre = arr[0].contrato?.nombreContrato!
+        
+        for tiempo in arr {
+            if tiempo.contrato?.nombreContrato != nombre {
+                return true
+            }
+        }
+        return false
     }
     
     /*

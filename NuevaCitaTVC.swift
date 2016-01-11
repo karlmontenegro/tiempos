@@ -6,6 +6,15 @@
 //  Copyright © 2015 Isabel Dunin-Borkowski. All rights reserved.
 //
 
+/* Correcciones (11/01/16)
+
+- Posible bug a la hora de crear nueva cita
+- Fecha de inicio sugerida (Fecha actual y hora)
+- Proponer fecha fin por default (1 hora)
+- Añadir contrato se cae (cita necesita contrato)
+
+*/
+
 import UIKit
 import Foundation
 import EventKitUI
