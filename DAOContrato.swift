@@ -176,4 +176,27 @@ class daoContrato{
             print(error)
         }
     }
+    
+    func getAllContractsByClientAndFactType(client: Cliente, tipo: String)->Array<Contrato>{
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityContract = NSEntityDescription.entityForName("Contrato", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(estado = %@) AND (cliente = %@) AND (tipoFacturacion = %@)", true, client, tipo)
+        
+        request.entity = entityContract
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as! Array<Contrato>
+    }
 }

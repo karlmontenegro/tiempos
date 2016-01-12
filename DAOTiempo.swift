@@ -159,6 +159,51 @@ class daoTiempo{
         return result as? Array<Tiempo>
     }
     
+    func getTiemposByClientWithContract(client: Cliente)->Array<Tiempo>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(cliente = %@) AND (contrato != nil)", client)
+        
+        request.entity = entityTiempo
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as? Array<Tiempo>
+    }
+    
+    func getTiemposByClientWithoutContract(client: Cliente) ->Array<Tiempo>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "cliente = %@ AND contrato = nil", client)
+        
+        request.entity = entityTiempo
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do {
+            try result = context.executeFetchRequest(request)
+        } catch {
+            print(error)
+        }
+        return result as? Array<Tiempo>
+    }
+    
     func getTiemposByContract(contract: Contrato)->Array<Tiempo>? {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext

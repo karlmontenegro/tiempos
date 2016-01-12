@@ -18,8 +18,10 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     
     @IBOutlet weak var classifierItemsDetailTV: UITableView!
     
-    var classifierItemArray:Array<Tiempo> = []
-    var selectedTimesArray:Array<Tiempo> = []
+    var classifierItemArray:Array<Tiempo> = [] //Tiempos con contrato
+    var classifierItemArrayAux:Array<Tiempo> = [] //Tiempos sin contrato
+    
+    var selectedTimesArray:Array<Tiempo> = [] //Tiempos seleccionados para facturar
     
     var origin:String = ""
     var selectedObj:AnyObject? = nil
@@ -47,7 +49,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,12 +57,20 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         if self.classifierItemArray.isEmpty {
             return 0
         }else {
-            return self.classifierItemArray.count
+            if section == 0 {
+                return self.classifierItemArray.count
+            } else {
+                return self.classifierItemArrayAux.count
+            }
         }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Tiempos no facturados"
+        if section == 0 {
+            return "Tiempos no facturados (con contrato)"
+        }else {
+            return "Tiempos no facturados (sin contrato)"
+        }
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -68,11 +78,19 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("classifierItemCell", forIndexPath: indexPath)
         
-        if !self.classifierItemArray.isEmpty {
-            cell.textLabel?.text = self.classifierItemArray[indexPath.row].titulo!
-            cell.detailTextLabel?.text = self.stringFromTimeInterval(self.classifierItemArray[indexPath.row].horas! as Int)
+        if indexPath.section == 0 {
+            if !self.classifierItemArray.isEmpty {
+                cell.textLabel?.text = self.classifierItemArray[indexPath.row].titulo!
+                cell.detailTextLabel?.text = self.stringFromTimeInterval(self.classifierItemArray[indexPath.row].horas! as Int)
+            }
+        } else {
+            if !self.classifierItemArrayAux.isEmpty {
+                cell.textLabel?.text = self.classifierItemArrayAux[indexPath.row].titulo!
+                cell.detailTextLabel?.text = self.stringFromTimeInterval(self.classifierItemArrayAux[indexPath.row].horas! as Int)
+            }
         }
         return cell
     }
@@ -154,7 +172,8 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
                 self.txtClassifierItem.text = (selectedObject as? Cliente)?.nombre
                 
                 //Refresh table with times by client
-                self.classifierItemArray = daoTiempo().getTiemposByClient((selectedObject as? Cliente)!)!
+                self.classifierItemArray = daoTiempo().getTiemposByClientWithContract((selectedObject as? Cliente)!)!
+                self.classifierItemArrayAux = daoTiempo().getTiemposByClientWithoutContract((selectedObject as? Cliente)!)!
                 self.classifierItemsDetailTV.reloadData()
                 self.selectedTyp = "Cliente"
             }
@@ -206,7 +225,8 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         if segue.identifier == "createInvoiceSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
             let vc:ReciboEmitidoVC = navVC.viewControllers.first as! ReciboEmitidoVC
-            vc.tiemposArray = self.selectedTimesArray
+            vc.dataArray = self.selectedTimesArray
+            vc.tipoFact = "HRS"
         }
     }
 }

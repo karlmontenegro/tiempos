@@ -21,42 +21,39 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var lblFechaEmision: UILabel!
     @IBOutlet weak var lblMontoTotal: UILabel!
     
-    //Facturación Por Horas
-    
-    var tarifaPorHora:Double = 0.0
     var montoTotal:Double = 0.0
+    var tipoFact:String = "" //Si es por Entregables o por Horas
+    var dataArray:Array<AnyObject> = []
+    
+    //Facturación Por Horas
+    var tarifaPorHora:Double = 0.0
     var tiemposArray:Array<Tiempo> = []
     
     //Facturación Por Entregable
+    var entregablesArray:Array<Entregable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let today:NSDate = NSDate()
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
         self.lblFechaEmision.text = self.dateFormatter.stringFromDate(today)
-        self.lblNomCliente.text = self.tiemposArray[0].cliente?.nombre
         
-        if self.tiemposArray[0].contrato != nil {
-            let contrato = self.tiemposArray[0].contrato
+        
+        if tipoFact == "HRS" { //Por Horas
+            self.contrato = (self.dataArray[0] as! Tiempo).contrato!
+            self.lblNomCliente.text = (self.dataArray[0] as! Tiempo).contrato?.cliente?.nombre
             
-            if self.multipleContracts(self.tiemposArray) {
+            
+            if self.multipleContracts(self.dataArray as! Array<Tiempo>) {
                 self.lblNomContrato.text = "Varios Contratos"
             } else {
-                self.lblNomContrato.text = contrato?.nombreContrato
+                self.lblNomContrato.text = self.contrato?.nombreContrato
             }
-            
-            if contrato?.tipoFacturacion == "HRS" {
-                
-                self.tarifaPorHora = (contrato?.contratoHoras?.tarifaHora?.doubleValue)!
-                self.lblTipoFact.text = (contrato?.moneda)! + " " + self.tarifaPorHora.description + " por Hora"
-            } else {
-                self.lblTipoFact.text = "Por Entregable"
-            }
-        } else {
-            self.lblNomContrato.text = "Ninguno"
-            self.lblTipoFact.text = "Ninguna"
-        }
-        
+            self.lblTipoFact.text = (self.contrato?.moneda)! + " " + self.tarifaPorHora.description + " por Hora"
+        } else { //Por Entregables
+            self.lblNomCliente.text = (self.dataArray[0] as! Entregable).contrato?.cliente?.nombre
+            self.lblTipoFact.text = "Por Entregable"
+        }        
         // Do any additional setup after loading the view.
     }
 
