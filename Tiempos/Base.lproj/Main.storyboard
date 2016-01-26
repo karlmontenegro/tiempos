@@ -5775,6 +5775,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="classifierItemsTable" destination="KVG-oR-0Gu" id="8Of-aJ-0gW"/>
+                        <outlet property="generateInvoiceButton" destination="R49-SZ-WZQ" id="Qhe-AA-VXW"/>
                         <outlet property="menuButton" destination="jk2-hI-bcY" id="fDT-qn-MzW"/>
                         <outlet property="txtClient" destination="POc-HP-et5" id="6cO-7B-Npe"/>
                         <segue destination="ePd-B3-IVH" kind="presentation" identifier="classifierPickerSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="X39-jV-VGk"/>
@@ -6043,6 +6044,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="classifierItemsDetailTV" destination="KAv-4B-7f9" id="B3E-C0-FWJ"/>
+                        <outlet property="generateInvoiceButton" destination="qOf-ss-117" id="oUD-MH-8HT"/>
                         <outlet property="lblClassifier" destination="Fcc-vv-Wbk" id="xLW-Ef-GL8"/>
                         <outlet property="menuButton" destination="Ur2-kl-oMs" id="cmh-PW-yvT"/>
                         <outlet property="txtClassifier" destination="Kwx-vH-Gyh" id="ygX-Dd-igi"/>
@@ -6683,18 +6685,18 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uOR-nE-Lvj"/>
-        <segue reference="X39-jV-VGk"/>
-        <segue reference="SD1-5e-R04"/>
-        <segue reference="LhU-5B-JKu"/>
-        <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
+        <segue reference="LhU-5B-JKu"/>
+        <segue reference="uOR-nE-Lvj"/>
         <segue reference="fAi-QO-h1o"/>
-        <segue reference="QM7-Ye-Xhr"/>
         <segue reference="8vE-Kv-g5c"/>
-        <segue reference="VN9-SP-Fso"/>
         <segue reference="oyW-Uv-Djb"/>
+        <segue reference="VN9-SP-Fso"/>
         <segue reference="Kis-3y-3Q5"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="HwU-W3-xDs"/>
+        <segue reference="VFZ-Fh-4Iv"/>
+        <segue reference="wRK-05-tv0"/>
         <segue reference="jDx-tb-DDb"/>
         <segue reference="vjv-50-TbC"/>
     </inferredMetricsTieBreakers>

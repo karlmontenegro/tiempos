@@ -17,6 +17,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var classifierItemsDetailTV: UITableView!
+    @IBOutlet weak var generateInvoiceButton: UIButton!
     
     var classifierItemArray:Array<Tiempo> = [] //Tiempos con contrato
     var classifierItemArrayAux:Array<Tiempo> = [] //Tiempos sin contrato
@@ -38,6 +39,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         self.txtClassifier.enabled = false
         self.txtClassifierItem.enabled = false
         self.lblClassifier.text = "..."
+        self.generateInvoiceButton.enabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -130,6 +132,10 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
+        if self.selectedTimesArray.isEmpty {
+            cell?.accessoryType = UITableViewCellAccessoryType.None
+        }
+        
         if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
             
             cell!.accessoryType = UITableViewCellAccessoryType.None
@@ -138,6 +144,11 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
             
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
             self.selectedTimesArray.append(self.classifierItemArray[indexPath.row])
+            if self.selectedTimesArray.count == 0 {
+                self.generateInvoiceButton.enabled = false
+            } else {
+                self.generateInvoiceButton.enabled = true
+            }
         }
     }
     
@@ -164,6 +175,9 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     }
     
     func returnSelectedOption(selectedObject: AnyObject?, origin: String) {
+        self.selectedTimesArray.removeAll()
+        self.generateInvoiceButton.enabled = false
+        
         if origin == "Classifier" {
             self.txtClassifier.text = selectedObject as? String
             self.lblClassifier.text = selectedObject as? String

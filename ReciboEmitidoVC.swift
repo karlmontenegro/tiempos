@@ -24,6 +24,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var montoTotal:Double = 0.0
     var tipoFact:String = "" //Si es por Entregables o por Horas
     var dataArray:Array<AnyObject> = []
+    var singleData:AnyObject? = nil
     
     //Facturación Por Horas
     var tarifaPorHora:Double = 0.0
@@ -42,15 +43,27 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if tipoFact == "HRS" { //Por Horas
             self.contrato = (self.dataArray[0] as! Tiempo).contrato!
             self.lblNomCliente.text = (self.dataArray[0] as! Tiempo).contrato?.cliente?.nombre
-            
+            self.tiemposArray = self.dataArray as! Array<Tiempo>
             
             if self.multipleContracts(self.dataArray as! Array<Tiempo>) {
                 self.lblNomContrato.text = "Varios Contratos"
+                self.lblTipoFact.text = "Por Horas"
             } else {
+                self.tarifaPorHora = Double(((self.dataArray[0] as! Tiempo).contrato?.contratoHoras?.tarifaHora)!)
                 self.lblNomContrato.text = self.contrato?.nombreContrato
+                self.lblTipoFact.text = (self.contrato?.moneda)! + " " + self.tarifaPorHora.description + " por Hora"
             }
-            self.lblTipoFact.text = (self.contrato?.moneda)! + " " + self.tarifaPorHora.description + " por Hora"
+            
+            
         } else { //Por Entregables
+            
+            self.entregablesArray = self.dataArray as! Array<Entregable>
+            
+            if self.multipleContractsEnt(self.dataArray as! Array<Entregable>) {
+                self.lblNomContrato.text = "Varios Contratos"
+            }else {
+                self.lblNomContrato.text = (self.dataArray[0] as! Entregable).contrato?.nombreContrato!
+            }
             self.lblNomCliente.text = (self.dataArray[0] as! Entregable).contrato?.cliente?.nombre
             self.lblTipoFact.text = "Por Entregable"
         }        
@@ -69,23 +82,31 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tiemposArray.count
+        return self.dataArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let interval = self.tiemposArray[indexPath.row].horas!
-        let timeInterval = NSTimeInterval(interval.doubleValue)
-        let subtotal = Double(Int(interval)/3600) * self.tarifaPorHora
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
         
-        cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
-        cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (self.tiemposArray[0].contrato?.moneda)! + " " + subtotal.description
+        if tipoFact == "HRS" {
+            let interval = self.tiemposArray[indexPath.row].horas!
+            let timeInterval = NSTimeInterval(interval.doubleValue)
+            let subtotal = Double(Int(interval)/3600) * self.tarifaPorHora
+
+            cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
+            cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (self.tiemposArray[0].contrato?.moneda)! + " " + subtotal.description
         
-        self.montoTotal += subtotal
+            self.montoTotal += subtotal
         
-        self.lblMontoTotal.text = (self.tiemposArray[0].contrato?.moneda)! + " " + self.montoTotal.description
+            self.lblMontoTotal.text = (self.tiemposArray[0].contrato?.moneda)! + " " + self.montoTotal.description
+        } else {
+            cell.textLabel!.text = self.entregablesArray[indexPath.row].nombreEntreg
+            cell.detailTextLabel!.text = "Subtotal: " + (self.entregablesArray[indexPath.row].contrato?.moneda)! + Double((self.entregablesArray[indexPath.row].tarifa)!).description
+            let subtotal = Double((self.entregablesArray[indexPath.row].tarifa)!)
+            self.montoTotal += subtotal
+        }
         
+        self.lblMontoTotal.text = self.montoTotal.description
         return cell
     }
     
@@ -93,19 +114,30 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alerts before the delete just in case it wasn't meant to be
+            
+            var mes:String = ""
+            
+            if self.tipoFact == "ENT" {
+                mes = "entregable"
+            } else {
+                mes = "tiempo"
+            }
+        
             let alertController = UIAlertController(title: "Atención", message:
-                "¿Estás seguro que quieres borrar este tiempo? Esto borrará toda la información relacionada con el tiempo.", preferredStyle: UIAlertControllerStyle.Alert)
+                "¿Estás seguro que quieres quitar el " + mes + " del recibo?", preferredStyle: UIAlertControllerStyle.Alert)
             
             // Delete action
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                
-                
+                if self.tipoFact == "HRS" {
+                    self.tiemposArray.removeAtIndex(indexPath.row)
+                } else {
+                    self.entregablesArray.removeAtIndex(indexPath.row)
+                }
                 // Deletes the element from the array
-                
-                
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.detailTableView.reloadData()
             }))
             
             // Cancel action
@@ -122,7 +154,21 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     @IBAction func saveTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let alertController = UIAlertController(title: "Atención", message:
+            "Se registrará el recibo por el monto de " + self.montoTotal.description + "¿Desea continuar?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // Save action
+        alertController.addAction(UIAlertAction(title: "Emitir", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+
+        }))
+        
+        // Cancel action
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
     
     @IBAction func cancelTapped(sender: AnyObject) {
@@ -142,6 +188,17 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         for tiempo in arr {
             if tiempo.contrato?.nombreContrato != nombre {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func multipleContractsEnt(arr: Array<Entregable>) -> Bool {
+        let nombre = arr[0].contrato?.nombreContrato!
+        
+        for entregable in arr  {
+            if entregable.contrato?.nombreContrato != nombre{
                 return true
             }
         }

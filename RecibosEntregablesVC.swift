@@ -16,11 +16,12 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
     var client:Cliente? = nil
     var classifierItemArray:Array<Contrato>? = nil
     
-    var selectedEntregablesArray:Array<Entregable> = []
+    var selectedEntregable:Entregable? = nil
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var classifierItemsTable: UITableView!
     @IBOutlet weak var txtClient: UITextField!
+    @IBOutlet weak var generateInvoiceButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,8 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
             self.menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        self.generateInvoiceButton.enabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -38,6 +41,8 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
     }
     
     func returnSelectedOption(selectedObject: AnyObject?, origin: String) {
+        self.generateInvoiceButton.enabled = false
+        
         self.txtClient.text = (selectedObject as! Cliente).nombre!
         self.client = selectedObject as? Cliente
         self.classifierItemArray = daoContrato().getAllContractsByClientAndFactType(self.client!, tipo: "ENT")
@@ -125,15 +130,16 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
-            
-            cell!.accessoryType = UITableViewCellAccessoryType.None
-            //self.removeFromArray(self.classifierItemArray![indexPath.row])
-        }else{
-            
+        if(cell?.accessoryType == UITableViewCellAccessoryType.None){
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            //self.selectedEntregablesArray.append(self.classifierItemArray![indexPath.row])
+            //Ingresar seleccion en la variable
+            self.selectedEntregable = daoEntregable().getActiveEntregablesByContract(self.classifierItemArray![indexPath.section])[indexPath.row]
         }
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        tableView.cellForRowAtIndexPath(indexPath)!.accessoryType = UITableViewCellAccessoryType.None
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -146,13 +152,6 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
         }
     }
     
-    func removeFromArray(obj: Entregable) {
-        for var index = 0; index < self.selectedEntregablesArray.count; ++index {
-            if self.selectedEntregablesArray[index] == obj {
-                self.selectedEntregablesArray.removeAtIndex(index)
-            }
-        }
-    }
     
     /*
     // MARK: - Navigation
@@ -169,7 +168,7 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
         if segue.identifier == "createInvoiceSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
             let vc:ReciboEmitidoVC = navVC.viewControllers.first as! ReciboEmitidoVC
-            vc.dataArray = self.selectedEntregablesArray
+            vc.singleData = self.selectedEntregable
             vc.tipoFact = "ENT"
         }
     }
