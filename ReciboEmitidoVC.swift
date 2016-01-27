@@ -12,7 +12,9 @@ import Foundation
 class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var contrato:Contrato? = nil
+    var cliente:Cliente? = nil
     let dateFormatter = NSDateFormatter()
+    let today:NSDate = NSDate()
 
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var lblNomCliente: UILabel!
@@ -20,6 +22,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var lblTipoFact: UILabel!
     @IBOutlet weak var lblFechaEmision: UILabel!
     @IBOutlet weak var lblMontoTotal: UILabel!
+    @IBOutlet weak var txtDescripcion: UITextView!
     
     var montoTotal:Double = 0.0
     var tipoFact:String = "" //Si es por Entregables o por Horas
@@ -35,13 +38,12 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let today:NSDate = NSDate()
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
         self.lblFechaEmision.text = self.dateFormatter.stringFromDate(today)
         
-        
         if tipoFact == "HRS" { //Por Horas
             self.contrato = (self.dataArray[0] as! Tiempo).contrato!
+            self.cliente = (self.dataArray[0] as! Tiempo).contrato?.cliente
             self.lblNomCliente.text = (self.dataArray[0] as! Tiempo).contrato?.cliente?.nombre
             self.tiemposArray = self.dataArray as! Array<Tiempo>
             
@@ -56,16 +58,13 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             
         } else { //Por Entregables
-            
-            self.entregablesArray = self.dataArray as! Array<Entregable>
-            
-            if self.multipleContractsEnt(self.dataArray as! Array<Entregable>) {
-                self.lblNomContrato.text = "Varios Contratos"
-            }else {
-                self.lblNomContrato.text = (self.dataArray[0] as! Entregable).contrato?.nombreContrato!
-            }
-            self.lblNomCliente.text = (self.dataArray[0] as! Entregable).contrato?.cliente?.nombre
+            self.entregablesArray.append(self.singleData as! Entregable)
+            self.cliente = (self.singleData as! Entregable).contrato?.cliente
+            self.contrato = (self.singleData as! Entregable).contrato
+            self.entregablesArray.append(self.singleData as! Entregable)
             self.lblTipoFact.text = "Por Entregable"
+            self.lblNomContrato.text = (self.singleData as! Entregable).contrato?.nombreContrato!
+            self.lblNomCliente.text = (self.singleData as! Entregable).contrato?.cliente?.nombre!
         }        
         // Do any additional setup after loading the view.
     }
@@ -82,7 +81,11 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataArray.count
+        if tipoFact == "HRS" {
+            return self.dataArray.count
+        } else {
+            return self.entregablesArray.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -100,10 +103,10 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
             self.lblMontoTotal.text = (self.tiemposArray[0].contrato?.moneda)! + " " + self.montoTotal.description
         } else {
-            cell.textLabel!.text = self.entregablesArray[indexPath.row].nombreEntreg
-            cell.detailTextLabel!.text = "Subtotal: " + (self.entregablesArray[indexPath.row].contrato?.moneda)! + Double((self.entregablesArray[indexPath.row].tarifa)!).description
-            let subtotal = Double((self.entregablesArray[indexPath.row].tarifa)!)
-            self.montoTotal += subtotal
+            
+            cell.textLabel!.text = self.entregablesArray[indexPath.row].nombreEntreg!
+            self.montoTotal += Double(self.entregablesArray[indexPath.row].tarifa!)
+            cell.detailTextLabel!.text = "Tarifa: " + Double(self.entregablesArray[indexPath.row].tarifa!).description
         }
         
         self.lblMontoTotal.text = self.montoTotal.description
@@ -159,7 +162,16 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         // Save action
         alertController.addAction(UIAlertAction(title: "Emitir", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
-
+            
+            let protoInvoice:Recibo = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.contrato, total: self.montoTotal, description: self.txtDescripcion.text)!
+            
+            if self.tipoFact == "ENT" {
+                daoRecibo().addEntregablesToInvoice(protoInvoice, entregables: self.entregablesArray)
+            } else {
+                daoRecibo().addTiemposToInvoice(protoInvoice, tiempos: self.tiemposArray)
+            }
+            print(protoInvoice)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }))
         
         // Cancel action

@@ -54,6 +54,7 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
     }
 
     @IBAction func generateInvoiceTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("createInvoiceSegue", sender: self)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -134,6 +135,7 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
             //Ingresar seleccion en la variable
             self.selectedEntregable = daoEntregable().getActiveEntregablesByContract(self.classifierItemArray![indexPath.section])[indexPath.row]
+            self.generateInvoiceButton.enabled = true
         }
     }
     

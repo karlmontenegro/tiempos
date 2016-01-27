@@ -16,4 +16,24 @@ class Recibo: NSManagedObject {
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
+    
+    func addTiempo(tiempo: Tiempo){
+        let tiempos = self.mutableSetValueForKey("tiempo")
+        tiempos.addObject(tiempo)
+    }
+    
+    func addEntregable(ent: Entregable){
+        let entregables = self.mutableSetValueForKey("entregable")
+        entregables.addObject(ent)
+    }
+    
+    func deleteTiempos(){
+        let tiempos = self.mutableSetValueForKey("tiempo")
+        tiempos.removeAllObjects()
+    }
+    
+    func deleteEntregables(){
+        let entregables = self.mutableSetValueForKey("entregable")
+        entregables.removeAllObjects()
+    }
 }
