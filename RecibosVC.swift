@@ -234,6 +234,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
             let vc:ClassifierPickerModal = segue.destinationViewController as! ClassifierPickerModal
             vc.delegateAddress = self
             vc.origin = self.origin
+            vc.type = "HRS"
             vc.classifier = self.lblClassifier.text!
         }
         if segue.identifier == "createInvoiceSegue" {

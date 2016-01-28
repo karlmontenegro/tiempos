@@ -178,7 +178,6 @@ class daoTiempo{
         }catch{
             print(error)
         }
-        
         return result as? Array<Tiempo>
     }
     
@@ -201,7 +200,7 @@ class daoTiempo{
         } catch {
             print(error)
         }
-        return result as? Array<Tiempo>
+        return deleteContratosPorEntregables(result)
     }
     
     func getTiemposByContract(contract: Contrato)->Array<Tiempo>? {
@@ -224,6 +223,20 @@ class daoTiempo{
             print(error)
         }
         
-        return result as? Array<Tiempo>
+        return deleteContratosPorEntregables(result)
+    }
+    
+    func deleteContratosPorEntregables(result: NSArray)->Array<Tiempo>? {
+        
+        var finalArr:Array<Tiempo> = []
+        
+        for res in result {
+            if (res as! Tiempo).contrato != nil {
+                if (res as! Tiempo).contrato?.tipoFacturacion != "ENT" {
+                    finalArr.append(res as! Tiempo)
+                }
+            }
+        }
+        return finalArr
     }
 }

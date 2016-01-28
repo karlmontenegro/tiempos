@@ -165,6 +165,7 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
             let vc:ClassifierPickerModal = segue.destinationViewController as! ClassifierPickerModal
             vc.delegateAddress = self
             vc.origin = self.origin
+            vc.type = "ENT"
             vc.classifier = self.classifier
         }
         if segue.identifier == "createInvoiceSegue" {

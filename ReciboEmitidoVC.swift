@@ -61,7 +61,6 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.entregablesArray.append(self.singleData as! Entregable)
             self.cliente = (self.singleData as! Entregable).contrato?.cliente
             self.contrato = (self.singleData as! Entregable).contrato
-            self.entregablesArray.append(self.singleData as! Entregable)
             self.lblTipoFact.text = "Por Entregable"
             self.lblNomContrato.text = (self.singleData as! Entregable).contrato?.nombreContrato!
             self.lblNomCliente.text = (self.singleData as! Entregable).contrato?.cliente?.nombre!

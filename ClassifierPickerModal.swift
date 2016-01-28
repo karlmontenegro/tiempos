@@ -15,6 +15,7 @@ protocol classifierOp {
 
 class ClassifierPickerModal: UIViewController,UIPickerViewDelegate {
 
+    var type:String = ""
     var origin:String = ""
     var data:Array<AnyObject> = []
     
@@ -39,7 +40,13 @@ class ClassifierPickerModal: UIViewController,UIPickerViewDelegate {
             }
             
             if self.classifier == "Contratos" {
-                self.data = daoContrato().getAllActiveContracts()
+                
+                if self.type == "HRS" {
+                    self.data = daoContrato().getAllActiveContractsPorHoras()!
+                }
+                if self.type == "ENT" {
+                    self.data = daoContrato().getAllActiveContractsPorEntregables()!
+                }
                 self.selectedObject = self.data[0]
             }
         }
