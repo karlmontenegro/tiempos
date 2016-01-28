@@ -169,7 +169,6 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             } else {
                 daoRecibo().addTiemposToInvoice(protoInvoice, tiempos: self.tiemposArray)
             }
-            print(protoInvoice)
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         

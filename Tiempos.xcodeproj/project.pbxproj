@@ -13,6 +13,8 @@
 		0C1446061C1F29530027BD80 /* HorasLaboradasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */; };
 		0C1446081C1F2D330027BD80 /* NuevoTiempoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1446071C1F2D330027BD80 /* NuevoTiempoTVC.swift */; };
 		0C16F69A1C21DE190015855A /* HoursModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C16F6991C21DE190015855A /* HoursModal.swift */; };
+		0C2042241C5AC49C0082AB9F /* CobrosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2042231C5AC49C0082AB9F /* CobrosTVC.swift */; };
+		0C2042261C5AC4E00082AB9F /* CobroDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2042251C5AC4E00082AB9F /* CobroDetailVC.swift */; };
 		0C2290701C32EDE800FCD448 /* Settings-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C22906F1C32EDE800FCD448 /* Settings-32.png */; };
 		0C2290731C32EEDA00FCD448 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2290721C32EEDA00FCD448 /* SettingsTVC.swift */; };
 		0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */; };
@@ -139,6 +141,8 @@
 		0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorasLaboradasVC.swift; sourceTree = "<group>"; };
 		0C1446071C1F2D330027BD80 /* NuevoTiempoTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevoTiempoTVC.swift; sourceTree = "<group>"; };
 		0C16F6991C21DE190015855A /* HoursModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoursModal.swift; sourceTree = "<group>"; };
+		0C2042231C5AC49C0082AB9F /* CobrosTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CobrosTVC.swift; sourceTree = "<group>"; };
+		0C2042251C5AC4E00082AB9F /* CobroDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CobroDetailVC.swift; sourceTree = "<group>"; };
 		0C22906F1C32EDE800FCD448 /* Settings-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings-32.png"; path = "Iconos/Settings-32.png"; sourceTree = "<group>"; };
 		0C2290721C32EEDA00FCD448 /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		0C2C1E571B72B809009CEB43 /* DetalleContratoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalleContratoViewController.swift; path = Tiempos/DetalleContratoViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +292,15 @@
 			name = Modals;
 			sourceTree = "<group>";
 		};
+		0C2042221C5AC4560082AB9F /* Cobros */ = {
+			isa = PBXGroup;
+			children = (
+				0C2042231C5AC49C0082AB9F /* CobrosTVC.swift */,
+				0C2042251C5AC4E00082AB9F /* CobroDetailVC.swift */,
+			);
+			name = Cobros;
+			sourceTree = "<group>";
+		};
 		0C2290711C32EEC300FCD448 /* Ajustes */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +371,7 @@
 		0C742C361B8228020046BC31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0C2042221C5AC4560082AB9F /* Cobros */,
 				0C2290711C32EEC300FCD448 /* Ajustes */,
 				0C6EA0A31C319C5500A061B5 /* Recibos */,
 				0CD84C941C19E65D00159373 /* Home */,
@@ -722,6 +736,7 @@
 				0CAF591F1B7E5E2900DE9CF8 /* DAOCita.swift in Sources */,
 				0CFB8DC91BB1C0310044D0F5 /* Cita.swift in Sources */,
 				0CE4B3BD1BA091E700FCC736 /* HomeViewController.swift in Sources */,
+				0C2042261C5AC4E00082AB9F /* CobroDetailVC.swift in Sources */,
 				0C5DBC2A1B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift in Sources */,
 				0CFA4B081BE1420B007F30B8 /* CitaViewController.swift in Sources */,
 				0CFB8DBE1BB1C0310044D0F5 /* Recibo.swift in Sources */,
@@ -769,6 +784,7 @@
 				0CECCFD41C3ECE68006C849A /* EntregableTVC.swift in Sources */,
 				0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */,
 				0C4EE5C31BDA995100803DCE /* Contrato+CoreDataProperties.swift in Sources */,
+				0C2042241C5AC49C0082AB9F /* CobrosTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

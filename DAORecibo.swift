@@ -109,7 +109,69 @@ class daoRecibo{
     }
     
     func getAllInvoices()->Array<Recibo>? {
-        return nil
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Recibo")
+        
+        request.returnsObjectsAsFaults = false
+        
+        var results:Array<Recibo> = []
+        
+        do{
+            try results = context.executeFetchRequest(request) as! Array<Recibo>
+        }catch{
+            print(error)
+        }
+
+        return results
     }
+    
+    func getAllCashedInvoices()->Array<Recibo>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityInvoice = NSEntityDescription.entityForName("Recibo", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(cobrado = %@)", true)
+        
+        request.entity = entityInvoice
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as? Array<Recibo>
+    }
+    
+    func getAllPendingInvoices()->Array<Recibo>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityInvoice = NSEntityDescription.entityForName("Recibo", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(cobrado = %@)", false)
+        
+        request.entity = entityInvoice
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as? Array<Recibo>
+    }
+    
 
 }
