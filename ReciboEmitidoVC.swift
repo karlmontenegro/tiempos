@@ -41,6 +41,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
         self.lblFechaEmision.text = self.dateFormatter.stringFromDate(today)
         
+       
         if tipoFact == "HRS" { //Por Horas
             self.contrato = (self.dataArray[0] as! Tiempo).contrato!
             self.cliente = (self.dataArray[0] as! Tiempo).contrato?.cliente

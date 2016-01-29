@@ -173,5 +173,33 @@ class daoRecibo{
         return result as? Array<Recibo>
     }
     
+    func getTiempoListFromInvoice(obj:Recibo)->Array<Tiempo>? {
+        var tiempos: Array<Tiempo> = []
+        for t in obj.tiempo! {
+            tiempos.append(t as! Tiempo)
+        }
+        return tiempos
+    }
+    
+    func getEntregablesListFromInvoice(obj:Recibo)->Array<Entregable>?{
+        var entregables: Array<Entregable> = []
+        for e in obj.entregable! {
+            entregables.append(e as! Entregable)
+        }
+        return entregables
+    }
+    
+    func cashInvoice(obj:Recibo,date:NSDate) {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        obj.setValue(true, forKey: "cobrado")
+        
+        do{
+            try context.save()
+        }catch {
+            print(error)
+        }
+    }
 
 }

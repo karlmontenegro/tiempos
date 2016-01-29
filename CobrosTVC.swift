@@ -102,8 +102,10 @@ class CobrosTVC: UITableViewController {
             
             if indexpath.section == 0 {
                 cobroVC.rec = self.notCashedInvoices[indexpath.row]
+                cobroVC.origin = "NC"
             } else {
                 cobroVC.rec = self.cashedInvoices[indexpath.row]
+                cobroVC.origin = "C"
             }
         }
     }

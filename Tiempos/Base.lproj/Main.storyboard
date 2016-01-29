@@ -4251,15 +4251,19 @@
             <objects>
                 <tableViewController id="yT8-LX-T6H" customClass="CobrosTVC" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="BrE-hn-5b0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="reciboCell" textLabel="eQT-vY-yEF" detailTextLabel="XEV-X6-TuI" style="IBUITableViewCellStyleSubtitle" id="Lom-Mq-3dK">
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lom-Mq-3dK" id="tnH-ug-1Jm">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eQT-vY-yEF">
+                                            <rect key="frame" x="15" y="1" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -4269,6 +4273,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XEV-X6-TuI">
+                                            <rect key="frame" x="15" y="22" width="59" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -4314,6 +4319,7 @@
                         <viewControllerLayoutGuide type="bottom" id="yPg-06-7sW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3Wq-v7-N9r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha de Emisión:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jza-SL-t5x">
@@ -4414,12 +4420,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="j7N-aV-rd5" detailTextLabel="CTH-Y4-3Qb" style="IBUITableViewCellStyleSubtitle" id="8Fl-Ps-Fld">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellDetail" textLabel="j7N-aV-rd5" detailTextLabel="CTH-Y4-3Qb" style="IBUITableViewCellStyleSubtitle" id="8Fl-Ps-Fld">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Fl-Ps-Fld" id="upn-gd-e1n">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j7N-aV-rd5">
+                                                    <rect key="frame" x="15" y="1" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -4429,6 +4437,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CTH-Y4-3Qb">
+                                                    <rect key="frame" x="15" y="22" width="59" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -4441,13 +4450,11 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KJc-8O-ah4" id="HPA-vf-zyh"/>
+                                    <outlet property="delegate" destination="KJc-8O-ah4" id="b0m-eD-eRG"/>
+                                </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detalle del Recibo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbs-x3-t1N">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3h-zv-diw">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -4478,7 +4485,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción del Recibo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHg-oO-g6Y">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="6Pg-LA-Z3K"/>
+                                    <constraint firstAttribute="width" constant="200" id="6Pg-LA-Z3K">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="300"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -4494,7 +4503,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="&lt;Texto de descripción multilinea&gt;" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0E-Vs-lbx">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0E-Vs-lbx">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -4529,7 +4538,6 @@
                             <constraint firstItem="L90-MB-KWB" firstAttribute="leading" secondItem="OsO-pK-vNI" secondAttribute="trailing" constant="26" id="35W-il-hgC"/>
                             <constraint firstItem="jza-SL-t5x" firstAttribute="top" secondItem="bZi-UO-Vqa" secondAttribute="bottom" constant="18" id="4Pa-uZ-Arb"/>
                             <constraint firstItem="dyb-bw-yyK" firstAttribute="leading" secondItem="ORW-fE-FG9" secondAttribute="trailing" constant="24" id="4SI-4L-PeN"/>
-                            <constraint firstItem="Dbs-x3-t1N" firstAttribute="top" secondItem="s0E-Vs-lbx" secondAttribute="bottom" constant="34" id="4sH-EA-OZv"/>
                             <constraint firstItem="KWN-F1-cAc" firstAttribute="leading" secondItem="vVd-fg-WzB" secondAttribute="trailing" constant="44" id="7ue-AA-Ed2"/>
                             <constraint firstItem="FXY-O1-UlE" firstAttribute="leading" secondItem="jza-SL-t5x" secondAttribute="trailing" constant="29" id="AYr-f1-w43"/>
                             <constraint firstItem="FXY-O1-UlE" firstAttribute="top" secondItem="bZi-UO-Vqa" secondAttribute="bottom" constant="18" id="CAc-jR-0PG"/>
@@ -4551,17 +4559,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="lXF-7o-OVm" secondAttribute="trailing" id="brq-hv-N4J"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FXY-O1-UlE" secondAttribute="trailing" id="ei6-83-LNB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s0E-Vs-lbx" secondAttribute="trailing" id="fTr-K8-I1H"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Dbs-x3-t1N" secondAttribute="trailing" constant="182" id="fu4-lB-QUz"/>
                             <constraint firstItem="KWN-F1-cAc" firstAttribute="top" secondItem="L90-MB-KWB" secondAttribute="bottom" constant="16" id="gfR-Oe-FBt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KWN-F1-cAc" secondAttribute="trailing" id="hQ8-63-e9v"/>
-                            <constraint firstItem="PIL-Bq-0ir" firstAttribute="top" secondItem="Dbs-x3-t1N" secondAttribute="bottom" constant="13" id="i8v-zc-90f">
-                                <variation key="heightClass=regular-widthClass=compact" constant="16"/>
-                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="L90-MB-KWB" secondAttribute="trailing" id="iBL-ab-v1d"/>
                             <constraint firstItem="vVd-fg-WzB" firstAttribute="top" secondItem="OsO-pK-vNI" secondAttribute="bottom" constant="16" id="jbP-39-DLA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="s0E-Vs-lbx" secondAttribute="leading" id="kz9-iL-LbG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QHg-oO-g6Y" secondAttribute="trailing" constant="160" id="p7x-Dg-b4X"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Dbs-x3-t1N" secondAttribute="leading" id="tg4-g6-Bij"/>
+                            <constraint firstItem="PIL-Bq-0ir" firstAttribute="top" secondItem="s0E-Vs-lbx" secondAttribute="bottom" constant="20" id="n46-QS-vnt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QHg-oO-g6Y" secondAttribute="trailing" constant="160" id="p7x-Dg-b4X">
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
                             <constraint firstItem="OsO-pK-vNI" firstAttribute="top" secondItem="jza-SL-t5x" secondAttribute="bottom" constant="15" id="uMb-eO-QYA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ORW-fE-FG9" secondAttribute="leading" id="vcM-pl-FV2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dyb-bw-yyK" secondAttribute="trailing" id="wuX-IR-zw4"/>
@@ -4579,7 +4585,6 @@
                                 <exclude reference="vVd-fg-WzB"/>
                                 <exclude reference="ORW-fE-FG9"/>
                                 <exclude reference="PIL-Bq-0ir"/>
-                                <exclude reference="Dbs-x3-t1N"/>
                                 <exclude reference="h3h-zv-diw"/>
                                 <exclude reference="lXF-7o-OVm"/>
                                 <exclude reference="QHg-oO-g6Y"/>
@@ -4613,12 +4618,9 @@
                                 <exclude reference="VKb-Uh-YJv"/>
                                 <exclude reference="fTr-K8-I1H"/>
                                 <exclude reference="kz9-iL-LbG"/>
-                                <exclude reference="4sH-EA-OZv"/>
-                                <exclude reference="fu4-lB-QUz"/>
-                                <exclude reference="tg4-g6-Bij"/>
                                 <exclude reference="1CR-bD-BbO"/>
                                 <exclude reference="Ddt-DR-0uq"/>
-                                <exclude reference="i8v-zc-90f"/>
+                                <exclude reference="n46-QS-vnt"/>
                                 <exclude reference="SkF-iC-glK"/>
                                 <exclude reference="WrU-hK-GhZ"/>
                                 <exclude reference="FxU-xU-nkw"/>
@@ -4637,7 +4639,6 @@
                                 <include reference="vVd-fg-WzB"/>
                                 <include reference="ORW-fE-FG9"/>
                                 <include reference="PIL-Bq-0ir"/>
-                                <include reference="Dbs-x3-t1N"/>
                                 <include reference="h3h-zv-diw"/>
                                 <include reference="lXF-7o-OVm"/>
                                 <include reference="QHg-oO-g6Y"/>
@@ -4671,12 +4672,9 @@
                                 <include reference="VKb-Uh-YJv"/>
                                 <include reference="fTr-K8-I1H"/>
                                 <include reference="kz9-iL-LbG"/>
-                                <include reference="4sH-EA-OZv"/>
-                                <include reference="fu4-lB-QUz"/>
-                                <include reference="tg4-g6-Bij"/>
                                 <include reference="1CR-bD-BbO"/>
                                 <include reference="Ddt-DR-0uq"/>
-                                <include reference="i8v-zc-90f"/>
+                                <include reference="n46-QS-vnt"/>
                                 <include reference="SkF-iC-glK"/>
                                 <include reference="WrU-hK-GhZ"/>
                                 <include reference="FxU-xU-nkw"/>
@@ -4687,16 +4685,21 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Recibo Emitido" id="HF9-vc-XPV">
-                        <barButtonItem key="rightBarButtonItem" title="Cobrar" id="ekf-UA-il1">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Cobrar" id="ekf-UA-il1">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cobrarTapped:" destination="KJc-8O-ah4" id="cNn-pP-zF1"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cobroButton" destination="ekf-UA-il1" id="xVq-Jm-0nN"/>
                         <outlet property="lblCliente" destination="L90-MB-KWB" id="hpx-EM-Moe"/>
                         <outlet property="lblContrato" destination="KWN-F1-cAc" id="41U-OV-fzs"/>
                         <outlet property="lblFechaEmision" destination="FXY-O1-UlE" id="23l-Br-Uk9"/>
                         <outlet property="lblMontoTotal" destination="lXF-7o-OVm" id="JRJ-Pe-gfd"/>
                         <outlet property="lblTipoFact" destination="dyb-bw-yyK" id="mvx-YT-oGk"/>
+                        <outlet property="navigationTitle" destination="HF9-vc-XPV" id="n6w-Mi-Bdb"/>
                         <outlet property="txtDescripcion" destination="s0E-Vs-lbx" id="faE-FV-AV8"/>
                     </connections>
                 </viewController>
@@ -6902,7 +6905,7 @@
                                 <action selector="cancelTapped:" destination="uem-uU-lNx" id="DyD-8m-gie"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Emitir" id="040-s0-He2">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Emitir" id="040-s0-He2">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="uem-uU-lNx" id="Ea4-C8-LOe"/>
@@ -6910,6 +6913,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cobroButton" destination="040-s0-He2" id="zQf-mH-bbZ"/>
                         <outlet property="detailTableView" destination="2lb-vK-d8v" id="pOP-lh-PJ4"/>
                         <outlet property="lblFechaEmision" destination="dL0-Lc-xCV" id="ZWQ-ny-RDL"/>
                         <outlet property="lblMontoTotal" destination="PSM-O6-ofI" id="XH5-Mo-gwr"/>
@@ -7199,18 +7203,18 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VN9-SP-Fso"/>
         <segue reference="uOR-nE-Lvj"/>
         <segue reference="HwU-W3-xDs"/>
         <segue reference="VFZ-Fh-4Iv"/>
+        <segue reference="fAi-QO-h1o"/>
+        <segue reference="VN9-SP-Fso"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="8vE-Kv-g5c"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
-        <segue reference="fAi-QO-h1o"/>
-        <segue reference="QM7-Ye-Xhr"/>
-        <segue reference="8vE-Kv-g5c"/>
-        <segue reference="oyW-Uv-Djb"/>
-        <segue reference="Kis-3y-3Q5"/>
+        <segue reference="ahy-Kc-bEb"/>
+        <segue reference="0YH-12-9Rm"/>
         <segue reference="vjv-50-TbC"/>
         <segue reference="jDx-tb-DDb"/>
     </inferredMetricsTieBreakers>
