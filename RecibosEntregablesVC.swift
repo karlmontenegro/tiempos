@@ -52,10 +52,6 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
     @IBAction func sortByClientTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("classifierPickerSegue", sender: self)
     }
-
-    @IBAction func generateInvoiceTapped(sender: AnyObject) {
-        self.performSegueWithIdentifier("createInvoiceSegue", sender: self)
-    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.

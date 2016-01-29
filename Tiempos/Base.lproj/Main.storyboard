@@ -4416,9 +4416,9 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PIL-Bq-0ir">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="PIL-Bq-0ir">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellDetail" textLabel="j7N-aV-rd5" detailTextLabel="CTH-Y4-3Qb" style="IBUITableViewCellStyleSubtitle" id="8Fl-Ps-Fld">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -4507,7 +4507,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="VHV-og-YgH"/>
+                                    <constraint firstAttribute="height" constant="85" id="VHV-og-YgH">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="61"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -4528,47 +4530,95 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;FechaCobro&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31T-cW-YhD">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha de Cobro:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ier-rC-h9N">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="WFh-Tm-8va"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WFh-Tm-8va"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="WFh-Tm-8va"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="OsO-pK-vNI" secondAttribute="leading" id="11i-bL-tgC"/>
                             <constraint firstAttribute="leadingMargin" secondItem="PIL-Bq-0ir" secondAttribute="leading" id="1CR-bD-BbO"/>
-                            <constraint firstItem="dyb-bw-yyK" firstAttribute="top" secondItem="KWN-F1-cAc" secondAttribute="bottom" constant="13" id="2FV-F6-6C0"/>
+                            <constraint firstItem="dyb-bw-yyK" firstAttribute="top" secondItem="KWN-F1-cAc" secondAttribute="bottom" constant="13" id="2FV-F6-6C0">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstAttribute="leadingMargin" secondItem="jza-SL-t5x" secondAttribute="leading" id="2aW-d8-cxw"/>
                             <constraint firstItem="L90-MB-KWB" firstAttribute="leading" secondItem="OsO-pK-vNI" secondAttribute="trailing" constant="26" id="35W-il-hgC"/>
                             <constraint firstItem="jza-SL-t5x" firstAttribute="top" secondItem="bZi-UO-Vqa" secondAttribute="bottom" constant="18" id="4Pa-uZ-Arb"/>
                             <constraint firstItem="dyb-bw-yyK" firstAttribute="leading" secondItem="ORW-fE-FG9" secondAttribute="trailing" constant="24" id="4SI-4L-PeN"/>
+                            <constraint firstItem="OsO-pK-vNI" firstAttribute="top" secondItem="Ier-rC-h9N" secondAttribute="bottom" constant="13" id="63P-YT-vBm"/>
                             <constraint firstItem="KWN-F1-cAc" firstAttribute="leading" secondItem="vVd-fg-WzB" secondAttribute="trailing" constant="44" id="7ue-AA-Ed2"/>
                             <constraint firstItem="FXY-O1-UlE" firstAttribute="leading" secondItem="jza-SL-t5x" secondAttribute="trailing" constant="29" id="AYr-f1-w43"/>
                             <constraint firstItem="FXY-O1-UlE" firstAttribute="top" secondItem="bZi-UO-Vqa" secondAttribute="bottom" constant="18" id="CAc-jR-0PG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PIL-Bq-0ir" secondAttribute="trailing" id="Ddt-DR-0uq"/>
-                            <constraint firstItem="ORW-fE-FG9" firstAttribute="top" secondItem="vVd-fg-WzB" secondAttribute="bottom" constant="13" id="DeW-g9-ETk"/>
+                            <constraint firstItem="ORW-fE-FG9" firstAttribute="top" secondItem="vVd-fg-WzB" secondAttribute="bottom" constant="13" id="DeW-g9-ETk">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="lXF-7o-OVm" firstAttribute="top" secondItem="PIL-Bq-0ir" secondAttribute="bottom" constant="19" id="FxU-xU-nkw">
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
+                            <constraint firstItem="Ier-rC-h9N" firstAttribute="top" secondItem="jza-SL-t5x" secondAttribute="bottom" constant="14" id="GWb-cV-MLU"/>
                             <constraint firstAttribute="leadingMargin" secondItem="QHg-oO-g6Y" secondAttribute="leading" id="HMc-u4-iN8"/>
+                            <constraint firstItem="31T-cW-YhD" firstAttribute="top" secondItem="FXY-O1-UlE" secondAttribute="bottom" constant="14" id="K15-hf-273"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Ier-rC-h9N" secondAttribute="leading" id="LuG-O1-0WX"/>
                             <constraint firstItem="lXF-7o-OVm" firstAttribute="leading" secondItem="h3h-zv-diw" secondAttribute="trailing" constant="53" id="Mym-a3-sBM"/>
-                            <constraint firstItem="QHg-oO-g6Y" firstAttribute="top" secondItem="ORW-fE-FG9" secondAttribute="bottom" constant="14" id="Rkk-ba-dP2"/>
+                            <constraint firstItem="QHg-oO-g6Y" firstAttribute="top" secondItem="ORW-fE-FG9" secondAttribute="bottom" constant="14" id="Rkk-ba-dP2">
+                                <variation key="heightClass=regular-widthClass=compact" constant="19"/>
+                            </constraint>
                             <constraint firstItem="h3h-zv-diw" firstAttribute="top" secondItem="PIL-Bq-0ir" secondAttribute="bottom" constant="19" id="SkF-iC-glK">
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
                             <constraint firstItem="s0E-Vs-lbx" firstAttribute="top" secondItem="QHg-oO-g6Y" secondAttribute="bottom" constant="8" id="VKb-Uh-YJv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="h3h-zv-diw" secondAttribute="leading" id="WrU-hK-GhZ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="vVd-fg-WzB" secondAttribute="leading" id="XDN-xf-96j"/>
-                            <constraint firstItem="L90-MB-KWB" firstAttribute="top" secondItem="FXY-O1-UlE" secondAttribute="bottom" constant="15" id="Y3y-jZ-8p1"/>
+                            <constraint firstItem="L90-MB-KWB" firstAttribute="top" secondItem="FXY-O1-UlE" secondAttribute="bottom" constant="15" id="Y3y-jZ-8p1">
+                                <variation key="heightClass=regular-widthClass=compact" constant="48"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="31T-cW-YhD" secondAttribute="trailing" id="ZkO-fB-FKd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lXF-7o-OVm" secondAttribute="trailing" id="brq-hv-N4J"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FXY-O1-UlE" secondAttribute="trailing" id="ei6-83-LNB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s0E-Vs-lbx" secondAttribute="trailing" id="fTr-K8-I1H"/>
-                            <constraint firstItem="KWN-F1-cAc" firstAttribute="top" secondItem="L90-MB-KWB" secondAttribute="bottom" constant="16" id="gfR-Oe-FBt"/>
+                            <constraint firstItem="L90-MB-KWB" firstAttribute="top" secondItem="31T-cW-YhD" secondAttribute="bottom" constant="13" id="gFz-tZ-Eet"/>
+                            <constraint firstItem="KWN-F1-cAc" firstAttribute="top" secondItem="L90-MB-KWB" secondAttribute="bottom" constant="16" id="gfR-Oe-FBt">
+                                <variation key="heightClass=regular-widthClass=compact" constant="13"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="KWN-F1-cAc" secondAttribute="trailing" id="hQ8-63-e9v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="L90-MB-KWB" secondAttribute="trailing" id="iBL-ab-v1d"/>
-                            <constraint firstItem="vVd-fg-WzB" firstAttribute="top" secondItem="OsO-pK-vNI" secondAttribute="bottom" constant="16" id="jbP-39-DLA"/>
+                            <constraint firstItem="vVd-fg-WzB" firstAttribute="top" secondItem="OsO-pK-vNI" secondAttribute="bottom" constant="16" id="jbP-39-DLA">
+                                <variation key="heightClass=regular-widthClass=compact" constant="13"/>
+                            </constraint>
                             <constraint firstAttribute="leadingMargin" secondItem="s0E-Vs-lbx" secondAttribute="leading" id="kz9-iL-LbG"/>
-                            <constraint firstItem="PIL-Bq-0ir" firstAttribute="top" secondItem="s0E-Vs-lbx" secondAttribute="bottom" constant="20" id="n46-QS-vnt"/>
+                            <constraint firstItem="PIL-Bq-0ir" firstAttribute="top" secondItem="s0E-Vs-lbx" secondAttribute="bottom" constant="20" id="n46-QS-vnt">
+                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="QHg-oO-g6Y" secondAttribute="trailing" constant="160" id="p7x-Dg-b4X">
                                 <variation key="heightClass=regular-widthClass=compact" constant="60"/>
                             </constraint>
-                            <constraint firstItem="OsO-pK-vNI" firstAttribute="top" secondItem="jza-SL-t5x" secondAttribute="bottom" constant="15" id="uMb-eO-QYA"/>
+                            <constraint firstItem="31T-cW-YhD" firstAttribute="leading" secondItem="Ier-rC-h9N" secondAttribute="trailing" constant="20" id="rYV-Vx-6T3"/>
+                            <constraint firstItem="OsO-pK-vNI" firstAttribute="top" secondItem="jza-SL-t5x" secondAttribute="bottom" constant="15" id="uMb-eO-QYA">
+                                <variation key="heightClass=regular-widthClass=compact" constant="48"/>
+                            </constraint>
                             <constraint firstAttribute="leadingMargin" secondItem="ORW-fE-FG9" secondAttribute="leading" id="vcM-pl-FV2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dyb-bw-yyK" secondAttribute="trailing" id="wuX-IR-zw4"/>
                             <constraint firstItem="yPg-06-7sW" firstAttribute="top" secondItem="PIL-Bq-0ir" secondAttribute="bottom" constant="153" id="zRt-x4-uaD">
@@ -4590,22 +4640,31 @@
                                 <exclude reference="QHg-oO-g6Y"/>
                                 <exclude reference="s0E-Vs-lbx"/>
                                 <exclude reference="FXY-O1-UlE"/>
+                                <exclude reference="31T-cW-YhD"/>
+                                <exclude reference="Ier-rC-h9N"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="2aW-d8-cxw"/>
                                 <exclude reference="4Pa-uZ-Arb"/>
+                                <exclude reference="GWb-cV-MLU"/>
+                                <exclude reference="LuG-O1-0WX"/>
                                 <exclude reference="11i-bL-tgC"/>
+                                <exclude reference="63P-YT-vBm"/>
                                 <exclude reference="uMb-eO-QYA"/>
                                 <exclude reference="XDN-xf-96j"/>
                                 <exclude reference="jbP-39-DLA"/>
                                 <exclude reference="35W-il-hgC"/>
                                 <exclude reference="Y3y-jZ-8p1"/>
+                                <exclude reference="gFz-tZ-Eet"/>
                                 <exclude reference="iBL-ab-v1d"/>
                                 <exclude reference="DeW-g9-ETk"/>
                                 <exclude reference="vcM-pl-FV2"/>
                                 <exclude reference="AYr-f1-w43"/>
                                 <exclude reference="CAc-jR-0PG"/>
                                 <exclude reference="ei6-83-LNB"/>
+                                <exclude reference="K15-hf-273"/>
+                                <exclude reference="ZkO-fB-FKd"/>
+                                <exclude reference="rYV-Vx-6T3"/>
                                 <exclude reference="7ue-AA-Ed2"/>
                                 <exclude reference="gfR-Oe-FBt"/>
                                 <exclude reference="hQ8-63-e9v"/>
@@ -4644,22 +4703,31 @@
                                 <include reference="QHg-oO-g6Y"/>
                                 <include reference="s0E-Vs-lbx"/>
                                 <include reference="FXY-O1-UlE"/>
+                                <include reference="31T-cW-YhD"/>
+                                <include reference="Ier-rC-h9N"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="2aW-d8-cxw"/>
                                 <include reference="4Pa-uZ-Arb"/>
+                                <include reference="GWb-cV-MLU"/>
+                                <include reference="LuG-O1-0WX"/>
                                 <include reference="11i-bL-tgC"/>
+                                <include reference="63P-YT-vBm"/>
                                 <include reference="uMb-eO-QYA"/>
                                 <include reference="XDN-xf-96j"/>
                                 <include reference="jbP-39-DLA"/>
                                 <include reference="35W-il-hgC"/>
                                 <include reference="Y3y-jZ-8p1"/>
+                                <include reference="gFz-tZ-Eet"/>
                                 <include reference="iBL-ab-v1d"/>
                                 <include reference="DeW-g9-ETk"/>
                                 <include reference="vcM-pl-FV2"/>
                                 <include reference="AYr-f1-w43"/>
                                 <include reference="CAc-jR-0PG"/>
                                 <include reference="ei6-83-LNB"/>
+                                <include reference="K15-hf-273"/>
+                                <include reference="ZkO-fB-FKd"/>
+                                <include reference="rYV-Vx-6T3"/>
                                 <include reference="7ue-AA-Ed2"/>
                                 <include reference="gfR-Oe-FBt"/>
                                 <include reference="hQ8-63-e9v"/>
@@ -4696,6 +4764,7 @@
                         <outlet property="cobroButton" destination="ekf-UA-il1" id="xVq-Jm-0nN"/>
                         <outlet property="lblCliente" destination="L90-MB-KWB" id="hpx-EM-Moe"/>
                         <outlet property="lblContrato" destination="KWN-F1-cAc" id="41U-OV-fzs"/>
+                        <outlet property="lblFechaCobro" destination="31T-cW-YhD" id="gHX-kY-Nre"/>
                         <outlet property="lblFechaEmision" destination="FXY-O1-UlE" id="23l-Br-Uk9"/>
                         <outlet property="lblMontoTotal" destination="lXF-7o-OVm" id="JRJ-Pe-gfd"/>
                         <outlet property="lblTipoFact" destination="dyb-bw-yyK" id="mvx-YT-oGk"/>
@@ -6142,7 +6211,6 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="generateInvoiceTapped:" destination="Rxi-PN-qGc" eventType="touchUpInside" id="0l4-0B-NcP"/>
                                     <segue destination="K3z-0p-y4v" kind="popoverPresentation" identifier="createInvoiceSegue" popoverAnchorView="R49-SZ-WZQ" id="SD1-5e-R04">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
@@ -6329,29 +6397,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-ss-117">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="aVr-Pg-vYz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Generar Recibo Por Tiempos">
-                                    <color key="titleColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="aVr-Pg-vYz"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="aVr-Pg-vYz"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="createInvoiceTapped:" destination="tj5-fl-Ajt" eventType="touchUpInside" id="ork-1v-1RX"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="KAv-4B-7f9">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -6391,6 +6436,31 @@
                                     <outlet property="delegate" destination="tj5-fl-Ajt" id="z8s-7m-SYy"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-ss-117">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="aVr-Pg-vYz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Generar Recibo Por Tiempos">
+                                    <color key="titleColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="aVr-Pg-vYz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="aVr-Pg-vYz"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="K3z-0p-y4v" kind="popoverPresentation" identifier="createInvoiceTimeSegue" popoverAnchorView="qOf-ss-117" id="cX3-9R-G3m">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -6442,8 +6512,8 @@
                                 <exclude reference="jpG-IT-IM9"/>
                                 <exclude reference="juy-Vf-d33"/>
                                 <exclude reference="Fcc-vv-Wbk"/>
-                                <exclude reference="qOf-ss-117"/>
                                 <exclude reference="KAv-4B-7f9"/>
+                                <exclude reference="qOf-ss-117"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Ika-eD-TnP"/>
@@ -6481,8 +6551,8 @@
                                 <include reference="jpG-IT-IM9"/>
                                 <include reference="juy-Vf-d33"/>
                                 <include reference="Fcc-vv-Wbk"/>
-                                <include reference="qOf-ss-117"/>
                                 <include reference="KAv-4B-7f9"/>
+                                <include reference="qOf-ss-117"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Ika-eD-TnP"/>
@@ -6530,9 +6600,6 @@
                         <outlet property="txtClassifier" destination="Kwx-vH-Gyh" id="ygX-Dd-igi"/>
                         <outlet property="txtClassifierItem" destination="jpG-IT-IM9" id="EcX-3D-Kgl"/>
                         <segue destination="ePd-B3-IVH" kind="presentation" identifier="classifierPickerSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="HwU-W3-xDs"/>
-                        <segue destination="K3z-0p-y4v" kind="popoverPresentation" identifier="createInvoiceSegue" popoverAnchorView="qOf-ss-117" id="VFZ-Fh-4Iv">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Krz-6a-Ts3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6905,7 +6972,7 @@
                                 <action selector="cancelTapped:" destination="uem-uU-lNx" id="DyD-8m-gie"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Emitir" id="040-s0-He2">
+                        <barButtonItem key="rightBarButtonItem" title="Emitir" id="040-s0-He2">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="uem-uU-lNx" id="Ea4-C8-LOe"/>
@@ -7204,8 +7271,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uOR-nE-Lvj"/>
-        <segue reference="HwU-W3-xDs"/>
-        <segue reference="VFZ-Fh-4Iv"/>
+        <segue reference="SD1-5e-R04"/>
+        <segue reference="X39-jV-VGk"/>
         <segue reference="fAi-QO-h1o"/>
         <segue reference="VN9-SP-Fso"/>
         <segue reference="QM7-Ye-Xhr"/>

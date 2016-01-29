@@ -194,6 +194,7 @@ class daoRecibo{
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         obj.setValue(true, forKey: "cobrado")
+        obj.setValue(date, forKey: "fechaCobro")
         
         do{
             try context.save()

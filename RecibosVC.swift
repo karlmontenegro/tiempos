@@ -220,10 +220,6 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         self.origin = "ClassifierItem"
         self.performSegueWithIdentifier("classifierPickerSegue", sender: nil)
     }
-    
-    @IBAction func createInvoiceTapped(sender: AnyObject) {
-        self.performSegueWithIdentifier("createInvoiceSegue", sender: self)
-    }
     /*
     // MARK: - Navigation
 
@@ -237,7 +233,7 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
             vc.type = "HRS"
             vc.classifier = self.lblClassifier.text!
         }
-        if segue.identifier == "createInvoiceSegue" {
+        if segue.identifier == "createInvoiceTimeSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
             let vc:ReciboEmitidoVC = navVC.viewControllers.first as! ReciboEmitidoVC
             vc.dataArray = self.selectedTimesArray

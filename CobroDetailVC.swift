@@ -18,6 +18,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     @IBOutlet weak var lblMontoTotal: UILabel!
     @IBOutlet weak var cobroButton: UIBarButtonItem!
     @IBOutlet weak var navigationTitle: UINavigationItem!
+    @IBOutlet weak var lblFechaCobro: UILabel!
     
     var rec:Recibo? = nil
     let dateFormatter = NSDateFormatter()
@@ -37,15 +38,17 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         if self.origin == "NC" {
             self.cobroButton.enabled = true
             self.navigationTitle.title = "Recibo Sin Cobrar"
+            self.lblFechaCobro.text = "Sin Cobrar"
         } else {
             self.navigationTitle.title = "Recibo Cobrado"
+            self.lblFechaCobro.text = self.dateFormatter.stringFromDate((self.rec?.fechaCobro!)!)
         }
         
-        if self.rec?.tiempo != nil {
+        if self.rec?.tiempo!.count != 0 {
             self.lblTipoFact.text = "Por Horas"
             self.tiempos = daoRecibo().getTiempoListFromInvoice(self.rec!)!
         }
-        if self.rec?.entregable != nil{
+        if self.rec?.entregable!.count != 0 {
             self.lblTipoFact.text = "Por Entregables"
             self.entregables = daoRecibo().getEntregablesListFromInvoice(self.rec!)!
         }
@@ -75,11 +78,11 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if self.rec?.entregable != nil {
+        if self.rec?.entregable!.count != 0{
             //Por entregables
             return self.entregables.count
         }
-        if self.rec?.tiempo != nil {
+        if self.rec?.tiempo!.count != 0 {
             //Por horas
             return self.tiempos.count
         }
@@ -90,12 +93,12 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellDetail", forIndexPath: indexPath)
         
-        if self.rec?.entregable != nil {
+        if self.rec?.entregable!.count != 0 {
             cell.textLabel?.text = self.entregables[indexPath.row].nombreEntreg
             cell.detailTextLabel?.text = "Tarifa:" + Double(self.entregables[indexPath.row].tarifa!).description
         }
         
-        if self.rec?.tiempo != nil {
+        if self.rec?.tiempo!.count != 0 {
             
             cell.textLabel?.text = self.tiempos[indexPath.row].titulo
             cell.detailTextLabel?.text = "Subtotal:"
