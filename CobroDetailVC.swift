@@ -97,11 +97,13 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
             cell.textLabel?.text = self.entregables[indexPath.row].nombreEntreg
             cell.detailTextLabel?.text = "Tarifa:" + Double(self.entregables[indexPath.row].tarifa!).description
         }
-        
         if self.rec?.tiempo!.count != 0 {
             
+            let interval = self.tiempos[indexPath.row].horas!
+            let subtotal = Double(Int(interval)/3600) * Double((self.tiempos[indexPath.row].contrato?.contratoHoras?.tarifaHora!)!)
+            
             cell.textLabel?.text = self.tiempos[indexPath.row].titulo
-            cell.detailTextLabel?.text = "Subtotal:"
+            cell.detailTextLabel?.text = "Subtotal: " + subtotal.description
         }
         
         return cell
