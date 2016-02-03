@@ -31,8 +31,8 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         //Change button names depending on the origin
         
         switch origin{
-            case "NEW":self.viewTitle.leftBarButtonItem?.title = "Save"
-            self.viewTitle.rightBarButtonItem?.title = "Cancel"
+            case "NEW":self.viewTitle.leftBarButtonItem?.title = "Grabar"
+            self.viewTitle.rightBarButtonItem?.title = "Regresar"
             case "EDIT":
                 self.viewTitle.rightBarButtonItem?.enabled = false
                 self.viewTitle.leftBarButtonItem?.title = "Clientes"
@@ -109,12 +109,6 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default,handler: nil))
         
         self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-
-    
-    @IBAction func editClient(sender: UIButton) {
-        performSegueWithIdentifier("editClientSegue", sender: sender)
     }
 
     override func didReceiveMemoryWarning() {

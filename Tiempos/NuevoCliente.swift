@@ -26,11 +26,13 @@ class NuevoCliente: UIViewController{
 
     @IBAction func saveTapped(sender: AnyObject) {
         //let defaults = NSUserDefaults.standardUserDefaults()
-        self.nuevoCliente = daoCliente().newClient(txtNombre.text!, ruc: txtRUC.text!, razonSoc: txtRazonSocial.text!, direccion: "",usuario: "")
         
-        performSegueWithIdentifier("stepTwoNewClient", sender: sender)
-        
-         //self.navigationController?.popToRootViewControllerAnimated(true)
+        if self.txtNombre.text == "" {
+            self.alertMessage("El cliente necesariamente debe tener un nombre", winTitle: "Error")
+        } else {
+            self.nuevoCliente = daoCliente().newClient(txtNombre.text!, ruc: txtRUC.text!, razonSoc: txtRazonSocial.text!, direccion: "",usuario: "")
+            performSegueWithIdentifier("stepTwoNewClient", sender: sender)
+        }
     }
     
 
@@ -50,5 +52,14 @@ class NuevoCliente: UIViewController{
             tvc.data = self.nuevoCliente
             tvc.origin = "NEW"
         }
+    }
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

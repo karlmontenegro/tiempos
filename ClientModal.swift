@@ -59,5 +59,7 @@ class ClientModal: UIViewController, UIPickerViewDelegate{
         self.delegateAddress!.returnClientToContract(self.cliente as! Cliente)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    @IBAction func cancelTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

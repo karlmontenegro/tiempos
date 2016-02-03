@@ -23,7 +23,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.lblwelcome.text = "Bienvenido(a) " + "Isabel"
+        self.lblwelcome.text = "Hola " + "Isabel"
         
         if self.revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
