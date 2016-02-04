@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let dataHelper = DataHelper(context: self.managedObjectContext)
+        dataHelper.seedCurrency()
+        dataHelper.seedConfig()
         return true
     }
     
@@ -63,6 +66,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Tiempos.sqlite")
+        
+        /*
+        do{
+            try NSFileManager.defaultManager().removeItemAtURL(url)
+        } catch {
+            print(error)
+        }
+        */
+        
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)

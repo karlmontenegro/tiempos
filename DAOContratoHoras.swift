@@ -27,7 +27,7 @@ class daoContratoHoras{
         return newContratoHoras as! ContratoHoras
     }
     
-    func newContratoHoras(nroHoras: Double, horasInc:String, tarifaHora: Double, moneda:String, object: Tiempo){
+    func newContratoHoras(nroHoras: Double, horasInc:String, tarifaHora: Double, moneda:Moneda, object: Tiempo){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext
         
@@ -37,6 +37,12 @@ class daoContratoHoras{
         newContratoHoras.setValue(nil, forKey: "horasInc")
         newContratoHoras.setValue(moneda, forKey: "moneda")
         newContratoHoras.setValue(tarifaHora, forKey: "tarifaHora")
+        
+        do{
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
     
     func deleteAllContractHoras(object: Contrato){
@@ -51,14 +57,18 @@ class daoContratoHoras{
         }
     }
     
-    func updateContractHoras(nroHoras: Double, horasInc:String, tarifaHora: Double, moneda: String, object: ContratoHoras){
+    func updateContractHoras(nroHoras: Double?, horasInc:String, tarifaHora: Double, moneda: Moneda, object: ContratoHoras){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         object.setValue(nil, forKey: "horasInc")
-        object.setValue(nroHoras, forKey: "totalHoras")
+        if nroHoras != nil {
+            object.setValue(nroHoras, forKey: "totalHoras")
+        }else {
+            object.setValue(0.0, forKey: "totalHoras")
+        }
         object.setValue(tarifaHora, forKey: "tarifaHora")
-        object.setValue(moneda, forKey: "monedaNom")
+        object.setValue(moneda, forKey: "moneda")
         
         do{
             try context.save()

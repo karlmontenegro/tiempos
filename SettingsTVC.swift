@@ -11,7 +11,9 @@ import UIKit
 class SettingsTVC: UITableViewController,currencyOperations {
 
     var monto:Double = 0.0
-    var moneda:String = ""
+    var moneda:Moneda? = nil
+    var config:Configuracion = daoConfiguracion().getConfig()!
+    
     
     @IBOutlet weak var txtMonto: UITextField!
     @IBOutlet weak var lblCurrency: UILabel!
@@ -19,7 +21,14 @@ class SettingsTVC: UITableViewController,currencyOperations {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.txtMonto.placeholder = config.defaultTarifaHora?.description
+        
+        if self.config.moneda == nil {
+            self.lblCurrency.text = "+ Seleccionar moneda por defecto"
+        } else {
+            self.lblCurrency.text = "Moneda por defecto: " + (self.config.moneda?.id)! + " " + (self.config.moneda?.descripcion)!
+        }
+        
         if self.revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
             self.menuButton.action = "revealToggle:"
@@ -32,13 +41,13 @@ class SettingsTVC: UITableViewController,currencyOperations {
         // Dispose of any resources that can be recreated.
     }
     
-    func returnCurrency(currency: String) {
+    func returnCurrency(currency: Moneda) {
         self.moneda = currency
-        self.lblCurrency.text! = currency
+        self.lblCurrency.text! = "Moneda por defecto: " + (self.moneda?.id)! + " " + (self.moneda?.descripcion)!
     }
 
     @IBAction func saveTapped(sender: AnyObject) {
-        
+        self.alertMessage("Se sobreescribirán los parámetros de configuración. ¿Desea continuar?", winTitle: "Atención")
     }
     
     @IBAction func cancelTapped(sender: AnyObject) {
@@ -56,5 +65,34 @@ class SettingsTVC: UITableViewController,currencyOperations {
             vc.delegateAddress = self
         }
     }
-
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+            
+            if self.txtMonto.text == "" {
+                daoConfiguracion().storeConfig(0.0, moneda: self.moneda!, obj: self.config)
+            } else {
+                daoConfiguracion().storeConfig(Double(self.txtMonto.text!)!, moneda: self.moneda!, obj: self.config)
+            }
+            
+            self.confirmationMessage("Configuración guardada exitosamente", winTitle: "Éxito!")
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func confirmationMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+            
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 }

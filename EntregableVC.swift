@@ -15,7 +15,7 @@ protocol entregableEditionOperations{
 class EntregableVC: UIViewController {
 
     var data:AnyObject? = [] //Entregable
-    var moneda:String = ""
+    var moneda:Moneda = daoConfiguracion().getConfig()!.moneda!
     var nro:Int = 0
     var mode:String = ""
     var delegateAddress:entregableEditionOperations? = nil
@@ -49,8 +49,12 @@ class EntregableVC: UIViewController {
         
         self.txtNomEntregable.text = (data as! Entregable).valueForKey("nombreEntreg") as? String
         self.txtTarifa.text = ((data as! Entregable).valueForKey("tarifa") as! Float).description
-        self.lblCurrency.text = (data as! Entregable).contrato?.moneda!
         
+        if (self.data as! Entregable).contrato?.moneda != nil {
+            self.lblCurrency.text = ((data as! Entregable).contrato?.moneda?.id)! + ((data as! Entregable).contrato?.moneda?.descripcion)!
+        } else {
+            self.lblCurrency.text = (self.moneda.id)! + (self.moneda.descripcion)!
+        }
     }
 
     override func didReceiveMemoryWarning() {

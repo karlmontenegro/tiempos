@@ -23,7 +23,7 @@ class daoContrato{
         newContract.setValue("", forKey: "nombreContrato")
         newContract.setValue("", forKey: "tipoFacturacion")
         newContract.setValue(true, forKey: "estado")
-        newContract.setValue("",forKey: "moneda")
+        newContract.setValue(nil,forKey: "moneda")
         
         do{
             try context.save()
@@ -53,7 +53,7 @@ class daoContrato{
         }
     }
     
-    func newContract(nombre:String, tipoFact: String, client: Cliente, entregables: Int, moneda: String){
+    func newContract(nombre:String, tipoFact: String, client: Cliente, entregables: Int, moneda: Moneda){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -64,6 +64,7 @@ class daoContrato{
         newContract.setValue(tipoFact, forKey: "tipoFacturacion")
         newContract.setValue(true, forKey: "estado")
         newContract.setValue(client, forKey: "cliente")
+        newContract.setValue(moneda, forKey: "moneda")
         
     }
     
@@ -80,14 +81,18 @@ class daoContrato{
         }
     }
     
-    func updateContract(nombre:String, tipoFact: String, moneda: String, client: Cliente, object: Contrato){
+    func updateContract(nombre:String, tipoFact: String, moneda: Moneda, client: Cliente?, object: Contrato){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         object.setValue(nombre, forKey: "nombreContrato")
         object.setValue(tipoFact, forKey: "tipoFacturacion")
-        object.setValue(client, forKey: "cliente")
+        
+        if client != nil {
+            object.setValue(client, forKey: "cliente")
+        }
+    
         object.setValue(moneda, forKey: "moneda")
         
         do{

@@ -60,24 +60,7 @@ class ContratosTableViewController: UITableViewController {
         return cell
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "ContratoDetalle"){
-            let vc:NuevoContratoTVC = segue.destinationViewController as! NuevoContratoTVC 
-            
-            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
-            
-            vc.contrato = self.arreglo[indexpath.row]
-            vc.origin = "EDIT"
-        }
-        if(segue.identifier == "nuevoContratoSegue"){
-            let vc:NuevoContratoTVC = segue.destinationViewController as! NuevoContratoTVC
-            
-            //Aquí se crea el nuevo contrato
-            let nuevoContrato:Contrato = daoContrato().genericContract()
-            vc.contrato = nuevoContrato
-            vc.origin = "NEW"
-        }
-    }
+
 
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
@@ -110,15 +93,7 @@ class ContratosTableViewController: UITableViewController {
         
         return [delete]
     }
-
-// Override to support conditional editing of the table view.
-   // override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-//        return true
-//    }
-//    */
-
-  
+ 
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -129,20 +104,23 @@ class ContratosTableViewController: UITableViewController {
         }    
     }
 
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "ContratoDetalle"){
+            let vc:NuevoContratoTVC = segue.destinationViewController as! NuevoContratoTVC
+            
+            let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
+            
+            vc.contrato = self.arreglo[indexpath.row]
+            vc.origin = "EDIT"
+        }
+        if(segue.identifier == "nuevoContratoSegue"){
+            let vc:NuevoContratoTVC = segue.destinationViewController as! NuevoContratoTVC
+            
+            //Aquí se crea el nuevo contrato
+            let nuevoContrato:Contrato = daoContrato().genericContract()
+            vc.contrato = nuevoContrato
+            vc.origin = "NEW"
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
 }

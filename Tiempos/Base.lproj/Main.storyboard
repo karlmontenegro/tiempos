@@ -423,14 +423,14 @@
                                     <mask key="constraints">
                                         <exclude reference="3so-xL-oQ7"/>
                                         <exclude reference="84U-oq-fnR"/>
-                                        <exclude reference="Wew-Lf-lS3"/>
-                                        <exclude reference="uce-iw-0Go"/>
                                         <exclude reference="H4M-Lw-C04"/>
                                         <exclude reference="WS8-yl-Sni"/>
                                         <exclude reference="zcN-g6-GZm"/>
                                         <exclude reference="HvM-Yc-838"/>
                                         <exclude reference="rqW-yc-X9D"/>
                                         <exclude reference="u6G-7f-0zz"/>
+                                        <exclude reference="Wew-Lf-lS3"/>
+                                        <exclude reference="uce-iw-0Go"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -442,14 +442,14 @@
                                     <mask key="constraints">
                                         <include reference="3so-xL-oQ7"/>
                                         <include reference="84U-oq-fnR"/>
-                                        <include reference="Wew-Lf-lS3"/>
-                                        <include reference="uce-iw-0Go"/>
                                         <include reference="H4M-Lw-C04"/>
                                         <include reference="WS8-yl-Sni"/>
                                         <include reference="zcN-g6-GZm"/>
                                         <include reference="HvM-Yc-838"/>
                                         <include reference="rqW-yc-X9D"/>
                                         <include reference="u6G-7f-0zz"/>
+                                        <include reference="Wew-Lf-lS3"/>
+                                        <include reference="uce-iw-0Go"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -487,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAf-R4-cRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4797" y="126"/>
+            <point key="canvasLocation" x="4905" y="292.5"/>
         </scene>
         <!--Nuevo Cliente-->
         <scene sceneID="Kds-u7-pZe">
@@ -513,7 +513,8 @@
                                         <exclude reference="Qbh-Pr-dG5"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="27" y="145" width="553" height="30"/>
                                     <mask key="constraints">
                                         <include reference="Qbh-Pr-dG5"/>
                                     </mask>
@@ -531,7 +532,8 @@
                                         <exclude reference="KFR-ad-EAC"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="27" y="193" width="553" height="30"/>
                                     <mask key="constraints">
                                         <include reference="KFR-ad-EAC"/>
                                     </mask>
@@ -549,7 +551,8 @@
                                         <exclude reference="TRZ-d3-5rm"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="27" y="100" width="553" height="30"/>
                                     <mask key="constraints">
                                         <include reference="TRZ-d3-5rm"/>
                                     </mask>
@@ -681,7 +684,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Añadir nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ci-Hh-Yh3">
                                                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1034,7 +1037,7 @@
                                 <action selector="cancelTapped:" destination="dfE-gH-JLK" id="LZp-sZ-GQx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="p7I-3G-sGg">
+                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="p7I-3G-sGg">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="dfE-gH-JLK" id="OpD-f6-4V9"/>
@@ -1234,23 +1237,23 @@
                                         <exclude reference="3FO-lZ-GYi"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="By7-iG-GLQ"/>
-                                        <exclude reference="yz1-lo-qjn"/>
+                                        <exclude reference="L5V-GI-uh7"/>
+                                        <exclude reference="SKR-yj-VXF"/>
                                         <exclude reference="8aA-Ai-UlH"/>
                                         <exclude reference="CGf-83-dLc"/>
                                         <exclude reference="cp9-vO-BGa"/>
                                         <exclude reference="rNw-yG-J9D"/>
-                                        <exclude reference="L5V-GI-uh7"/>
-                                        <exclude reference="SKR-yj-VXF"/>
+                                        <exclude reference="CHD-8N-4b5"/>
+                                        <exclude reference="hJq-ze-OJt"/>
+                                        <exclude reference="lnd-Fs-0ny"/>
                                         <exclude reference="cMd-E1-yrR"/>
                                         <exclude reference="erJ-Bg-tjO"/>
                                         <exclude reference="tIW-kI-7bl"/>
                                         <exclude reference="GGN-Xk-9mf"/>
                                         <exclude reference="RsX-lZ-MPF"/>
                                         <exclude reference="egC-0P-3nJ"/>
-                                        <exclude reference="CHD-8N-4b5"/>
-                                        <exclude reference="hJq-ze-OJt"/>
-                                        <exclude reference="lnd-Fs-0ny"/>
+                                        <exclude reference="By7-iG-GLQ"/>
+                                        <exclude reference="yz1-lo-qjn"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1263,23 +1266,23 @@
                                         <include reference="3FO-lZ-GYi"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="By7-iG-GLQ"/>
-                                        <include reference="yz1-lo-qjn"/>
+                                        <include reference="L5V-GI-uh7"/>
+                                        <include reference="SKR-yj-VXF"/>
                                         <include reference="8aA-Ai-UlH"/>
                                         <include reference="CGf-83-dLc"/>
                                         <include reference="cp9-vO-BGa"/>
                                         <include reference="rNw-yG-J9D"/>
-                                        <include reference="L5V-GI-uh7"/>
-                                        <include reference="SKR-yj-VXF"/>
+                                        <include reference="CHD-8N-4b5"/>
+                                        <include reference="hJq-ze-OJt"/>
+                                        <include reference="lnd-Fs-0ny"/>
                                         <include reference="cMd-E1-yrR"/>
                                         <include reference="erJ-Bg-tjO"/>
                                         <include reference="tIW-kI-7bl"/>
                                         <include reference="GGN-Xk-9mf"/>
                                         <include reference="RsX-lZ-MPF"/>
                                         <include reference="egC-0P-3nJ"/>
-                                        <include reference="CHD-8N-4b5"/>
-                                        <include reference="hJq-ze-OJt"/>
-                                        <include reference="lnd-Fs-0ny"/>
+                                        <include reference="By7-iG-GLQ"/>
+                                        <include reference="yz1-lo-qjn"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1327,7 +1330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2p-e9-Rqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4689" y="61.5"/>
+            <point key="canvasLocation" x="4707" y="292.5"/>
         </scene>
         <!--Moneda Modal-->
         <scene sceneID="rEN-xT-Pvg">
@@ -1434,14 +1437,14 @@
                                     <mask key="constraints">
                                         <exclude reference="kKs-8T-rsI"/>
                                         <exclude reference="wD6-D0-pwd"/>
-                                        <exclude reference="Xjg-gg-BOu"/>
-                                        <exclude reference="oOk-Tr-Ikh"/>
                                         <exclude reference="TV2-63-RoC"/>
                                         <exclude reference="cGQ-br-spR"/>
                                         <exclude reference="pWj-WG-4px"/>
                                         <exclude reference="IsV-z4-GTJ"/>
                                         <exclude reference="N0z-9h-pW8"/>
                                         <exclude reference="QQs-CE-5xE"/>
+                                        <exclude reference="Xjg-gg-BOu"/>
+                                        <exclude reference="oOk-Tr-Ikh"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -1453,14 +1456,14 @@
                                     <mask key="constraints">
                                         <include reference="kKs-8T-rsI"/>
                                         <include reference="wD6-D0-pwd"/>
-                                        <include reference="Xjg-gg-BOu"/>
-                                        <include reference="oOk-Tr-Ikh"/>
                                         <include reference="TV2-63-RoC"/>
                                         <include reference="cGQ-br-spR"/>
                                         <include reference="pWj-WG-4px"/>
                                         <include reference="IsV-z4-GTJ"/>
                                         <include reference="N0z-9h-pW8"/>
                                         <include reference="QQs-CE-5xE"/>
+                                        <include reference="Xjg-gg-BOu"/>
+                                        <include reference="oOk-Tr-Ikh"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -1492,7 +1495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CzG-EO-E2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4969.5" y="92.25"/>
+            <point key="canvasLocation" x="2064" y="1491.75"/>
         </scene>
         <!--Clientes-->
         <scene sceneID="d0N-8F-9Ue">
@@ -1718,20 +1721,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV6-f9-p9M">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV6-f9-p9M">
                                 <rect key="frame" x="20" y="20" width="381" height="22"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="558" y="154" width="22" height="22"/>
+                                </variation>
                                 <connections>
                                     <action selector="addNewContact:" destination="QYB-cG-wW5" eventType="touchUpInside" id="TMK-n2-mQA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sty-JR-byM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sty-JR-byM">
                                 <rect key="frame" x="20" y="20" width="361" height="16"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="558" y="351" width="22" height="22"/>
+                                </variation>
                                 <connections>
                                     <action selector="addAddressTapped:" destination="QYB-cG-wW5" eventType="touchUpInside" id="ge3-bD-MNz"/>
                                 </connections>
@@ -1741,6 +1750,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="109" width="560" height="21"/>
+                                </variation>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZT-P6-kgg">
                                 <rect key="frame" x="16" y="183" width="344" height="155"/>
@@ -1752,7 +1764,8 @@
                                         <exclude reference="k2S-IB-YWY"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="183" width="560" height="140"/>
                                     <mask key="constraints">
                                         <include reference="k2S-IB-YWY"/>
                                     </mask>
@@ -1763,6 +1776,9 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHz-Lp-Xjw">
                                 <rect key="frame" x="16" y="389" width="344" height="226"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="381" width="560" height="81"/>
+                                </variation>
                                 <connections>
                                     <segue destination="Jy6-Fq-mZb" kind="embed" identifier="addressTableSegue" id="DJg-GG-Cvi"/>
                                 </connections>
@@ -1772,6 +1788,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="80" width="560" height="21"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Contactos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0o-UT-IUi">
                                 <rect key="frame" x="16" y="154" width="89" height="21"/>
@@ -1883,6 +1902,10 @@
                                 <exclude reference="sty-JR-byM"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="DEt-Bm-mBw"/>
+                                <exclude reference="zw0-hz-LBE"/>
+                                <exclude reference="pnb-T4-Qm7"/>
+                                <exclude reference="sNE-AR-oDv"/>
                                 <exclude reference="75y-Nl-90i"/>
                                 <exclude reference="Ot3-Gn-oeW"/>
                                 <exclude reference="cs5-KH-M2d"/>
@@ -1910,10 +1933,6 @@
                                 <exclude reference="TjE-9r-j5Y"/>
                                 <exclude reference="Uh2-QZ-px6"/>
                                 <exclude reference="Z6z-4r-PuR"/>
-                                <exclude reference="pnb-T4-Qm7"/>
-                                <exclude reference="sNE-AR-oDv"/>
-                                <exclude reference="DEt-Bm-mBw"/>
-                                <exclude reference="zw0-hz-LBE"/>
                                 <exclude reference="esT-t7-m1v"/>
                             </mask>
                         </variation>
@@ -1923,6 +1942,10 @@
                                 <include reference="sty-JR-byM"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="DEt-Bm-mBw"/>
+                                <include reference="zw0-hz-LBE"/>
+                                <include reference="pnb-T4-Qm7"/>
+                                <include reference="sNE-AR-oDv"/>
                                 <include reference="75y-Nl-90i"/>
                                 <include reference="Ot3-Gn-oeW"/>
                                 <include reference="cs5-KH-M2d"/>
@@ -1950,10 +1973,6 @@
                                 <include reference="TjE-9r-j5Y"/>
                                 <include reference="Uh2-QZ-px6"/>
                                 <include reference="Z6z-4r-PuR"/>
-                                <include reference="pnb-T4-Qm7"/>
-                                <include reference="sNE-AR-oDv"/>
-                                <include reference="DEt-Bm-mBw"/>
-                                <include reference="zw0-hz-LBE"/>
                                 <include reference="esT-t7-m1v"/>
                             </mask>
                         </variation>
@@ -2173,10 +2192,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Nuevo Cliente" id="jH7-My-b42">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6zP-WM-OOc">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="6zP-WM-OOc">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kvS-Ad-fhj">
+                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="kvS-Ad-fhj">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -2188,7 +2207,6 @@
         <!--Editar Cliente-->
         <scene sceneID="qXq-sc-xYq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="myp-WN-lWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="vFK-11-8dd" customClass="EditarCliente" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DOO-wK-rQF"/>
@@ -2278,6 +2296,7 @@
                         <outlet property="lblClientRazSoc" destination="e98-u4-KRd" id="Hnl-sI-4eU"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myp-WN-lWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3684" y="1524.75"/>
         </scene>
@@ -2537,7 +2556,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir moneda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h4w-hL-2LV">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Seleccionar moneda por defecto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h4w-hL-2LV">
                                                     <rect key="frame" x="15" y="11" width="131" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2578,7 +2597,7 @@
                                 <action selector="cancelTapped:" destination="nuN-tL-kNE" id="dKi-95-2KL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0vJ-cv-LCf">
+                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="0vJ-cv-LCf">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="nuN-tL-kNE" id="ZNz-jM-DZ5"/>
@@ -2870,12 +2889,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Editar Cita" id="ffL-oR-ytW">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="06Q-zM-J9i">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="06Q-zM-J9i">
                             <connections>
                                 <action selector="cancelTapped:" destination="Ndq-3q-Stf" id="HZl-MC-exb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="eQb-9f-XHb">
+                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="eQb-9f-XHb">
                             <connections>
                                 <action selector="saveTapped:" destination="Ndq-3q-Stf" id="yfR-uZ-LYr"/>
                             </connections>
@@ -3147,7 +3166,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Cita" id="GKW-jj-xbo">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="5Cd-nX-LLt">
+                        <barButtonItem key="rightBarButtonItem" title="Editar" id="5Cd-nX-LLt">
                             <connections>
                                 <segue destination="ULj-Hg-j1n" kind="popoverPresentation" identifier="editDateSegue" popoverAnchorBarButtonItem="5Cd-nX-LLt" id="jYA-1F-lOK">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -3227,69 +3246,34 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="OzA-Gn-Rcv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ija-Sf-tOk" style="IBUITableViewCellStyleDefault" id="OzA-Gn-Rcv">
                                         <rect key="frame" x="0.0" y="158" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OzA-Gn-Rcv" id="oOy-ep-V7f">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cliente" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wyd-Ud-Uxh">
-                                                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSS-CD-N4D">
-                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <connections>
-                                                        <segue destination="Xkk-ah-PFB" kind="presentation" identifier="clientPickerModal" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Kis-3y-3Q5"/>
-                                                    </connections>
-                                                </button>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir cliente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ija-Sf-tOk">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wyd-Ud-Uxh" secondAttribute="bottom" constant="-1" id="5BJ-NR-77D"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xSS-CD-N4D" secondAttribute="bottom" constant="3" id="deN-G2-J6g"/>
-                                                <constraint firstItem="wyd-Ud-Uxh" firstAttribute="leading" secondItem="oOy-ep-V7f" secondAttribute="leadingMargin" constant="8" id="eik-4J-dfi"/>
-                                                <constraint firstItem="xSS-CD-N4D" firstAttribute="leading" secondItem="wyd-Ud-Uxh" secondAttribute="trailing" constant="18" id="nQV-AV-21x"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wyd-Ud-Uxh" secondAttribute="trailing" constant="49" id="nvS-Sr-E5d"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="xSS-CD-N4D" secondAttribute="trailing" constant="9" id="p5X-0d-UIS"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="wyd-Ud-Uxh"/>
-                                                    <exclude reference="xSS-CD-N4D"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <exclude reference="5BJ-NR-77D"/>
-                                                    <exclude reference="eik-4J-dfi"/>
-                                                    <exclude reference="nvS-Sr-E5d"/>
-                                                    <exclude reference="deN-G2-J6g"/>
-                                                    <exclude reference="nQV-AV-21x"/>
-                                                    <exclude reference="p5X-0d-UIS"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="wyd-Ud-Uxh"/>
-                                                    <include reference="xSS-CD-N4D"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <include reference="5BJ-NR-77D"/>
-                                                    <include reference="eik-4J-dfi"/>
-                                                    <include reference="nvS-Sr-E5d"/>
-                                                    <include reference="deN-G2-J6g"/>
-                                                    <include reference="nQV-AV-21x"/>
-                                                    <include reference="p5X-0d-UIS"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Xkk-ah-PFB" kind="presentation" identifier="clientPickerModal" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="1U0-1N-NaQ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Duración" id="JWo-05-NQk">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="startDateCell" textLabel="E7R-U9-EYy" detailTextLabel="YOU-bm-0sg" style="IBUITableViewCellStyleValue1" id="qcg-iq-id7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="startDateCell" textLabel="E7R-U9-EYy" detailTextLabel="YOU-bm-0sg" style="IBUITableViewCellStyleValue1" id="qcg-iq-id7">
                                         <rect key="frame" x="0.0" y="269" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qcg-iq-id7" id="GYN-NS-HES">
@@ -3320,7 +3304,7 @@
                                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="endDateCell" textLabel="1t5-YR-foH" detailTextLabel="CYk-LV-Sap" style="IBUITableViewCellStyleValue1" id="LLN-6y-dTR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="endDateCell" textLabel="1t5-YR-foH" detailTextLabel="CYk-LV-Sap" style="IBUITableViewCellStyleValue1" id="LLN-6y-dTR">
                                         <rect key="frame" x="0.0" y="313" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LLN-6y-dTR" id="9k7-Kz-8FM">
@@ -3354,7 +3338,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Contrato Asociado" id="YWa-ks-PZW">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="fJ1-ZF-t62" detailTextLabel="lZB-0D-bPg" style="IBUITableViewCellStyleValue1" id="c8C-6C-gyz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fJ1-ZF-t62" detailTextLabel="lZB-0D-bPg" style="IBUITableViewCellStyleValue1" id="c8C-6C-gyz">
                                         <rect key="frame" x="0.0" y="408" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c8C-6C-gyz" id="iRi-bL-Ugo">
@@ -3384,7 +3368,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Lov-Jp-boe" detailTextLabel="9IA-O4-aqH" style="IBUITableViewCellStyleValue1" id="VVy-KW-g3C">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Lov-Jp-boe" detailTextLabel="9IA-O4-aqH" style="IBUITableViewCellStyleValue1" id="VVy-KW-g3C">
                                         <rect key="frame" x="0.0" y="452" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVy-KW-g3C" id="cWf-RI-wDs">
@@ -3488,7 +3472,7 @@
                                 <action selector="cancelTapped:" destination="NHD-Fr-LMh" id="nNE-P2-vCf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="lWv-1T-nK3">
+                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="lWv-1T-nK3">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="NHD-Fr-LMh" id="G0P-9n-Y5K"/>
@@ -3500,7 +3484,7 @@
                         <outlet property="alarmSwitch" destination="hhY-k5-U5O" id="ukb-93-m3c"/>
                         <outlet property="entregableCell" destination="VVy-KW-g3C" id="9VJ-d9-Wqt"/>
                         <outlet property="lblAlarm" destination="yJG-3V-Jl6" id="kwQ-4Y-i31"/>
-                        <outlet property="txtCliente" destination="wyd-Ud-Uxh" id="fqR-dB-KhI"/>
+                        <outlet property="lblCliente" destination="Ija-Sf-tOk" id="ZrI-kC-Yw6"/>
                         <outlet property="txtNomCita" destination="9wI-pc-9VX" id="c97-Xk-pBg"/>
                         <segue destination="EDM-aX-XF8" kind="presentation" identifier="datePickerSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="8vE-Kv-g5c"/>
                         <segue destination="JYd-PL-BCv" kind="presentation" identifier="contractPicker" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="oyW-Uv-Djb"/>
@@ -3763,7 +3747,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGO-oa-FI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5812.5" y="192.75"/>
+            <point key="canvasLocation" x="6328.5" y="246.75"/>
         </scene>
         <!--Alarm Picker-->
         <scene sceneID="vuP-aO-E6l">
@@ -3886,7 +3870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxY-ib-KmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6184.5" y="147"/>
+            <point key="canvasLocation" x="6874.5" y="154.5"/>
         </scene>
         <!--Contract Picker-->
         <scene sceneID="LxX-BE-p7k">
@@ -4017,7 +4001,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1k-c4-BTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4689" y="175.5"/>
+            <point key="canvasLocation" x="4665" y="370.5"/>
         </scene>
         <!--Date Time Picker-->
         <scene sceneID="Ttc-NK-G2l">
@@ -4145,7 +4129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE0-9f-8vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6328.5" y="118.5"/>
+            <point key="canvasLocation" x="6583.5" y="205.5"/>
         </scene>
         <!--Cliente Picker-->
         <scene sceneID="8lf-zj-sW2">
@@ -4274,7 +4258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7A-qH-rd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5691" y="219"/>
+            <point key="canvasLocation" x="4617" y="114.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0GT-4e-TzG">
@@ -5167,13 +5151,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Nuevo Tiempo" id="heL-ud-fVe">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fre-JR-dDy">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="Fre-JR-dDy">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="sWb-3g-jUf" id="1wh-6h-nfX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="3DY-rn-TCg">
+                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="3DY-rn-TCg">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="sWb-3g-jUf" id="q4a-Ri-psI"/>
@@ -5476,7 +5460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVe-Zv-ClA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1888.5" y="-2790.75"/>
+            <point key="canvasLocation" x="1909.5" y="-2790.75"/>
         </scene>
         <!--MenuTVC-->
         <scene sceneID="9D9-ar-B4S">
@@ -5964,7 +5948,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Horas Laboradas" id="WUM-fo-jB2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UjR-Jf-Xzf">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="UjR-Jf-Xzf">
                             <connections>
                                 <action selector="cancelTapped:" destination="APh-KJ-pjb" id="Z33-NV-zWz"/>
                             </connections>
@@ -7032,7 +7016,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Recibo Final" id="PjE-a5-2l2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OXn-PK-iv9">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="OXn-PK-iv9">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="uem-uU-lNx" id="DyD-8m-gie"/>
@@ -7336,17 +7320,17 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uOR-nE-Lvj"/>
-        <segue reference="fAi-QO-h1o"/>
-        <segue reference="8vE-Kv-g5c"/>
-        <segue reference="VN9-SP-Fso"/>
-        <segue reference="oyW-Uv-Djb"/>
-        <segue reference="Kis-3y-3Q5"/>
-        <segue reference="QM7-Ye-Xhr"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
         <segue reference="HwU-W3-xDs"/>
         <segue reference="cX3-9R-G3m"/>
+        <segue reference="fAi-QO-h1o"/>
+        <segue reference="VN9-SP-Fso"/>
+        <segue reference="oyW-Uv-Djb"/>
+        <segue reference="1U0-1N-NaQ"/>
+        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="QM7-Ye-Xhr"/>
         <segue reference="jDx-tb-DDb"/>
         <segue reference="vjv-50-TbC"/>
     </inferredMetricsTieBreakers>

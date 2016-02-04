@@ -54,7 +54,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             } else {
                 self.tarifaPorHora = Double(((self.dataArray[0] as! Tiempo).contrato?.contratoHoras?.tarifaHora)!)
                 self.lblNomContrato.text = self.contrato?.nombreContrato
-                self.lblTipoFact.text = (self.contrato?.moneda)! + " " + self.tarifaPorHora.description + " por Hora"
+                self.lblTipoFact.text = (self.contrato?.moneda?.id)! + (self.contrato?.moneda?.descripcion)! + " " + self.tarifaPorHora.description + " por Hora"
             }
             
             
@@ -91,17 +91,19 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
         
+        let cr = self.tiemposArray[0].contrato?.moneda
+        
         if tipoFact == "HRS" {
             let interval = self.tiemposArray[indexPath.row].horas!
             let timeInterval = NSTimeInterval(interval.doubleValue)
             let subtotal = Double(Int(interval)/3600) * self.tarifaPorHora
 
             cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
-            cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (self.tiemposArray[0].contrato?.moneda)! + " " + subtotal.description
+            cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (cr?.id)! + (cr?.descripcion)! + " " + subtotal.description
         
             self.montoTotal += subtotal
         
-            self.lblMontoTotal.text = (self.tiemposArray[0].contrato?.moneda)! + " " + self.montoTotal.description
+            self.lblMontoTotal.text = (self.tiemposArray[0].contrato?.moneda?.id)! + (self.tiemposArray[0].contrato?.moneda?.descripcion)! + " " + self.montoTotal.description
         } else {
             
             cell.textLabel!.text = self.entregablesArray[indexPath.row].nombreEntreg!

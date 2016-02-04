@@ -21,14 +21,14 @@ import EventKitUI
 
 class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp,entregableOp {
 
-    @IBOutlet weak var txtCliente: UITextField!
+    @IBOutlet weak var lblCliente: UILabel!
     @IBOutlet weak var txtNomCita: UITextField!
     @IBOutlet var alarmSwitch: UISwitch!
     @IBOutlet weak var entregableCell: UITableViewCell!
     @IBOutlet weak var lblAlarm: UILabel!
 
     
-    var cliente:AnyObject? = []
+    var cliente:Cliente? = nil
     var startDate:NSDate? = nil
     var endDate:NSDate? = nil
     var contrato:AnyObject? = []
@@ -38,7 +38,6 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.txtCliente.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +47,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
 
     func returnClientToDate(client: Cliente) {
         self.cliente = client
-        self.txtCliente.text = client.nombre
+        self.lblCliente.text = client.nombre
     }
     
     func returnDateTimeToDate(date: NSDate, type: String) {
@@ -114,7 +113,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
 
     @IBAction func saveTapped(sender: AnyObject) {
         
-        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente as! Cliente, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato,entregable: self.entregable, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
+        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato,entregable: self.entregable, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
@@ -125,13 +124,16 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
         if indexPath.section == 1 {
             self.performSegueWithIdentifier("datePickerSegue", sender: self)
         }
         if indexPath.section == 2 {
             if indexPath.row == 0 {
-                self.performSegueWithIdentifier("contractPicker", sender: self)
+                if self.cliente != nil {
+                    self.performSegueWithIdentifier("contractPicker", sender: self)
+                } else {
+                    self.alertMessage("Selecciona un cliente primero.", winTitle: "Error")
+                }
             }
             if indexPath.row == 1 {
                 self.performSegueWithIdentifier("entregablePicker", sender: self)
@@ -181,4 +183,14 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
             vc.delegateAddress = self
         }
     }
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
 }

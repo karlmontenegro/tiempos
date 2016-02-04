@@ -23,7 +23,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     var origin:String = ""
     
     var cliente:Cliente? = nil
-    var moneda:String = ""
+    var moneda:Moneda? = daoConfiguracion().getConfig()?.moneda
     var tipoFact:String = "ENT"
     var hideSectionHoras:Int = 1
     var hideSectionEnt:Int = 0
@@ -65,8 +65,14 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         
         if self.origin == "NEW" {
             self.lblTipoFacturacion.text = "Por Entregables"
-            self.lblTotalReferencial.text = self.moneda + "0.0"
+            self.lblTotalReferencial.text = "0.0"
             self.navigationTitle.title = "Nuevo Contrato"
+            
+            if self.moneda == nil {
+                self.lblCurrency.text = "+ Moneda"
+            } else {
+                self.lblCurrency.text = (self.moneda?.id)! + (self.moneda?.descripcion)!
+            }
         }
         
         if self.origin == "EDIT" {
@@ -76,16 +82,17 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.navigationTitle.title = "Editar Contrato"
             
             self.lblNombreCliente.text = self.cliente!.nombre
-            self.lblCurrency.text = self.moneda
             self.txtNombreContrato.text = self.contrato?.nombreContrato
             
             if self.contrato?.tipoFacturacion == "ENT" {
+                self.lblCurrency.text = (self.contrato?.moneda?.id)! + (self.contrato?.moneda?.descripcion)!
                 self.lblTipoFacturacion.text = "Por Entregables"
                 self.factSwitch.on = true
                 self.lblNumEntregables.text = "Entregables: " + (self.contrato?.entregables!.count.description)!
             } else { //Por Horas
                 
-                let contratoHoras = self.contrato?.contratoHoras
+                self.contratoHoras = self.contrato?.contratoHoras
+                self.lblCurrency.text = (self.contratoHoras?.moneda?.id)! + (self.contratoHoras?.moneda?.descripcion)!
                 let tH:Double? = Double(contratoHoras!.tarifaHora!)
                 let tT:Double? = Double(contratoHoras!.totalHoras!)
                 
@@ -95,7 +102,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 self.txtTotalHoras.text = contratoHoras!.totalHoras?.description
                 
                 if tH != nil  && tT != nil {
-                    self.lblTotalReferencial.text = self.moneda + " " + (tH! * tT!).description
+                    self.lblTotalReferencial.text = (self.contratoHoras?.moneda?.id)! + (self.contratoHoras?.moneda?.descripcion)! + " " + (tH! * tT!).description
                 }
             }
         }
@@ -130,16 +137,18 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         let totalHoras:Double? = Double(self.txtTotalHoras.text!)
         
         if tarHoras != nil && totalHoras != nil {
-            self.lblTotalReferencial.text = self.moneda + " " + (tarHoras! * totalHoras!).description
+            self.lblTotalReferencial.text = (self.moneda?.id)! + (self.moneda?.descripcion)! + " " + (tarHoras! * totalHoras!).description
         }
     }
     
     
     @IBAction func saveTapped(sender: AnyObject) {
-        daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda, client: self.cliente!, object: self.contrato!)
+        daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
         if self.tipoFact == "HRS" {
             self.contratoHoras = daoContratoHoras().genericContratoHoras()
-            daoContratoHoras().updateContractHoras(Double(self.txtTotalHoras.text!)!, horasInc: "", tarifaHora: Double(self.txtTarifaPorHoras.text!)!, moneda: self.moneda, object: self.contratoHoras!)
+            
+            daoContratoHoras().updateContractHoras(Double(self.txtTotalHoras.text!), horasInc: "", tarifaHora: Double(self.txtTarifaPorHoras.text!)!, moneda: self.moneda!, object: self.contratoHoras!)
+            
             daoContrato().addContratoHorasToContract(self.contratoHoras!, obj: self.contrato!)
         }
         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -159,9 +168,10 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         self.lblNombreCliente.text = self.cliente?.nombre
     }
     
-    func returnCurrency(currency: String) {
+    func returnCurrency(currency: Moneda) {
         self.moneda = currency
-        self.lblCurrency.text = self.moneda
+        self.lblCurrency.text = (self.moneda?.id)! + (self.moneda?.descripcion)!
+        daoContrato().updateContract("", tipoFact: "", moneda: currency, client: nil, object: self.contrato!)
     }
     
     func returnNumEntregablesToContract(num: Int) {

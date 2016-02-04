@@ -9,18 +9,18 @@
 import UIKit
 
 protocol currencyOperations{
-    func returnCurrency(currency: String)
+    func returnCurrency(currency: Moneda)
 }
 
 class MonedaModal: UIViewController,UIPickerViewDelegate {
 
-    let listaMonedas:NSArray = ["(S/.) PEN", "(US$) USD"]
-    var moneda:String = ""
+    let listaMonedas:Array<Moneda> = daoMoneda().getAllCurrency()!
+    var moneda:Moneda? = nil
     var delegateAddress:currencyOperations? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.moneda = listaMonedas[0] as! String
+        self.moneda = listaMonedas[0]
         // Do any additional setup after loading the view.
     }
 
@@ -44,18 +44,19 @@ class MonedaModal: UIViewController,UIPickerViewDelegate {
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return listaMonedas[row] as? String
+        return listaMonedas[row].id! + " " + listaMonedas[row].descripcion!
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.moneda = listaMonedas[row] as! String
+        self.moneda = listaMonedas[row]
     }
 
     
     @IBAction func doneTapped(sender: UIButton) {
-        self.delegateAddress!.returnCurrency(self.moneda)
+        self.delegateAddress!.returnCurrency(self.moneda!)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func cancelTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
