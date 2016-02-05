@@ -3294,14 +3294,14 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir fecha de inicio" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YOU-bm-0sg">
-                                                    <rect key="frame" x="385" y="12" width="180" height="21"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir inicio" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YOU-bm-0sg">
+                                                    <rect key="frame" x="456" y="12" width="109" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -3325,14 +3325,14 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir fecha de fin" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYk-LV-Sap">
-                                                    <rect key="frame" x="406" y="12" width="159" height="21"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir fin" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CYk-LV-Sap">
+                                                    <rect key="frame" x="476" y="12" width="89" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -3499,7 +3499,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djf-Tv-kQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2661" y="-628.5"/>
+            <point key="canvasLocation" x="2644.5" y="-628.5"/>
         </scene>
         <!--Citas-->
         <scene sceneID="5Im-l1-65E">
@@ -3755,7 +3755,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGO-oa-FI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6328.5" y="246.75"/>
+            <point key="canvasLocation" x="5250" y="68.25"/>
         </scene>
         <!--Alarm Picker-->
         <scene sceneID="vuP-aO-E6l">
@@ -4009,7 +4009,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1k-c4-BTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4665" y="370.5"/>
+            <point key="canvasLocation" x="4648.5" y="162"/>
         </scene>
         <!--Date Time Picker-->
         <scene sceneID="Ttc-NK-G2l">
@@ -4137,7 +4137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE0-9f-8vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6583.5" y="205.5"/>
+            <point key="canvasLocation" x="3063" y="54.75"/>
         </scene>
         <!--Cliente Picker-->
         <scene sceneID="8lf-zj-sW2">
@@ -4266,7 +4266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7A-qH-rd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4617" y="114.75"/>
+            <point key="canvasLocation" x="5142" y="139.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0GT-4e-TzG">
@@ -7327,19 +7327,19 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t29-F0-iXa"/>
-        <segue reference="jYA-1F-lOK"/>
+        <segue reference="8vE-Kv-g5c"/>
         <segue reference="uOR-nE-Lvj"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
         <segue reference="HwU-W3-xDs"/>
         <segue reference="cX3-9R-G3m"/>
+        <segue reference="IEm-rT-DGL"/>
         <segue reference="fAi-QO-h1o"/>
-        <segue reference="PbR-Wd-DqE"/>
-        <segue reference="iQF-LW-x4a"/>
-        <segue reference="r9m-EK-qsX"/>
-        <segue reference="nf2-hQ-ana"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="1U0-1N-NaQ"/>
+        <segue reference="oyW-Uv-Djb"/>
+        <segue reference="VN9-SP-Fso"/>
         <segue reference="jDx-tb-DDb"/>
         <segue reference="vjv-50-TbC"/>
     </inferredMetricsTieBreakers>

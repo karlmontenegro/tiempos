@@ -64,6 +64,9 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
                 self.lblTipoFact.text = "Por Entregables"
                 if self.entregable != nil {
                     self.entregableCell.textLabel!.text = self.entregable?.nombreEntreg
+                } else {
+                    self.entregableCell.textLabel!.text = "+ Añadir entregable"
+                    self.entregableCell.hidden = false
                 }
             } else {
                 self.lblNomContrato.text = "+ Añadir contrato"

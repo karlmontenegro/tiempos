@@ -78,14 +78,20 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         
         self.contrato = contract
         cellContract.textLabel!.text = self.contrato!.nombreContrato
-        cellContract.detailTextLabel!.text = self.contrato!.tipoFacturacion!
         
         if self.contrato!.tipoFacturacion! == "HRS" {
+            cellContract.detailTextLabel!.text = "Por Horas"
             entregableCell.hidden = true
-
         }else{
-            entregableCell.hidden = false
+            if self.contrato!.tipoFacturacion! == "ENT" {
+                cellContract.detailTextLabel!.text = "Por Entregables"
+                entregableCell.hidden = false
+            } else {
+                cellContract.detailTextLabel!.text = "(Sin Facturación)"
+                entregableCell.hidden = true
+            }
         }
+        self.tableView.reloadData()
     }
     
     func returnReminderToDate(number: Int, measure: String) {
@@ -184,10 +190,12 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
             if indexpath.section == 1 && indexpath.row == 0 {
                 //inicio
                 vc.source = "startDate"
+                vc.date = self.startDate
             }
             if indexpath.section == 1 && indexpath.row == 1 {
                 //fin
                 vc.source = "endDate"
+                vc.date = self.endDate
             }
             vc.delegateAddress = self
         }

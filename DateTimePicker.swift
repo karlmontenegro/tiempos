@@ -15,6 +15,7 @@ protocol dateTimeOp{
 class DateTimePicker: UIViewController {
 
     var source:String = ""
+    var date:NSDate? = nil
     var selectedDate:AnyObject? = []
     var delegateAddress:dateTimeOp? = nil
     
@@ -22,6 +23,13 @@ class DateTimePicker: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if self.source == "startDate" {
+            self.dateTimePicker.date = self.date!
+        }
+        if self.source == "endDate" {
+            
+        }
         self.selectedDate = self.dateTimePicker.date
         // Do any additional setup after loading the view.
     }
