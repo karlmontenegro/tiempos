@@ -155,7 +155,12 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("showDateDetail", sender: self)
+        
+        if daoCita().getDateByEventId(self.eventArray[indexPath.row]) != nil {
+            self.performSegueWithIdentifier("showDateDetail", sender: self)
+        } else {
+            self.performSegueWithIdentifier("editEmptyCitaSegue", sender: self)
+        }
     }
     
     
@@ -170,6 +175,31 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
             let indexpath:NSIndexPath = self.dateTableView.indexPathForSelectedRow!
             vc.event = self.eventArray[indexpath.row]
         }
+        
+        if segue.identifier == "newDate" {
+            let vc:NuevaCitaTVC = segue.destinationViewController as! NuevaCitaTVC
+            vc.startDate = self.date
+        }
+        
+        if segue.identifier == "editEmptyCitaSegue" {
+            let indexpath:NSIndexPath = self.dateTableView.indexPathForSelectedRow!
+            let cita = daoCita().createGenericDate((self.eventArray[indexpath.row]).title, calEvent: self.eventArray[indexpath.row])
+            
+            let navVC = segue.destinationViewController as! UINavigationController
+            let editCitaVC = navVC.viewControllers.first as! EditCitaTVC
+            editCitaVC.cita = cita
+            editCitaVC.event = self.eventArray[indexpath.row]
+            editCitaVC.entregable = cita?.entregable
+                       
+        }
+    }
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 }

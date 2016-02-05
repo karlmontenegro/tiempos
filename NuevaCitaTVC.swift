@@ -26,18 +26,22 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     @IBOutlet var alarmSwitch: UISwitch!
     @IBOutlet weak var entregableCell: UITableViewCell!
     @IBOutlet weak var lblAlarm: UILabel!
+    @IBOutlet weak var lblStartDate: UILabel!
 
     
     var cliente:Cliente? = nil
     var startDate:NSDate? = nil
     var endDate:NSDate? = nil
-    var contrato:AnyObject? = []
+    var contrato:Contrato? = nil
     var entregable:Entregable? = nil
     let eventStore = EKEventStore()
     var alarm:EKAlarm? = nil
+    let dateFormatter = NSDateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
+        self.lblStartDate.text = self.dateFormatter.stringFromDate(self.startDate!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,11 +55,11 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     }
     
     func returnDateTimeToDate(date: NSDate, type: String) {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-        let dateStr:String = dateFormatter.stringFromDate(date)
+        
+        let dateStr:String = self.dateFormatter.stringFromDate(date)
         
         let cellStart:UITableViewCell = tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!)!
+        
         let cellEnd:UITableViewCell = tableView.cellForRowAtIndexPath(tableView.indexPathForSelectedRow!)!
         
         if type == "startDate" {
@@ -73,10 +77,10 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         let cellContract:UITableViewCell = tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!)!
         
         self.contrato = contract
-        cellContract.textLabel!.text = (contrato as! Contrato).nombreContrato
-        cellContract.detailTextLabel!.text = (contrato as! Contrato).tipoFacturacion!
+        cellContract.textLabel!.text = self.contrato!.nombreContrato
+        cellContract.detailTextLabel!.text = self.contrato!.tipoFacturacion!
         
-        if (contrato as! Contrato).tipoFacturacion! == "HRS" {
+        if self.contrato!.tipoFacturacion! == "HRS" {
             entregableCell.hidden = true
 
         }else{
@@ -113,15 +117,30 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
 
     @IBAction func saveTapped(sender: AnyObject) {
         
-        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato as! Contrato,entregable: self.entregable, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
-        
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        if self.txtNomCita.text == "" {
+            self.alertMessage("Se requiere que la cita tenga un nombre", winTitle: "Error")
+        } else {
+            if self.cliente == nil {
+                self.alertMessage("Es obligatorio asignarle un cliente a la cita", winTitle: "Error")
+            } else {
+                
+                if self.startDate == nil {
+                    self.alertMessage("Inicio de cita necesario", winTitle: "Error")
+                } else {
+                    if self.endDate == nil {
+                        self.alertMessage("Fin de cita necesario", winTitle: "Error")
+                    } else {
+                        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato ,entregable: self.entregable, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
+                        self.navigationController?.popToRootViewControllerAnimated(true)
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func cancelTapped(sender: AnyObject) {
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
-    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 {
@@ -136,7 +155,11 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
                 }
             }
             if indexPath.row == 1 {
-                self.performSegueWithIdentifier("entregablePicker", sender: self)
+                if self.contrato != nil {
+                    self.performSegueWithIdentifier("entregablePicker", sender: self)
+                } else {
+                    self.alertMessage("Selecciona un contrato primero.", winTitle: "Error")
+                }
             }
         }
         if indexPath.section == 3{
@@ -175,7 +198,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         }
         if segue.identifier == "entregablePicker" {
             let vc:EntregablePicker = segue.destinationViewController as! EntregablePicker
-            vc.contract = self.contrato as? Contrato
+            vc.contract = self.contrato!
             vc.delegateAddress = self
         }
         if segue.identifier == "addAlarmSegue"{

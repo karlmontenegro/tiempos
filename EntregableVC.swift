@@ -37,6 +37,7 @@ class EntregableVC: UIViewController {
         self.delegateAddress!.refreshTableViewForEntregables()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.saveButton.enabled = false
@@ -48,7 +49,9 @@ class EntregableVC: UIViewController {
         // Do any additional setup after loading the view.
         
         self.txtNomEntregable.text = (data as! Entregable).valueForKey("nombreEntreg") as? String
-        self.txtTarifa.text = ((data as! Entregable).valueForKey("tarifa") as! Float).description
+        if mode != "NEW" {
+            self.txtTarifa.text = ((data as! Entregable).valueForKey("tarifa") as! Float).description
+        }
         
         if (self.data as! Entregable).contrato?.moneda != nil {
             self.lblCurrency.text = ((data as! Entregable).contrato?.moneda?.id)! + ((data as! Entregable).contrato?.moneda?.descripcion)!

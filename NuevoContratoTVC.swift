@@ -67,6 +67,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.lblTipoFacturacion.text = "Por Entregables"
             self.lblTotalReferencial.text = "0.0"
             self.navigationTitle.title = "Nuevo Contrato"
+            self.lblNumEntregables.text = "Entregables: " + self.numEntregables.description
             
             if self.moneda == nil {
                 self.lblCurrency.text = "+ Moneda"
@@ -121,6 +122,9 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.hideSectionHoras = 1
             self.hideSectionEnt = 0
             self.tipoFact = "ENT"
+            self.txtTarifaPorHoras.text = ""
+            self.txtTotalHoras.text = ""
+            self.lblTotalReferencial.text = "0.0"
             self.tableView.reloadData()
             
         } else {
@@ -128,6 +132,9 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.hideSectionHoras = 0
             self.hideSectionEnt = 1
             self.tipoFact = "HRS"
+            daoEntregable().deleteAllEntregables(self.contrato!)
+            self.numEntregables = 0
+            self.lblNumEntregables.text = "Entregables: 0"
             self.tableView.reloadData()
         }
     }
@@ -141,17 +148,33 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         }
     }
     
-    
     @IBAction func saveTapped(sender: AnyObject) {
-        daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
-        if self.tipoFact == "HRS" {
-            self.contratoHoras = daoContratoHoras().genericContratoHoras()
-            
-            daoContratoHoras().updateContractHoras(Double(self.txtTotalHoras.text!), horasInc: "", tarifaHora: Double(self.txtTarifaPorHoras.text!)!, moneda: self.moneda!, object: self.contratoHoras!)
-            
-            daoContrato().addContratoHorasToContract(self.contratoHoras!, obj: self.contrato!)
+        if self.txtNombreContrato.text == "" {
+            self.alertMessage("El contrato debe llevar un nombre", winTitle: "Error")
+        } else {
+            if self.cliente == nil {
+                self.alertMessage("El contrato debe llevar un cliente", winTitle: "Error")
+            } else {
+                if self.tipoFact == "ENT" {
+                    if self.numEntregables == 0 {
+                        self.alertMessage("El contrato por entregables debe tener por lo menos uno de éstos.", winTitle: "Error")
+                    } else {
+                        daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
+                    }
+                }
+                if self.tipoFact == "HRS" {
+                    daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
+                    if self.txtTarifaPorHoras.text == "" {
+                        self.alertMessage("EL contrato por horas debe tener una tarifa obligatoriamente.", winTitle: "Error")
+                    }else {
+                        self.contratoHoras = daoContratoHoras().genericContratoHoras()
+                        daoContratoHoras().updateContractHoras(Double(self.txtTotalHoras.text!), horasInc: "", tarifaHora: Double(self.txtTarifaPorHoras.text!)!, moneda: self.moneda!, object: self.contratoHoras!)
+                        daoContrato().addContratoHorasToContract(self.contratoHoras!, obj: self.contrato!)
+                    }
+                }
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }
         }
-        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 
     @IBAction func cancelTapped(sender: AnyObject) {
@@ -176,6 +199,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     func returnNumEntregablesToContract(num: Int) {
         self.lblNumEntregables.text = "Entregables: " + num.description
+        self.numEntregables = num
     }
     // FIXED TABLEVIEW OPERATIONS
     
@@ -269,5 +293,14 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             tableVC.contrato = self.contrato
             tableVC.delegateAddress = self
         }
+    }
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

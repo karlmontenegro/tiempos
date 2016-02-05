@@ -33,6 +33,7 @@ class CitaDetailTVC: UITableViewController {
         dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
         
         self.cita = daoCita().getDateByEventId(self.event as! EKEvent)
+           
         self.nomCita.text = (self.event as! EKEvent).title
         self.nomCliente.text = self.cita?.cliente?.nombre
         self.startDate.text = dateFormatter.stringFromDate((self.event as! EKEvent).startDate)
@@ -43,14 +44,20 @@ class CitaDetailTVC: UITableViewController {
             self.tipoFacturacion.text = "Por Horas"
             self.entregableCell.hidden = true
         }else{
-            self.tipoFacturacion.text = "Por Entregables"
-            self.entregableCell.detailTextLabel?.text = self.cita?.entregable?.nombreEntreg
+            if self.cita?.contrato?.tipoFacturacion == "ENT" {
+                self.tipoFacturacion.text = "Por Entregables"
+                self.entregableCell.detailTextLabel?.text = self.cita?.entregable?.nombreEntreg
+            } else {
+                self.tipoFacturacion.text = ""
+                self.entregableCell.hidden = true
+                self.nomContrato.text = "(Sin Contrato Asociado)"
+            }
         }
         
         if (self.event as! EKEvent).hasAlarms{
             self.alerts.text = self.getOffsetText((self.event as! EKEvent).alarms![0].relativeOffset)
         }else{
-            self.alerts.text = "Sin recordatorios"
+            self.alerts.text = "(Sin recordatorios)"
         }
         
         if (self.cita!.convertido == 1) {

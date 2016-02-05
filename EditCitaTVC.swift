@@ -49,11 +49,28 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
         self.startDate = self.event?.startDate
         self.endDate = self.event?.endDate
         
+        if self.cliente == nil {
+            self.alertMessage("Esta cita ha sido creada fuera de Freelo, añada la información faltante", winTitle: "Atención")
+        }
+        
+        if self.cita?.cliente == nil {
+            self.lblNomCliente.text = "+ Añadir cliente"
+        }
+        
         if self.cita?.contrato?.tipoFacturacion == "HRS"{
             self.lblTipoFact.text = "Por Horas"
         }else{
-            self.lblTipoFact.text = "Por Entregables"
-            self.entregableCell.textLabel!.text = self.entregable?.nombreEntreg
+            if self.cita?.contrato?.tipoFacturacion == "ENT" {
+                self.lblTipoFact.text = "Por Entregables"
+                if self.entregable != nil {
+                    self.entregableCell.textLabel!.text = self.entregable?.nombreEntreg
+                }
+            } else {
+                self.lblNomContrato.text = "+ Añadir contrato"
+                self.lblTipoFact.text = ""
+                self.lblEntregables.text = "+ Añadir entregable"
+                self.entregableCell.hidden = true
+            }
         }
         
         if (self.event?.hasAlarms)! {
@@ -62,7 +79,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
             self.alarm = self.event?.alarms![0]
         }else{
             self.AlarmState.on = false
-            self.lblAlarm.text = "Sin recordatorios"
+            self.lblAlarm.text = "+ Añadir recordatorios"
             self.AlarmState.enabled = false
         }
         
@@ -97,7 +114,12 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
     func returnContractToDate(contract: Contrato) {
         self.contrato = contract
         self.lblNomContrato.text = contract.nombreContrato
-        self.lblTipoFact.text = contract.tipoFacturacion
+        
+        if contract.tipoFacturacion == "HRS" {
+           self.lblTipoFact.text = "Por Horas"
+        } else {
+           self.lblTipoFact.text = "Por Entregables"
+        }
     }
     
     func returnReminderToDate(number: Int, measure: String) {
@@ -127,8 +149,16 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
     }
 
     @IBAction func saveTapped(sender: AnyObject) {
-        daoCita().updateDate(self.cita!, nomDate: self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato!, entregable: self.entregable!, alarm: self.alarm, event: self.event!)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if self.txtNomCita.text == "" {
+            self.alertMessage("Es necesario darle un nombre a la cita.", winTitle: "Error")
+        } else {
+            if self.cliente == nil {
+                self.alertMessage("La cita requiere un cliente obligatoriamente.", winTitle: "Error")
+            } else {
+                daoCita().updateDate(self.cita!, nomDate: self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato, entregable: self.entregable, alarm: self.alarm, event: self.event!)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
     }
 
     @IBAction func cancelTapped(sender: AnyObject) {
@@ -157,6 +187,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
         }
         if segue.identifier == "editContractSegue"{
             let vc:ContractPicker = segue.destinationViewController as! ContractPicker
+            vc.cliente = self.cliente
             vc.delegateAddress = self
         }
         if segue.identifier == "editReminderSegue"{
@@ -169,5 +200,13 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
             vc.entregable = self.entregable
             vc.contract = self.contrato
         }
+    }
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

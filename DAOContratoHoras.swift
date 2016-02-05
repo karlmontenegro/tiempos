@@ -62,6 +62,7 @@ class daoContratoHoras{
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         object.setValue(nil, forKey: "horasInc")
+        
         if nroHoras != nil {
             object.setValue(nroHoras, forKey: "totalHoras")
         }else {
