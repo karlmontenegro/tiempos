@@ -250,6 +250,18 @@ class daoCita{
         }
     }
     
+    func deleteDate(cita:Cita) {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        context.deleteObject(cita)
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+    }
+    
     func deleteEventByDateId(event:EKEvent, store:EKEventStore) {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext

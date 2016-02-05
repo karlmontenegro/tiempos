@@ -1079,7 +1079,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre del Entregable" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p0T-6u-yxu">
                                         <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <connections>
                                             <action selector="nomChanged:" destination="DsB-tI-bgf" eventType="editingChanged" id="SVe-tt-j0O"/>
                                         </connections>

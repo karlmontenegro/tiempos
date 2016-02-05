@@ -31,6 +31,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
     var startDate:NSDate? = nil
     var endDate:NSDate? = nil
     var alarm:EKAlarm? = nil
+    var origin:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
         
         if self.cliente == nil {
             self.alertMessage("Esta cita ha sido creada fuera de Freelo, añada la información faltante", winTitle: "Atención")
+            self.origin = true
         }
         
         if self.cita?.cliente == nil {
@@ -165,6 +167,9 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
     }
 
     @IBAction func cancelTapped(sender: AnyObject) {
+        if self.origin == true {
+            daoCita().deleteDate(self.cita!)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
