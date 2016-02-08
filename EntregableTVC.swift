@@ -56,10 +56,9 @@ class EntregableTVC: UITableViewController, entregableEditionOperations {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("entregableCell", forIndexPath: indexPath)
         
-        cell.textLabel!.text = "Entregable " + (indexPath.row + 1).description
-
         if self.entregables != nil {
-            cell.detailTextLabel!.text = self.entregables![indexPath.row].nombreEntreg!
+            cell.textLabel!.text = self.entregables![indexPath.row].nombreEntreg!
+            cell.detailTextLabel!.text = "Tarifa: " + (self.contrato?.moneda?.descripcion)! + " " + Double(self.entregables![indexPath.row].tarifa!).description
         }
         
         return cell

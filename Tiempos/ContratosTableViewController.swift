@@ -55,14 +55,12 @@ class ContratosTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath)
 
-        cell.textLabel!.text = self.arreglo[indexPath.row].valueForKey("nombreContrato") as! String?
-        cell.detailTextLabel!.text = self.arreglo[indexPath.row].valueForKey("cliente")?.valueForKey("nombre") as! String?
+        cell.textLabel!.text = self.arreglo[indexPath.row].nombreContrato!
+        cell.detailTextLabel!.text = "Cliente: " + (self.arreglo[indexPath.row].cliente?.nombre!)! + " Facturación: " + self.arreglo[indexPath.row].tipoFacturacion!
+        
         return cell
     }
-
-
-
-    
+   
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
         
         let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in

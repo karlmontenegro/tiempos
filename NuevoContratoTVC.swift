@@ -62,7 +62,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if self.origin == "NEW" {
             self.lblTipoFacturacion.text = "Por Entregables"
             self.lblTotalReferencial.text = "0.0"
@@ -73,6 +73,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 self.lblCurrency.text = "+ Moneda"
             } else {
                 self.lblCurrency.text = (self.moneda?.id)! + (self.moneda?.descripcion)!
+                daoContrato().updateContract("", tipoFact: "", moneda: self.moneda!, client: nil, object: self.contrato!)
             }
         }
         
@@ -90,6 +91,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 self.lblTipoFacturacion.text = "Por Entregables"
                 self.factSwitch.on = true
                 self.lblNumEntregables.text = "Entregables: " + (self.contrato?.entregables!.count.description)!
+                self.numEntregables = (self.contrato?.entregables!.count)!
             } else { //Por Horas
                 
                 self.contratoHoras = self.contrato?.contratoHoras

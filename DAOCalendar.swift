@@ -67,6 +67,27 @@ class daoCalendar{
         return result
     }
     
+    func getWeekEventsForDate(date:NSDate, calendar:EKCalendar,eventStore:EKEventStore)->Array<EKEvent>? {
+        
+        let userCalendar = NSCalendar.currentCalendar()
+        let startDateComponents = NSDateComponents()
+        startDateComponents.year = date.year()
+        startDateComponents.month = date.month()
+        startDateComponents.day = date.day()
+        startDateComponents.hour = 23
+        startDateComponents.minute = 59
+        startDateComponents.second = 59
+        
+        let newStart:NSDate = userCalendar.dateFromComponents(startDateComponents)!
+        let endDate = date.dateByAddingDays(7)
+        
+        let predicate:NSPredicate = eventStore.predicateForEventsWithStartDate(newStart, endDate: endDate, calendars: [calendar])
+        
+        let result:Array<EKEvent> = eventStore.eventsMatchingPredicate(predicate)
+    
+        return result
+    }
+    
     //Aux Functions
     
     func searchCalendarByTitle(title:String, list: [EKCalendar])->EKCalendar?{

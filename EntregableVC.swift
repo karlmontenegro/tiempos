@@ -33,9 +33,17 @@ class EntregableVC: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func saveTapped(sender: UIButton) {
-        daoEntregable().updateEntregable(txtNomEntregable.text as String!, tarifa: txtTarifa.text as String!, object: self.data as! Entregable)
-        self.delegateAddress!.refreshTableViewForEntregables()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if self.txtNomEntregable.text == "" {
+            self.alertMessage("El entregable debe tener un nombre.", winTitle: "Error")
+        } else {
+            if self.txtTarifa.text == "" {
+                self.alertMessage("El entregable debe tener una tarifa.", winTitle: "Error")
+            }else {
+                daoEntregable().updateEntregable(txtNomEntregable.text as String!, tarifa: txtTarifa.text as String!, object: self.data as! Entregable)
+                self.delegateAddress!.refreshTableViewForEntregables()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -48,9 +56,10 @@ class EntregableVC: UIViewController {
         }
         // Do any additional setup after loading the view.
         
-        self.txtNomEntregable.text = (data as! Entregable).valueForKey("nombreEntreg") as? String
+        self.txtNomEntregable.text = (data as! Entregable).nombreEntreg
+        
         if mode != "NEW" {
-            self.txtTarifa.text = ((data as! Entregable).valueForKey("tarifa") as! Float).description
+            self.txtTarifa.text = Double((data as! Entregable).tarifa!).description
         }
         
         if (self.data as! Entregable).contrato?.moneda != nil {
@@ -82,5 +91,14 @@ class EntregableVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 
 }

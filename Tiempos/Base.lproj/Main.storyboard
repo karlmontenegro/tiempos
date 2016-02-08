@@ -661,7 +661,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opM-lV-FXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2661" y="756.75"/>
+            <point key="canvasLocation" x="2644.5" y="790.5"/>
         </scene>
         <!--Nuevo Contrato-->
         <scene sceneID="XOH-ch-gKF">
@@ -1059,7 +1059,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUX-Mi-nhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2661" y="68.25"/>
+            <point key="canvasLocation" x="2644.5" y="102"/>
         </scene>
         <!--EntregableVC-->
         <scene sceneID="uOu-A9-cUw">
@@ -1090,7 +1090,7 @@
                                             <constraint firstAttribute="width" constant="136" id="pXi-KR-3lS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="pXi-KR-3lS"/>
@@ -1559,7 +1559,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HH-UC-rcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="OGP-SN-hn2"/>
             </objects>
-            <point key="canvasLocation" x="1951.5" y="790.5"/>
+            <point key="canvasLocation" x="1930.5" y="790.5"/>
         </scene>
         <!--Contactos Por Cliente Table View Controller-->
         <scene sceneID="D77-4U-Yn3">
@@ -3263,7 +3263,7 @@
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -3356,7 +3356,7 @@
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lZB-0D-bPg">
@@ -3386,7 +3386,7 @@
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9IA-O4-aqH">
@@ -3415,7 +3415,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Añadir alarma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJG-3V-Jl6">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -3620,7 +3620,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5P-vf-qVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1891.5" y="-669"/>
+            <point key="canvasLocation" x="1909.5" y="-628.5"/>
         </scene>
         <!--Entregable Picker-->
         <scene sceneID="Viy-an-2Gb">
@@ -7327,20 +7327,20 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="NWw-8S-G1o"/>
+        <segue reference="vjv-50-TbC"/>
         <segue reference="uOR-nE-Lvj"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
-        <segue reference="HwU-W3-xDs"/>
-        <segue reference="cX3-9R-G3m"/>
         <segue reference="IEm-rT-DGL"/>
-        <segue reference="fAi-QO-h1o"/>
         <segue reference="QM7-Ye-Xhr"/>
-        <segue reference="1U0-1N-NaQ"/>
         <segue reference="oyW-Uv-Djb"/>
         <segue reference="VN9-SP-Fso"/>
-        <segue reference="jDx-tb-DDb"/>
-        <segue reference="vjv-50-TbC"/>
+        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="1U0-1N-NaQ"/>
+        <segue reference="fAi-QO-h1o"/>
+        <segue reference="HwU-W3-xDs"/>
+        <segue reference="cX3-9R-G3m"/>
     </inferredMetricsTieBreakers>
 </document>

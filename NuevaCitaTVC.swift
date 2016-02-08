@@ -41,7 +41,9 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
+        
         self.lblStartDate.text = self.dateFormatter.stringFromDate(self.startDate!)
+        self.endDate = self.startDate!.dateByAddingTimeInterval(1.0 * 60.0 * 60.0)
     }
 
     override func didReceiveMemoryWarning() {

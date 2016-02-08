@@ -7,13 +7,6 @@
 //
 
 
-/* Correcciones (11/01/16)
-
-- Listar citas futuras a 5 días
-- 
-
-*/
-
 import UIKit
 import CoreData
 import Foundation
@@ -27,15 +20,22 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     let calendarName:String = "Freelo Calendar"
     var defaultCalendar:EKCalendar? = nil
     let eventStore = EKEventStore()
-    let dateFormatter = NSDateFormatter()
+    let titleDateFormatter = NSDateFormatter()
+    let todayDateFormatter = NSDateFormatter()
+    let weekDateFormatter = NSDateFormatter()
     var date = NSDate()
     
+    var weekEventArray:Array<EKEvent> = []
     var eventArray:Array<EKEvent> = []
-    
+
     override func viewWillAppear(animated: Bool) {
         //Creamos el calendario
         self.defaultCalendar = daoCalendar().getCalendar(calendarName, store: self.eventStore)
+        
+        self.weekEventArray = daoCalendar().getWeekEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)!
+        
         self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
+        
         self.dateTableView.reloadData()
     }
     
@@ -46,7 +46,19 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
             self.menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        dateFormatter.dateFormat = "ccc, dd MMM"
+        
+        //Fecha Titulo
+        titleDateFormatter.dateFormat = "ccc, dd MMM"
+        
+        //Fecha de hoy
+        todayDateFormatter.dateFormat = "h:mm a"
+        todayDateFormatter.AMSymbol = "AM"
+        todayDateFormatter.PMSymbol = "PM"
+        
+        //Fechas de la semana
+        weekDateFormatter.dateFormat = "ccc, dd h:mm a"
+        weekDateFormatter.AMSymbol = "AM"
+        weekDateFormatter.PMSymbol = "PM"
         
         // Do any additional setup after loading the view.
         
@@ -72,7 +84,8 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     }
     
     func epCalendarPicker(_: EPCalendarPicker, didSelectDate date: NSDate) {
-        self.date = date
+        self.date = self.setCurrentTimeToNewDate(date, time: NSDate())!
+        print(self.date)
         self.eventArray = daoCalendar().getEventsForDate(self.date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
         self.dateTableView.reloadData()
         
@@ -84,32 +97,54 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Citas programadas para " + self.dateFormatter.stringFromDate(self.date)
+        
+        if section == 0 {
+            if self.date.isToday() {
+                return "Citas para hoy"
+            } else {
+                return "Citas para " + self.titleDateFormatter.stringFromDate(self.date)
+            }
+        } else {
+            return "Citas para próximos 6 días"
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return self.eventArray.count
+
+        if section == 0 {
+            return self.eventArray.count
+        } else {
+            return self.weekEventArray.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CitaCell", forIndexPath: indexPath)
-
-        if !self.eventArray.isEmpty{
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "h:mm a"
-            dateFormatter.AMSymbol = "AM"
-            dateFormatter.PMSymbol = "PM"
-            let startTimeStr:String = dateFormatter.stringFromDate(self.eventArray[indexPath.row].startDate)
-            cell.detailTextLabel?.text = self.eventArray[indexPath.row].title
-            cell.textLabel?.text = startTimeStr
-        }
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("CitaCell", forIndexPath: indexPath)
+        
+        if !self.eventArray.isEmpty{
+            if indexPath.section == 0 {
+                let date:Cita? = daoCita().getDateByEventId(self.eventArray[indexPath.row])
+                
+                if date != nil {
+                    cell.detailTextLabel?.text = self.eventArray[indexPath.row].title + " - " + (date?.cliente?.nombre!)!
+                    if date?.convertido == true {
+                        cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                    }
+                } else {
+                    cell.detailTextLabel?.text = self.eventArray[indexPath.row].title
+                }
+                
+                cell.textLabel?.text = self.todayDateFormatter.stringFromDate(self.eventArray[indexPath.row].startDate)
+            } else {
+                cell.textLabel?.text = self.weekDateFormatter.stringFromDate(self.weekEventArray[indexPath.row].startDate)
+                cell.detailTextLabel?.text = self.weekEventArray[indexPath.row].title
+            }
+        }
         return cell
     }
     
@@ -201,5 +236,18 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-
+    
+    func setCurrentTimeToNewDate(date:NSDate, time:NSDate)->NSDate?{
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+        let components = calendar!.components([.Hour, .Minute, .Second], fromDate: date)
+        
+        components.year = date.year()
+        components.month = date.month()
+        components.day = date.day()
+        components.hour = time.hour()
+        components.minute = time.minute()
+        components.second = time.second()
+        
+        return calendar!.dateFromComponents(components)
+    }
 }

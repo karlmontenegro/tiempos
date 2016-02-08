@@ -23,13 +23,8 @@ class DateTimePicker: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if self.source == "startDate" {
-            self.dateTimePicker.date = self.date!
-        }
-        if self.source == "endDate" {
-            
-        }
+        
+        self.dateTimePicker.date = self.date!
         self.selectedDate = self.dateTimePicker.date
         // Do any additional setup after loading the view.
     }

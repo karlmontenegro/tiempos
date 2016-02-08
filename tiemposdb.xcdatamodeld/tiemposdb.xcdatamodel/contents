@@ -72,7 +72,7 @@
         <attribute name="descripcion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="configuracion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Configuracion" inverseName="moneda" inverseEntity="Configuracion" syncable="YES"/>
-        <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="moneda" inverseEntity="Contrato" syncable="YES"/>
+        <relationship name="contrato" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contrato" inverseName="moneda" inverseEntity="Contrato" syncable="YES"/>
         <relationship name="contratoHoras" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ContratoHoras" inverseName="moneda" inverseEntity="ContratoHoras" syncable="YES"/>
         <relationship name="entregable" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entregable" inverseName="moneda" inverseEntity="Entregable" syncable="YES"/>
         <relationship name="recibo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recibo" inverseName="moneda" inverseEntity="Recibo" syncable="YES"/>
@@ -125,16 +125,16 @@
     <elements>
         <element name="Cita" positionX="-828" positionY="-361" width="128" height="135"/>
         <element name="Cliente" positionX="-434" positionY="-130" width="128" height="195"/>
+        <element name="Configuracion" positionX="-990" positionY="-810" width="128" height="75"/>
         <element name="Contacto" positionX="-810" positionY="-171" width="128" height="105"/>
         <element name="Contrato" positionX="-29" positionY="-234" width="128" height="193"/>
         <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="133"/>
         <element name="Direccion" positionX="-216" positionY="38" width="128" height="118"/>
         <element name="Entregable" positionX="-108" positionY="-531" width="128" height="163"/>
-        <element name="Moneda" positionX="-389" positionY="-657" width="128" height="163"/>
+        <element name="Moneda" positionX="-389" positionY="-657" width="128" height="165"/>
         <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
         <element name="Recibo" positionX="-738" positionY="-954" width="144" height="208"/>
         <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="193"/>
         <element name="Usuario" positionX="-738" positionY="-706" width="108" height="238"/>
-        <element name="Configuracion" positionX="-990" positionY="-810" width="128" height="75"/>
     </elements>
 </model>
