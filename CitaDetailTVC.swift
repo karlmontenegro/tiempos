@@ -14,6 +14,7 @@ class CitaDetailTVC: UITableViewController {
     var event:AnyObject? = []
     var cita:Cita? = nil
     var hideTableSection:Bool = false
+    var eventStore:EKEventStore? = nil
     
     @IBOutlet weak var nomCita: UILabel!
     @IBOutlet weak var nomCliente: UILabel!
@@ -127,6 +128,7 @@ class CitaDetailTVC: UITableViewController {
             tableVC.cita = self.cita
             tableVC.event = self.event as? EKEvent
             tableVC.entregable = self.cita?.entregable
+            tableVC.eventStore = self.eventStore!
         }
         if segue.identifier == "convertDateToTimeSegue" {
             let navVC = segue.destinationViewController as! UINavigationController

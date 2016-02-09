@@ -32,6 +32,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
     var endDate:NSDate? = nil
     var alarm:EKAlarm? = nil
     var origin:Bool = false
+    var eventStore:EKEventStore? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,7 +161,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
             if self.cliente == nil {
                 self.alertMessage("La cita requiere un cliente obligatoriamente.", winTitle: "Error")
             } else {
-                daoCita().updateDate(self.cita!, nomDate: self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato, entregable: self.entregable, alarm: self.alarm, event: self.event!)
+                daoCita().updateDate(self.cita!, nomDate: self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato, entregable: self.entregable, alarm: self.alarm, event: self.event!, eventStore: self.eventStore!)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }

@@ -145,7 +145,7 @@ class daoCita{
     }
     
     
-    func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato?,entregable:Entregable?, alarm: EKAlarm?, event: EKEvent){
+    func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato?,entregable:Entregable?, alarm: EKAlarm?, event: EKEvent, eventStore: EKEventStore){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext

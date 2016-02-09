@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let dataHelper = DataHelper(context: self.managedObjectContext)
         dataHelper.seedCurrency()
-        dataHelper.seedConfig()
+        dataHelper.seedConfig();
         return true
     }
     
@@ -73,7 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print(error)
         }
-        */
+*/
+        
         
         var failureReason = "There was an error creating or loading the application's saved data."
         do {

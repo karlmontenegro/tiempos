@@ -88,6 +88,27 @@ class daoCalendar{
         return result
     }
     
+    func getWeeklyEventsForDate(date:NSDate, calendar: EKCalendar, eventStore: EKEventStore) -> Dictionary<NSDate,Array<EKEvent>>? {
+        
+        let userCalendar = NSCalendar.currentCalendar()
+        let startDateComponents = NSDateComponents()
+        startDateComponents.year = date.year()
+        startDateComponents.month = date.month()
+        startDateComponents.day = date.day()
+        startDateComponents.hour = 0
+        startDateComponents.minute = 0
+        startDateComponents.second = 0
+        
+        let newStartDate:NSDate = userCalendar.dateFromComponents(startDateComponents)!
+        let endDate:NSDate = newStartDate.dateByAddingDays(7)
+        
+        let predicate:NSPredicate = eventStore.predicateForEventsWithStartDate(newStartDate, endDate: endDate, calendars: [calendar])
+        
+        let result:Array<EKEvent> = eventStore.eventsMatchingPredicate(predicate)
+        
+        return self.classifyEventsByDate(newStartDate,array: result)
+    }
+    
     //Aux Functions
     
     func searchCalendarByTitle(title:String, list: [EKCalendar])->EKCalendar?{
@@ -112,5 +133,23 @@ class daoCalendar{
     func getDateById(id:String,eventStore:EKEventStore)->EKEvent?{
         
         return eventStore.eventWithIdentifier(id)
+    }
+    
+    func classifyEventsByDate(startDate:NSDate, array: Array<EKEvent>) -> Dictionary<NSDate,Array<EKEvent>>? {
+        
+        var eventDictionary = Dictionary<NSDate,Array<EKEvent>>()
+        var dateForThisDay:NSDate? = nil
+        
+        for event in array {
+            dateForThisDay = event.startDate.dateByIgnoringTime()
+            
+            if eventDictionary.indexForKey(dateForThisDay!) == nil {
+                eventDictionary[dateForThisDay!] = []
+            }
+            
+            eventDictionary[dateForThisDay!]?.append(event)
+        }
+                
+        return eventDictionary
     }
 }

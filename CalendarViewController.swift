@@ -21,20 +21,22 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     var defaultCalendar:EKCalendar? = nil
     let eventStore = EKEventStore()
     let titleDateFormatter = NSDateFormatter()
-    let todayDateFormatter = NSDateFormatter()
+    let hourFormatter = NSDateFormatter()
     let weekDateFormatter = NSDateFormatter()
     var date = NSDate()
     
-    var weekEventArray:Array<EKEvent> = []
-    var eventArray:Array<EKEvent> = []
+    var weekEventKeyArray:Array<NSDate> = []
+    var weekEventDictionary:Dictionary<NSDate,Array<EKEvent>>? = nil
 
     override func viewWillAppear(animated: Bool) {
         //Creamos el calendario
-        self.defaultCalendar = daoCalendar().getCalendar(calendarName, store: self.eventStore)
         
-        self.weekEventArray = daoCalendar().getWeekEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)!
+        self.defaultCalendar = daoCalendar().getCalendar(self.calendarName, store: self.eventStore)
         
-        self.eventArray = daoCalendar().getEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
+        self.weekEventDictionary = daoCalendar().getWeeklyEventsForDate(date, calendar: self.defaultCalendar!, eventStore: self.eventStore)!
+        
+        self.weekEventKeyArray = Array(self.weekEventDictionary!.keys) 
+        self.weekEventKeyArray.sortInPlace { $0.compare($1) == .OrderedAscending }
         
         self.dateTableView.reloadData()
     }
@@ -51,12 +53,12 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
         titleDateFormatter.dateFormat = "ccc, dd MMM"
         
         //Fecha de hoy
-        todayDateFormatter.dateFormat = "h:mm a"
-        todayDateFormatter.AMSymbol = "AM"
-        todayDateFormatter.PMSymbol = "PM"
+        hourFormatter.dateFormat = "h:mm a"
+        hourFormatter.AMSymbol = "AM"
+        hourFormatter.PMSymbol = "PM"
         
         //Fechas de la semana
-        weekDateFormatter.dateFormat = "ccc, dd h:mm a"
+        weekDateFormatter.dateFormat = "ccc, dd MM"
         weekDateFormatter.AMSymbol = "AM"
         weekDateFormatter.PMSymbol = "PM"
         
@@ -85,8 +87,12 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     
     func epCalendarPicker(_: EPCalendarPicker, didSelectDate date: NSDate) {
         self.date = self.setCurrentTimeToNewDate(date, time: NSDate())!
-        print(self.date)
-        self.eventArray = daoCalendar().getEventsForDate(self.date, calendar: self.defaultCalendar!, eventStore: self.eventStore)
+
+        self.weekEventDictionary = daoCalendar().getWeeklyEventsForDate(self.date, calendar: self.defaultCalendar!, eventStore: self.eventStore)!
+        
+        self.weekEventKeyArray = Array(self.weekEventDictionary!.keys)
+        self.weekEventKeyArray.sortInPlace { $0.compare($1) == .OrderedAscending }
+        
         self.dateTableView.reloadData()
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -97,54 +103,44 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 2
+        
+        return self.weekEventKeyArray.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        if section == 0 {
-            if self.date.isToday() {
-                return "Citas para hoy"
-            } else {
-                return "Citas para " + self.titleDateFormatter.stringFromDate(self.date)
-            }
+        if self.weekEventKeyArray[section].isToday() {
+            return "Citas para hoy"
         } else {
-            return "Citas para próximos 6 días"
+            return "Citas para el " +  self.titleDateFormatter.stringFromDate(self.weekEventKeyArray[section])
         }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        if section == 0 {
-            return self.eventArray.count
-        } else {
-            return self.weekEventArray.count
-        }
+       
+        return self.weekEventDictionary![self.weekEventKeyArray[section]]!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CitaCell", forIndexPath: indexPath)
         
-        if !self.eventArray.isEmpty{
-            if indexPath.section == 0 {
-                let date:Cita? = daoCita().getDateByEventId(self.eventArray[indexPath.row])
-                
-                if date != nil {
-                    cell.detailTextLabel?.text = self.eventArray[indexPath.row].title + " - " + (date?.cliente?.nombre!)!
-                    if date?.convertido == true {
-                        cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-                    }
-                } else {
-                    cell.detailTextLabel?.text = self.eventArray[indexPath.row].title
-                }
-                
-                cell.textLabel?.text = self.todayDateFormatter.stringFromDate(self.eventArray[indexPath.row].startDate)
-            } else {
-                cell.textLabel?.text = self.weekDateFormatter.stringFromDate(self.weekEventArray[indexPath.row].startDate)
-                cell.detailTextLabel?.text = self.weekEventArray[indexPath.row].title
+        let dateTitle:String = self.weekEventDictionary![self.weekEventKeyArray[indexPath.section]]![indexPath.row].title
+        
+        let calendarDate:EKEvent = self.weekEventDictionary![self.weekEventKeyArray[indexPath.section]]![indexPath.row]
+        
+        let date:Cita? = daoCita().getDateByEventId(calendarDate)
+        
+        if date != nil {
+            cell.detailTextLabel?.text = dateTitle + " - " + (date?.cliente?.nombre!)!
+            if date?.convertido == true {
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
+        } else {
+            cell.detailTextLabel?.text = dateTitle
         }
+                
+        cell.textLabel?.text = self.hourFormatter.stringFromDate(calendarDate.startDate)
+        
         return cell
     }
     
@@ -159,10 +155,10 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                daoCita().deleteEventByDateId(self.eventArray[indexPath.row], store: self.eventStore)
+                daoCita().deleteEventByDateId(self.weekEventDictionary![self.weekEventKeyArray[indexPath.section]]![indexPath.row], store: self.eventStore)
                 
-                // Deletes the element from the array
-                self.eventArray.removeAtIndex(indexPath.row)
+                // Deletes the element from the dictionary
+                self.weekEventDictionary![self.weekEventKeyArray[indexPath.section]]!.removeAtIndex(indexPath.row)
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
@@ -191,11 +187,14 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if daoCita().getDateByEventId(self.eventArray[indexPath.row]) != nil {
+        let event:EKEvent = self.weekEventDictionary![self.weekEventKeyArray[indexPath.section]]![indexPath.row]
+        
+        if daoCita().getDateByEventId(event) != nil {
             self.performSegueWithIdentifier("showDateDetail", sender: self)
         } else {
             self.performSegueWithIdentifier("editEmptyCitaSegue", sender: self)
         }
+
     }
     
     
@@ -205,10 +204,13 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "showDateDetail" {
             let vc:CitaDetailTVC = segue.destinationViewController as! CitaDetailTVC
             let indexpath:NSIndexPath = self.dateTableView.indexPathForSelectedRow!
-            vc.event = self.eventArray[indexpath.row]
+            let event:EKEvent = self.weekEventDictionary![self.weekEventKeyArray[indexpath.section]]![indexpath.row]
+            vc.event = event
+            vc.eventStore = self.eventStore
         }
         
         if segue.identifier == "newDate" {
@@ -218,12 +220,15 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
         
         if segue.identifier == "editEmptyCitaSegue" {
             let indexpath:NSIndexPath = self.dateTableView.indexPathForSelectedRow!
-            let cita = daoCita().createGenericDate((self.eventArray[indexpath.row]).title, calEvent: self.eventArray[indexpath.row])
+            
+            let event:EKEvent = self.weekEventDictionary![self.weekEventKeyArray[indexpath.section]]![indexpath.row]
+            
+            let cita = daoCita().createGenericDate(event.title, calEvent: event)
             
             let navVC = segue.destinationViewController as! UINavigationController
             let editCitaVC = navVC.viewControllers.first as! EditCitaTVC
             editCitaVC.cita = cita
-            editCitaVC.event = self.eventArray[indexpath.row]
+            editCitaVC.event = event
             editCitaVC.entregable = cita?.entregable
                        
         }

@@ -3504,6 +3504,7 @@
         <!--Citas-->
         <scene sceneID="5Im-l1-65E">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X5P-vf-qVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="uAg-Ro-dQw" customClass="CalendarViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bXL-Xs-Kop"/>
@@ -3532,14 +3533,14 @@
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="azE-qN-Ce2">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="azE-qN-Ce2">
                                                     <rect key="frame" x="112" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -3618,7 +3619,6 @@
                         </segue>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X5P-vf-qVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1909.5" y="-628.5"/>
         </scene>
@@ -5632,7 +5632,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.2731509868" blue="0.57575757579999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="ofj-7A-liq" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="PFs-pi-aHP"/>
+                                            <segue destination="ofj-7A-liq" kind="custom" identifier="citasView" customClass="SWRevealViewControllerSeguePushController" id="PFs-pi-aHP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="5dW-kJ-If6" imageView="44D-pM-UX4" rowHeight="50" style="IBUITableViewCellStyleDefault" id="nIS-c2-WjX">
@@ -7327,20 +7327,20 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NWw-8S-G1o"/>
-        <segue reference="vjv-50-TbC"/>
         <segue reference="uOR-nE-Lvj"/>
+        <segue reference="jYA-1F-lOK"/>
+        <segue reference="fAi-QO-h1o"/>
+        <segue reference="r9m-EK-qsX"/>
+        <segue reference="nf2-hQ-ana"/>
+        <segue reference="iQF-LW-x4a"/>
+        <segue reference="t29-F0-iXa"/>
+        <segue reference="PbR-Wd-DqE"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
-        <segue reference="IEm-rT-DGL"/>
-        <segue reference="QM7-Ye-Xhr"/>
-        <segue reference="oyW-Uv-Djb"/>
-        <segue reference="VN9-SP-Fso"/>
-        <segue reference="8vE-Kv-g5c"/>
-        <segue reference="1U0-1N-NaQ"/>
-        <segue reference="fAi-QO-h1o"/>
         <segue reference="HwU-W3-xDs"/>
         <segue reference="cX3-9R-G3m"/>
+        <segue reference="NWw-8S-G1o"/>
+        <segue reference="vjv-50-TbC"/>
     </inferredMetricsTieBreakers>
 </document>
