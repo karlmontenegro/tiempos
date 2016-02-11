@@ -310,7 +310,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oyt-2J-nMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3375" y="68.25"/>
+            <point key="canvasLocation" x="3330" y="68.25"/>
         </scene>
         <!--Client Modal-->
         <scene sceneID="cfi-jS-GWV">
@@ -672,7 +672,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Nombre del Contrato" id="E7p-ji-Pqp">
+                            <tableViewSection headerTitle="Nombre del Contrato" footerTitle="Obligatorio" id="E7p-ji-Pqp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="cUb-I6-X9g">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
@@ -684,7 +684,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Añadir nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Ci-Hh-Yh3">
                                                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -716,7 +716,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Cliente" footerTitle="Añade el cliente al que pertenece el contrato" id="qS3-il-WMA">
+                            <tableViewSection headerTitle="Cliente" footerTitle="Obligatorio" id="qS3-il-WMA">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DKP-g4-bV8" style="IBUITableViewCellStyleDefault" id="L7i-c8-Ugs">
                                         <rect key="frame" x="0.0" y="209" width="600" height="44"/>
@@ -725,7 +725,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Cliente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DKP-g4-bV8">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Cliente Asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DKP-g4-bV8">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -743,7 +743,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Moneda" footerTitle="En qué moneda se facturará este contrato" id="pau-f5-GaC">
+                            <tableViewSection headerTitle="Moneda" footerTitle="Obligatorio" id="pau-f5-GaC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Fd6-iJ-YxY" style="IBUITableViewCellStyleDefault" id="OpU-nB-HkV">
                                         <rect key="frame" x="0.0" y="320" width="600" height="44"/>
@@ -752,7 +752,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Moneda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fd6-iJ-YxY">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Moneda de Facturación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fd6-iJ-YxY">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -770,7 +770,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Tipo de Facturación" id="4bQ-aA-XDK">
+                            <tableViewSection headerTitle="Tipo de Facturación" footerTitle="" id="4bQ-aA-XDK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="5hf-Jy-sse">
                                         <rect key="frame" x="0.0" y="431" width="600" height="44"/>
@@ -852,7 +852,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tarifa por Horas" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0NH-cw-1CC">
                                                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1037,7 +1037,7 @@
                                 <action selector="cancelTapped:" destination="dfE-gH-JLK" id="LZp-sZ-GQx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="p7I-3G-sGg">
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="p7I-3G-sGg">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="dfE-gH-JLK" id="OpD-f6-4V9"/>
@@ -1330,7 +1330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2p-e9-Rqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4707" y="292.5"/>
+            <point key="canvasLocation" x="5616" y="882"/>
         </scene>
         <!--Moneda Modal-->
         <scene sceneID="rEN-xT-Pvg">
@@ -2895,7 +2895,7 @@
                                 <action selector="cancelTapped:" destination="Ndq-3q-Stf" id="HZl-MC-exb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="eQb-9f-XHb">
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="eQb-9f-XHb">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="Ndq-3q-Stf" id="yfR-uZ-LYr"/>
@@ -2929,7 +2929,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Información General" id="Ueg-n7-10u">
+                            <tableViewSection headerTitle="Información" id="Ueg-n7-10u">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="rhJ-l1-TBP" style="IBUITableViewCellStyleDefault" id="MI2-Ql-SMM">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
@@ -3044,7 +3044,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Contrato Asociado" id="POO-I8-e7o">
+                            <tableViewSection headerTitle="Contrato" id="POO-I8-e7o">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="vxD-ew-pH0" detailTextLabel="Z5p-rx-WdE" style="IBUITableViewCellStyleValue1" id="VOK-fB-WGG">
                                         <rect key="frame" x="0.0" y="392" width="600" height="44"/>
@@ -3141,7 +3141,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Registrar Tiempos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qrg-cT-rc6">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Convertir a Horas Laboradas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qrg-cT-rc6">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3204,7 +3204,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Información" footerTitle="Dale un nombre a la cita y asociala a un cliente existente" id="hQT-Wc-jmC">
+                            <tableViewSection headerTitle="Información" footerTitle="Obligatorio" id="hQT-Wc-jmC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="rTL-mq-bom">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
@@ -3216,7 +3216,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre de la Cita" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9wI-pc-9VX">
                                                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3256,7 +3256,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir cliente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ija-Sf-tOk">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Cliente Asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ija-Sf-tOk">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3275,7 +3275,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Duración" id="JWo-05-NQk">
+                            <tableViewSection headerTitle="Duración" footerTitle="Obligatorio" id="JWo-05-NQk">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="startDateCell" textLabel="E7R-U9-EYy" detailTextLabel="YOU-bm-0sg" style="IBUITableViewCellStyleValue1" id="qcg-iq-id7">
                                         <rect key="frame" x="0.0" y="269" width="600" height="44"/>
@@ -3340,7 +3340,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Contrato Asociado" id="YWa-ks-PZW">
+                            <tableViewSection headerTitle="Contrato" footerTitle="Opcional" id="YWa-ks-PZW">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fJ1-ZF-t62" detailTextLabel="lZB-0D-bPg" style="IBUITableViewCellStyleValue1" id="c8C-6C-gyz">
                                         <rect key="frame" x="0.0" y="408" width="600" height="44"/>
@@ -3349,7 +3349,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir contrato" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fJ1-ZF-t62">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Contrato Asociado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fJ1-ZF-t62">
                                                     <rect key="frame" x="15" y="12" width="134" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3379,7 +3379,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir entregable" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lov-Jp-boe">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Entregable Acociado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lov-Jp-boe">
                                                     <rect key="frame" x="15" y="12" width="151" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3476,7 +3476,7 @@
                                 <action selector="cancelTapped:" destination="NHD-Fr-LMh" id="nNE-P2-vCf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="lWv-1T-nK3">
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="lWv-1T-nK3">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="NHD-Fr-LMh" id="G0P-9n-Y5K"/>
@@ -3504,7 +3504,6 @@
         <!--Citas-->
         <scene sceneID="5Im-l1-65E">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X5P-vf-qVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="uAg-Ro-dQw" customClass="CalendarViewController" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bXL-Xs-Kop"/>
@@ -3619,6 +3618,7 @@
                         </segue>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X5P-vf-qVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1909.5" y="-628.5"/>
         </scene>
@@ -4009,7 +4009,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1k-c4-BTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4648.5" y="162"/>
+            <point key="canvasLocation" x="4807.5" y="154.5"/>
         </scene>
         <!--Date Time Picker-->
         <scene sceneID="Ttc-NK-G2l">
@@ -4137,7 +4137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE0-9f-8vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3063" y="54.75"/>
+            <point key="canvasLocation" x="3780" y="842.25"/>
         </scene>
         <!--Cliente Picker-->
         <scene sceneID="8lf-zj-sW2">
@@ -4266,7 +4266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7A-qH-rd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5142" y="139.5"/>
+            <point key="canvasLocation" x="5623.5" y="144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0GT-4e-TzG">
@@ -4967,7 +4967,7 @@
             </objects>
             <point key="canvasLocation" x="2869.5" y="-1277.25"/>
         </scene>
-        <!--Nuevo Tiempo-->
+        <!--Nueva Hora Laborada-->
         <scene sceneID="OIV-Dz-J0j">
             <objects>
                 <tableViewController id="sWb-3g-jUf" customClass="NuevoTiempoTVC" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
@@ -4976,7 +4976,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Concepto" footerTitle="Descripción del tiempo que se registrará" id="xjx-fg-BLc">
+                            <tableViewSection headerTitle="Concepto" footerTitle="Obligatorio" id="xjx-fg-BLc">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sVy-V8-FnU">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
@@ -4988,7 +4988,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z9O-Fw-Hl3">
                                                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -5023,7 +5023,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Cliente" footerTitle="Introduce el cliente para el cual trabajaste esas horas" id="jlP-6N-eSB">
+                            <tableViewSection headerTitle="Cliente" footerTitle="Obligatorio" id="jlP-6N-eSB">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4ex-7N-T5L" style="IBUITableViewCellStyleDefault" id="wEL-Du-4YH">
                                         <rect key="frame" x="0.0" y="225" width="600" height="44"/>
@@ -5032,14 +5032,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir cliente asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ex-7N-T5L">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Cliente Asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ex-7N-T5L">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -5050,7 +5050,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Horas Laboradas" footerTitle="Introduce las horas que trabajaste" id="ri3-yr-4R4">
+                            <tableViewSection headerTitle="Horas Laboradas" footerTitle="Obligatorio" id="ri3-yr-4R4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3kx-Hf-ih1" style="IBUITableViewCellStyleDefault" id="CfZ-w5-wv4">
                                         <rect key="frame" x="0.0" y="336" width="600" height="44"/>
@@ -5059,14 +5059,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir horas laboradas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3kx-Hf-ih1">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Horas Laboradas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3kx-Hf-ih1">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -5077,7 +5077,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Fecha" footerTitle="Fecha que se laboró" id="hb2-qJ-reg">
+                            <tableViewSection headerTitle="Fecha" footerTitle="Opcional" id="hb2-qJ-reg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="mBT-m1-rp9" style="IBUITableViewCellStyleDefault" id="ObO-U2-vYK">
                                         <rect key="frame" x="0.0" y="447" width="600" height="44"/>
@@ -5093,7 +5093,7 @@
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -5101,7 +5101,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Contrato" footerTitle="Introduce el contrato asociado, si lo hubiese" id="VRn-cL-LGV">
+                            <tableViewSection headerTitle="Contrato" footerTitle="Opcional" id="VRn-cL-LGV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="la2-ot-DkX" style="IBUITableViewCellStyleDefault" id="mQs-sG-1an">
                                         <rect key="frame" x="0.0" y="558" width="600" height="44"/>
@@ -5110,14 +5110,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir contrato asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="la2-ot-DkX">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Contrato Asociado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="la2-ot-DkX">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -5128,7 +5128,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Cita" footerTitle="Estas horas pertenecen a una cita específica?" id="dXL-67-6zy">
+                            <tableViewSection headerTitle="Cita" footerTitle="Opcional" id="dXL-67-6zy">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ct1-vK-5QH" style="IBUITableViewCellStyleDefault" id="7Wp-92-qpR">
                                         <rect key="frame" x="0.0" y="669" width="600" height="44"/>
@@ -5137,14 +5137,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir cita asociada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ct1-vK-5QH">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Cita asociada" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ct1-vK-5QH">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -5158,14 +5158,14 @@
                             <outlet property="delegate" destination="sWb-3g-jUf" id="aSd-4A-zJJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Nuevo Tiempo" id="heL-ud-fVe">
+                    <navigationItem key="navigationItem" title="Nueva Hora Laborada" id="heL-ud-fVe">
                         <barButtonItem key="leftBarButtonItem" title="Cancelar" id="Fre-JR-dDy">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="sWb-3g-jUf" id="1wh-6h-nfX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="3DY-rn-TCg">
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="3DY-rn-TCg">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveTapped:" destination="sWb-3g-jUf" id="q4a-Ri-psI"/>
@@ -5389,7 +5389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHs-sj-CtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4969.5" y="-1277.25"/>
+            <point key="canvasLocation" x="5074.5" y="-1277.25"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="f52-yG-gXM">
@@ -5642,7 +5642,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tiempos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5dW-kJ-If6">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Horas Laboradas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5dW-kJ-If6">
                                                     <rect key="frame" x="62" y="0.0" width="523" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7328,19 +7328,19 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uOR-nE-Lvj"/>
-        <segue reference="jYA-1F-lOK"/>
-        <segue reference="fAi-QO-h1o"/>
-        <segue reference="r9m-EK-qsX"/>
-        <segue reference="nf2-hQ-ana"/>
-        <segue reference="iQF-LW-x4a"/>
-        <segue reference="t29-F0-iXa"/>
-        <segue reference="PbR-Wd-DqE"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
         <segue reference="HwU-W3-xDs"/>
         <segue reference="cX3-9R-G3m"/>
-        <segue reference="NWw-8S-G1o"/>
+        <segue reference="jYA-1F-lOK"/>
+        <segue reference="t29-F0-iXa"/>
+        <segue reference="PbR-Wd-DqE"/>
+        <segue reference="nf2-hQ-ana"/>
+        <segue reference="r9m-EK-qsX"/>
+        <segue reference="iQF-LW-x4a"/>
+        <segue reference="fAi-QO-h1o"/>
         <segue reference="vjv-50-TbC"/>
+        <segue reference="jDx-tb-DDb"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,12 +9,13 @@
 import UIKit
 import EventKit
 
-class CitaDetailTVC: UITableViewController {
+class CitaDetailTVC: UITableViewController,dateDetailOp {
     
     var event:AnyObject? = []
     var cita:Cita? = nil
     var hideTableSection:Bool = false
     var eventStore:EKEventStore? = nil
+    var dateFormatter = NSDateFormatter()
     
     @IBOutlet weak var nomCita: UILabel!
     @IBOutlet weak var nomCliente: UILabel!
@@ -30,7 +31,6 @@ class CitaDetailTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
         
         self.cita = daoCita().getDateByEventId(self.event as! EKEvent)
@@ -47,7 +47,10 @@ class CitaDetailTVC: UITableViewController {
         }else{
             if self.cita?.contrato?.tipoFacturacion == "ENT" {
                 self.tipoFacturacion.text = "Por Entregables"
-                self.entregableCell.detailTextLabel?.text = self.cita?.entregable?.nombreEntreg
+                if self.cita?.entregable != nil {
+                    self.entregableCell.hidden = false
+                    self.entregableCell.detailTextLabel?.text = self.cita?.entregable?.nombreEntreg
+                }
             } else {
                 self.tipoFacturacion.text = ""
                 self.entregableCell.hidden = true
@@ -116,6 +119,47 @@ class CitaDetailTVC: UITableViewController {
         return "Ninguno"
     }
     
+    func reloadDateDetailInfo(event: EKEvent, date: Cita) {
+        self.cita = date
+        self.event = event
+        
+        self.nomCita.text = (self.event as! EKEvent).title
+        self.nomCliente.text = self.cita?.cliente?.nombre
+        self.startDate.text = dateFormatter.stringFromDate((self.event as! EKEvent).startDate)
+        self.endDate.text = dateFormatter.stringFromDate((self.event as! EKEvent).endDate)
+        self.nomContrato.text = self.cita?.contrato?.nombreContrato
+        
+        if self.cita?.contrato?.tipoFacturacion == "HRS" {
+            self.tipoFacturacion.text = "Por Horas"
+            self.entregableCell.hidden = true
+        }else{
+            if self.cita?.contrato?.tipoFacturacion == "ENT" {
+                
+                self.tipoFacturacion.text = "Por Entregables"
+                
+                if self.cita?.entregable != nil {
+                    self.entregableCell.hidden = false
+                    self.entregableCell.detailTextLabel?.text = self.cita?.entregable?.nombreEntreg
+                }
+                
+            } else {
+                self.tipoFacturacion.text = ""
+                self.entregableCell.hidden = true
+                self.nomContrato.text = "(Sin Contrato Asociado)"
+            }
+        }
+        
+        if (self.event as! EKEvent).hasAlarms{
+            self.alerts.text = self.getOffsetText((self.event as! EKEvent).alarms![0].relativeOffset)
+        }else{
+            self.alerts.text = "(Sin recordatorios)"
+        }
+        
+        if (self.cita!.convertido == 1) {
+            self.editButton.enabled = false
+        }
+    }
+    
     /*
     // MARK: - Navigation
     
@@ -129,6 +173,7 @@ class CitaDetailTVC: UITableViewController {
             tableVC.event = self.event as? EKEvent
             tableVC.entregable = self.cita?.entregable
             tableVC.eventStore = self.eventStore!
+            tableVC.delegateAddress = self
         }
         if segue.identifier == "convertDateToTimeSegue" {
             let navVC = segue.destinationViewController as! UINavigationController

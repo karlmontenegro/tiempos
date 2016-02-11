@@ -230,7 +230,7 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
             editCitaVC.cita = cita
             editCitaVC.event = event
             editCitaVC.entregable = cita?.entregable
-                       
+            editCitaVC.eventStore = self.eventStore
         }
     }
     func alertMessage(winMessage: String, winTitle: String){

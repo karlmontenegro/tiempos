@@ -66,6 +66,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         
         if type == "startDate" {
             self.startDate = date
+            self.endDate = date.dateByAddingTimeInterval(60*60)
             cellStart.detailTextLabel!.text = dateStr
         }
         if type == "endDate" {

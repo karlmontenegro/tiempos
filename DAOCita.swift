@@ -145,7 +145,7 @@ class daoCita{
     }
     
     
-    func updateDate(cita: Cita,nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato?,entregable:Entregable?, alarm: EKAlarm?, event: EKEvent, eventStore: EKEventStore){
+    func updateDate(cita: Cita, nomDate:String, cliente:Cliente, start:NSDate, end:NSDate, contract: Contrato?,entregable:Entregable?, alarm: EKAlarm?, event: EKEvent, eventStore: EKEventStore){
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -154,11 +154,12 @@ class daoCita{
         
         let store:EKEventStore = event.valueForKey("eventStore") as! EKEventStore
         
+        event.title = nomDate
+        event.startDate = start
+        event.endDate = end
+        
         if contract != nil {
             cita.setValue(contract, forKey: "contrato")
-            event.title = nomDate
-            event.startDate = start
-            event.endDate = end
             event.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract!.nombreContrato!
         }
         

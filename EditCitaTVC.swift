@@ -10,6 +10,10 @@ import UIKit
 import EventKit
 import Foundation
 
+protocol dateDetailOp{
+    func reloadDateDetailInfo(event:EKEvent, date:Cita)
+}
+
 class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,entregableOp{
 
     @IBOutlet weak var txtNomCita: UITextField!
@@ -33,6 +37,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
     var alarm:EKAlarm? = nil
     var origin:Bool = false
     var eventStore:EKEventStore? = nil
+    var delegateAddress:dateDetailOp? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,6 +167,8 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
                 self.alertMessage("La cita requiere un cliente obligatoriamente.", winTitle: "Error")
             } else {
                 daoCita().updateDate(self.cita!, nomDate: self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato, entregable: self.entregable, alarm: self.alarm, event: self.event!, eventStore: self.eventStore!)
+                
+                self.delegateAddress?.reloadDateDetailInfo(self.event!, date: self.cita!)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
@@ -210,6 +217,19 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
             vc.contract = self.contrato
         }
     }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == "editContractSegue" {
+            if daoContrato().getAllActiveContracts().count > 0 {
+                return true
+            } else {
+                self.alertMessage("Debe existir por lo menos un contrato creado en la aplicación.", winTitle: "Error")
+                return false
+            }
+        }
+        return true
+    }
+    
     func alertMessage(winMessage: String, winTitle: String){
         let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
         
