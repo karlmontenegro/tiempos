@@ -26,6 +26,7 @@ class CitaDetailTVC: UITableViewController,dateDetailOp {
     @IBOutlet weak var nomEntregable: UILabel!
     @IBOutlet weak var alerts: UILabel!
     @IBOutlet weak var entregableCell: UITableViewCell!
+    @IBOutlet weak var tiemposCell: UITableViewCell!
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
@@ -66,6 +67,7 @@ class CitaDetailTVC: UITableViewController,dateDetailOp {
         
         if (self.cita!.convertido == 1) {
             self.editButton.enabled = false
+            self.tiemposCell.hidden = true
         }
     }
 

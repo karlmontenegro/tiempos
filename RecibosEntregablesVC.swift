@@ -9,18 +9,19 @@
 import UIKit
 import Foundation
 
-class RecibosEntregablesVC: UIViewController, classifierOp {
+class RecibosEntregablesVC: UIViewController{
 
     var origin = "ClassifierItem"
     var classifier = "Clientes"
     var client:Cliente? = nil
-    var classifierItemArray:Array<Contrato>? = nil
+    
+    var entregablesDictionary:Dictionary<Cliente,Array<Entregable>> = daoEntregable().getAllEntregables()!
+    var entregablesKeys:Array<Cliente> = []
     
     var selectedEntregable:Entregable? = nil
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var classifierItemsTable: UITableView!
-    @IBOutlet weak var txtClient: UITextField!
     @IBOutlet weak var generateInvoiceButton: UIButton!
 
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
             self.menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        self.entregablesKeys = Array(self.entregablesDictionary.keys)
         
         self.generateInvoiceButton.enabled = false
         // Do any additional setup after loading the view.
@@ -40,42 +42,19 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
         // Dispose of any resources that can be recreated.
     }
     
-    func returnSelectedOption(selectedObject: AnyObject?, origin: String) {
-        self.generateInvoiceButton.enabled = false
-        
-        self.txtClient.text = (selectedObject as! Cliente).nombre!
-        self.client = selectedObject as? Cliente
-        self.classifierItemArray = daoContrato().getAllContractsByClientAndFactType(self.client!, tipo: "ENT")
-        self.classifierItemsTable.reloadData()
-    }
-    
-    @IBAction func sortByClientTapped(sender: AnyObject) {
-        self.performSegueWithIdentifier("classifierPickerSegue", sender: self)
-    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        if self.classifierItemArray == nil {
-            return 0
-        } else {
-            return self.classifierItemArray!.count
-        }
+        
+        return self.entregablesKeys.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let num = daoEntregable().getActiveEntregablesByContract(self.classifierItemArray![section]).count
-        
-        return num
+        return self.entregablesDictionary[self.entregablesKeys[section]]!.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if self.classifierItemArray == nil {
-            return ""
-        } else {
-            return "Contrato: " + self.classifierItemArray![section].nombreContrato!
-        }
+        return self.entregablesKeys[section].nombre
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -85,14 +64,26 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("classifierItemCell", forIndexPath: indexPath)
-
-            cell.textLabel?.text = "Entregable " + (indexPath.row + 1).description
-            cell.detailTextLabel?.text = daoEntregable().getEntregablesByContract(self.classifierItemArray![indexPath.section])[indexPath.row].nombreEntreg!
+        let cliente = self.entregablesKeys[indexPath.section]
+        let entregable = self.entregablesDictionary[cliente]![indexPath.row]
+        
+    
+        cell.textLabel?.text = entregable.nombreEntreg
+        
+        if entregable.contrato != nil {
+            cell.detailTextLabel?.text = "Contrato: " + (entregable.contrato?.nombreContrato)!
+        } else {
+            cell.detailTextLabel?.text = "(Sin Contrato)"
+        }
 
         return cell
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath:
+        NSIndexPath) -> [UITableViewRowAction]?  {
+        
+        let cliente = self.entregablesKeys[indexPath.section]
+        let entregable = self.entregablesDictionary[cliente]![indexPath.row]
         
         let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alerts before the delete just in case it wasn't meant to be
@@ -103,10 +94,11 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                //daoEntregable().deleteEntregableAt(self.classifierItemArray![indexPath.row])
+                daoEntregable().deleteEntregableAt(entregable)
                 
                 // Deletes the element from the array
-                self.classifierItemArray!.removeAtIndex(indexPath.row)
+                
+                self.entregablesDictionary[cliente]?.removeAtIndex(indexPath.row)
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
@@ -127,10 +119,13 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
+        let cliente = self.entregablesKeys[indexPath.section]
+        let entregable = self.entregablesDictionary[cliente]![indexPath.row]
+        
         if(cell?.accessoryType == UITableViewCellAccessoryType.None){
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
             //Ingresar seleccion en la variable
-            self.selectedEntregable = daoEntregable().getActiveEntregablesByContract(self.classifierItemArray![indexPath.section])[indexPath.row]
+            self.selectedEntregable = entregable
             self.generateInvoiceButton.enabled = true
         }
     }
@@ -157,13 +152,6 @@ class RecibosEntregablesVC: UIViewController, classifierOp {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "classifierPickerSegue" {
-            let vc:ClassifierPickerModal = segue.destinationViewController as! ClassifierPickerModal
-            vc.delegateAddress = self
-            vc.origin = self.origin
-            vc.type = "ENT"
-            vc.classifier = self.classifier
-        }
         if segue.identifier == "createInvoiceSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
             let vc:ReciboEmitidoVC = navVC.viewControllers.first as! ReciboEmitidoVC

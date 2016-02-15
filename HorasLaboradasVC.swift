@@ -30,11 +30,12 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
     let dateFormatter = NSDateFormatter()
     var navControl:UINavigationController? = nil
     
+    var dateToSend:NSDate? = nil
+    
     var source:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navControl = self.navigationController
         
         if self.revealViewController() != nil {
@@ -131,7 +132,7 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.source = "Date"
-        self.performSegueWithIdentifier("createNewTime", sender: self)
+        self.performSegueWithIdentifier("addTimeSegue", sender: self)
     }
 
     @IBAction func calendarTapped(sender: AnyObject) {
@@ -149,7 +150,8 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
     func epCalendarPicker(_: EPCalendarPicker, didSelectDate date: NSDate) {
         self.source = "Calendar"
         self.dismissViewControllerAnimated(true, completion: nil)
-        self.performSegueWithIdentifier("createNewTime", sender: self)
+        self.dateToSend = date
+        self.performSegueWithIdentifier("addTimeFromCalendar", sender: self)
     }
 
     /*
@@ -160,32 +162,38 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "createNewTime" {
-            switch (self.source) {
-                case "Calendar": //The segue comes from the calendar
-                    
-                    let navVC = segue.destinationViewController as! UINavigationController
-                    let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
-                    tableVC.source = "Calendar"
-                    
-                    break
-                
-                case "Date": //The segue comes from an unassigned date
-                    
-                    let navVC = segue.destinationViewController as! UINavigationController
-                    let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
-                    let indexpath:NSIndexPath = self.datesWithoutTimeTableView.indexPathForSelectedRow!
-                    tableVC.source = "Date"
-                    tableVC.cita = self.dateArray[indexpath.row]
-                    break
-                
-                default: //The segue comes from the new time button
-                    
-                    let navVC = segue.destinationViewController as! UINavigationController
-                    let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
-                    tableVC.source = "New"
-                    
-                    break
-            }
+                let navVC = segue.destinationViewController as! UINavigationController
+                let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
+                tableVC.source = "New"
+                tableVC.date = NSDate()
         }
+        if segue.identifier == "addTimeFromCalendar" {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
+            tableVC.source = "Calendar"
+            tableVC.date = self.dateToSend
+        }
+        
+        if segue.identifier == "addTimeSegue" {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
+            let indexpath:NSIndexPath = self.datesWithoutTimeTableView.indexPathForSelectedRow!
+            tableVC.source = "Date"
+            tableVC.cita = self.dateArray[indexpath.row]
+        }
+    }
+    
+    func setCurrentTimeToNewDate(date:NSDate, time:NSDate)->NSDate?{
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+        let components = calendar!.components([.Hour, .Minute, .Second], fromDate: date)
+        
+        components.year = date.year()
+        components.month = date.month()
+        components.day = date.day()
+        components.hour = time.hour()
+        components.minute = time.minute()
+        components.second = time.second()
+        
+        return calendar!.dateFromComponents(components)
     }
 }

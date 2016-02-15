@@ -10,7 +10,7 @@ import UIKit
 import EventKit
 import Foundation
 
-class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
+class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, dateTimeOp {
     
     var date:NSDate? = nil
     var cita:Cita? = nil
@@ -41,23 +41,46 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
         super.viewDidLoad()
         if self.source == "Date" {
             self.event = daoCita().getEventByDateId(self.cita!, store: self.eventStore)
+            
             self.dateFormatter.dateFormat = "ccc, dd MMM"
+            
+            self.fecha = self.event?.startDate
+            self.cliente = self.cita?.cliente
+            self.contrato = self.cita?.contrato
+            
+            if self.contrato == nil {
+                self.lblContrato.text = "+ Asociar Contrato"
+            }
+            
+            self.interval = self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!
+            
+            self.txtTitulo.text = self.event?.title
             self.lblCliente.text = self.cita?.cliente?.nombre
-            self.lblContrato.text = self.cita?.contrato?.nombreContrato
+            
             self.lblCita.text = self.event?.title
             self.lblFecha.text = self.dateFormatter.stringFromDate((self.event?.startDate)!)
             self.horas = self.stringFromTimeInterval(self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!)
             self.lblHoras.text = self.horas
-            self.fecha = self.event?.startDate
-            self.cliente = self.cita?.cliente
-            self.contrato = self.cita?.contrato
-            self.interval = self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!
+            
+            
         }
         
         if self.source == "New" {
-            self.citaAsociada.hidden = true
-            self.fechaAsociada.hidden = true
-            self.contratoAsociado.hidden = true
+            
+            self.lblCliente.text = "+ Cliente Asociado"
+            self.lblContrato.text = "+ Contrato Asociado"
+            self.lblCita.text = "+ Cita Asociada"
+            self.lblFecha.text = self.dateFormatter.stringFromDate(self.date!)
+            self.lblHoras.text = "+ Horas Laboradas"
+
+        }
+        
+        if self.source == "Calendar" {
+            self.lblCliente.text = "+ Cliente Asociado"
+            self.lblContrato.text = "+ Contrato Asociado"
+            self.lblCita.text = "+ Cita Asociada"
+            self.lblFecha.text = self.dateFormatter.stringFromDate(self.date!)
+            self.lblHoras.text = "+ Horas Laboradas"
         }
     }
 
@@ -132,6 +155,11 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
         self.contrato = contract
     }
     
+    func returnDateTimeToDate(date: NSDate, type: String) {
+        self.date = date
+        self.lblFecha.text = self.dateFormatter.stringFromDate(self.date!)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -156,7 +184,33 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp {
             vc.delegateAddress = self
             vc.cliente = self.cliente
         }
+        
+        if segue.identifier == "selectDateSegue" {
+            let vc:DateTimePicker = segue.destinationViewController as! DateTimePicker
+            vc.delegateAddress = self
+            vc.date = self.date
+        }
     }
 
-
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        
+        if identifier == "contractModalSegue" {
+            if daoContrato().getAllActiveContracts().count > 0 {
+                return true
+            } else {
+                self.alertMessage("Debe haber por lo menos un contrato creado.", winTitle: "Error")
+                return false
+            }
+        }
+        return true
+    }
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 }

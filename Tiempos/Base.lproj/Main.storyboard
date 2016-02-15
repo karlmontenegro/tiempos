@@ -719,7 +719,7 @@
                             <tableViewSection headerTitle="Cliente" footerTitle="Obligatorio" id="qS3-il-WMA">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DKP-g4-bV8" style="IBUITableViewCellStyleDefault" id="L7i-c8-Ugs">
-                                        <rect key="frame" x="0.0" y="209" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="225" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L7i-c8-Ugs" id="eDX-Pd-CDM">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -746,7 +746,7 @@
                             <tableViewSection headerTitle="Moneda" footerTitle="Obligatorio" id="pau-f5-GaC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Fd6-iJ-YxY" style="IBUITableViewCellStyleDefault" id="OpU-nB-HkV">
-                                        <rect key="frame" x="0.0" y="320" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="336" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OpU-nB-HkV" id="t9N-U7-icQ">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -773,7 +773,7 @@
                             <tableViewSection headerTitle="Tipo de Facturación" footerTitle="" id="4bQ-aA-XDK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="5hf-Jy-sse">
-                                        <rect key="frame" x="0.0" y="431" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="447" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5hf-Jy-sse" id="bBe-Z1-gXV">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -843,7 +843,7 @@
                             <tableViewSection headerTitle="Facturación Por Horas" id="hO9-kb-crQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="DgN-za-hvw">
-                                        <rect key="frame" x="0.0" y="526" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="542" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DgN-za-hvw" id="u7x-oE-CoJ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -883,7 +883,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="0Mu-pN-psK">
-                                        <rect key="frame" x="0.0" y="570" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="586" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Mu-pN-psK" id="f7m-Nc-zOs">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -926,7 +926,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="xMM-H2-MaA">
-                                        <rect key="frame" x="0.0" y="614" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="630" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xMM-H2-MaA" id="swQ-Fe-Bfp">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -998,7 +998,7 @@
                             <tableViewSection headerTitle="Facturación por Entregables" id="CqQ-gH-bD0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3y9-8F-CWP" style="IBUITableViewCellStyleDefault" id="1Zc-OJ-gIl">
-                                        <rect key="frame" x="0.0" y="709" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="725" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Zc-OJ-gIl" id="Lll-e6-yPH">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -3188,6 +3188,7 @@
                         <outlet property="nomContrato" destination="vxD-ew-pH0" id="6nR-iS-vLb"/>
                         <outlet property="nomEntregable" destination="JdQ-hS-ToS" id="86f-p2-LAM"/>
                         <outlet property="startDate" destination="bfH-Cd-W5g" id="ApG-ij-cZZ"/>
+                        <outlet property="tiemposCell" destination="0R5-Zh-ihL" id="t72-Ub-uwP"/>
                         <outlet property="tipoFacturacion" destination="Z5p-rx-WdE" id="siR-O2-bIw"/>
                     </connections>
                 </tableViewController>
@@ -3343,14 +3344,14 @@
                             <tableViewSection headerTitle="Contrato" footerTitle="Opcional" id="YWa-ks-PZW">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fJ1-ZF-t62" detailTextLabel="lZB-0D-bPg" style="IBUITableViewCellStyleValue1" id="c8C-6C-gyz">
-                                        <rect key="frame" x="0.0" y="408" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="424" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c8C-6C-gyz" id="iRi-bL-Ugo">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Contrato Asociado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fJ1-ZF-t62">
-                                                    <rect key="frame" x="15" y="12" width="134" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="158" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -3373,14 +3374,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Lov-Jp-boe" detailTextLabel="9IA-O4-aqH" style="IBUITableViewCellStyleValue1" id="VVy-KW-g3C">
-                                        <rect key="frame" x="0.0" y="452" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="468" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVy-KW-g3C" id="cWf-RI-wDs">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Entregable Acociado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lov-Jp-boe">
-                                                    <rect key="frame" x="15" y="12" width="151" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="173" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -3407,7 +3408,7 @@
                             <tableViewSection headerTitle="Recordatorios" id="8zX-E6-kzJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bTT-8m-rrl">
-                                        <rect key="frame" x="0.0" y="547" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="579" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bTT-8m-rrl" id="1fw-5u-w7Y">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -4137,7 +4138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE0-9f-8vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3780" y="842.25"/>
+            <point key="canvasLocation" x="5059.5" y="-1215.75"/>
         </scene>
         <!--Cliente Picker-->
         <scene sceneID="8lf-zj-sW2">
@@ -4961,6 +4962,12 @@
                     <connections>
                         <outlet property="datesWithoutTimeTableView" destination="gP6-JK-rQt" id="5kE-Tr-z5d"/>
                         <outlet property="menuButton" destination="OAn-2q-Jda" id="7Ef-fy-APX"/>
+                        <segue destination="Rnh-hF-rhL" kind="popoverPresentation" identifier="addTimeSegue" popoverAnchorView="gP6-JK-rQt" id="LiL-b8-wS2">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="Rnh-hF-rhL" kind="popoverPresentation" identifier="addTimeFromCalendar" popoverAnchorBarButtonItem="RCI-7m-Ffv" id="a7U-88-uI7">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obe-pw-ZQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5098,6 +5105,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="EDM-aX-XF8" kind="presentation" identifier="selectDateSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="2V1-9s-Qqy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -5389,7 +5399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHs-sj-CtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5074.5" y="-1277.25"/>
+            <point key="canvasLocation" x="5059.5" y="-1277.25"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="f52-yG-gXM">
@@ -6191,21 +6201,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cliente:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGE-1K-U7L">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="POc-HP-et5">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKR-JF-XH2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R49-SZ-WZQ">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="q2y-ee-8H1">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="36"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Generar Recibo Por Entregables">
+                                    <color key="titleColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="q2y-ee-8H1"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="q2y-ee-8H1"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <action selector="sortByClientTapped:" destination="Rxi-PN-qGc" eventType="touchUpInside" id="SBl-zT-eWj"/>
+                                    <segue destination="K3z-0p-y4v" kind="popoverPresentation" identifier="createInvoiceSegue" popoverAnchorView="R49-SZ-WZQ" id="SD1-5e-R04">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="KVG-oR-0Gu">
@@ -6247,54 +6267,14 @@
                                     <outlet property="delegate" destination="Rxi-PN-qGc" id="VhB-O1-e66"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R49-SZ-WZQ">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="q2y-ee-8H1">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="36"/>
-                                    </constraint>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Generar Recibo Por Entregables">
-                                    <color key="titleColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="q2y-ee-8H1"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="q2y-ee-8H1"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="K3z-0p-y4v" kind="popoverPresentation" identifier="createInvoiceSegue" popoverAnchorView="R49-SZ-WZQ" id="SD1-5e-R04">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KVG-oR-0Gu" firstAttribute="top" secondItem="jio-Ka-6Rs" secondAttribute="bottom" constant="89" id="4bJ-Tp-1GF">
-                                <variation key="heightClass=regular-widthClass=compact" constant="59"/>
-                            </constraint>
-                            <constraint firstItem="KGE-1K-U7L" firstAttribute="top" secondItem="jio-Ka-6Rs" secondAttribute="bottom" constant="19" id="5Zh-2g-JCu">
-                                <variation key="heightClass=regular-widthClass=compact" constant="18"/>
-                            </constraint>
-                            <constraint firstItem="POc-HP-et5" firstAttribute="leading" secondItem="KGE-1K-U7L" secondAttribute="trailing" constant="8" id="6nY-Fa-fXu">
-                                <variation key="heightClass=regular-widthClass=compact" constant="15"/>
-                            </constraint>
                             <constraint firstAttribute="leadingMargin" secondItem="R49-SZ-WZQ" secondAttribute="leading" id="Dsl-6a-JHU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="POc-HP-et5" secondAttribute="trailing" constant="43" id="L0z-1T-wIu">
-                                <variation key="heightClass=regular-widthClass=compact" constant="30"/>
-                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="KVG-oR-0Gu" secondAttribute="trailing" id="Q0d-TK-gvJ">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-20"/>
                             </constraint>
                             <constraint firstItem="KVG-oR-0Gu" firstAttribute="centerX" secondItem="oJK-sg-QCV" secondAttribute="centerX" id="buw-z6-iDx"/>
-                            <constraint firstItem="vKR-JF-XH2" firstAttribute="top" secondItem="jio-Ka-6Rs" secondAttribute="bottom" constant="18" id="dPa-N2-dCc"/>
                             <constraint firstItem="fGA-AO-zMw" firstAttribute="top" secondItem="R49-SZ-WZQ" secondAttribute="bottom" constant="64" id="gX6-yA-iWK">
                                 <variation key="heightClass=regular-widthClass=compact" constant="16"/>
                             </constraint>
@@ -6304,73 +6284,39 @@
                             <constraint firstItem="R49-SZ-WZQ" firstAttribute="top" secondItem="KVG-oR-0Gu" secondAttribute="bottom" constant="25" id="ji1-Fe-2kD">
                                 <variation key="heightClass=regular-widthClass=compact" constant="18"/>
                             </constraint>
-                            <constraint firstItem="KGE-1K-U7L" firstAttribute="leading" secondItem="oJK-sg-QCV" secondAttribute="leadingMargin" constant="7" id="oDK-VV-dJB">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
-                            <constraint firstItem="POc-HP-et5" firstAttribute="top" secondItem="jio-Ka-6Rs" secondAttribute="bottom" constant="15" id="qXf-Kg-eM2"/>
-                            <constraint firstItem="vKR-JF-XH2" firstAttribute="leading" secondItem="POc-HP-et5" secondAttribute="trailing" constant="14" id="wQD-HE-sx3">
-                                <variation key="heightClass=regular-widthClass=compact" constant="8"/>
-                            </constraint>
+                            <constraint firstItem="KVG-oR-0Gu" firstAttribute="top" secondItem="jio-Ka-6Rs" secondAttribute="bottom" id="nvn-JT-0NM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R49-SZ-WZQ" secondAttribute="trailing" id="x57-pN-r4o"/>
-                            <constraint firstItem="POc-HP-et5" firstAttribute="leading" secondItem="oJK-sg-QCV" secondAttribute="leadingMargin" constant="84" id="xTE-TF-mV4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vKR-JF-XH2" secondAttribute="trailing" constant="14" id="yFC-Ne-Ck2">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="KGE-1K-U7L"/>
-                                <exclude reference="POc-HP-et5"/>
-                                <exclude reference="vKR-JF-XH2"/>
-                                <exclude reference="KVG-oR-0Gu"/>
                                 <exclude reference="R49-SZ-WZQ"/>
+                                <exclude reference="KVG-oR-0Gu"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="gX6-yA-iWK"/>
-                                <exclude reference="6nY-Fa-fXu"/>
-                                <exclude reference="L0z-1T-wIu"/>
-                                <exclude reference="qXf-Kg-eM2"/>
-                                <exclude reference="xTE-TF-mV4"/>
                                 <exclude reference="Dsl-6a-JHU"/>
                                 <exclude reference="ji1-Fe-2kD"/>
                                 <exclude reference="x57-pN-r4o"/>
-                                <exclude reference="dPa-N2-dCc"/>
-                                <exclude reference="wQD-HE-sx3"/>
-                                <exclude reference="yFC-Ne-Ck2"/>
-                                <exclude reference="5Zh-2g-JCu"/>
-                                <exclude reference="oDK-VV-dJB"/>
-                                <exclude reference="4bJ-Tp-1GF"/>
                                 <exclude reference="Q0d-TK-gvJ"/>
                                 <exclude reference="buw-z6-iDx"/>
                                 <exclude reference="guX-d5-NaM"/>
+                                <exclude reference="nvn-JT-0NM"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="KGE-1K-U7L"/>
-                                <include reference="POc-HP-et5"/>
-                                <include reference="vKR-JF-XH2"/>
-                                <include reference="KVG-oR-0Gu"/>
                                 <include reference="R49-SZ-WZQ"/>
+                                <include reference="KVG-oR-0Gu"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="gX6-yA-iWK"/>
-                                <include reference="6nY-Fa-fXu"/>
-                                <include reference="L0z-1T-wIu"/>
-                                <include reference="qXf-Kg-eM2"/>
-                                <include reference="xTE-TF-mV4"/>
                                 <include reference="Dsl-6a-JHU"/>
                                 <include reference="ji1-Fe-2kD"/>
                                 <include reference="x57-pN-r4o"/>
-                                <include reference="dPa-N2-dCc"/>
-                                <include reference="wQD-HE-sx3"/>
-                                <include reference="yFC-Ne-Ck2"/>
-                                <include reference="5Zh-2g-JCu"/>
-                                <include reference="oDK-VV-dJB"/>
-                                <include reference="4bJ-Tp-1GF"/>
                                 <include reference="Q0d-TK-gvJ"/>
                                 <include reference="buw-z6-iDx"/>
                                 <include reference="guX-d5-NaM"/>
+                                <include reference="nvn-JT-0NM"/>
                             </mask>
                         </variation>
                     </view>
@@ -6383,8 +6329,6 @@
                         <outlet property="classifierItemsTable" destination="KVG-oR-0Gu" id="8Of-aJ-0gW"/>
                         <outlet property="generateInvoiceButton" destination="R49-SZ-WZQ" id="Qhe-AA-VXW"/>
                         <outlet property="menuButton" destination="jk2-hI-bcY" id="fDT-qn-MzW"/>
-                        <outlet property="txtClient" destination="POc-HP-et5" id="6cO-7B-Npe"/>
-                        <segue destination="ePd-B3-IVH" kind="presentation" identifier="classifierPickerSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="X39-jV-VGk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDg-RN-Ekf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6421,40 +6365,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clasificar Por" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTy-0g-ui6">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kwx-vH-Gyh">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNr-3o-i5s">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-ss-117">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="aVr-Pg-vYz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Generar Recibo Por Tiempos">
+                                    <color key="titleColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="aVr-Pg-vYz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="aVr-Pg-vYz"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <action selector="addClassifierTapped:" destination="tj5-fl-Ajt" eventType="touchUpInside" id="fG5-Db-UD6"/>
+                                    <segue destination="K3z-0p-y4v" kind="popoverPresentation" identifier="createInvoiceTimeSegue" popoverAnchorView="qOf-ss-117" id="cX3-9R-G3m">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jpG-IT-IM9">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juy-Vf-d33">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <connections>
-                                    <action selector="addClassifierItemTapped:" destination="tj5-fl-Ajt" eventType="touchUpInside" id="Col-pX-jS8"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Classifier&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcc-vv-Wbk">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="KAv-4B-7f9">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -6494,150 +6429,56 @@
                                     <outlet property="delegate" destination="tj5-fl-Ajt" id="z8s-7m-SYy"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-ss-117">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="aVr-Pg-vYz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Generar Recibo Por Tiempos">
-                                    <color key="titleColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="aVr-Pg-vYz"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="aVr-Pg-vYz"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="K3z-0p-y4v" kind="popoverPresentation" identifier="createInvoiceTimeSegue" popoverAnchorView="qOf-ss-117" id="cX3-9R-G3m">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Kwx-vH-Gyh" firstAttribute="leading" secondItem="MTy-0g-ui6" secondAttribute="trailing" constant="8" id="3wb-aD-86K"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NNr-3o-i5s" secondAttribute="trailing" id="5NI-8H-y9c"/>
-                            <constraint firstItem="qOf-ss-117" firstAttribute="top" secondItem="KAv-4B-7f9" secondAttribute="bottom" constant="16" id="5rN-4n-65i"/>
-                            <constraint firstItem="jpG-IT-IM9" firstAttribute="leading" secondItem="Fcc-vv-Wbk" secondAttribute="trailing" constant="8" id="6HR-bb-wUB"/>
-                            <constraint firstItem="NNr-3o-i5s" firstAttribute="leading" secondItem="Kwx-vH-Gyh" secondAttribute="trailing" constant="14" id="8lP-OE-8MK"/>
-                            <constraint firstItem="Kwx-vH-Gyh" firstAttribute="leading" secondItem="eTk-Td-98R" secondAttribute="leadingMargin" constant="122" id="AzT-9U-M7R"/>
-                            <constraint firstItem="Kwx-vH-Gyh" firstAttribute="top" secondItem="WfG-TN-S6v" secondAttribute="bottom" constant="14" id="Fdw-HB-Hke"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jpG-IT-IM9" secondAttribute="trailing" constant="36" id="H9Q-yx-ppf"/>
+                            <constraint firstItem="KAv-4B-7f9" firstAttribute="leading" secondItem="eTk-Td-98R" secondAttribute="leadingMargin" constant="13" id="DVF-lj-IIe">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-20"/>
+                            </constraint>
                             <constraint firstItem="l0p-x5-sKM" firstAttribute="top" secondItem="qOf-ss-117" secondAttribute="bottom" constant="20" id="Ika-eD-TnP">
                                 <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                             </constraint>
-                            <constraint firstItem="jpG-IT-IM9" firstAttribute="leading" secondItem="eTk-Td-98R" secondAttribute="leadingMargin" constant="122" id="NaT-vs-SLw"/>
-                            <constraint firstItem="NNr-3o-i5s" firstAttribute="top" secondItem="WfG-TN-S6v" secondAttribute="bottom" constant="18" id="RBH-T2-DRt"/>
-                            <constraint firstItem="jpG-IT-IM9" firstAttribute="top" secondItem="Kwx-vH-Gyh" secondAttribute="bottom" constant="16" id="WQ4-DC-4b8">
-                                <variation key="heightClass=regular-widthClass=compact" constant="11"/>
-                            </constraint>
-                            <constraint firstItem="juy-Vf-d33" firstAttribute="leading" secondItem="jpG-IT-IM9" secondAttribute="trailing" constant="14" id="YPb-Nf-y8s"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="KAv-4B-7f9" secondAttribute="leading" id="YfM-ew-1u5">
-                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
-                            </constraint>
-                            <constraint firstItem="juy-Vf-d33" firstAttribute="top" secondItem="NNr-3o-i5s" secondAttribute="bottom" constant="23" id="YhS-67-frV">
-                                <variation key="heightClass=regular-widthClass=compact" constant="19"/>
-                            </constraint>
-                            <constraint firstAttribute="leadingMargin" secondItem="Fcc-vv-Wbk" secondAttribute="leading" id="ZtN-bw-Ng0"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="MTy-0g-ui6" secondAttribute="leading" id="aIf-vS-Ivy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="juy-Vf-d33" secondAttribute="trailing" id="cFa-SX-60i"/>
-                            <constraint firstItem="Fcc-vv-Wbk" firstAttribute="top" secondItem="MTy-0g-ui6" secondAttribute="bottom" constant="26" id="chh-LQ-ElE">
-                                <variation key="heightClass=regular-widthClass=compact" constant="22"/>
-                            </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="KAv-4B-7f9" secondAttribute="trailing" id="flE-PO-VkM">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-20"/>
+                            <constraint firstItem="qOf-ss-117" firstAttribute="top" secondItem="KAv-4B-7f9" secondAttribute="bottom" constant="8" id="Yb6-sd-kwc"/>
+                            <constraint firstItem="KAv-4B-7f9" firstAttribute="centerX" secondItem="eTk-Td-98R" secondAttribute="centerX" id="cQQ-Z6-N7I"/>
+                            <constraint firstItem="KAv-4B-7f9" firstAttribute="top" secondItem="WfG-TN-S6v" secondAttribute="bottom" constant="34" id="dml-1C-wRu">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="qOf-ss-117" secondAttribute="trailing" id="jsR-Pc-c2m"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Kwx-vH-Gyh" secondAttribute="trailing" constant="36" id="l7L-aU-HUE"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="qOf-ss-117" secondAttribute="leading" id="na2-5c-6TM"/>
-                            <constraint firstItem="MTy-0g-ui6" firstAttribute="top" secondItem="WfG-TN-S6v" secondAttribute="bottom" constant="17" id="onL-Ly-Jzp"/>
-                            <constraint firstItem="KAv-4B-7f9" firstAttribute="top" secondItem="WfG-TN-S6v" secondAttribute="bottom" constant="93" id="qiY-xJ-QzA">
-                                <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KAv-4B-7f9" secondAttribute="trailing" constant="10" id="nZc-qA-BkC">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-20"/>
                             </constraint>
+                            <constraint firstAttribute="leadingMargin" secondItem="qOf-ss-117" secondAttribute="leading" id="na2-5c-6TM"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="MTy-0g-ui6"/>
-                                <exclude reference="Kwx-vH-Gyh"/>
-                                <exclude reference="NNr-3o-i5s"/>
-                                <exclude reference="jpG-IT-IM9"/>
-                                <exclude reference="juy-Vf-d33"/>
-                                <exclude reference="Fcc-vv-Wbk"/>
-                                <exclude reference="KAv-4B-7f9"/>
                                 <exclude reference="qOf-ss-117"/>
+                                <exclude reference="KAv-4B-7f9"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Ika-eD-TnP"/>
-                                <exclude reference="3wb-aD-86K"/>
-                                <exclude reference="AzT-9U-M7R"/>
-                                <exclude reference="Fdw-HB-Hke"/>
-                                <exclude reference="l7L-aU-HUE"/>
-                                <exclude reference="6HR-bb-wUB"/>
-                                <exclude reference="H9Q-yx-ppf"/>
-                                <exclude reference="NaT-vs-SLw"/>
-                                <exclude reference="WQ4-DC-4b8"/>
-                                <exclude reference="5NI-8H-y9c"/>
-                                <exclude reference="8lP-OE-8MK"/>
-                                <exclude reference="RBH-T2-DRt"/>
-                                <exclude reference="YPb-Nf-y8s"/>
-                                <exclude reference="YhS-67-frV"/>
-                                <exclude reference="cFa-SX-60i"/>
-                                <exclude reference="5rN-4n-65i"/>
+                                <exclude reference="Yb6-sd-kwc"/>
                                 <exclude reference="jsR-Pc-c2m"/>
                                 <exclude reference="na2-5c-6TM"/>
-                                <exclude reference="ZtN-bw-Ng0"/>
-                                <exclude reference="chh-LQ-ElE"/>
-                                <exclude reference="aIf-vS-Ivy"/>
-                                <exclude reference="onL-Ly-Jzp"/>
-                                <exclude reference="YfM-ew-1u5"/>
-                                <exclude reference="flE-PO-VkM"/>
-                                <exclude reference="qiY-xJ-QzA"/>
+                                <exclude reference="DVF-lj-IIe"/>
+                                <exclude reference="cQQ-Z6-N7I"/>
+                                <exclude reference="dml-1C-wRu"/>
+                                <exclude reference="nZc-qA-BkC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="MTy-0g-ui6"/>
-                                <include reference="Kwx-vH-Gyh"/>
-                                <include reference="NNr-3o-i5s"/>
-                                <include reference="jpG-IT-IM9"/>
-                                <include reference="juy-Vf-d33"/>
-                                <include reference="Fcc-vv-Wbk"/>
-                                <include reference="KAv-4B-7f9"/>
                                 <include reference="qOf-ss-117"/>
+                                <include reference="KAv-4B-7f9"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Ika-eD-TnP"/>
-                                <include reference="3wb-aD-86K"/>
-                                <include reference="AzT-9U-M7R"/>
-                                <include reference="Fdw-HB-Hke"/>
-                                <include reference="l7L-aU-HUE"/>
-                                <include reference="6HR-bb-wUB"/>
-                                <include reference="H9Q-yx-ppf"/>
-                                <include reference="NaT-vs-SLw"/>
-                                <include reference="WQ4-DC-4b8"/>
-                                <include reference="5NI-8H-y9c"/>
-                                <include reference="8lP-OE-8MK"/>
-                                <include reference="RBH-T2-DRt"/>
-                                <include reference="YPb-Nf-y8s"/>
-                                <include reference="YhS-67-frV"/>
-                                <include reference="cFa-SX-60i"/>
-                                <include reference="5rN-4n-65i"/>
+                                <include reference="Yb6-sd-kwc"/>
                                 <include reference="jsR-Pc-c2m"/>
                                 <include reference="na2-5c-6TM"/>
-                                <include reference="ZtN-bw-Ng0"/>
-                                <include reference="chh-LQ-ElE"/>
-                                <include reference="aIf-vS-Ivy"/>
-                                <include reference="onL-Ly-Jzp"/>
-                                <include reference="YfM-ew-1u5"/>
-                                <include reference="flE-PO-VkM"/>
-                                <include reference="qiY-xJ-QzA"/>
+                                <include reference="DVF-lj-IIe"/>
+                                <include reference="cQQ-Z6-N7I"/>
+                                <include reference="dml-1C-wRu"/>
+                                <include reference="nZc-qA-BkC"/>
                             </mask>
                         </variation>
                     </view>
@@ -6653,11 +6494,7 @@
                     <connections>
                         <outlet property="classifierItemsDetailTV" destination="KAv-4B-7f9" id="B3E-C0-FWJ"/>
                         <outlet property="generateInvoiceButton" destination="qOf-ss-117" id="oUD-MH-8HT"/>
-                        <outlet property="lblClassifier" destination="Fcc-vv-Wbk" id="xLW-Ef-GL8"/>
                         <outlet property="menuButton" destination="Ur2-kl-oMs" id="cmh-PW-yvT"/>
-                        <outlet property="txtClassifier" destination="Kwx-vH-Gyh" id="ygX-Dd-igi"/>
-                        <outlet property="txtClassifierItem" destination="jpG-IT-IM9" id="EcX-3D-Kgl"/>
-                        <segue destination="ePd-B3-IVH" kind="presentation" identifier="classifierPickerSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="HwU-W3-xDs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Krz-6a-Ts3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -7328,18 +7165,18 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uOR-nE-Lvj"/>
+        <segue reference="IEm-rT-DGL"/>
+        <segue reference="1U0-1N-NaQ"/>
+        <segue reference="oyW-Uv-Djb"/>
+        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="VN9-SP-Fso"/>
+        <segue reference="fAi-QO-h1o"/>
+        <segue reference="cX3-9R-G3m"/>
+        <segue reference="a7U-88-uI7"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
-        <segue reference="HwU-W3-xDs"/>
-        <segue reference="cX3-9R-G3m"/>
-        <segue reference="jYA-1F-lOK"/>
-        <segue reference="t29-F0-iXa"/>
-        <segue reference="PbR-Wd-DqE"/>
-        <segue reference="nf2-hQ-ana"/>
-        <segue reference="r9m-EK-qsX"/>
-        <segue reference="iQF-LW-x4a"/>
-        <segue reference="fAi-QO-h1o"/>
         <segue reference="vjv-50-TbC"/>
         <segue reference="jDx-tb-DDb"/>
     </inferredMetricsTieBreakers>

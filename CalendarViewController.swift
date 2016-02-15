@@ -131,10 +131,16 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
         let date:Cita? = daoCita().getDateByEventId(calendarDate)
         
         if date != nil {
-            cell.detailTextLabel?.text = dateTitle + " - " + (date?.cliente?.nombre!)!
+            
+            if date?.cliente != nil {
+                cell.detailTextLabel?.text = dateTitle + " - " + (date?.cliente?.nombre!)!
+            } else {
+                cell.detailTextLabel?.text = dateTitle
+            }
             if date?.convertido == true {
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
+            
         } else {
             cell.detailTextLabel?.text = dateTitle
         }

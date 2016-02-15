@@ -71,6 +71,29 @@ class daoEntregable{
         }
         
     }
+    
+    func getAllEntregables()->Dictionary<Cliente,Array<Entregable>>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Entregable")
+        
+        let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
+        let clienteSortDescriptor = NSSortDescriptor(key: "contrato.cliente.nombre", ascending: true)
+        request.sortDescriptors = [clienteSortDescriptor,contratoSortDescriptor]
+        
+        request.returnsObjectsAsFaults = false
+        
+        var results:Array<Entregable> = []
+        
+        do{
+            try results = context.executeFetchRequest(request) as! Array<Entregable>
+        }catch{
+            print(error)
+        }
+        return self.classifyEntregablesByClient(results)
+    }
+    
     func getEntregablesByContract(contract:Contrato)->Array<Entregable>{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -114,5 +137,22 @@ class daoEntregable{
         }
         
         return result as! Array<Entregable>
+    }
+    func classifyEntregablesByClient(array: Array<Entregable>) -> Dictionary<Cliente,Array<Entregable>>? {
+        
+        var entregableDictionary = Dictionary<Cliente,Array<Entregable>>()
+        var thisClient:Cliente? = nil
+        
+        for entregable in array {
+            thisClient = entregable.contrato?.cliente
+            
+            if entregableDictionary.indexForKey(thisClient!) == nil {
+                entregableDictionary[thisClient!] = []
+            }
+            
+            entregableDictionary[thisClient!]?.append(entregable)
+        }
+        
+        return entregableDictionary
     }
 }

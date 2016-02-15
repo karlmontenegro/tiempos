@@ -9,25 +9,19 @@
 import UIKit
 import Foundation
 
-class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewDataSource {
+class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    @IBOutlet weak var txtClassifier: UITextField!
-    @IBOutlet weak var txtClassifierItem: UITextField!
-    @IBOutlet weak var lblClassifier: UILabel!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var classifierItemsDetailTV: UITableView!
     @IBOutlet weak var generateInvoiceButton: UIButton!
-    
-    var classifierItemArray:Array<Tiempo> = [] //Tiempos con contrato
-    var classifierItemArrayAux:Array<Tiempo> = [] //Tiempos sin contrato
+
+    var tiemposDictionary:Dictionary<Cliente,Array<Tiempo>> = daoTiempo().getAllTiempos()!
+    var tiemposKeys:Array<Cliente> = []
     
     var selectedTimesArray:Array<Tiempo> = [] //Tiempos seleccionados para facturar
-    
-    var origin:String = ""
     var selectedObj:AnyObject? = nil
     var selectedTyp:String = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +30,9 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
             self.menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        self.txtClassifier.enabled = false
-        self.txtClassifierItem.enabled = false
-        self.lblClassifier.text = "..."
+        
+        self.tiemposKeys = Array(self.tiemposDictionary.keys)
+        
         self.generateInvoiceButton.enabled = false
         // Do any additional setup after loading the view.
     }
@@ -51,28 +45,15 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 2
+        return self.tiemposKeys.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if self.classifierItemArray.isEmpty {
-            return 0
-        }else {
-            if section == 0 {
-                return self.classifierItemArray.count
-            } else {
-                return self.classifierItemArrayAux.count
-            }
-        }
+        return self.tiemposDictionary[self.tiemposKeys[section]]!.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Tiempos no facturados (con contrato)"
-        }else {
-            return "Tiempos no facturados (sin contrato)"
-        }
+        return self.tiemposKeys[section].nombre
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -83,21 +64,23 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         
         let cell = tableView.dequeueReusableCellWithIdentifier("classifierItemCell", forIndexPath: indexPath)
         
-        if indexPath.section == 0 {
-            if !self.classifierItemArray.isEmpty {
-                cell.textLabel?.text = self.classifierItemArray[indexPath.row].titulo!
-                cell.detailTextLabel?.text = self.stringFromTimeInterval(self.classifierItemArray[indexPath.row].horas! as Int)
-            }
+        let tiempo = self.tiemposDictionary[self.tiemposKeys[indexPath.section]]![indexPath.row]
+        let contrato = self.tiemposDictionary[self.tiemposKeys[indexPath.section]]![indexPath.row].contrato
+        
+        cell.textLabel?.text = tiempo.titulo
+        
+        if contrato != nil {
+            cell.detailTextLabel?.text = "Contrato: " + (contrato?.nombreContrato)!
         } else {
-            if !self.classifierItemArrayAux.isEmpty {
-                cell.textLabel?.text = self.classifierItemArrayAux[indexPath.row].titulo!
-                cell.detailTextLabel?.text = self.stringFromTimeInterval(self.classifierItemArrayAux[indexPath.row].horas! as Int)
-            }
+            cell.detailTextLabel?.text = "(Sin Contrato)"
         }
+        
         return cell
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
+        
+        let tiempo = self.tiemposDictionary[self.tiemposKeys[indexPath.section]]![indexPath.row]
         
         let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alerts before the delete just in case it wasn't meant to be
@@ -108,10 +91,10 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                daoTiempo().deleteTiempo(self.classifierItemArray[indexPath.row])
+                daoTiempo().deleteTiempo(tiempo)
                 
                 // Deletes the element from the array
-                self.classifierItemArray.removeAtIndex(indexPath.row)
+                self.tiemposDictionary[self.tiemposKeys[indexPath.section]]!.removeAtIndex(indexPath.row)
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
@@ -132,6 +115,8 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
+        let tiempo = self.tiemposDictionary[self.tiemposKeys[indexPath.section]]![indexPath.row]
+        
         if self.selectedTimesArray.isEmpty {
             cell?.accessoryType = UITableViewCellAccessoryType.None
         }
@@ -139,11 +124,11 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
             
             cell!.accessoryType = UITableViewCellAccessoryType.None
-            self.removeFromArray(self.classifierItemArray[indexPath.row])
+            self.removeFromArray(tiempo)
         }else{
             
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            self.selectedTimesArray.append(self.classifierItemArray[indexPath.row])
+            self.selectedTimesArray.append(tiempo)
             if self.selectedTimesArray.count == 0 {
                 self.generateInvoiceButton.enabled = false
             } else {
@@ -174,34 +159,6 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         return interval
     }
     
-    func returnSelectedOption(selectedObject: AnyObject?, origin: String) {
-        self.selectedTimesArray.removeAll()
-        self.generateInvoiceButton.enabled = false
-        
-        if origin == "Classifier" {
-            self.txtClassifier.text = selectedObject as? String
-            self.lblClassifier.text = selectedObject as? String
-        } else {
-            if self.lblClassifier.text! == "Clientes" {
-                self.txtClassifierItem.text = (selectedObject as? Cliente)?.nombre
-                
-                //Refresh table with times by client
-                self.classifierItemArray = daoTiempo().getTiemposByClientWithContract((selectedObject as? Cliente)!)!
-                self.classifierItemArrayAux = daoTiempo().getTiemposByClientWithoutContract((selectedObject as? Cliente)!)!
-                self.classifierItemsDetailTV.reloadData()
-                self.selectedTyp = "Cliente"
-            }
-            if self.lblClassifier.text! == "Contratos" {
-                self.txtClassifierItem.text = (selectedObject as? Contrato)?.nombreContrato
-                
-                //Refresh table with times by contract
-                self.classifierItemArray = daoTiempo().getTiemposByContract((selectedObject as? Contrato)!)!
-                self.classifierItemsDetailTV.reloadData()
-                self.selectedTyp = "Contrato"
-            }
-            self.selectedObj = selectedObject
-        }
-    }
     
     func removeFromArray(obj: Tiempo) {
         for var index = 0; index < self.selectedTimesArray.count; ++index {
@@ -211,28 +168,12 @@ class RecibosVC: UIViewController, classifierOp,UITableViewDelegate,UITableViewD
         }
     }
     
-    @IBAction func addClassifierTapped(sender: AnyObject) {
-        self.origin = "Classifier"
-        self.performSegueWithIdentifier("classifierPickerSegue", sender: self)
-    }
-
-    @IBAction func addClassifierItemTapped(sender: AnyObject) {
-        self.origin = "ClassifierItem"
-        self.performSegueWithIdentifier("classifierPickerSegue", sender: nil)
-    }
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
 */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "classifierPickerSegue" {
-            let vc:ClassifierPickerModal = segue.destinationViewController as! ClassifierPickerModal
-            vc.delegateAddress = self
-            vc.origin = self.origin
-            vc.type = "HRS"
-            vc.classifier = self.lblClassifier.text!
-        }
         if segue.identifier == "createInvoiceTimeSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
             let vc:ReciboEmitidoVC = navVC.viewControllers.first as! ReciboEmitidoVC

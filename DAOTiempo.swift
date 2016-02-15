@@ -50,8 +50,13 @@ class daoTiempo{
         newTiempo.setValue(cita, forKey: "cita")
         
         newTiempo.setValue(cita.cliente!, forKey: "cliente")
-        newTiempo.setValue(cita.contrato!, forKey: "contrato")
-        newTiempo.setValue(cita.entregable!, forKey: "entregable")
+        
+        if cita.contrato != nil {
+            newTiempo.setValue(cita.contrato!, forKey: "contrato")
+        }
+        if cita.entregable != nil {
+            newTiempo.setValue(cita.entregable!, forKey: "entregable")
+        }
         
         newTiempo.setValue(nil, forKey: "recibo")
         
@@ -65,6 +70,7 @@ class daoTiempo{
     }
     
     func newTiempo(title: String, hours: NSNumber, cita: Cita?, fecha: NSDate?, place: String?, contract: Contrato?, entregable:Entregable?, client: Cliente, store:EKEventStore) {
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext
         
@@ -79,7 +85,7 @@ class daoTiempo{
         if cita != nil {
             daoCita().setConvertedStatus(cita!, converted: true)
             if contract != nil {
-                newTiempo.setValue(cita?.contrato, forKey: "contrato")
+                newTiempo.setValue(contract, forKey: "contrato")
                 if contract?.tipoFacturacion! == "ENT" && cita?.entregable != nil {
                     //Contrato por entregables
                     newTiempo.setValue(cita?.entregable, forKey: "entregable")
@@ -136,94 +142,26 @@ class daoTiempo{
         }
     }
     
-    func getTiemposByClient(client: Cliente)->Array<Tiempo>? {
+    func getAllTiempos()->Dictionary<Cliente,Array<Tiempo>>?{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
+        let request = NSFetchRequest(entityName: "Tiempo")
         
-        let request = NSFetchRequest()
-        let pred = NSPredicate(format: "(cliente = %@)", client)
+        let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
+        let clienteSortDescriptor = NSSortDescriptor(key: "cliente.nombre", ascending: true)
+        request.sortDescriptors = [clienteSortDescriptor,contratoSortDescriptor]
         
-        request.entity = entityTiempo
-        request.predicate = pred
+        request.returnsObjectsAsFaults = false
         
-        var result:NSArray = []
+        var results:Array<Tiempo> = []
         
         do{
-            try result = context.executeFetchRequest(request)
+            try results = context.executeFetchRequest(request) as! Array<Tiempo>
         }catch{
             print(error)
         }
-        
-        return result as? Array<Tiempo>
-    }
-    
-    func getTiemposByClientWithContract(client: Cliente)->Array<Tiempo>? {
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext
-        
-        let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
-        
-        let request = NSFetchRequest()
-        let pred = NSPredicate(format: "(cliente = %@) AND (contrato != nil)", client)
-        
-        request.entity = entityTiempo
-        request.predicate = pred
-        
-        var result:NSArray = []
-        
-        do{
-            try result = context.executeFetchRequest(request)
-        }catch{
-            print(error)
-        }
-        return result as? Array<Tiempo>
-    }
-    
-    func getTiemposByClientWithoutContract(client: Cliente) ->Array<Tiempo>? {
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext
-        
-        let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
-        
-        let request = NSFetchRequest()
-        let pred = NSPredicate(format: "cliente = %@ AND contrato = nil", client)
-        
-        request.entity = entityTiempo
-        request.predicate = pred
-        
-        var result:NSArray = []
-        
-        do {
-            try result = context.executeFetchRequest(request)
-        } catch {
-            print(error)
-        }
-        return deleteContratosPorEntregables(result)
-    }
-    
-    func getTiemposByContract(contract: Contrato)->Array<Tiempo>? {
-        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.managedObjectContext
-        
-        let entityTiempo = NSEntityDescription.entityForName("Tiempo", inManagedObjectContext: context)
-        
-        let request = NSFetchRequest()
-        let pred = NSPredicate(format: "contrato = %@ AND tipoFac = %@", contract, "HRS")
-        
-        request.entity = entityTiempo
-        request.predicate = pred
-        
-        var result:NSArray = []
-        
-        do{
-            try result = context.executeFetchRequest(request)
-        }catch{
-            print(error)
-        }
-        
-        return deleteContratosPorEntregables(result)
+        return self.classifyTimesByClient(results)
     }
     
     func deleteContratosPorEntregables(result: NSArray)->Array<Tiempo>? {
@@ -238,5 +176,23 @@ class daoTiempo{
             }
         }
         return finalArr
+    }
+    
+    func classifyTimesByClient(array: Array<Tiempo>) -> Dictionary<Cliente,Array<Tiempo>>? {
+        
+        var timeDictionary = Dictionary<Cliente,Array<Tiempo>>()
+        var thisClient:Cliente? = nil
+        
+        for tiempo in array {
+            thisClient = tiempo.cliente
+            
+            if timeDictionary.indexForKey(thisClient!) == nil {
+                timeDictionary[thisClient!] = []
+            }
+            
+            timeDictionary[thisClient!]?.append(tiempo)
+        }
+        
+        return timeDictionary
     }
 }

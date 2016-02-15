@@ -194,12 +194,14 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
         if segue.identifier == "editStartDateSegue"{
             let vc:DateTimePicker = segue.destinationViewController as! DateTimePicker
             vc.source = "startDate"
-            vc.delegateAddress = self     
+            vc.delegateAddress = self
+            vc.date = self.startDate
         }
         if segue.identifier == "editEndDateSegue"{
             let vc:DateTimePicker = segue.destinationViewController as! DateTimePicker
             vc.source = "endDate"
             vc.delegateAddress = self
+            vc.date = self.endDate
         }
         if segue.identifier == "editContractSegue"{
             let vc:ContractPicker = segue.destinationViewController as! ContractPicker
