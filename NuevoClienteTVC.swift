@@ -10,7 +10,8 @@ import UIKit
 
 class NuevoClienteTVC: UITableViewController {
 
-    var rowCount:Int = 0
+    var rowCountPhones:Int = 0
+    var rowCountAddresses:Int = 0
     var rowAdded:Bool = false
     
     
@@ -27,18 +28,29 @@ class NuevoClienteTVC: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        if section == 1 {
+            return self.rowCountPhones + 1
+        }
+        if section == 2 {
+            return self.rowCountAddresses + 1
+        }
+        return 3
+    }
+    
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ClientesCell", forIndexPath: indexPath)
+        return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 && indexPath.row == 0 {
-            //Perform action
-            let newRowIndexPath = NSIndexPath(index: self.rowCount)
-            self.rowCount += 1
-            self.rowAdded = true
-            
-            self.tableView.insertRowsAtIndexPaths([newRowIndexPath], withRowAnimation: .Fade)
-        }
+
     }
     /*
     // MARK: - Navigation
