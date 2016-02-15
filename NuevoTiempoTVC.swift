@@ -35,6 +35,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
     @IBOutlet weak var citaAsociada: UITableViewCell!
     @IBOutlet weak var fechaAsociada: UITableViewCell!
     @IBOutlet weak var contratoAsociado: UITableViewCell!
+    @IBOutlet weak var viewTitle: UINavigationItem!
     
     
     override func viewDidLoad() {
@@ -47,6 +48,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
             self.fecha = self.event?.startDate
             self.cliente = self.cita?.cliente
             self.contrato = self.cita?.contrato
+            self.viewTitle.title = "Añadir Horas A Cita"
             
             if self.contrato == nil {
                 self.lblContrato.text = "+ Asociar Contrato"
@@ -73,14 +75,6 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
             self.lblFecha.text = self.dateFormatter.stringFromDate(self.date!)
             self.lblHoras.text = "+ Horas Laboradas"
 
-        }
-        
-        if self.source == "Calendar" {
-            self.lblCliente.text = "+ Cliente Asociado"
-            self.lblContrato.text = "+ Contrato Asociado"
-            self.lblCita.text = "+ Cita Asociada"
-            self.lblFecha.text = self.dateFormatter.stringFromDate(self.date!)
-            self.lblHoras.text = "+ Horas Laboradas"
         }
     }
 

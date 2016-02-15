@@ -214,7 +214,7 @@ class daoCita{
         return daoCalendar().getDateById(cita.eventRef!, eventStore: store)
     }
     
-    func getUnconvertedDates()->Array<Cita> {
+    func getUnconvertedDates(date:NSDate, store:EKEventStore)->Dictionary<NSDate,Array<Cita>>? {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         let entityContract = NSEntityDescription.entityForName("Cita", inManagedObjectContext: context)
@@ -226,15 +226,15 @@ class daoCita{
         request.entity = entityContract
         request.predicate = pred
         
-        var result:NSArray = []
+        var result:Array<Cita>= []
         
         do{
-            try result = context.executeFetchRequest(request)
+            try result = context.executeFetchRequest(request) as! Array<Cita>
         }catch{
             print(error)
         }
         
-        return result as! Array<Cita>
+        return self.classifyCitasByDate(date, array: result, eventStore: store)
     }
     
     func deleteDate(cita:Cita, store:EKEventStore) {
@@ -278,5 +278,83 @@ class daoCita{
             }
         }
         daoCalendar().deleteEventById(event.eventIdentifier, eventStore: store)
+    }
+
+    //Aux Functions
+    
+    func classifyCitasByDate(endDate: NSDate, array: Array<Cita>, eventStore: EKEventStore) -> Dictionary<NSDate,Array<Cita>>? {
+        
+        var citaDictionary = Dictionary<NSDate,Array<Cita>>()
+        var dateForThisDay:NSDate? = nil
+        
+        for cita in array {
+            dateForThisDay = daoCita().getEventByDateId(cita, store: eventStore)?.startDate
+            
+            if dateForThisDay!.isLessThanDate(endDate) || dateForThisDay!.isToday(){
+                if citaDictionary.indexForKey(dateForThisDay!) == nil {
+                    citaDictionary[dateForThisDay!] = []
+                }
+                citaDictionary[dateForThisDay!]?.append(cita)
+            }
+        }
+        
+        return citaDictionary
+    }
+}
+
+extension NSDate {
+    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isGreater = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
+            isGreater = true
+        }
+        
+        //Return Result
+        return isGreater
+    }
+    
+    func isLessThanDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isLess = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
+            isLess = true
+        }
+        
+        //Return Result
+        return isLess
+    }
+    
+    func equalToDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isEqualTo = false
+        
+        //Compare Values
+        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame {
+            isEqualTo = true
+        }
+        
+        //Return Result
+        return isEqualTo
+    }
+    
+    func addDays(daysToAdd: Int) -> NSDate {
+        let secondsInDays: NSTimeInterval = Double(daysToAdd) * 60 * 60 * 24
+        let dateWithDaysAdded: NSDate = self.dateByAddingTimeInterval(secondsInDays)
+        
+        //Return Result
+        return dateWithDaysAdded
+    }
+    
+    func addHours(hoursToAdd: Int) -> NSDate {
+        let secondsInHours: NSTimeInterval = Double(hoursToAdd) * 60 * 60
+        let dateWithHoursAdded: NSDate = self.dateByAddingTimeInterval(secondsInHours)
+        
+        //Return Result
+        return dateWithHoursAdded
     }
 }

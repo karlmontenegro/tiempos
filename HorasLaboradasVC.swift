@@ -17,7 +17,7 @@ import CoreData
 import Foundation
 import EventKit
 
-class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDataSource,UITableViewDelegate {
+class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var datesWithoutTimeTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -26,7 +26,11 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
     var defaultCalendar:EKCalendar? = nil
     let eventStore = EKEventStore()
     var eventArray:Array<EKEvent> = []
-    var dateArray:Array<Cita> = daoCita().getUnconvertedDates()
+    //var dateArray:Array<Cita> = daoCita().getUnconvertedDates()
+    
+    var dateDictionary:Dictionary<NSDate,Array<Cita>>? = nil
+    var dateKeyArray:Array<NSDate> = []
+    
     let dateFormatter = NSDateFormatter()
     var navControl:UINavigationController? = nil
     
@@ -36,6 +40,12 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let date = NSDate()
+        
+        self.dateDictionary = daoCita().getUnconvertedDates(date, store: self.eventStore)
+        self.dateKeyArray = Array(self.dateDictionary!.keys)
+        self.dateKeyArray.sortInPlace { $0.compare($1) == .OrderedAscending }
+
         self.navControl = self.navigationController
         
         if self.revealViewController() != nil {
@@ -44,9 +54,6 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         dateFormatter.dateFormat = "ccc, dd MMM"
-        
-        let date = NSDate()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,35 +66,44 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return self.dateKeyArray.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Citas sin tiempo asociado"
+        if self.dateKeyArray[section].isToday() {
+            return "Citas sin tiempo de hoy"
+        } else {
+            return "Citas sin tiempo del " +  self.dateFormatter.stringFromDate(self.dateKeyArray[section])
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        
-        if self.dateArray.isEmpty {
-            return 0
-        }else {
-            return self.dateArray.count
-        }
+        return self.dateDictionary![self.dateKeyArray[section]]!.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CitaUACell", forIndexPath: indexPath)
         
-        cell.textLabel!.text = self.dateFormatter.stringFromDate((daoCita().getEventByDateId(self.dateArray[indexPath.row], store: self.eventStore)?.startDate)!)
+        let title = self.dateFormatter.stringFromDate(self.dateKeyArray[indexPath.section])
         
-        cell.detailTextLabel!.text = daoCita().getEventByDateId(self.dateArray[indexPath.row], store: self.eventStore)?.title
+        let key = self.dateKeyArray[indexPath.section]
+        
+        let subtitle = daoCita().getEventByDateId(self.dateDictionary![key]![indexPath.row], store: self.eventStore)!.title
+        
+        let client = (self.dateDictionary![key]![indexPath.row]).cliente?.nombre
+        
+        cell.textLabel!.text = title
+        cell.detailTextLabel!.text = subtitle + " - " + client!
+        
         return cell
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
+        
+        let key = self.dateKeyArray[indexPath.section]
+        let cita = self.dateDictionary![key]![indexPath.row]
         
         let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alerts before the delete just in case it wasn't meant to be
@@ -98,9 +114,9 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                daoCita().deleteDate(self.dateArray[indexPath.row], store: self.eventStore)
+                daoCita().deleteDate(cita)
                 // Deletes the element from the array
-                self.dateArray.removeAtIndex(indexPath.row)
+                self.dateDictionary![key]!.removeAtIndex(indexPath.row)
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
@@ -118,8 +134,6 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
         return [delete]
     }
     
-    
-    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
@@ -135,25 +149,6 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
         self.performSegueWithIdentifier("addTimeSegue", sender: self)
     }
 
-    @IBAction func calendarTapped(sender: AnyObject) {
-        let calendarPicker = EPCalendarPicker(startYear: 2015, endYear: 2040, multiSelection: false)
-        calendarPicker.calendarDelegate = self
-        
-        let calendarNavController = UINavigationController(rootViewController: calendarPicker)
-        self.presentViewController(calendarNavController, animated: true, completion: nil)
-    }
-    
-    func epCalendarPicker(_: EPCalendarPicker, didCancel error: NSError) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func epCalendarPicker(_: EPCalendarPicker, didSelectDate date: NSDate) {
-        self.source = "Calendar"
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.dateToSend = date
-        self.performSegueWithIdentifier("addTimeFromCalendar", sender: self)
-    }
-
     /*
     // MARK: - Navigation
 
@@ -167,19 +162,12 @@ class HorasLaboradasVC: UIViewController,EPCalendarPickerDelegate,UITableViewDat
                 tableVC.source = "New"
                 tableVC.date = NSDate()
         }
-        if segue.identifier == "addTimeFromCalendar" {
-            let navVC = segue.destinationViewController as! UINavigationController
-            let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
-            tableVC.source = "Calendar"
-            tableVC.date = self.dateToSend
-        }
-        
         if segue.identifier == "addTimeSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
             let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
             let indexpath:NSIndexPath = self.datesWithoutTimeTableView.indexPathForSelectedRow!
             tableVC.source = "Date"
-            tableVC.cita = self.dateArray[indexpath.row]
+            tableVC.cita = self.dateDictionary![self.dateKeyArray[indexpath.section]]![indexpath.row]
         }
     }
     
