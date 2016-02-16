@@ -2098,7 +2098,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ClientesCell" id="olL-9A-8LJ">
-                                <rect key="frame" x="0.0" y="202" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="246" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="olL-9A-8LJ" id="DAi-qb-d32">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -7074,20 +7074,20 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dCZ-n0-8xb"/>
-        <segue reference="cX3-9R-G3m"/>
         <segue reference="LiL-b8-wS2"/>
-        <segue reference="2V1-9s-Qqy"/>
-        <segue reference="0YH-12-9Rm"/>
-        <segue reference="ahy-Kc-bEb"/>
+        <segue reference="uOR-nE-Lvj"/>
+        <segue reference="zH6-Ok-qU1"/>
+        <segue reference="jDx-tb-DDb"/>
+        <segue reference="cX3-9R-G3m"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
         <segue reference="IEm-rT-DGL"/>
-        <segue reference="QM7-Ye-Xhr"/>
         <segue reference="VN9-SP-Fso"/>
+        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="oyW-Uv-Djb"/>
+        <segue reference="1U0-1N-NaQ"/>
         <segue reference="fAi-QO-h1o"/>
-        <segue reference="vjv-50-TbC"/>
-        <segue reference="jDx-tb-DDb"/>
     </inferredMetricsTieBreakers>
 </document>

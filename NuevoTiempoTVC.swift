@@ -37,7 +37,6 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
     @IBOutlet weak var contratoAsociado: UITableViewCell!
     @IBOutlet weak var viewTitle: UINavigationItem!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.source == "Date" {
@@ -52,6 +51,8 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
             
             if self.contrato == nil {
                 self.lblContrato.text = "+ Asociar Contrato"
+            } else {
+                self.lblContrato.text = self.contrato?.nombreContrato
             }
             
             self.interval = self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!
@@ -63,8 +64,6 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
             self.lblFecha.text = self.dateFormatter.stringFromDate((self.event?.startDate)!)
             self.horas = self.stringFromTimeInterval(self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!)
             self.lblHoras.text = self.horas
-            
-            
         }
         
         if self.source == "New" {

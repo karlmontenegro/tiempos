@@ -6,12 +6,6 @@
 //  Copyright © 2015 Isabel Dunin-Borkowski. All rights reserved.
 //
 
-/* Correcciones (11/01/16)
-
-- Listar citas sin tiempo en el pasado (hoy hacia atrás)
-
-*/
-
 import UIKit
 import CoreData
 import Foundation
@@ -32,6 +26,7 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
     var dateKeyArray:Array<NSDate> = []
     
     let dateFormatter = NSDateFormatter()
+    let hourFormatter = NSDateFormatter()
     var navControl:UINavigationController? = nil
     
     var dateToSend:NSDate? = nil
@@ -54,6 +49,9 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         dateFormatter.dateFormat = "ccc, dd MMM"
+        hourFormatter.dateFormat = "h:mm a"
+        hourFormatter.AMSymbol = "AM"
+        hourFormatter.PMSymbol = "PM"
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,9 +84,10 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CitaUACell", forIndexPath: indexPath)
         
-        let title = self.dateFormatter.stringFromDate(self.dateKeyArray[indexPath.section])
-        
         let key = self.dateKeyArray[indexPath.section]
+        
+        let title = self.hourFormatter.stringFromDate(
+        (daoCita().getEventByDateId(self.dateDictionary![key]![indexPath.row], store: self.eventStore)?.startDate)!)
         
         let subtitle = daoCita().getEventByDateId(self.dateDictionary![key]![indexPath.row], store: self.eventStore)!.title
         

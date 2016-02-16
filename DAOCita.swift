@@ -291,10 +291,10 @@ class daoCita{
             dateForThisDay = daoCita().getEventByDateId(cita, store: eventStore)?.startDate
             
             if dateForThisDay!.isLessThanDate(endDate) || dateForThisDay!.isToday(){
-                if citaDictionary.indexForKey(dateForThisDay!) == nil {
-                    citaDictionary[dateForThisDay!] = []
+                if citaDictionary.indexForKey(dateForThisDay!.dateByIgnoringTime()) == nil {
+                    citaDictionary[dateForThisDay!.dateByIgnoringTime()] = []
                 }
-                citaDictionary[dateForThisDay!]?.append(cita)
+                citaDictionary[dateForThisDay!.dateByIgnoringTime()]?.append(cita)
             }
         }
         

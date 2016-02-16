@@ -55,6 +55,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
         self.contrato = self.cita?.contrato
         self.startDate = self.event?.startDate
         self.endDate = self.event?.endDate
+        self.entregable = self.cita?.entregable
         
         if self.cliente == nil {
             self.alertMessage("Esta cita ha sido creada fuera de Freelo, añada la información faltante", winTitle: "Atención")
@@ -70,16 +71,18 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
         }else{
             if self.cita?.contrato?.tipoFacturacion == "ENT" {
                 self.lblTipoFact.text = "Por Entregables"
+                
                 if self.entregable != nil {
-                    self.entregableCell.textLabel!.text = self.entregable?.nombreEntreg
-                } else {
-                    self.entregableCell.textLabel!.text = "+ Añadir entregable"
                     self.entregableCell.hidden = false
+                    self.entregableCell.textLabel?.text = "Entregable: " + (self.entregable?.nombreEntreg!)!
+                } else {
+                    self.entregableCell.hidden = false
+                    self.entregableCell.textLabel?.text = "+ Añadir entregable"
                 }
-            } else {
+                
+            } else { //No tiene contrato asociado
                 self.lblNomContrato.text = "+ Añadir contrato"
-                self.lblTipoFact.text = ""
-                self.lblEntregables.text = "+ Añadir entregable"
+                self.lblTipoFact.text = "(Sin Facturación)"
                 self.entregableCell.hidden = true
             }
         }
@@ -127,9 +130,12 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
         self.lblNomContrato.text = contract.nombreContrato
         
         if contract.tipoFacturacion == "HRS" {
-           self.lblTipoFact.text = "Por Horas"
+            self.lblTipoFact.text = "Por Horas"
+            self.entregableCell.hidden = true
         } else {
-           self.lblTipoFact.text = "Por Entregables"
+            self.lblTipoFact.text = "Por Entregables"
+            self.entregableCell.hidden = false
+            self.entregableCell.textLabel?.text = "+ Añadir entregable"
         }
     }
     
