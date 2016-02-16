@@ -39,10 +39,11 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dateFormatter.dateFormat = "ccc, dd MMM"
+        
         if self.source == "Date" {
             self.event = daoCita().getEventByDateId(self.cita!, store: self.eventStore)
-            
-            self.dateFormatter.dateFormat = "ccc, dd MMM"
             
             self.fecha = self.event?.startDate
             self.cliente = self.cita?.cliente
@@ -73,7 +74,8 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
             self.lblCita.text = "+ Cita Asociada"
             self.lblFecha.text = self.dateFormatter.stringFromDate(self.date!)
             self.lblHoras.text = "+ Horas Laboradas"
-
+            self.citaAsociada.hidden = true
+            self.fecha = self.date!
         }
     }
 
@@ -181,7 +183,13 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
         if segue.identifier == "selectDateSegue" {
             let vc:DateTimePicker = segue.destinationViewController as! DateTimePicker
             vc.delegateAddress = self
-            vc.date = self.date
+            
+            if self.source == "Date" {
+                vc.date = self.fecha
+            }
+            if self.source == "New" {
+                vc.date = self.date
+            }
         }
     }
 

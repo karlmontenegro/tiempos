@@ -29,7 +29,7 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
     let hourFormatter = NSDateFormatter()
     var navControl:UINavigationController? = nil
     
-    var dateToSend:NSDate? = nil
+    var dateToSend:NSDate = NSDate()
     
     var source:String = ""
     
@@ -159,7 +159,7 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
                 let navVC = segue.destinationViewController as! UINavigationController
                 let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
                 tableVC.source = "New"
-                tableVC.date = NSDate()
+                tableVC.date = self.dateToSend
         }
         if segue.identifier == "addTimeSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
