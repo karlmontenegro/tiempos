@@ -34,18 +34,43 @@ class NuevoClienteTVC: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
+        if section == 0 {
+            return 3
+        }
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Información del Cliente"
+        }
         if section == 1 {
-            return self.rowCountPhones + 1
+            return "Contactos"
         }
         if section == 2 {
-            return self.rowCountAddresses + 1
+            return "Direcciones"
         }
-        return 3
+        return ""
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ClientesCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as! TextInputTableViewCell
+        
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                cell.configure(text: "", placeholder: "Nombre")
+            }
+            if indexPath.row == 1 {
+                cell.configure(text: "", placeholder: "Razón Social")
+            }
+            if indexPath.row == 2 {
+                cell.configure(text: "", placeholder: "RUC")
+            }
+        }else {
+            let cellInfo = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath)
+            return cellInfo
+        }
         return cell
     }
 
