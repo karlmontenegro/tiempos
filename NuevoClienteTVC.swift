@@ -68,8 +68,7 @@ class NuevoClienteTVC: UITableViewController {
                 cell.configure(text: "", placeholder: "RUC")
             }
         }else {
-            let cellInfo = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath)
-            return cellInfo
+
         }
         return cell
     }

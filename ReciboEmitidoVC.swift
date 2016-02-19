@@ -43,18 +43,20 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
        
         if tipoFact == "HRS" { //Por Horas
-            self.contrato = (self.dataArray[0] as! Tiempo).contrato!
-            self.cliente = (self.dataArray[0] as! Tiempo).contrato?.cliente
-            self.lblNomCliente.text = (self.dataArray[0] as! Tiempo).contrato?.cliente?.nombre
-            self.tiemposArray = self.dataArray as! Array<Tiempo>
-            
+            //Son varios contratos
             if self.multipleContracts(self.dataArray as! Array<Tiempo>) {
                 self.lblNomContrato.text = "Varios Contratos"
                 self.lblTipoFact.text = "Por Horas"
-            } else {
-                self.tarifaPorHora = Double(((self.dataArray[0] as! Tiempo).contrato?.contratoHoras?.tarifaHora)!)
-                self.lblNomContrato.text = self.contrato?.nombreContrato
-                self.lblTipoFact.text = (self.contrato?.moneda?.id)! + (self.contrato?.moneda?.descripcion)! + " " + self.tarifaPorHora.description + " por Hora"
+                
+            } else { //Es un solo contrato
+                if (self.dataArray[0] as! Tiempo).contrato != nil {
+                    
+                    self.contrato = (self.dataArray[0] as! Tiempo).contrato
+                    self.cliente = self.contrato?.cliente
+                    self.tarifaPorHora = Double(((self.dataArray[0] as! Tiempo).contrato?.contratoHoras?.tarifaHora)!)
+                    self.lblNomContrato.text = self.contrato?.nombreContrato
+                    self.lblTipoFact.text = (self.contrato?.moneda?.id)! + (self.contrato?.moneda?.descripcion)! + " " + self.tarifaPorHora.description + " por Hora"
+                }
             }
             
             
@@ -91,7 +93,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
         
-        let cr = self.tiemposArray[0].contrato?.moneda
+        //let cr = self.tiemposArray[0].contrato?.moneda
         
         if tipoFact == "HRS" {
             let interval = self.tiemposArray[indexPath.row].horas!
@@ -99,7 +101,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             let subtotal = Double(Int(interval)/3600) * self.tarifaPorHora
 
             cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
-            cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (cr?.id)! + (cr?.descripcion)! + " " + subtotal.description
+            //cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (cr?.id)! + (cr?.descripcion)! + " " + subtotal.description
         
             self.montoTotal += subtotal
         

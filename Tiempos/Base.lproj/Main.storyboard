@@ -5709,7 +5709,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFU-p2-sox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1243.5" y="-628.5"/>
+            <point key="canvasLocation" x="1078.5" y="-639"/>
         </scene>
         <!--Horas Laboradas-->
         <scene sceneID="Zna-JT-ICO">
