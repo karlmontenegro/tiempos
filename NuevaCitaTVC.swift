@@ -158,7 +158,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         if indexPath.section == 2 {
             if indexPath.row == 0 {
                 if self.cliente != nil {
-                    if self.cliente!.contrato != nil {
+                    if self.cliente?.contrato!.count != 0  {
                         self.performSegueWithIdentifier("contractPicker", sender: self)
                     } else {
                         self.alertMessage("El cliente seleccionado no tiene ningún contrato asociado. Selecciona otro.", winTitle: "Error")

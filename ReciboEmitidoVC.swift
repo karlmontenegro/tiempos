@@ -39,36 +39,6 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
-        self.lblFechaEmision.text = self.dateFormatter.stringFromDate(today)
-        
-       
-        if tipoFact == "HRS" { //Por Horas
-            //Son varios contratos
-            if self.multipleContracts(self.dataArray as! Array<Tiempo>) {
-                self.lblNomContrato.text = "Varios Contratos"
-                self.lblTipoFact.text = "Por Horas"
-                
-            } else { //Es un solo contrato
-                if (self.dataArray[0] as! Tiempo).contrato != nil {
-                    
-                    self.contrato = (self.dataArray[0] as! Tiempo).contrato
-                    self.cliente = self.contrato?.cliente
-                    self.tarifaPorHora = Double(((self.dataArray[0] as! Tiempo).contrato?.contratoHoras?.tarifaHora)!)
-                    self.lblNomContrato.text = self.contrato?.nombreContrato
-                    self.lblTipoFact.text = (self.contrato?.moneda?.id)! + (self.contrato?.moneda?.descripcion)! + " " + self.tarifaPorHora.description + " por Hora"
-                }
-            }
-            
-            
-        } else { //Por Entregables
-            self.entregablesArray.append(self.singleData as! Entregable)
-            self.cliente = (self.singleData as! Entregable).contrato?.cliente
-            self.contrato = (self.singleData as! Entregable).contrato
-            self.lblTipoFact.text = "Por Entregable"
-            self.lblNomContrato.text = (self.singleData as! Entregable).contrato?.nombreContrato!
-            self.lblNomCliente.text = (self.singleData as! Entregable).contrato?.cliente?.nombre!
-        }        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,27 +63,6 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
         
-        //let cr = self.tiemposArray[0].contrato?.moneda
-        
-        if tipoFact == "HRS" {
-            let interval = self.tiemposArray[indexPath.row].horas!
-            let timeInterval = NSTimeInterval(interval.doubleValue)
-            let subtotal = Double(Int(interval)/3600) * self.tarifaPorHora
-
-            cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
-            //cell.detailTextLabel!.text = self.stringFromTimeInterval(timeInterval) + "     Subtotal: " + (cr?.id)! + (cr?.descripcion)! + " " + subtotal.description
-        
-            self.montoTotal += subtotal
-        
-            self.lblMontoTotal.text = (self.tiemposArray[0].contrato?.moneda?.id)! + (self.tiemposArray[0].contrato?.moneda?.descripcion)! + " " + self.montoTotal.description
-        } else {
-            
-            cell.textLabel!.text = self.entregablesArray[indexPath.row].nombreEntreg!
-            self.montoTotal += Double(self.entregablesArray[indexPath.row].tarifa!)
-            cell.detailTextLabel!.text = "Tarifa: " + Double(self.entregablesArray[indexPath.row].tarifa!).description
-        }
-        
-        self.lblMontoTotal.text = self.montoTotal.description
         return cell
     }
     
@@ -143,8 +92,8 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     self.entregablesArray.removeAtIndex(indexPath.row)
                 }
                 // Deletes the element from the array
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                self.detailTableView.reloadData()
+                //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                //self.detailTableView.reloadData()
             }))
             
             // Cancel action
