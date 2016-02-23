@@ -10,7 +10,11 @@ import UIKit
 import EventKit
 import Foundation
 
-class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, dateTimeOp {
+protocol unconvertedDatesOp{
+    func refreshUnconvertedDates()
+}
+
+class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractHourOp, dateTimeOp {
     
     var date:NSDate? = nil
     var cita:Cita? = nil
@@ -23,7 +27,8 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
     var cliente:Cliente? = nil
     var contrato:Contrato? = nil
     var fecha:NSDate? = nil
-    var interval = NSTimeInterval()
+    var interval:NSTimeInterval? = nil
+    var delegateAddress:unconvertedDatesOp? = nil
     
     @IBOutlet weak var lblCliente: UILabel!
     @IBOutlet weak var lblContrato: UILabel!
@@ -90,31 +95,45 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
     
     @IBAction func saveTapped(sender: AnyObject) {
         
-        let numberInterval = Int(self.interval)
+        var numberInterval:Int = 0
         
-        let alertController = UIAlertController(title: "Atención", message:
-            "Se guardarán " + self.horas + " como tiempo laborado. ¿Deseas continuar?", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        // Save action
-        alertController.addAction(UIAlertAction(title: "Guardar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
-            
-            daoTiempo().newTiempo(self.txtTitulo.text!, hours: numberInterval, cita: self.cita, fecha: self.fecha, place: "", contract: self.contrato, entregable: nil, client: self.cliente!, store: self.eventStore)
-            
-            let alert = UIAlertView()
-            alert.title = "Tiempos"
-            alert.message = "El tiempo laborado se guardó exitosamente"
-            alert.addButtonWithTitle("OK")
-            alert.show()
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        
-        // Cancel action
-        alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
+    if self.txtTitulo.text == "" {
+        self.alertMessage("El tiempo debe tener un título.", winTitle: "Error")
+    } else {
+        if self.cliente == nil {
+            self.alertMessage("El tiempo debe tener un cliente asignado.", winTitle: "Error")
+        } else {
+            if self.interval == nil {
+                self.alertMessage("El tiempo debe tener horas asignadas.", winTitle: "Error")
+            } else {
+                numberInterval = Int(self.interval!)
+                
+                let alertController = UIAlertController(title: "Atención", message:
+                    "Se guardarán " + self.horas + " como tiempo laborado. ¿Deseas continuar?", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                // Cancel action
+                alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }))
+                
+                // Save action
+                alertController.addAction(UIAlertAction(title: "Convertir", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                    
+                    daoTiempo().newTiempo(self.txtTitulo.text!, hours: numberInterval, cita: self.cita, fecha: self.fecha, place: "", contract: self.contrato, entregable: nil, client: self.cliente!, store: self.eventStore)
+                    
+                    self.delegateAddress?.refreshUnconvertedDates()
+                    
+                    let alert = UIAlertView()
+                    alert.title = "Tiempos"
+                    alert.message = "El tiempo laborado se guardó exitosamente"
+                    alert.addButtonWithTitle("OK")
+                    alert.show()
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        }
+    }
     }
     
     func stringFromTimeInterval(interval: NSTimeInterval) -> String {
@@ -136,7 +155,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "HH:mm ZZZ"
-        self.horas = self.stringFromTimeInterval(interval)
+        self.horas = self.stringFromTimeInterval(interval!)
         self.lblHoras.text = self.horas
     }
     
@@ -145,7 +164,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
         self.cliente = client
     }
     
-    func returnContractToDate(contract: Contrato) {
+    func returnHourContract(contract: Contrato) {
         self.lblContrato.text = contract.nombreContrato!
         self.contrato = contract
     }
@@ -175,7 +194,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
         }
         
         if segue.identifier == "contractModalSegue" {
-            let vc:ContractPicker = segue.destinationViewController as! ContractPicker
+            let vc:ContractHoursPicker = segue.destinationViewController as! ContractHoursPicker
             vc.delegateAddress = self
             vc.cliente = self.cliente
         }
@@ -196,9 +215,8 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractOp, date
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         
         if identifier == "contractModalSegue" {
-            if daoContrato().getAllActiveContracts().count > 0 {
-                return true
-            } else {
+            
+            if daoContrato().getAllActiveContractsPorHorasByClient(self.cliente!)!.count == 0 {
                 self.alertMessage("Debe haber por lo menos un contrato creado.", winTitle: "Error")
                 return false
             }

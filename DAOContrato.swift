@@ -189,7 +189,7 @@ class daoContrato{
             print(error)
         }
         
-        return result as! Array<Contrato>
+        return result as? Array<Contrato>
     }
     
     func getAllActiveContractsPorHoras()->Array<Contrato>?{
@@ -212,7 +212,30 @@ class daoContrato{
             print(error)
         }
         
-        return result as! Array<Contrato>
+        return result as? Array<Contrato>
+    }
+    
+    func getAllActiveContractsPorHorasByClient(client: Cliente)->Array<Contrato>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityContract = NSEntityDescription.entityForName("Contrato", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        let pred = NSPredicate(format: "(estado = %@) AND (tipoFacturacion = %@) AND (cliente = %@)", true,"HRS",client)
+        
+        request.entity = entityContract
+        request.predicate = pred
+        
+        var result:NSArray = []
+        
+        do{
+            try result = context.executeFetchRequest(request)
+        }catch{
+            print(error)
+        }
+        
+        return result as? Array<Contrato>
     }
     
     func addContratoHorasToContract(ch: ContratoHoras, obj: Contrato) {

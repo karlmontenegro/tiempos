@@ -49,7 +49,10 @@ class daoCita{
         if contract != nil {
            newCita.setValue(contract, forKey: "contrato")
         }
+        
         newCita.setValue(false, forKey: "convertido")
+        newCita.setValue(start, forKey: "fechaInicio")
+        newCita.setValue(end, forKey: "fechaFin")
         
         calEvent?.title = nomDate
         calEvent?.startDate = start
@@ -74,7 +77,9 @@ class daoCita{
         }catch{
             print(error)
         }
+        
         newCita.setValue(calEvent?.eventIdentifier, forKey: "eventRef")
+        
         do{
             try context.save()
         }catch{
@@ -97,7 +102,9 @@ class daoCita{
             newCita.setValue(contract, forKey: "contrato")
         }
         newCita.setValue(converted, forKey: "convertido")
-        
+        newCita.setValue(start, forKey: "fechaInicio")
+        newCita.setValue(end, forKey: "fechaFin")
+                
         calEvent?.title = nomDate
         calEvent?.startDate = start
         calEvent?.endDate = end
@@ -157,6 +164,9 @@ class daoCita{
         event.title = nomDate
         event.startDate = start
         event.endDate = end
+        
+        cita.setValue(start, forKey:  "fechaInicio")
+        cita.setValue(end, forKey: "fechaFin")
         
         if contract != nil {
             cita.setValue(contract, forKey: "contrato")
@@ -288,7 +298,7 @@ class daoCita{
         var dateForThisDay:NSDate? = nil
         
         for cita in array {
-            dateForThisDay = daoCita().getEventByDateId(cita, store: eventStore)?.startDate
+            dateForThisDay = cita.fechaInicio
             
             if dateForThisDay!.isLessThanDate(endDate) || dateForThisDay!.isToday(){
                 if citaDictionary.indexForKey(dateForThisDay!.dateByIgnoringTime()) == nil {

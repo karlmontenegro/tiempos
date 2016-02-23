@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 import EventKit
 
-class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelegate,unconvertedDatesOp {
 
     @IBOutlet weak var datesWithoutTimeTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -20,7 +20,6 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
     var defaultCalendar:EKCalendar? = nil
     let eventStore = EKEventStore()
     var eventArray:Array<EKEvent> = []
-    //var dateArray:Array<Cita> = daoCita().getUnconvertedDates()
     
     var dateDictionary:Dictionary<NSDate,Array<Cita>>? = nil
     var dateKeyArray:Array<NSDate> = []
@@ -32,12 +31,12 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
     var dateToSend:NSDate = NSDate()
     
     var source:String = ""
+    let date:NSDate = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let date = NSDate()
         
-        self.dateDictionary = daoCita().getUnconvertedDates(date, store: self.eventStore)
+        self.dateDictionary = daoCita().getUnconvertedDates(self.date, store: self.eventStore)
         self.dateKeyArray = Array(self.dateDictionary!.keys)
         self.dateKeyArray.sortInPlace { $0.compare($1) == .OrderedAscending }
 
@@ -58,6 +57,14 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }    
+    
+    func refreshUnconvertedDates() {
+        self.dateDictionary = nil
+        self.dateDictionary = daoCita().getUnconvertedDates(self.date, store: self.eventStore)
+        self.dateKeyArray = Array(self.dateDictionary!.keys)
+        self.dateKeyArray.sortInPlace { $0.compare($1) == .OrderedAscending }
+        self.datesWithoutTimeTableView.reloadData()
+    }
     
     //Table View Functions
     
@@ -160,6 +167,7 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
                 let tableVC = navVC.viewControllers.first as! NuevoTiempoTVC
                 tableVC.source = "New"
                 tableVC.date = self.dateToSend
+                tableVC.delegateAddress = self
         }
         if segue.identifier == "addTimeSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
@@ -167,6 +175,7 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
             let indexpath:NSIndexPath = self.datesWithoutTimeTableView.indexPathForSelectedRow!
             tableVC.source = "Date"
             tableVC.cita = self.dateDictionary![self.dateKeyArray[indexpath.section]]![indexpath.row]
+            tableVC.delegateAddress = self
         }
     }
     

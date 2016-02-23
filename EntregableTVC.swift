@@ -17,6 +17,7 @@ class EntregableTVC: UITableViewController, entregableEditionOperations {
     var contrato:Contrato? = nil
     var entregables:Array<Entregable>? = nil
     var delegateAddress:entOperations? = nil
+    var moneda:Moneda? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +100,7 @@ class EntregableTVC: UITableViewController, entregableEditionOperations {
             vc.data = nuevoEntregable
             vc.delegateAddress = self
             vc.mode = "NEW"
+            vc.moneda = self.moneda!
         }
         
         if segue.identifier == "editEntregableSegue" {

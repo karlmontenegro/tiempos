@@ -80,26 +80,26 @@ class daoTiempo{
         newTiempo.setValue(client, forKey: "cliente")
         newTiempo.setValue(hours, forKey: "horas")
         
+        if contract != nil {
+            newTiempo.setValue(contract, forKey: "contrato")
+            if contract?.tipoFacturacion! == "ENT" && cita?.entregable != nil {
+                //Contrato por entregables
+                newTiempo.setValue(cita?.entregable, forKey: "entregable")
+            }
+            newTiempo.setValue(contract?.tipoFacturacion!, forKey: "tipoFac")
+        }
+
         //Cita programada (Citas sin tiempo)
         
         if cita != nil {
             daoCita().setConvertedStatus(cita!, converted: true)
-            if contract != nil {
-                newTiempo.setValue(contract, forKey: "contrato")
-                if contract?.tipoFacturacion! == "ENT" && cita?.entregable != nil {
-                    //Contrato por entregables
-                    newTiempo.setValue(cita?.entregable, forKey: "entregable")
-                }
-                newTiempo.setValue(contract?.tipoFacturacion!, forKey: "tipoFac")
-            }
             newTiempo.setValue(cita!, forKey: "cita")
         } else {
-            //Fecha asignada (Tiempo sin nada mas que fecha)
+            //Fecha asignada (Tiempo sin nada mas que fecha
             if fecha != nil {
-                newTiempo.setValue(daoCita().newDate(title, cliente: client, start: fecha!, end: fecha!, contract: nil, entregable: nil, activateAlarm: false, alarm: nil, store: store, converted:true), forKey: "cita")
+                newTiempo.setValue(daoCita().newDate(title, cliente: client, start: fecha!, end: fecha!, contract: contract, entregable: entregable, activateAlarm: false, alarm: nil, store: store, converted:true), forKey: "cita")
             }
         }
-        
         do {
             try context.save()
         } catch {

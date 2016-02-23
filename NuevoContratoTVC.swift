@@ -70,7 +70,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.lblNumEntregables.text = "Entregables: " + self.numEntregables.description
             
             if self.moneda == nil {
-                self.lblCurrency.text = "+ Moneda"
+                self.lblCurrency.text = "+ Moneda de Facturación"
             } else {
                 self.lblCurrency.text = (self.moneda?.id)! + (self.moneda?.descripcion)!
                 daoContrato().updateContract("", tipoFact: "", moneda: self.moneda!, client: nil, object: self.contrato!)
@@ -157,6 +157,10 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             if self.cliente == nil {
                 self.alertMessage("El contrato debe llevar un cliente", winTitle: "Error")
             } else {
+                if self.moneda == nil {
+                    self.alertMessage("El contrato debe llevar una moneda.", winTitle: "Error")
+                } else {
+                    
                 if self.tipoFact == "ENT" {
                     if self.numEntregables == 0 {
                         self.alertMessage("El contrato por entregables debe tener por lo menos uno de éstos.", winTitle: "Error")
@@ -167,12 +171,13 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 if self.tipoFact == "HRS" {
                     daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
                     if self.txtTarifaPorHoras.text == "" {
-                        self.alertMessage("EL contrato por horas debe tener una tarifa obligatoriamente.", winTitle: "Error")
+                        self.alertMessage("El contrato por horas debe tener una tarifa obligatoriamente.", winTitle: "Error")
                     }else {
                         self.contratoHoras = daoContratoHoras().genericContratoHoras()
                         daoContratoHoras().updateContractHoras(Double(self.txtTotalHoras.text!), horasInc: "", tarifaHora: Double(self.txtTarifaPorHoras.text!)!, moneda: self.moneda!, object: self.contratoHoras!)
                         daoContrato().addContratoHorasToContract(self.contratoHoras!, obj: self.contrato!)
                     }
+                }
                 }
                 self.navigationController?.popToRootViewControllerAnimated(true)
             }
@@ -294,7 +299,18 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             let tableVC = navVC.viewControllers.first as! EntregableTVC
             tableVC.contrato = self.contrato
             tableVC.delegateAddress = self
+            tableVC.moneda = self.moneda
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == "entregablesSegue"{
+            if self.moneda == nil {
+                self.alertMessage("Asígnale una moneda al contrato primero.", winTitle: "Error")
+                return false
+            }
+        }
+        return true
     }
     
     func alertMessage(winMessage: String, winTitle: String){

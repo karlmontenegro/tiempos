@@ -15,7 +15,7 @@ protocol entregableEditionOperations{
 class EntregableVC: UIViewController {
 
     var data:AnyObject? = [] //Entregable
-    var moneda:Moneda = daoConfiguracion().getConfig()!.moneda!
+    var moneda:Moneda? = nil
     var nro:Int = 0
     var mode:String = ""
     var delegateAddress:entregableEditionOperations? = nil
@@ -32,6 +32,7 @@ class EntregableVC: UIViewController {
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func saveTapped(sender: UIButton) {
         if self.txtNomEntregable.text == "" {
             self.alertMessage("El entregable debe tener un nombre.", winTitle: "Error")
@@ -65,7 +66,7 @@ class EntregableVC: UIViewController {
         if (self.data as! Entregable).contrato?.moneda != nil {
             self.lblCurrency.text = ((data as! Entregable).contrato?.moneda?.id)! + ((data as! Entregable).contrato?.moneda?.descripcion)!
         } else {
-            self.lblCurrency.text = (self.moneda.id)! + (self.moneda.descripcion)!
+            self.lblCurrency.text = (self.moneda!.id)! + (self.moneda!.descripcion)!
         }
     }
 

@@ -73,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         */
         
+        
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)

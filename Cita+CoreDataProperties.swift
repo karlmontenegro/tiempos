@@ -20,5 +20,7 @@ extension Cita {
     @NSManaged var entregable: Entregable?
     @NSManaged var tiempo: Tiempo?
     @NSManaged var eventRef: String?
+    @NSManaged var fechaInicio: NSDate?
+    @NSManaged var fechaFin: NSDate?
 
 }

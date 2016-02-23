@@ -228,11 +228,16 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == "editContractSegue" {
-            if daoContrato().getAllActiveContracts().count > 0 {
-                return true
-            } else {
-                self.alertMessage("Debe existir por lo menos un contrato creado en la aplicación.", winTitle: "Error")
+            if daoContrato().getAllActiveContracts().count == 0 {
+                self.alertMessage("Debe existir por lo menos un contrato en la aplicación.", winTitle: "Error")
                 return false
+            } else {
+                if self.cliente?.contrato!.count == 0 {
+                    self.alertMessage("El cliente debe tener por lo menos un contrato. Elija otro, o cree un contrato.", winTitle: "Error")
+                    return false
+                } else {
+                    return true
+                }
             }
         }
         return true

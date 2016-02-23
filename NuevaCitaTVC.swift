@@ -6,15 +6,6 @@
 //  Copyright © 2015 Isabel Dunin-Borkowski. All rights reserved.
 //
 
-/* Correcciones (11/01/16)
-
-- Posible bug a la hora de crear nueva cita
-- Fecha de inicio sugerida (Fecha actual y hora)
-- Proponer fecha fin por default (1 hora)
-- Añadir contrato se cae (cita necesita contrato)
-
-*/
-
 import UIKit
 import Foundation
 import EventKitUI
@@ -132,7 +123,6 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
             if self.cliente == nil {
                 self.alertMessage("Es obligatorio asignarle un cliente a la cita", winTitle: "Error")
             } else {
-                
                 if self.startDate == nil {
                     self.alertMessage("Inicio de cita necesario", winTitle: "Error")
                 } else {
@@ -140,6 +130,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
                         self.alertMessage("Fin de cita necesario", winTitle: "Error")
                     } else {
                         daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato ,entregable: self.entregable, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
+                        
                         self.navigationController?.popToRootViewControllerAnimated(true)
                     }
                 }
