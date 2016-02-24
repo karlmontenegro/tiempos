@@ -142,6 +142,22 @@ class daoTiempo{
         }
     }
     
+    func updateTiempoForInvoice(tiempo:Tiempo, tarifa: Double, moneda:Moneda) {
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        tiempo.setValue(tarifa, forKey: "tarifaHoras")
+        tiempo.setValue(moneda, forKey: "moneda")
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+
+    }
+    
     func getAllTiempos()->Dictionary<Cliente,Array<Tiempo>>?{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext

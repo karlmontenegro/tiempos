@@ -22,5 +22,6 @@ extension ReciboDetalle {
     @NSManaged var entregable: Entregable?
     @NSManaged var recibo: Recibo?
     @NSManaged var contratoHoras: ContratoHoras?
+    @NSManaged var tiempo: Tiempo?
 
 }

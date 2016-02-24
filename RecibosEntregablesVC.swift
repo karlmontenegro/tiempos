@@ -155,7 +155,7 @@ class RecibosEntregablesVC: UIViewController{
         if segue.identifier == "createInvoiceSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
             let vc:ReciboEmitidoVC = navVC.viewControllers.first as! ReciboEmitidoVC
-            vc.singleData = self.selectedEntregable
+            vc.entregable = self.selectedEntregable
             vc.tipoFact = "ENT"
         }
     }

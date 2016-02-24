@@ -36,8 +36,9 @@
 		0C50390B1C7CD5FC0004D122 /* ContractHoursPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50390A1C7CD5FC0004D122 /* ContractHoursPicker.swift */; };
 		0C50390E1C7E0FCB0004D122 /* Recibo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50390C1C7E0FCB0004D122 /* Recibo+CoreDataProperties.swift */; };
 		0C50390F1C7E0FCB0004D122 /* Recibo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C50390D1C7E0FCB0004D122 /* Recibo.swift */; };
-		0C5039121C7E0FF40004D122 /* ReciboDetalle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5039101C7E0FF40004D122 /* ReciboDetalle+CoreDataProperties.swift */; };
-		0C5039131C7E0FF40004D122 /* ReciboDetalle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5039111C7E0FF40004D122 /* ReciboDetalle.swift */; };
+		0C5039151C7E2CC00004D122 /* ReciboDetalle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5039141C7E2CC00004D122 /* ReciboDetalle+CoreDataProperties.swift */; };
+		0C5039171C7E2CC40004D122 /* ReciboDetalle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5039161C7E2CC40004D122 /* ReciboDetalle.swift */; };
+		0C5039191C7E31930004D122 /* TarifaModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5039181C7E31930004D122 /* TarifaModal.swift */; };
 		0C51CCDD1C7679300011BF1A /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51CCDC1C7679300011BF1A /* TextInputTableViewCell.swift */; };
 		0C581E1E1BC2F57C00D2C297 /* ClientModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C581E1D1BC2F57C00D2C297 /* ClientModal.swift */; };
 		0C581E201BC3011000D2C297 /* MonedaModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C581E1F1BC3011000D2C297 /* MonedaModal.swift */; };
@@ -173,8 +174,9 @@
 		0C50390A1C7CD5FC0004D122 /* ContractHoursPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractHoursPicker.swift; sourceTree = "<group>"; };
 		0C50390C1C7E0FCB0004D122 /* Recibo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recibo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0C50390D1C7E0FCB0004D122 /* Recibo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recibo.swift; sourceTree = "<group>"; };
-		0C5039101C7E0FF40004D122 /* ReciboDetalle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReciboDetalle+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0C5039111C7E0FF40004D122 /* ReciboDetalle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReciboDetalle.swift; sourceTree = "<group>"; };
+		0C5039141C7E2CC00004D122 /* ReciboDetalle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReciboDetalle+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0C5039161C7E2CC40004D122 /* ReciboDetalle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReciboDetalle.swift; sourceTree = "<group>"; };
+		0C5039181C7E31930004D122 /* TarifaModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TarifaModal.swift; sourceTree = "<group>"; };
 		0C51CCDC1C7679300011BF1A /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		0C581E1D1BC2F57C00D2C297 /* ClientModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientModal.swift; sourceTree = "<group>"; };
 		0C581E1F1BC3011000D2C297 /* MonedaModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonedaModal.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				0C16F6991C21DE190015855A /* HoursModal.swift */,
 				0C6EA0AC1C31B22300A061B5 /* ClassifierPickerModal.swift */,
 				0C50390A1C7CD5FC0004D122 /* ContractHoursPicker.swift */,
+				0C5039181C7E31930004D122 /* TarifaModal.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -430,8 +433,8 @@
 		0CAF58FE1B7E4A3200DE9CF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0C5039101C7E0FF40004D122 /* ReciboDetalle+CoreDataProperties.swift */,
-				0C5039111C7E0FF40004D122 /* ReciboDetalle.swift */,
+				0C5039161C7E2CC40004D122 /* ReciboDetalle.swift */,
+				0C5039141C7E2CC00004D122 /* ReciboDetalle+CoreDataProperties.swift */,
 				0C50390C1C7E0FCB0004D122 /* Recibo+CoreDataProperties.swift */,
 				0C50390D1C7E0FCB0004D122 /* Recibo.swift */,
 				0CCF3D621C63E8770066FB63 /* Configuracion+CoreDataProperties.swift */,
@@ -748,7 +751,7 @@
 				0C598F921B90CFFA0023FBB2 /* NuevaDireccionViewController.swift in Sources */,
 				0C9E66FD1C2B0288000BC948 /* EPExtensions.swift in Sources */,
 				0CFB8DC61BB1C0310044D0F5 /* Pais+CoreDataProperties.swift in Sources */,
-				0C5039131C7E0FF40004D122 /* ReciboDetalle.swift in Sources */,
+				0C5039171C7E2CC40004D122 /* ReciboDetalle.swift in Sources */,
 				0C4E68051B7A50D10002CE49 /* NuevoUsuario.swift in Sources */,
 				0CAF592D1B7E5EC500DE9CF8 /* DAOTiempo.swift in Sources */,
 				0CE4B3C31BA86F1300FCC736 /* Contacto.swift in Sources */,
@@ -765,7 +768,7 @@
 				0C0E71A71C3C2FA4006404CD /* ReciboEmitidoVC.swift in Sources */,
 				0C1446081C1F2D330027BD80 /* NuevoTiempoTVC.swift in Sources */,
 				0C4E68071B7A51A40002CE49 /* DAOUsuario.swift in Sources */,
-				0C5039121C7E0FF40004D122 /* ReciboDetalle+CoreDataProperties.swift in Sources */,
+				0C5039151C7E2CC00004D122 /* ReciboDetalle+CoreDataProperties.swift in Sources */,
 				0C581E1E1BC2F57C00D2C297 /* ClientModal.swift in Sources */,
 				0CF4D3161BF26CDE00306397 /* ClientePicker.swift in Sources */,
 				0C50390F1C7E0FCB0004D122 /* Recibo.swift in Sources */,
@@ -774,6 +777,7 @@
 				0CE4B3BD1BA091E700FCC736 /* HomeViewController.swift in Sources */,
 				0C2042261C5AC4E00082AB9F /* CobroDetailVC.swift in Sources */,
 				0C5DBC2A1B8CCC8400FF1D26 /* ContactosPorClienteTableViewController.swift in Sources */,
+				0C5039191C7E31930004D122 /* TarifaModal.swift in Sources */,
 				0CFA4B081BE1420B007F30B8 /* CitaViewController.swift in Sources */,
 				0C5DBC2C1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift in Sources */,
 				0C5F57851BDFE34200B1A0C9 /* ContratoHoras+CoreDataProperties.swift in Sources */,

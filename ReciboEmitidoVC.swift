@@ -11,35 +11,34 @@ import Foundation
 
 class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var contrato:Contrato? = nil
+    var entregable:Entregable? = nil
+    var tiemposArray:Array<Tiempo> = []
+    
     var cliente:Cliente? = nil
+    var tipoFact:String = ""
+
     let dateFormatter = NSDateFormatter()
     let today:NSDate = NSDate()
 
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var lblNomCliente: UILabel!
-    @IBOutlet weak var lblNomContrato: UILabel!
     @IBOutlet weak var lblTipoFact: UILabel!
     @IBOutlet weak var lblFechaEmision: UILabel!
     @IBOutlet weak var lblMontoTotal: UILabel!
     @IBOutlet weak var txtDescripcion: UITextView!
     
-    var montoTotal:Double = 0.0
-    
-    var tipoFact:String = "" //Si es por Entregables o por Horas
-    var dataArray:Array<AnyObject> = []
-    var singleData:AnyObject? = nil
-    
-    //Facturación Por Horas
-    var tarifaPorHora:Double = 0.0
-    var tiemposArray:Array<Tiempo> = []
-    
-    //Facturación Por Entregable
-    var entregablesArray:Array<Entregable> = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
+        self.lblFechaEmision.text = self.dateFormatter.stringFromDate(self.today)
+        self.lblNomCliente.text = self.cliente?.nombre
+        
+        if self.tipoFact == "HRS" {
+            self.lblTipoFact.text = "Por Horas"
+            self.lblMontoTotal.text = self.calculateTotal(self.tiemposArray)
+        } else {
+            self.lblTipoFact.text = "Por Entregables"
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,17 +53,54 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tipoFact == "HRS" {
-            return self.dataArray.count
-        } else {
-            return self.entregablesArray.count
+        
+        if self.tipoFact == "HRS"  { //Facturación por horas
+            
+            return self.tiemposArray.count
+        } else { //Facturación por entregables
+            
+            return 1
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath:
+            indexPath)
+        
+        if self.tipoFact == "HRS" { //Por horas
+            
+            cell.textLabel!.text = self.tiemposArray[indexPath.row].titulo
+            
+            if self.tiemposArray[indexPath.row].contrato != nil {
+                
+                let tarifa = Double((self.tiemposArray[indexPath.row].contrato?.contratoHoras?.tarifaHora)!)
+                let interval = self.tiemposArray[indexPath.row].horas!
+                let timeInterval = NSTimeInterval(interval.doubleValue)
+                let subtotal = Double(Int(interval)/3600) * tarifa
+                let moneda = self.tiemposArray[indexPath.row].contrato?.moneda?.descripcion
+                
+                cell.detailTextLabel!.text = "Horas: " + self.stringFromTimeInterval(timeInterval) + " - Subtotal: " + moneda! + subtotal.description
+                
+            } else {
+                
+                let interval = self.tiemposArray[indexPath.row].horas!
+                let timeInterval = NSTimeInterval(interval.doubleValue)
+                
+                cell.detailTextLabel!.text = "Horas: " + self.stringFromTimeInterval(timeInterval) + " - Subtotal: (Sin Tarifa)"
+            }
+            
+        } else { //Por entregables
+            cell.textLabel!.text = self.entregable?.nombreEntreg
+            cell.detailTextLabel!.text = "Tarifa: " + (self.entregable?.moneda?.descripcion)! + Double(self.entregable!.tarifa!).description
+        }
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if self.tiemposArray[indexPath.row].contrato == nil {
+            self.performSegueWithIdentifier("tarifaModalSegue", sender: self)
+        }
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
@@ -72,29 +108,18 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alerts before the delete just in case it wasn't meant to be
             
-            var mes:String = ""
             
-            if self.tipoFact == "ENT" {
-                mes = "entregable"
-            } else {
-                mes = "tiempo"
-            }
-        
             let alertController = UIAlertController(title: "Atención", message:
-                "¿Estás seguro que quieres quitar el " + mes + " del recibo?", preferredStyle: UIAlertControllerStyle.Alert)
+                "¿Estás seguro que quieres quitar el del recibo?", preferredStyle: UIAlertControllerStyle.Alert)
             
             // Delete action
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
                 
-                if self.tipoFact == "HRS" {
-                    self.tiemposArray.removeAtIndex(indexPath.row)
-                } else {
-                    self.entregablesArray.removeAtIndex(indexPath.row)
-                }
+
                 // Deletes the element from the array
-                //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                //self.detailTableView.reloadData()
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.detailTableView.reloadData()
             }))
             
             // Cancel action
@@ -111,28 +136,6 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     @IBAction func saveTapped(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Atención", message:
-            "Se registrará el recibo por el monto de " + self.montoTotal.description + "¿Desea continuar?", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        // Save action
-        alertController.addAction(UIAlertAction(title: "Emitir", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
-            
-            let protoInvoice:Recibo = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.contrato, total: self.montoTotal, description: self.txtDescripcion.text)!
-            
-            if self.tipoFact == "ENT" {
-                daoRecibo().addEntregablesToInvoice(protoInvoice, entregables: self.entregablesArray)
-            } else {
-                daoRecibo().addTiemposToInvoice(protoInvoice, tiempos: self.tiemposArray)
-            }
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        
-        // Cancel action
-        alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     
@@ -148,36 +151,32 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         return String(format: "%02d horas %02d minutos", hours, minutes)
     }
     
-    func multipleContracts(arr: Array<Tiempo>) -> Bool {
-        let nombre = arr[0].contrato?.nombreContrato!
+    func calculateTotal(tiempos: Array<Tiempo>) -> String? {
         
-        for tiempo in arr {
-            if tiempo.contrato?.nombreContrato != nombre {
-                return true
+        var montoTotal:Double = 0.0
+        
+        for t in tiempos {
+            if t.contrato == nil {
+                return "(Tarifas Faltantes)"
+            } else {
+                let tarifa = Double((t.contrato?.contratoHoras?.tarifaHora)!)
+                let interval = t.horas!
+                let subtotal = Double(Int(interval)/3600) * tarifa
+                montoTotal += subtotal
             }
         }
-        return false
-    }
-    
-    func multipleContractsEnt(arr: Array<Entregable>) -> Bool {
-        let nombre = arr[0].contrato?.nombreContrato!
-        
-        for entregable in arr  {
-            if entregable.contrato?.nombreContrato != nombre{
-                return true
-            }
-        }
-        return false
+        return (tiempos.first?.contrato?.moneda?.descripcion)! + " " + montoTotal.description
     }
     
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
     */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "tarifaModalSegue" {
+            
+        }
+    }
 
 }

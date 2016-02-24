@@ -33,7 +33,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
         self.lblFechaEmision.text = self.dateFormatter.stringFromDate((self.rec?.fechaEmision!)!)
         self.lblCliente.text = self.rec?.cliente?.nombre
-        self.lblContrato.text = self.rec?.contrato?.nombreContrato
+        
         
         if self.origin == "NC" {
             self.cobroButton.enabled = true
@@ -42,15 +42,6 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         } else {
             self.navigationTitle.title = "Recibo Cobrado"
             self.lblFechaCobro.text = self.dateFormatter.stringFromDate((self.rec?.fechaCobro!)!)
-        }
-        
-        if self.rec?.tiempo!.count != 0 {
-            self.lblTipoFact.text = "Por Horas"
-            self.tiempos = daoRecibo().getTiempoListFromInvoice(self.rec!)!
-        }
-        if self.rec?.entregable!.count != 0 {
-            self.lblTipoFact.text = "Por Entregables"
-            self.entregables = daoRecibo().getEntregablesListFromInvoice(self.rec!)!
         }
         
         self.txtDescripcion.text = self.rec?.descripcion
@@ -78,14 +69,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if self.rec?.entregable!.count != 0{
-            //Por entregables
-            return self.entregables.count
-        }
-        if self.rec?.tiempo!.count != 0 {
-            //Por horas
-            return self.tiempos.count
-        }
+
         return 0
     }
     
@@ -93,18 +77,6 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellDetail", forIndexPath: indexPath)
         
-        if self.rec?.entregable!.count != 0 {
-            cell.textLabel?.text = self.entregables[indexPath.row].nombreEntreg
-            cell.detailTextLabel?.text = "Tarifa:" + Double(self.entregables[indexPath.row].tarifa!).description
-        }
-        if self.rec?.tiempo!.count != 0 {
-            
-            let interval = self.tiempos[indexPath.row].horas!
-            let subtotal = Double(Int(interval)/3600) * Double((self.tiempos[indexPath.row].contrato?.contratoHoras?.tarifaHora!)!)
-            
-            cell.textLabel?.text = self.tiempos[indexPath.row].titulo
-            cell.detailTextLabel?.text = "Subtotal: " + subtotal.description
-        }
         
         return cell
     }
