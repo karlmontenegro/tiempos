@@ -5292,8 +5292,14 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="NFe-rB-gGc"/>
+                                        <exclude reference="Azo-JZ-Ucg"/>
+                                        <exclude reference="Ftj-7B-RIL"/>
+                                        <exclude reference="Qrl-3T-xWu"/>
+                                        <exclude reference="jPg-6b-g8E"/>
                                         <exclude reference="odR-sy-8xi"/>
                                         <exclude reference="vI6-sA-b3V"/>
+                                        <exclude reference="dXV-CN-t0f"/>
+                                        <exclude reference="zbm-Rw-cZH"/>
                                         <exclude reference="1Oe-tY-oE4"/>
                                         <exclude reference="3v7-UZ-MsJ"/>
                                         <exclude reference="5yv-ZU-IQX"/>
@@ -5301,12 +5307,6 @@
                                         <exclude reference="ezT-fn-uj9"/>
                                         <exclude reference="fqw-bQ-yTI"/>
                                         <exclude reference="qyO-pf-duB"/>
-                                        <exclude reference="Qrl-3T-xWu"/>
-                                        <exclude reference="jPg-6b-g8E"/>
-                                        <exclude reference="dXV-CN-t0f"/>
-                                        <exclude reference="zbm-Rw-cZH"/>
-                                        <exclude reference="Azo-JZ-Ucg"/>
-                                        <exclude reference="Ftj-7B-RIL"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -5319,8 +5319,14 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="NFe-rB-gGc"/>
+                                        <include reference="Azo-JZ-Ucg"/>
+                                        <include reference="Ftj-7B-RIL"/>
+                                        <include reference="Qrl-3T-xWu"/>
+                                        <include reference="jPg-6b-g8E"/>
                                         <include reference="odR-sy-8xi"/>
                                         <include reference="vI6-sA-b3V"/>
+                                        <include reference="dXV-CN-t0f"/>
+                                        <include reference="zbm-Rw-cZH"/>
                                         <include reference="1Oe-tY-oE4"/>
                                         <include reference="3v7-UZ-MsJ"/>
                                         <include reference="5yv-ZU-IQX"/>
@@ -5328,12 +5334,6 @@
                                         <include reference="ezT-fn-uj9"/>
                                         <include reference="fqw-bQ-yTI"/>
                                         <include reference="qyO-pf-duB"/>
-                                        <include reference="Qrl-3T-xWu"/>
-                                        <include reference="jPg-6b-g8E"/>
-                                        <include reference="dXV-CN-t0f"/>
-                                        <include reference="zbm-Rw-cZH"/>
-                                        <include reference="Azo-JZ-Ucg"/>
-                                        <include reference="Ftj-7B-RIL"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -5385,6 +5385,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pMG-Ry-OlJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IEu-b6-U8w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvs-ME-TEx">
@@ -7299,20 +7300,20 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jDx-tb-DDb"/>
-        <segue reference="zH6-Ok-qU1"/>
         <segue reference="uOR-nE-Lvj"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="qc6-Ts-Yew"/>
-        <segue reference="IEm-rT-DGL"/>
-        <segue reference="iQF-LW-x4a"/>
-        <segue reference="nf2-hQ-ana"/>
-        <segue reference="r9m-EK-qsX"/>
-        <segue reference="fAi-QO-h1o"/>
-        <segue reference="LiL-b8-wS2"/>
-        <segue reference="0YH-12-9Rm"/>
-        <segue reference="2V1-9s-Qqy"/>
         <segue reference="cX3-9R-G3m"/>
+        <segue reference="LiL-b8-wS2"/>
+        <segue reference="zH6-Ok-qU1"/>
+        <segue reference="jDx-tb-DDb"/>
+        <segue reference="IEm-rT-DGL"/>
+        <segue reference="fAi-QO-h1o"/>
+        <segue reference="1U0-1N-NaQ"/>
+        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="oyW-Uv-Djb"/>
+        <segue reference="VN9-SP-Fso"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,4 +20,5 @@ extension ContratoHoras {
     @NSManaged var contrato: Contrato?
     @NSManaged var moneda: Moneda?
     @NSManaged var monedaNom: String?
+    @NSManaged var reciboDetalle: ReciboDetalle?
 }

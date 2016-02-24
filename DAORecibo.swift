@@ -38,10 +38,6 @@ class daoRecibo{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        for ent in entregables! {
-            obj.addEntregable(ent)
-        }
-        
         do{
             try context.save()
         } catch {
@@ -53,9 +49,6 @@ class daoRecibo{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        for tiem in tiempos! {
-            obj.addTiempo(tiem)
-        }
         
         do{
             try context.save()
@@ -73,19 +66,6 @@ class daoRecibo{
         obj.setValue(contract, forKey: "contrato")
         obj.setValue(total, forKey: "valor")
         
-        if tiempos != nil {
-            obj.deleteTiempos()
-            for ti in tiempos! {
-                obj.addTiempo(ti)
-            }
-        } else {
-            if entregables != nil {
-                obj.deleteEntregables()
-                for ent in entregables! {
-                    obj.addEntregable(ent)
-                }
-            }
-        }
         
         do{
             try context.save()
@@ -175,17 +155,13 @@ class daoRecibo{
     
     func getTiempoListFromInvoice(obj:Recibo)->Array<Tiempo>? {
         var tiempos: Array<Tiempo> = []
-        for t in obj.tiempo! {
-            tiempos.append(t as! Tiempo)
-        }
+
         return tiempos
     }
     
     func getEntregablesListFromInvoice(obj:Recibo)->Array<Entregable>?{
         var entregables: Array<Entregable> = []
-        for e in obj.entregable! {
-            entregables.append(e as! Entregable)
-        }
+
         return entregables
     }
     

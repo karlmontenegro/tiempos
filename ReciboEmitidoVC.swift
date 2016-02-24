@@ -25,6 +25,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var txtDescripcion: UITextView!
     
     var montoTotal:Double = 0.0
+    
     var tipoFact:String = "" //Si es por Entregables o por Horas
     var dataArray:Array<AnyObject> = []
     var singleData:AnyObject? = nil

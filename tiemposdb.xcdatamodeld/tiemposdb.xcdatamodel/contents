@@ -41,7 +41,7 @@
         <relationship name="contratoHoras" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ContratoHoras" inverseName="contrato" inverseEntity="ContratoHoras" syncable="YES"/>
         <relationship name="entregables" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entregable" inverseName="contrato" inverseEntity="Entregable" syncable="YES"/>
         <relationship name="moneda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Moneda" inverseName="contrato" inverseEntity="Moneda" syncable="YES"/>
-        <relationship name="recibo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recibo" inverseName="contrato" inverseEntity="Recibo" syncable="YES"/>
+        <relationship name="recibo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recibo" syncable="YES"/>
         <relationship name="tiempo" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tiempo" inverseName="contrato" inverseEntity="Tiempo" syncable="YES"/>
     </entity>
     <entity name="ContratoHoras" representedClassName="ContratoHoras" syncable="YES">
@@ -51,6 +51,7 @@
         <attribute name="totalHoras" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="contratoHoras" inverseEntity="Contrato" syncable="YES"/>
         <relationship name="moneda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Moneda" inverseName="contratoHoras" inverseEntity="Moneda" syncable="YES"/>
+        <relationship name="reciboDetalle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReciboDetalle" inverseName="contratoHoras" inverseEntity="ReciboDetalle" syncable="YES"/>
     </entity>
     <entity name="Direccion" representedClassName="Direccion" syncable="YES">
         <attribute name="direccion" optional="YES" attributeType="String" syncable="YES"/>
@@ -66,7 +67,8 @@
         <relationship name="cita" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cita" inverseName="entregable" inverseEntity="Cita" syncable="YES"/>
         <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="entregables" inverseEntity="Contrato" syncable="YES"/>
         <relationship name="moneda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Moneda" inverseName="entregable" inverseEntity="Moneda" syncable="YES"/>
-        <relationship name="recibo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recibo" inverseName="entregable" inverseEntity="Recibo" syncable="YES"/>
+        <relationship name="recibo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recibo" syncable="YES"/>
+        <relationship name="reciboDetalle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReciboDetalle" inverseName="entregable" inverseEntity="ReciboDetalle" syncable="YES"/>
         <relationship name="tiempo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tiempo" inverseName="entregable" inverseEntity="Tiempo" syncable="YES"/>
     </entity>
     <entity name="Moneda" representedClassName="Moneda" syncable="YES">
@@ -92,10 +94,18 @@
         <attribute name="reciboExterno" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="valor" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="recibo" inverseEntity="Cliente" syncable="YES"/>
-        <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="recibo" inverseEntity="Contrato" syncable="YES"/>
-        <relationship name="entregable" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entregable" inverseName="recibo" inverseEntity="Entregable" syncable="YES"/>
         <relationship name="moneda" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Moneda" inverseName="recibo" inverseEntity="Moneda" syncable="YES"/>
-        <relationship name="tiempo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tiempo" inverseName="recibo" inverseEntity="Tiempo" syncable="YES"/>
+        <relationship name="reciboDetalle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ReciboDetalle" inverseName="recibo" inverseEntity="ReciboDetalle" syncable="YES"/>
+    </entity>
+    <entity name="ReciboDetalle" representedClassName=".ReciboDetalle" syncable="YES">
+        <attribute name="item" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="nroHoras" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="tarifaHoras" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" syncable="YES"/>
+        <relationship name="contratoHoras" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ContratoHoras" inverseName="reciboDetalle" inverseEntity="ContratoHoras" syncable="YES"/>
+        <relationship name="entregable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entregable" inverseName="reciboDetalle" inverseEntity="Entregable" syncable="YES"/>
+        <relationship name="recibo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recibo" inverseName="reciboDetalle" inverseEntity="Recibo" syncable="YES"/>
     </entity>
     <entity name="Tiempo" representedClassName="Tiempo" syncable="YES">
         <attribute name="convertido" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -107,7 +117,7 @@
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="tiempo" inverseEntity="Cliente" syncable="YES"/>
         <relationship name="contrato" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contrato" inverseName="tiempo" inverseEntity="Contrato" syncable="YES"/>
         <relationship name="entregable" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entregable" inverseName="tiempo" inverseEntity="Entregable" syncable="YES"/>
-        <relationship name="recibo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recibo" inverseName="tiempo" inverseEntity="Recibo" syncable="YES"/>
+        <relationship name="recibo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recibo" syncable="YES"/>
     </entity>
     <entity name="Usuario" representedClassName="Usuario" syncable="YES">
         <attribute name="apellidos" optional="YES" attributeType="String" syncable="YES"/>
@@ -129,14 +139,15 @@
         <element name="Cliente" positionX="-434" positionY="-130" width="128" height="195"/>
         <element name="Configuracion" positionX="-990" positionY="-810" width="128" height="75"/>
         <element name="Contacto" positionX="-810" positionY="-171" width="128" height="105"/>
-        <element name="Contrato" positionX="-29" positionY="-234" width="128" height="193"/>
-        <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="133"/>
+        <element name="Contrato" positionX="-29" positionY="-234" width="128" height="195"/>
+        <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="150"/>
         <element name="Direccion" positionX="-216" positionY="38" width="128" height="118"/>
-        <element name="Entregable" positionX="-108" positionY="-531" width="128" height="163"/>
+        <element name="Entregable" positionX="-108" positionY="-531" width="128" height="180"/>
         <element name="Moneda" positionX="-389" positionY="-657" width="128" height="165"/>
         <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
-        <element name="Recibo" positionX="-738" positionY="-954" width="144" height="208"/>
-        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="193"/>
+        <element name="Recibo" positionX="-738" positionY="-954" width="144" height="180"/>
+        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="195"/>
         <element name="Usuario" positionX="-738" positionY="-706" width="108" height="238"/>
+        <element name="ReciboDetalle" positionX="-990" positionY="-810" width="128" height="165"/>
     </elements>
 </model>

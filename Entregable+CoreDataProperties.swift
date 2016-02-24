@@ -22,5 +22,6 @@ extension Entregable {
     @NSManaged var moneda: Moneda?
     @NSManaged var recibo: Recibo?
     @NSManaged var tiempo: NSSet?
+    @NSManaged var reciboDetalle: ReciboDetalle?
 
 }
