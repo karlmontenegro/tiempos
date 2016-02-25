@@ -157,6 +157,7 @@ class RecibosEntregablesVC: UIViewController{
             let vc:ReciboEmitidoVC = navVC.viewControllers.first as! ReciboEmitidoVC
             vc.entregable = self.selectedEntregable
             vc.tipoFact = "ENT"
+            vc.cliente = self.selectedEntregable?.contrato?.cliente
         }
     }
 }

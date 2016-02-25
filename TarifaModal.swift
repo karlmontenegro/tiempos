@@ -18,12 +18,12 @@ class TarifaModal: UIViewController {
     var tiempo:Tiempo? = nil
     var delegateAddress:tarifaOp? = nil
 
+    @IBOutlet weak var lblMoneda: UILabel!
     @IBOutlet weak var txtMonto: UITextField!
-    let currencyArray:Array<Moneda> = daoMoneda().getAllCurrency()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.currency = self.currencyArray[0]
+        self.lblMoneda.text = self.currency?.descripcion
         // Do any additional setup after loading the view.
     }
 
@@ -31,25 +31,6 @@ class TarifaModal: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
-        return 1
-    }
-    
-    // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return self.currencyArray.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return self.currencyArray[row].descripcion
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.currency = self.currencyArray[row]
-    }
-
     
     @IBAction func saveTapped(sender: AnyObject) {
         if self.txtMonto.text == "" {

@@ -165,6 +165,7 @@ class daoTiempo{
         let request = NSFetchRequest(entityName: "Tiempo")
         
         let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
+        
         let clienteSortDescriptor = NSSortDescriptor(key: "cliente.nombre", ascending: true)
         request.sortDescriptors = [clienteSortDescriptor,contratoSortDescriptor]
         

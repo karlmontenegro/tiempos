@@ -11,7 +11,7 @@ import CoreData
 
 class daoRecibo{
     
-    func createGenericNewInvoice(date: NSDate, client: Cliente?, contract: Contrato?, total: Double?, description:String) -> Recibo?{
+    func createGenericNewInvoice(date: NSDate, client: Cliente?, contract: Contrato?, total: Double?, moneda: Moneda?,description:String?) -> Recibo?{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -19,12 +19,20 @@ class daoRecibo{
         
         newInvoice.setValue(date, forKey: "fechaEmision")
         newInvoice.setValue(client, forKey: "cliente")
-        newInvoice.setValue(contract, forKey: "contrato")
+        newInvoice.setValue(moneda, forKey: "moneda")
+        
+        if contract != nil {
+            newInvoice.setValue(contract, forKey: "contrato")
+        }
+        
         newInvoice.setValue(total, forKey: "valor")
         newInvoice.setValue(false, forKey: "cobrado")
         newInvoice.setValue(nil, forKey: "fechaCobro")
         newInvoice.setValue("", forKey:  "reciboExterno")
-        newInvoice.setValue(description, forKey: "descripcion")
+        
+        if description != nil {
+            newInvoice.setValue(description, forKey: "descripcion")
+        }
         
         do{
             try context.save()
@@ -34,9 +42,17 @@ class daoRecibo{
         return newInvoice as? Recibo
     }
     
-    func addEntregablesToInvoice(obj: Recibo, entregables: Array<Entregable>?){
+    func addEntregablesToInvoice(obj: Recibo, entregables: Entregable?){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
+        let newInvoiceDetail = NSEntityDescription.insertNewObjectForEntityForName("ReciboDetalle", inManagedObjectContext: context)
+        
+        newInvoiceDetail.setValue(obj, forKey: "recibo")
+        
+        newInvoiceDetail.setValue(obj, forKey: "item")
+        newInvoiceDetail.setValue(obj, forKey: "nroHoras")
+        newInvoiceDetail.setValue(obj, forKey: "tarifaHoras")
+        newInvoiceDetail.setValue(obj, forKey: "total")
         
         do{
             try context.save()
@@ -49,6 +65,25 @@ class daoRecibo{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
+        var item = 1
+        
+        for t in tiempos! {
+            
+            let newInvoiceDetail = NSEntityDescription.insertNewObjectForEntityForName("ReciboDetalle", inManagedObjectContext: context)
+            let tarifa = Double(t.tarifaHoras!)
+            let interval = t.horas!
+            let subtotal = Double(Int(interval)/3600) * tarifa
+            
+            newInvoiceDetail.setValue(obj, forKey: "recibo")
+            newInvoiceDetail.setValue(item, forKey: "item")
+            newInvoiceDetail.setValue(t.horas, forKey: "nroHoras")
+            newInvoiceDetail.setValue(t.tarifaHoras, forKey: "tarifaHoras")
+            newInvoiceDetail.setValue(subtotal, forKey: "total")
+            item++
+            
+            t.setValue(obj, forKey: "recibo")
+            t.setValue(true, forKey: "convertido")
+        }
         
         do{
             try context.save()

@@ -54,7 +54,7 @@ class daoEntregable{
         }
     }
     
-    func updateEntregable(nombre: String, tarifa: String, object: Entregable){
+    func updateEntregable(nombre: String, tarifa: String, moneda: Moneda, object: Entregable){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -63,6 +63,7 @@ class daoEntregable{
         
         object.setValue(nombre, forKey: "nombreEntreg")
         object.setValue(num, forKey: "tarifa")
+        object.setValue(moneda, forKey: "moneda")
         
         do{
             try context.save()

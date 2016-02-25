@@ -40,7 +40,7 @@ class EntregableVC: UIViewController {
             if self.txtTarifa.text == "" {
                 self.alertMessage("El entregable debe tener una tarifa.", winTitle: "Error")
             }else {
-                daoEntregable().updateEntregable(txtNomEntregable.text as String!, tarifa: txtTarifa.text as String!, object: self.data as! Entregable)
+                daoEntregable().updateEntregable(txtNomEntregable.text as String!, tarifa: txtTarifa.text as String!, moneda: self.moneda!, object: self.data as! Entregable)
                 self.delegateAddress!.refreshTableViewForEntregables()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
