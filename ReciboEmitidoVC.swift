@@ -9,6 +9,11 @@
 import UIKit
 import Foundation
 
+protocol invoiceOp {
+    func reloadTimesList()
+    func reloadEntregablesList()
+}
+
 class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSource, tarifaOp {
 
     var entregable:Entregable? = nil
@@ -17,7 +22,8 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var cliente:Cliente? = nil
     var tipoFact:String = ""
     var montoTotal:Double? = nil
-
+    var delegateAddress: invoiceOp? = nil
+    
     let dateFormatter = NSDateFormatter()
     let today:NSDate = NSDate()
 
@@ -36,10 +42,10 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if self.tipoFact == "HRS" {
             self.lblTipoFact.text = "Por Horas"
             self.lblMontoTotal.text = self.calculateTotal(self.tiemposArray)
-            print(self.tiemposArray)
         } else {
             self.lblTipoFact.text = "Por Entregables"
             self.lblMontoTotal.text = (self.entregable?.moneda?.descripcion)! + " " + Double((self.entregable?.tarifa!)!).description
+            self.montoTotal = Double((self.entregable?.tarifa!)!)
         }
     }
 
@@ -112,8 +118,10 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if self.tiemposArray[indexPath.row].contrato == nil {
-            self.performSegueWithIdentifier("tarifaModalSegue", sender: self)
+        if self.tipoFact == "HRS" {
+            if self.tiemposArray[indexPath.row].contrato == nil {
+                self.performSegueWithIdentifier("tarifaModalSegue", sender: self)
+            }
         }
     }
     
@@ -154,10 +162,32 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if self.montoTotal == nil {
             self.alertMessage("Faltan tarifas que completar antes de generar el recibo.", winTitle: "Error")
         } else {
-        
-            if self.findCurrencyInArray(self.tiemposArray) == nil {
-                self.alertMessage("Falta asignar una moneda predeterminada antes de generar el recibo.", winTitle: "Error")
-            } else {
+            if self.tipoFact == "HRS" { //Por horas
+                if self.findCurrencyInArray(self.tiemposArray) == nil {
+                    self.alertMessage("Falta asignar una moneda predeterminada antes de generar el recibo.", winTitle: "Error")
+                } else {
+                    let alertController = UIAlertController(title: "Atención", message: "Se emitirá el recibo de monto: " + self.lblMontoTotal.text! + " al cliente " + (self.cliente?.nombre)!, preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Cancel,  handler: { (alertController) -> Void in
+                        
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        
+                    }))
+                    
+                    alertController.addAction(UIAlertAction(title: "Emitir", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                        
+                        //Se crea la cabecera del recibo
+                        let recibo:Recibo? = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.findContractInArray(self.tiemposArray), total: self.montoTotal, moneda: self.findCurrencyInArray(self.tiemposArray),description: self.txtDescripcion.text)
+                            
+                        //Se añaden los elementos del recibo detalle
+                        daoRecibo().addTiemposToInvoice(recibo!, tiempos: self.tiemposArray)
+                        self.delegateAddress?.reloadTimesList()
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+
+            } else { //Por entregables
                 let alertController = UIAlertController(title: "Atención", message: "Se emitirá el recibo de monto: " + self.lblMontoTotal.text! + " al cliente " + (self.cliente?.nombre)!, preferredStyle: UIAlertControllerStyle.Alert)
                 
                 alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Cancel,  handler: { (alertController) -> Void in
@@ -168,22 +198,13 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
                 alertController.addAction(UIAlertAction(title: "Emitir", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                     
-                    if self.tipoFact == "HRS" {
-                        //Se crea la cabecera del recibo
-                        let recibo:Recibo? = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.findContractInArray(self.tiemposArray), total: self.montoTotal, moneda: self.findCurrencyInArray(self.tiemposArray),description: self.txtDescripcion.text)
-                    
-                        //Se añaden los elementos del recibo detalle
-                        daoRecibo().addTiemposToInvoice(recibo!, tiempos: self.tiemposArray)
-                        print(recibo)
-                    } else {
-                        let recibo: Recibo? = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.entregable?.contrato, total: Double((self.entregable?.tarifa)!), moneda: self.entregable?.moneda, description: self.txtDescripcion.text)
-                        daoRecibo().addEntregablesToInvoice(recibo!, entregables: self.entregable)
-                    }
+                    let recibo: Recibo? = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.entregable?.contrato, total: Double((self.entregable?.tarifa)!), moneda: self.entregable?.moneda, description: self.txtDescripcion.text)
+                    daoRecibo().addEntregablesToInvoice(recibo!, entregables: self.entregable)
+                    self.delegateAddress?.reloadEntregablesList()
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)
             }
-            
         }
         
     }
@@ -238,17 +259,15 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func findContractInArray(tiempos:Array<Tiempo>) -> Contrato? {
-        var i = 0
-        var j = 0
         
-        for i = 0; i <= tiempos.count; i++ {
-            for j = 0; j <= tiempos.count; j++ {
-                if tiempos[i].contrato != tiempos[j].contrato {
+        for t in tiempos {
+            for u in tiempos {
+                if t.contrato != u.contrato {
                     return nil
                 }
             }
         }
-        return tiempos[i].contrato
+        return tiempos.first?.contrato
     }
     
     /*

@@ -6623,14 +6623,11 @@
                         <barButtonItem key="leftBarButtonItem" image="menu-25.png" id="Ur2-kl-oMs">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PEU-i2-LeH">
-                            <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="classifierItemsDetailTV" destination="KAv-4B-7f9" id="B3E-C0-FWJ"/>
                         <outlet property="generateInvoiceButton" destination="qOf-ss-117" id="oUD-MH-8HT"/>
                         <outlet property="menuButton" destination="Ur2-kl-oMs" id="cmh-PW-yvT"/>
+                        <outlet property="tiemposTableView" destination="KAv-4B-7f9" id="p2S-6A-8j9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Krz-6a-Ts3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -7132,10 +7129,6 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="diF-c3-urj"/>
-                                        <exclude reference="aEJ-au-Jcz"/>
-                                        <exclude reference="kFB-Oi-nRt"/>
-                                        <exclude reference="HYj-Q4-uIN"/>
-                                        <exclude reference="RH7-OV-WMh"/>
                                         <exclude reference="NuX-ma-rRl"/>
                                         <exclude reference="ehF-mu-0yN"/>
                                         <exclude reference="12O-h5-KOP"/>
@@ -7144,6 +7137,10 @@
                                         <exclude reference="0gH-VY-529"/>
                                         <exclude reference="aog-pM-rwb"/>
                                         <exclude reference="z6I-5E-6NJ"/>
+                                        <exclude reference="aEJ-au-Jcz"/>
+                                        <exclude reference="kFB-Oi-nRt"/>
+                                        <exclude reference="HYj-Q4-uIN"/>
+                                        <exclude reference="RH7-OV-WMh"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -7156,10 +7153,6 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="diF-c3-urj"/>
-                                        <include reference="aEJ-au-Jcz"/>
-                                        <include reference="kFB-Oi-nRt"/>
-                                        <include reference="HYj-Q4-uIN"/>
-                                        <include reference="RH7-OV-WMh"/>
                                         <include reference="NuX-ma-rRl"/>
                                         <include reference="ehF-mu-0yN"/>
                                         <include reference="12O-h5-KOP"/>
@@ -7168,6 +7161,10 @@
                                         <include reference="0gH-VY-529"/>
                                         <include reference="aog-pM-rwb"/>
                                         <include reference="z6I-5E-6NJ"/>
+                                        <include reference="aEJ-au-Jcz"/>
+                                        <include reference="kFB-Oi-nRt"/>
+                                        <include reference="HYj-Q4-uIN"/>
+                                        <include reference="RH7-OV-WMh"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -7357,7 +7354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iw5-6N-AP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5113.5" y="-3261"/>
+            <point key="canvasLocation" x="5016" y="-3360.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v63-45-w9Q">
@@ -7489,20 +7486,20 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LhU-5B-JKu"/>
-        <segue reference="uOR-nE-Lvj"/>
-        <segue reference="SD1-5e-R04"/>
-        <segue reference="LiL-b8-wS2"/>
-        <segue reference="IEm-rT-DGL"/>
         <segue reference="oyW-Uv-Djb"/>
-        <segue reference="VN9-SP-Fso"/>
-        <segue reference="QM7-Ye-Xhr"/>
-        <segue reference="8vE-Kv-g5c"/>
-        <segue reference="1U0-1N-NaQ"/>
-        <segue reference="fAi-QO-h1o"/>
+        <segue reference="uOR-nE-Lvj"/>
+        <segue reference="cX3-9R-G3m"/>
         <segue reference="zH6-Ok-qU1"/>
         <segue reference="jDx-tb-DDb"/>
+        <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="Rm0-TT-V55"/>
+        <segue reference="LiL-b8-wS2"/>
+        <segue reference="IEm-rT-DGL"/>
+        <segue reference="fAi-QO-h1o"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="VN9-SP-Fso"/>
+        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="1U0-1N-NaQ"/>
     </inferredMetricsTieBreakers>
 </document>

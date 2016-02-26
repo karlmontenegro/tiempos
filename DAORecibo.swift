@@ -12,6 +12,7 @@ import CoreData
 class daoRecibo{
     
     func createGenericNewInvoice(date: NSDate, client: Cliente?, contract: Contrato?, total: Double?, moneda: Moneda?,description:String?) -> Recibo?{
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
@@ -49,10 +50,11 @@ class daoRecibo{
         
         newInvoiceDetail.setValue(obj, forKey: "recibo")
         
-        newInvoiceDetail.setValue(obj, forKey: "item")
-        newInvoiceDetail.setValue(obj, forKey: "nroHoras")
-        newInvoiceDetail.setValue(obj, forKey: "tarifaHoras")
-        newInvoiceDetail.setValue(obj, forKey: "total")
+        newInvoiceDetail.setValue(1, forKey: "item")
+        newInvoiceDetail.setValue(0, forKey: "nroHoras")
+        newInvoiceDetail.setValue(0, forKey: "tarifaHoras")
+        newInvoiceDetail.setValue(entregables?.tarifa, forKey: "total")
+        newInvoiceDetail.setValue(entregables, forKey: "entregable")
         
         do{
             try context.save()
@@ -64,13 +66,21 @@ class daoRecibo{
     func addTiemposToInvoice(obj: Recibo, tiempos: Array<Tiempo>?){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
+        var tarifa = 0.0
+        
         
         var item = 1
         
         for t in tiempos! {
             
             let newInvoiceDetail = NSEntityDescription.insertNewObjectForEntityForName("ReciboDetalle", inManagedObjectContext: context)
-            let tarifa = Double(t.tarifaHoras!)
+            
+            if t.tarifaHoras != 0 {
+                tarifa = Double(t.tarifaHoras!)
+            } else {
+                tarifa = Double((t.contrato?.contratoHoras?.tarifaHora)!)
+            }
+            
             let interval = t.horas!
             let subtotal = Double(Int(interval)/3600) * tarifa
             
@@ -79,6 +89,7 @@ class daoRecibo{
             newInvoiceDetail.setValue(t.horas, forKey: "nroHoras")
             newInvoiceDetail.setValue(t.tarifaHoras, forKey: "tarifaHoras")
             newInvoiceDetail.setValue(subtotal, forKey: "total")
+            newInvoiceDetail.setValue(t, forKey: "tiempo")
             item++
             
             t.setValue(obj, forKey: "recibo")

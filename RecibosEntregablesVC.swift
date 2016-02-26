@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class RecibosEntregablesVC: UIViewController{
+class RecibosEntregablesVC: UIViewController, invoiceOp{
 
     var origin = "ClassifierItem"
     var classifier = "Clientes"
@@ -40,6 +40,14 @@ class RecibosEntregablesVC: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func reloadEntregablesList() {
+        
+    }
+    
+    func reloadTimesList() {
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -158,6 +166,7 @@ class RecibosEntregablesVC: UIViewController{
             vc.entregable = self.selectedEntregable
             vc.tipoFact = "ENT"
             vc.cliente = self.selectedEntregable?.contrato?.cliente
+            vc.delegateAddress = self
         }
     }
 }

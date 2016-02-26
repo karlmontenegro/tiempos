@@ -9,14 +9,14 @@
 import UIKit
 import Foundation
 
-class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invoiceOp {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
-    @IBOutlet weak var classifierItemsDetailTV: UITableView!
+    @IBOutlet weak var tiemposTableView: UITableView!
     @IBOutlet weak var generateInvoiceButton: UIButton!
 
-    var tiemposDictionary:Dictionary<Cliente,Array<Tiempo>> = daoTiempo().getAllTiempos()!
+    var tiemposDictionary:Dictionary<Cliente,Array<Tiempo>> = daoTiempo().getAllActiveTiempos()!
     var tiemposKeys:Array<Cliente> = []
     
     var selectedTimesArray:Array<Tiempo> = [] //Tiempos seleccionados para facturar
@@ -32,7 +32,6 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         
         self.tiemposKeys = Array(self.tiemposDictionary.keys)
-        
         self.generateInvoiceButton.enabled = false
         // Do any additional setup after loading the view.
     }
@@ -40,6 +39,16 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func reloadTimesList() {
+        self.tiemposDictionary = daoTiempo().getAllActiveTiempos()!
+        self.tiemposKeys = Array(self.tiemposDictionary.keys)
+        self.tiemposTableView.reloadData()
+    }
+    
+    func reloadEntregablesList() {
+        //Doesn't get used
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -101,7 +110,7 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
             // Cancel action
             alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
-                self.classifierItemsDetailTV.reloadData()
+                self.tiemposTableView.reloadData()
             }))
             
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -181,6 +190,7 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             vc.tiemposArray = self.selectedTimesArray
             vc.tipoFact = "HRS"
             vc.cliente = self.selectedTimesArray.first?.cliente
+            vc.delegateAddress = self
         }
     }
 }

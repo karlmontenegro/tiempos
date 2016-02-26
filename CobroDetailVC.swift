@@ -25,8 +25,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     let today:NSDate = NSDate()
     var origin:String = ""
     
-    var entregables:Array<Entregable> = []
-    var tiempos:Array<Tiempo> = []
+    var reciboDetalle:Array<ReciboDetalle>? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +33,20 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         self.lblFechaEmision.text = self.dateFormatter.stringFromDate((self.rec?.fechaEmision!)!)
         self.lblCliente.text = self.rec?.cliente?.nombre
         
+        self.reciboDetalle = self.rec?.reciboDetalle?.allObjects as? Array<ReciboDetalle>
+        
+        if self.rec?.contrato != nil {
+            self.lblContrato.text = self.rec?.contrato?.nombreContrato
+            if self.rec?.contrato?.tipoFacturacion == "HRS" {
+                self.lblTipoFact.text = "Por Horas"
+            } else {
+                self.lblTipoFact.text = "Por Entregables"
+            }
+            
+        } else {
+            self.lblContrato.text = "(Varios Contratos)"
+            self.lblTipoFact.text = "Por Horas"
+        }
         
         if self.origin == "NC" {
             self.cobroButton.enabled = true
@@ -45,7 +58,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         }
         
         self.txtDescripcion.text = self.rec?.descripcion
-        self.lblMontoTotal.text = Double((self.rec?.valor)!).description
+        self.lblMontoTotal.text = (self.rec?.moneda?.descripcion)! + Double((self.rec?.valor)!).description
         // Do any additional setup after loading the view.
     }
 
@@ -69,14 +82,25 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-
-        return 0
+        return self.reciboDetalle!.count
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellDetail", forIndexPath: indexPath)
         
+        if self.rec?.contrato?.tipoFacturacion == "ENT" {
+            cell.textLabel?.text = self.reciboDetalle![indexPath.row].entregable?.nombreEntreg
+            cell.detailTextLabel?.text = "Tarifa: " + (self.rec?.moneda?.descripcion)! + Double(self.reciboDetalle![indexPath.row].total!).description
+        } else {
+            let interval = self.reciboDetalle![indexPath.row].nroHoras
+            let timeInterval = NSTimeInterval(interval!.doubleValue)
+                
+            let subtotal = Double(self.reciboDetalle![indexPath.row].total!)
+            
+            let moneda = self.rec?.moneda?.descripcion
+            cell.textLabel!.text = self.reciboDetalle![indexPath.row].tiempo?.titulo
+            cell.detailTextLabel!.text = "Horas: " + self.stringFromTimeInterval(timeInterval) + " - Subtotal: " + moneda! + subtotal.description
+        }
         
         return cell
     }
@@ -119,5 +143,11 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         // Pass the selected object to the new view controller.
     }
     */
-
+    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d horas %02d minutos", hours, minutes)
+    }
 }

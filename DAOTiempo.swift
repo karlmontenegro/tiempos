@@ -158,6 +158,30 @@ class daoTiempo{
 
     }
     
+    func getAllActiveTiempos()->Dictionary<Cliente,Array<Tiempo>>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Tiempo")
+        let pred = NSPredicate(format: "(convertido = %@)", 0)
+        let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
+        
+        let clienteSortDescriptor = NSSortDescriptor(key: "cliente.nombre", ascending: true)
+        request.sortDescriptors = [clienteSortDescriptor, contratoSortDescriptor]
+        request.predicate = pred
+        request.returnsObjectsAsFaults = false
+        
+        var results:Array<Tiempo> = []
+        
+        do{
+            try results = context.executeFetchRequest(request) as! Array<Tiempo>
+        } catch {
+            print(error)
+        }
+        return self.classifyTimesByClient(results)
+    }
+    
+    
     func getAllTiempos()->Dictionary<Cliente,Array<Tiempo>>?{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext

@@ -57,11 +57,17 @@ class CobrosTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
-        if indexPath.section == 0 {
-
-
-        } else {
         
+        if indexPath.section == 0 {
+            
+            if self.notCashedInvoices[indexPath.row].contrato != nil {
+                cell.textLabel!.text = self.notCashedInvoices[indexPath.row].contrato?.nombreContrato
+            } else {
+                cell.textLabel!.text = "(Sin Contrato)"
+            }
+            cell.detailTextLabel?.text = "Cliente: " + (self.notCashedInvoices[indexPath.row].cliente?.nombre)! + " Monto: " + Double(self.notCashedInvoices[indexPath.row].valor!).description
+        } else {
+            cell.textLabel!.text = self.cashedInvoices[indexPath.row].cliente?.nombre
             cell.detailTextLabel?.text = "Cliente: " + (self.cashedInvoices[indexPath.row].cliente?.nombre)! + " Monto: " + Double(self.cashedInvoices[indexPath.row].valor!).description
         }
         
