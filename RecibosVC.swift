@@ -178,11 +178,68 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
         }
     }
     
+    func sameCurrencyCheck(obj: Array<Tiempo>)->Bool {
+        var pivot:Moneda? = nil
+        
+        if obj.first!.moneda != nil {
+            pivot = obj.first!.moneda
+        } else {
+            pivot = obj.first!.contrato?.moneda
+        }
+        
+        for t in obj {
+            if t.moneda != nil {
+                if t.moneda != pivot {
+                    return false
+                }
+            } else {
+                if t.contrato != nil {
+                    if t.contrato?.moneda != pivot {
+                        return false
+                    }
+                } else {
+                    return true
+                }
+            }
+        }
+        return true
+    }
+    
+    func sameClientCheck(obj: Array<Tiempo>)->Bool {
+        let pivot:Cliente? = obj.first!.cliente
+        
+        for t in obj {
+            if t.cliente != pivot {
+                return false
+            }
+        }
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
 */
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        
+        if identifier == "createInvoiceTimeSegue" {
+            if !self.sameClientCheck(self.selectedTimesArray) {
+                self.alertMessage("Los tiempos a cobrar deben tener el mismo cliente", winTitle: "Error")
+                return false
+            } else {
+                if !self.sameCurrencyCheck(self.selectedTimesArray){
+                    self.alertMessage("Los tiempos a cobrar deben tener la misma moneda", winTitle: "Error")
+                    return false
+                } else {
+                    return true
+                }
+            }
+        }
+        return true
+    }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "createInvoiceTimeSegue" {
             let navVC = segue.destinationViewController as! UINavigationController
@@ -192,5 +249,14 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
             vc.cliente = self.selectedTimesArray.first?.cliente
             vc.delegateAddress = self
         }
+    }
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
