@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol cobrosOp {
+    func reloadCashedInvoices()
+}
+
 class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var lblFechaEmision: UILabel!
@@ -26,6 +30,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var origin:String = ""
     
     var reciboDetalle:Array<ReciboDetalle>? = nil
+    var delegateAddress:cobrosOp? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +121,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
             let confirmationController = UIAlertController(title: "Confirmación", message: "Se ha registrado el cobro del recibo exitosamente", preferredStyle:  UIAlertControllerStyle.Alert)
             
             confirmationController.addAction(UIAlertAction(title:"OK",style: UIAlertActionStyle.Default, handler: { (confirmationController) -> Void in
+                self.delegateAddress?.reloadCashedInvoices()
                 self.dismissViewControllerAnimated(true, completion: nil)
                 self.navigationController?.popToRootViewControllerAnimated(true)
                 

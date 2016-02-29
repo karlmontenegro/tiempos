@@ -124,21 +124,25 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CitaCell", forIndexPath: indexPath)
         
+        cell.accessoryType = UITableViewCellAccessoryType.None
+        
         let dateTitle:String = self.weekEventDictionary![self.weekEventKeyArray[indexPath.section]]![indexPath.row].title
         
         let calendarDate:EKEvent = self.weekEventDictionary![self.weekEventKeyArray[indexPath.section]]![indexPath.row]
         
         let date:Cita? = daoCita().getDateByEventId(calendarDate)
-        
+    
         if date != nil {
-            
             if date?.cliente != nil {
                 cell.detailTextLabel?.text = dateTitle + " - " + (date?.cliente?.nombre!)!
             } else {
                 cell.detailTextLabel?.text = dateTitle
             }
-            if date?.convertido == true {
+            
+            if date?.convertido! == 1 {
                 cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryType.None
             }
             
         } else {

@@ -202,22 +202,25 @@ class daoCita{
         let entityCita = NSEntityDescription.entityForName("Cita", inManagedObjectContext: context)
         
         let request = NSFetchRequest()
-        let pred = NSPredicate(format: "(eventRef = %@)", event.eventIdentifier )
+        let pred = NSPredicate(format: "eventRef = %@", event.eventIdentifier)
+        request.returnsObjectsAsFaults = false
         request.entity = entityCita
         request.predicate = pred
         
-        var result:NSArray = []
+        var result:Array<Cita> = []
         
         do{
-            try result = context.executeFetchRequest(request)
+            try result = context.executeFetchRequest(request) as! Array<Cita>
         }catch{
             print(error)
         }
-        if result.count > 0 {
-            return result[0] as? Cita
-        }else{
+        
+        if result.isEmpty {
             return nil
+        } else {
+            return result[0]
         }
+        
     }
     
     func getEventByDateId(cita:Cita, store:EKEventStore)->EKEvent? {

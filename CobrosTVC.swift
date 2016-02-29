@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CobrosTVC: UITableViewController {
+class CobrosTVC: UITableViewController,cobrosOp {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
 
@@ -30,6 +30,12 @@ class CobrosTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func reloadCashedInvoices() {
+        self.notCashedInvoices = daoRecibo().getAllPendingInvoices()!
+        self.cashedInvoices = daoRecibo().getAllCashedInvoices()!
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -109,6 +115,7 @@ class CobrosTVC: UITableViewController {
             if indexpath.section == 0 {
                 cobroVC.rec = self.notCashedInvoices[indexpath.row]
                 cobroVC.origin = "NC"
+                cobroVC.delegateAddress = self
             } else {
                 cobroVC.rec = self.cashedInvoices[indexpath.row]
                 cobroVC.origin = "C"

@@ -32,6 +32,7 @@ class CitaDetailTVC: UITableViewController,dateDetailOp {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
         
         self.cita = daoCita().getDateByEventId(self.event as! EKEvent)

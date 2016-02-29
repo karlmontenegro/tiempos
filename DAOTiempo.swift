@@ -163,7 +163,7 @@ class daoTiempo{
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         let request = NSFetchRequest(entityName: "Tiempo")
-        let pred = NSPredicate(format: "(convertido = %@)", 0)
+        let pred = NSPredicate(format: "(convertido = %@) AND ((contrato.tipoFacturacion = %@) OR (contrato = nil))", 0,"HRS")
         let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
         
         let clienteSortDescriptor = NSSortDescriptor(key: "cliente.nombre", ascending: true)
