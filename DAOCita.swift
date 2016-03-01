@@ -169,7 +169,7 @@ class daoCita{
         cita.setValue(end, forKey: "fechaFin")
         
         if contract != nil {
-            cita.setValue(contract, forKey: "contrato")
+            cita.setValue(contract!, forKey: "contrato")
             event.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract!.nombreContrato!
         }
         

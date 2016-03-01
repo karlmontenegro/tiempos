@@ -3024,7 +3024,7 @@
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JdQ-hS-ToS">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="(Sin Entregable)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JdQ-hS-ToS">
                                                     <rect key="frame" x="541" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7484,19 +7484,19 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uOR-nE-Lvj"/>
+        <segue reference="cX3-9R-G3m"/>
+        <segue reference="LiL-b8-wS2"/>
+        <segue reference="zH6-Ok-qU1"/>
+        <segue reference="jDx-tb-DDb"/>
+        <segue reference="jYA-1F-lOK"/>
+        <segue reference="r9m-EK-qsX"/>
+        <segue reference="nf2-hQ-ana"/>
+        <segue reference="iQF-LW-x4a"/>
+        <segue reference="PbR-Wd-DqE"/>
+        <segue reference="t29-F0-iXa"/>
+        <segue reference="fAi-QO-h1o"/>
         <segue reference="LhU-5B-JKu"/>
         <segue reference="wRK-05-tv0"/>
         <segue reference="Rm0-TT-V55"/>
-        <segue reference="LiL-b8-wS2"/>
-        <segue reference="IEm-rT-DGL"/>
-        <segue reference="fAi-QO-h1o"/>
-        <segue reference="t29-F0-iXa"/>
-        <segue reference="nf2-hQ-ana"/>
-        <segue reference="PbR-Wd-DqE"/>
-        <segue reference="iQF-LW-x4a"/>
-        <segue reference="r9m-EK-qsX"/>
-        <segue reference="cX3-9R-G3m"/>
-        <segue reference="zH6-Ok-qU1"/>
-        <segue reference="jDx-tb-DDb"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,7 +18,7 @@ extension Contrato {
     @NSManaged var nombreContrato: String?
     @NSManaged var tipoFacturacion: String?
     @NSManaged var moneda: Moneda?
-    @NSManaged var cita: Cita?
+    @NSManaged var cita: NSSet?
     @NSManaged var cliente: Cliente?
     @NSManaged var contratoHoras: ContratoHoras?
     @NSManaged var entregables: NSSet?

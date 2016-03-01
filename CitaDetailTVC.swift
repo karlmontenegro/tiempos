@@ -36,7 +36,9 @@ class CitaDetailTVC: UITableViewController,dateDetailOp {
         dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
         
         self.cita = daoCita().getDateByEventId(self.event as! EKEvent)
-           
+        
+        print(self.cita)
+        
         self.nomCita.text = (self.event as! EKEvent).title
         self.nomCliente.text = self.cita?.cliente?.nombre
         self.startDate.text = dateFormatter.stringFromDate((self.event as! EKEvent).startDate)

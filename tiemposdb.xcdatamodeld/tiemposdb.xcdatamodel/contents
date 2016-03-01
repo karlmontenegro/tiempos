@@ -36,7 +36,7 @@
         <attribute name="estado" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="nombreContrato" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tipoFacturacion" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cita" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cita" inverseName="contrato" inverseEntity="Cita" syncable="YES"/>
+        <relationship name="cita" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cita" inverseName="contrato" inverseEntity="Cita" syncable="YES"/>
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="contrato" inverseEntity="Cliente" syncable="YES"/>
         <relationship name="contratoHoras" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ContratoHoras" inverseName="contrato" inverseEntity="ContratoHoras" syncable="YES"/>
         <relationship name="entregables" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entregable" inverseName="contrato" inverseEntity="Entregable" syncable="YES"/>
