@@ -27,12 +27,14 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     var tipoFact:String = "ENT"
     var hideSectionHoras:Int = 1
     var hideSectionEnt:Int = 0
+    var hideRowsEnt: Int = 0
     
     @IBOutlet weak var lblNombreCliente: UILabel!
     @IBOutlet weak var lblCurrency: UILabel!
     @IBOutlet weak var lblTipoFacturacion: UILabel!
     @IBOutlet weak var factSwitch: UISwitch!
     @IBOutlet weak var txtNombreContrato: UITextField!
+    @IBOutlet weak var txtNombreEntregable: UITextField!
 
     //FACTURACIÓN POR HORAS
     
@@ -43,8 +45,14 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     //FACTURACIÓN POR ENTREGABLES
     
-    var numEntregables:Int = 0
+    var numEntregables:Int = 1
+    var entregableUno:Entregable? = nil
+    
+    @IBOutlet weak var tituloEntregableCell: UITableViewCell!
+    @IBOutlet weak var tarifaEntregableCell: UITableViewCell!
     @IBOutlet weak var lblNumEntregables: UILabel!
+    @IBOutlet weak var txtTituloEntregableUno: UITextField!
+    @IBOutlet weak var txtTarifaEntregableUno: UITextField!
     
     override func viewWillAppear(animated: Bool) {
         if self.origin == "EDIT" {
@@ -67,13 +75,14 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.lblTipoFacturacion.text = "Por Entregables"
             self.lblTotalReferencial.text = "0.0"
             self.navigationTitle.title = "Nuevo Contrato"
-            self.lblNumEntregables.text = "Entregables: " + self.numEntregables.description
+            self.lblNumEntregables.text = "+ Añadir más entregables"
             
             if self.moneda == nil {
                 self.lblCurrency.text = "+ Moneda de Facturación"
             } else {
                 self.lblCurrency.text = (self.moneda?.id)! + (self.moneda?.descripcion)!
                 daoContrato().updateContract("", tipoFact: "", moneda: self.moneda!, client: nil, object: self.contrato!)
+                
             }
         }
         
@@ -82,6 +91,9 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.moneda = (self.contrato?.moneda)!
             self.tipoFact = (self.contrato?.tipoFacturacion)!
             self.navigationTitle.title = "Editar Contrato"
+            self.hideRowsEnt = 1
+            self.tituloEntregableCell.hidden = true
+            self.tarifaEntregableCell.hidden = true
             
             self.lblNombreCliente.text = self.cliente!.nombre
             self.txtNombreContrato.text = self.contrato?.nombreContrato
@@ -92,6 +104,9 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 self.factSwitch.on = true
                 self.lblNumEntregables.text = "Entregables: " + (self.contrato?.entregables!.count.description)!
                 self.numEntregables = (self.contrato?.entregables!.count)!
+                
+                
+                
             } else { //Por Horas
                 
                 self.contratoHoras = self.contrato?.contratoHoras
@@ -135,10 +150,14 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.hideSectionEnt = 1
             self.tipoFact = "HRS"
             daoEntregable().deleteAllEntregables(self.contrato!)
-            self.numEntregables = 0
-            self.lblNumEntregables.text = "Entregables: 0"
+            self.numEntregables = 1
+            self.lblNumEntregables.text = "+ Añadir mas entregables"
             self.tableView.reloadData()
         }
+    }
+    
+    @IBAction func tituloContratoChanged(sender: AnyObject) {
+        self.txtTituloEntregableUno.text = self.txtNombreContrato.text
     }
 
     @IBAction func horasTotalesChanged(sender: UITextField) {
@@ -162,8 +181,21 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 } else {
                     
                 if self.tipoFact == "ENT" {
-                    if self.numEntregables == 0 {
-                        self.alertMessage("El contrato por entregables debe tener por lo menos uno de éstos.", winTitle: "Error")
+                    if self.origin == "NEW" {
+                        if self.txtTituloEntregableUno.text == "" {
+                            self.alertMessage("El entregable debe tener un título", winTitle: "Error")
+                        } else {
+                            if self.txtTarifaEntregableUno.text == "" {
+                                self.alertMessage("El entregable debe tener una tarifa", winTitle: "Error")
+                            }else {
+                                self.entregableUno = daoEntregable().genericEntregable()
+                                daoEntregable().updateEntregable(self.txtTituloEntregableUno.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!)
+                                
+                                self.contrato?.addEntregable(self.entregableUno!)
+                                
+                                daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
+                            }
+                        }
                     } else {
                         daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
                     }
@@ -205,7 +237,10 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     }
     
     func returnNumEntregablesToContract(num: Int) {
-        self.lblNumEntregables.text = "Entregables: " + num.description
+        
+        if self.origin == "EDIT" {
+            self.lblNumEntregables.text = "Entregables: " + num.description
+        }
         self.numEntregables = num
     }
     // FIXED TABLEVIEW OPERATIONS
@@ -223,7 +258,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         
         if section == 5 { //Sección por Entregables
             if self.hideSectionHoras == 1 && self.hideSectionEnt == 0 {
-                return 1
+                return 3
             }
             if self.hideSectionHoras == 0 && self.hideSectionEnt == 1 {
                 return 0
@@ -255,6 +290,21 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         }
         return 32
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 5 {
+            if self.origin == "EDIT" {
+                if indexPath.row == 0 {
+                    return 0
+                }
+                if indexPath.row == 1 {
+                    return 0
+                }
+            }
+        }
+        return 44
+    }
+    
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
