@@ -48,7 +48,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     }
     
     func showContactInterface(contacto: AnyObject) {
-        print(self.addressBookRef)
+        //print(self.addressBookRef)
         
         let peopleViewController = ABPersonViewController()
         

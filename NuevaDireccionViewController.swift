@@ -39,7 +39,7 @@ class NuevaDireccionViewController: UIViewController {
 
     @IBAction func saveButton(sender: UIBarButtonItem) {
        
-            daoDireccion().newAddress(data as! Cliente, dir: self.direccion.text!,ref1: self.refUno.text!,ref2: self.refDos.text!, p: prinSwitch.on)
+        daoDireccion().newAddress(data as! Cliente, dir: self.direccion.text!,ref1: self.refUno.text!,ref2: self.refDos.text!, p: prinSwitch.on)
     
         delegateAddress!.refreshAddressesDelegate()
         dismissViewControllerAnimated(true, completion: nil)

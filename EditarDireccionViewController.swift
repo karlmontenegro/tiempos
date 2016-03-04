@@ -49,6 +49,7 @@ class EditarDireccionViewController: UIViewController {
     }
 
     @IBAction func cancelTapped(sender: UIBarButtonItem) {
+        delegateAddress!.refreshAddressesDelegate()
         dismissViewControllerAnimated(true, completion: nil)
     }
     /*
