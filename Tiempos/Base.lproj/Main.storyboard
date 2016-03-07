@@ -1705,11 +1705,13 @@
                                         <items>
                                             <navigationItem title="Editar Dirección" id="Bl9-11-JeA">
                                                 <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wcz-Td-tyd">
+                                                    <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="cancelTapped:" destination="8g9-O3-lqi" id="Bw7-WZ-Umw"/>
                                                     </connections>
                                                 </barButtonItem>
                                                 <barButtonItem key="rightBarButtonItem" systemItem="save" id="9ae-Aj-2t9">
+                                                    <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="saveTapped:" destination="8g9-O3-lqi" id="4uQ-KS-QKa"/>
                                                     </connections>
@@ -2514,11 +2516,13 @@
                                         <items>
                                             <navigationItem title="Nueva Dirección" id="rNp-nM-bVJ">
                                                 <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="C9z-N5-h1c">
+                                                    <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="cancelButton:" destination="vU9-5t-WLz" id="w90-lJ-VUv"/>
                                                     </connections>
                                                 </barButtonItem>
                                                 <barButtonItem key="rightBarButtonItem" systemItem="save" id="Jdt-Ru-jrp">
+                                                    <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="saveButton:" destination="vU9-5t-WLz" id="vWi-Cj-9uS"/>
                                                     </connections>

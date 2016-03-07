@@ -15,7 +15,7 @@
 import UIKit
 import Foundation
 
-class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperations, entOperations  {
+class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperations, entOperations, UITextFieldDelegate  {
     
     @IBOutlet weak var navigationTitle: UINavigationItem!
 
@@ -70,7 +70,8 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.txtNombreContrato.delegate = self
+        
         if self.origin == "NEW" {
             self.lblTipoFacturacion.text = "Por Entregables"
             self.lblTotalReferencial.text = "0.0"
@@ -129,6 +130,11 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.txtNombreContrato.endEditing(true)
+        return false
     }
     
     // ACTIONS

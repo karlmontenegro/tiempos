@@ -123,16 +123,19 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
                 let cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as! TextInputTableViewCell
                 cell.configure(text: self.txtNombre, placeholder: "Nombre")
                 cell.delegateAddress = self
+                cell.txtName.autocapitalizationType = UITextAutocapitalizationType.Words
                 return cell
             }
             if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as! TextInputTableViewCell
                 cell.configure(text: self.txtRazSoc, placeholder: "Razón Social")
+                cell.txtName.autocapitalizationType = UITextAutocapitalizationType.Words
                 cell.delegateAddress = self
                 return cell
             }else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as! TextInputTableViewCell
                 cell.configure(text: self.txtRUC, placeholder: "RUC")
+                cell.txtName.keyboardType = UIKeyboardType.NumberPad
                 cell.delegateAddress = self
                 return cell
             }

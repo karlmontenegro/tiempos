@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import EventKitUI
 
-class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp,entregableOp {
+class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp,entregableOp,UITextFieldDelegate {
 
     @IBOutlet weak var lblCliente: UILabel!
     @IBOutlet weak var txtNomCita: UITextField!
@@ -33,7 +33,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         super.viewDidLoad()
         dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
         
-        
+        self.txtNomCita.delegate = self
         
         self.lblStartDate.text = self.dateFormatter.stringFromDate(self.startDate!)
         self.endDate = self.startDate!.dateByAddingTimeInterval(1.0 * 60.0 * 60.0)
@@ -47,6 +47,11 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     func returnClientToDate(client: Cliente) {
         self.cliente = client
         self.lblCliente.text = client.nombre
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.txtNomCita.endEditing(true)
+        return false
     }
     
     func returnDateTimeToDate(date: NSDate, type: String) {

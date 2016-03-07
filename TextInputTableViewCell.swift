@@ -12,7 +12,7 @@ protocol textInputOp {
     func returnTextValue(text:String, placeholder:String)
 }
 
-class TextInputTableViewCell: UITableViewCell{
+class TextInputTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var txtName: UITextField!
     var delegateAddress:textInputOp? = nil
@@ -28,6 +28,7 @@ class TextInputTableViewCell: UITableViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.txtName.delegate = self
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -37,5 +38,10 @@ class TextInputTableViewCell: UITableViewCell{
     
     @IBAction func textEditChanged(sender: UITextField) {
         self.delegateAddress?.returnTextValue(self.txtName.text!, placeholder: self.txtName.placeholder!)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.txtName.endEditing(true)
+        return false
     }
 }
