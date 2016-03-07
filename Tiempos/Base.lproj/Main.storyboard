@@ -638,7 +638,6 @@
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="oqT-5b-Lly" id="pEo-zQ-hol"/>
-                                <segue destination="SG3-nr-eLY" kind="show" id="vjv-50-TbC"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Siguiente" id="M4A-T1-r1O">
@@ -658,7 +657,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opM-lV-FXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2644.5" y="790.5"/>
+            <point key="canvasLocation" x="3001.5" y="1548.75"/>
         </scene>
         <!--Nuevo Contrato-->
         <scene sceneID="XOH-ch-gKF">
@@ -1582,7 +1581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CzG-EO-E2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2064" y="1491.75"/>
+            <point key="canvasLocation" x="1944" y="1452"/>
         </scene>
         <!--Clientes-->
         <scene sceneID="d0N-8F-9Ue">
@@ -1616,9 +1615,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="QYB-cG-wW5" kind="show" identifier="sendClient" id="NWw-8S-G1o"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -1634,17 +1630,21 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hhM-A2-L8S">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="oqT-5b-Lly" kind="show" id="h1j-cV-RFX"/>
+                                <segue destination="7LT-fD-JG0" kind="popoverPresentation" identifier="newClient" popoverAnchorBarButtonItem="hhM-A2-L8S" id="VFB-6c-lUa">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="menuButton" destination="9hZ-bb-ROP" id="wpV-QS-QeD"/>
+                        <segue destination="7LT-fD-JG0" kind="popoverPresentation" identifier="sendClient" popoverAnchorView="R3f-ZF-hdO" id="Vgj-sz-mG7">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HH-UC-rcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="OGP-SN-hn2"/>
             </objects>
             <point key="canvasLocation" x="1951.5" y="790.5"/>
         </scene>
@@ -1683,7 +1683,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWe-O2-WbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2524.5" y="2199.75"/>
+            <point key="canvasLocation" x="2839.5" y="1785.75"/>
         </scene>
         <!--Editar Direccion View Controller-->
         <scene sceneID="C9A-IL-8CT">
@@ -1794,7 +1794,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rUH-Zo-2Yu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4996.5" y="846.75"/>
+            <point key="canvasLocation" x="4120.5" y="794.25"/>
         </scene>
         <!--Detalle Cliente View Controller-->
         <scene sceneID="G59-Uy-jOZ">
@@ -2066,14 +2066,12 @@
                         <outlet property="lblRUC" destination="uq0-t6-WPA" id="P0W-dn-ySx"/>
                         <outlet property="lblRazonSocial" destination="px6-C9-5wX" id="2i1-DR-ydP"/>
                         <outlet property="viewTitle" destination="hth-IK-DeK" id="qGa-6v-1Z2"/>
-                        <segue destination="vU9-5t-WLz" kind="presentation" identifier="addAddress" modalPresentationStyle="overCurrentContext" id="U9r-3S-MVQ"/>
                         <segue destination="vFK-11-8dd" kind="presentation" identifier="editClientSegue" modalPresentationStyle="overCurrentContext" id="gst-WA-uJV"/>
-                        <segue destination="8g9-O3-lqi" kind="presentation" identifier="editAddressSegue" modalPresentationStyle="overCurrentContext" id="Y2E-oR-Ynu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vl4-EP-x5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4453.5" y="1500"/>
+            <point key="canvasLocation" x="3669" y="1548.75"/>
         </scene>
         <!--Nuevo Cliente-->
         <scene sceneID="5ZF-i7-but">
@@ -2095,6 +2093,9 @@
                                             <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="textEditChanged:" destination="s0J-Mb-yIp" eventType="editingChanged" id="MVy-vx-oIg"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -2208,13 +2209,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addContactButton" textLabel="eBd-8j-SLa" style="IBUITableViewCellStyleDefault" id="f4n-ez-Z4L">
-                                <rect key="frame" x="0.0" y="202" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="246" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f4n-ez-Z4L" id="dJV-5a-yhD">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Agregar Contactos" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eBd-8j-SLa">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2227,13 +2229,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addAddressButton" textLabel="Ssj-fF-Jkh" style="IBUITableViewCellStyleDefault" id="o1J-v3-yNl">
-                                <rect key="frame" x="0.0" y="202" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="290" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o1J-v3-yNl" id="r9w-r3-CMS">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Agregar Direcciones" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ssj-fF-Jkh">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2249,13 +2252,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="contactCell" textLabel="YGv-J1-Kqn" style="IBUITableViewCellStyleDefault" id="KS7-yD-Fzl">
-                                <rect key="frame" x="0.0" y="202" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="334" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KS7-yD-Fzl" id="0mC-dk-qaM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YGv-J1-Kqn">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2268,13 +2272,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="addressCell" textLabel="lCJ-x0-fX5" detailTextLabel="T6D-al-diV" style="IBUITableViewCellStyleValue1" id="O3h-OB-tVF">
-                                <rect key="frame" x="0.0" y="202" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="378" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O3h-OB-tVF" id="UQM-O0-kMH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lCJ-x0-fX5">
+                                            <rect key="frame" x="15" y="12" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2284,6 +2289,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T6D-al-diV">
+                                            <rect key="frame" x="521" y="12" width="44" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -2317,12 +2323,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="winTitle" destination="jH7-My-b42" id="TNj-xD-xyW"/>
                         <segue destination="8g9-O3-lqi" kind="presentation" identifier="editAddressSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="kWc-F1-iXa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXQ-Xd-eUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4143" y="790.5"/>
+            <point key="canvasLocation" x="3393" y="790.5"/>
         </scene>
         <!--Editar Cliente-->
         <scene sceneID="qXq-sc-xYq">
@@ -2417,7 +2424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myp-WN-lWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3684" y="1524.75"/>
+            <point key="canvasLocation" x="3718.5" y="1575.75"/>
         </scene>
         <!--Direcciones Por Cliente Table View Controller-->
         <scene sceneID="A4L-sY-LyQ">
@@ -2461,7 +2468,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42r-pO-2up" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3375" y="2199.75"/>
+            <point key="canvasLocation" x="2839.5" y="1552.875"/>
         </scene>
         <!--Nueva Direccion View Controller-->
         <scene sceneID="ed7-V1-sbb">
@@ -2566,7 +2573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hO7-6c-qKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5080.5" y="784.5"/>
+            <point key="canvasLocation" x="4183.5" y="819"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RTu-LN-k5U">
@@ -6507,7 +6514,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XxQ-dp-Ere" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3397.5" y="790.5"/>
+            <point key="canvasLocation" x="2668.5" y="790.5"/>
         </scene>
         <!--Recibos-->
         <scene sceneID="oX7-Vi-3fJ">
@@ -7670,22 +7677,19 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dCZ-n0-8xb"/>
-        <segue reference="zH6-Ok-qU1"/>
-        <segue reference="NWw-8S-G1o"/>
-        <segue reference="cX3-9R-G3m"/>
         <segue reference="LhU-5B-JKu"/>
-        <segue reference="wRK-05-tv0"/>
-        <segue reference="Rm0-TT-V55"/>
+        <segue reference="uOR-nE-Lvj"/>
+        <segue reference="cX3-9R-G3m"/>
         <segue reference="LiL-b8-wS2"/>
+        <segue reference="Vgj-sz-mG7"/>
         <segue reference="jYA-1F-lOK"/>
+        <segue reference="fAi-QO-h1o"/>
         <segue reference="r9m-EK-qsX"/>
-        <segue reference="t29-F0-iXa"/>
+        <segue reference="nf2-hQ-ana"/>
         <segue reference="iQF-LW-x4a"/>
         <segue reference="PbR-Wd-DqE"/>
-        <segue reference="nf2-hQ-ana"/>
-        <segue reference="fAi-QO-h1o"/>
-        <segue reference="kWc-F1-iXa"/>
-        <segue reference="wDo-Wh-8cB"/>
+        <segue reference="t29-F0-iXa"/>
+        <segue reference="wRK-05-tv0"/>
+        <segue reference="Rm0-TT-V55"/>
     </inferredMetricsTieBreakers>
 </document>

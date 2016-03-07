@@ -10,20 +10,21 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
-class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressTableAfterEdit,ABPeoplePickerNavigationControllerDelegate {
+class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressTableAfterEdit,ABPeoplePickerNavigationControllerDelegate,textInputOp {
 
+    @IBOutlet weak var winTitle: UINavigationItem!
     
-    var cliente:Cliente = daoCliente().newClient("", ruc: "", razonSoc: "", direccion: "", usuario: "")
+    var source:String = "" //New Client or Edit Client
     
-    var rowCountPhones:Int = 0
-    var rowCountAddresses:Int = 0
-    var rowAdded:Bool = false
+    var cliente:Cliente? = nil
+    var txtNombre:String = ""
+    var txtRazSoc:String = ""
+    var txtRUC:String = ""
     
     var contactArray:Array<Contacto>? = nil
     
-    var addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil , nil).takeRetainedValue()
+    let addressBookRef: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
     var arrContactsData:NSMutableArray = []
-    
     
     var addressArray:Array<Direccion>? = nil
     var editableAddress:Direccion? = nil
@@ -31,9 +32,21 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.contactArray = self.cliente.contacto?.allObjects as? Array<Contacto>
-        self.addressArray = self.cliente.direccion?.allObjects as? Array<Direccion>
+        if self.source == "NEW" { //New Client
+            
+            self.cliente = daoCliente().genericClient()
+            self.winTitle.title = "Nuevo Cliente"
+            
+        } else { //Edit Client
+            
+            self.winTitle.title = "Editar Cliente"
+            self.txtNombre = self.cliente!.nombre!
+            self.txtRazSoc = self.cliente!.razonSocial!
+            self.txtRUC = self.cliente!.ruc!
+        }
         
+        self.contactArray = self.cliente!.contacto?.allObjects as? Array<Contacto>
+        self.addressArray = self.cliente!.direccion?.allObjects as? Array<Direccion>
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,10 +55,22 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
     }
     
     func refreshAddressesDelegate() {
-        self.contactArray = self.cliente.contacto?.allObjects as? Array<Contacto>
-        self.addressArray = self.cliente.direccion?.allObjects as? Array<Direccion>
+        self.contactArray = self.cliente!.contacto?.allObjects as? Array<Contacto>
+        self.addressArray = self.cliente!.direccion?.allObjects as? Array<Direccion>
         
         self.tableView.reloadData()
+    }
+    
+    func returnTextValue(text: String, placeholder: String) {
+        if placeholder == "Nombre" {
+            self.txtNombre = text
+        }
+        if placeholder == "Razón Social" {
+            self.txtRazSoc = text
+        }
+        if placeholder == "RUC" {
+            self.txtRUC = text
+        }
     }
     
     // MARK: - Table view data source
@@ -96,16 +121,19 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as! TextInputTableViewCell
-                cell.configure(text: "", placeholder: "Nombre")
+                cell.configure(text: self.txtNombre, placeholder: "Nombre")
+                cell.delegateAddress = self
                 return cell
             }
             if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as! TextInputTableViewCell
-                cell.configure(text: "", placeholder: "Razón Social")
+                cell.configure(text: self.txtRazSoc, placeholder: "Razón Social")
+                cell.delegateAddress = self
                 return cell
             }else {
                 let cell = tableView.dequeueReusableCellWithIdentifier("infoCell", forIndexPath: indexPath) as! TextInputTableViewCell
-                cell.configure(text: "", placeholder: "RUC")
+                cell.configure(text: self.txtRUC, placeholder: "RUC")
+                cell.delegateAddress = self
                 return cell
             }
         }else {
@@ -153,9 +181,7 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
                 people.editing = true
                 presentViewController(people, animated: true, completion: nil)
             } else { //Lista de Contactos
-                print(self.contactArray![indexPath.row - 1])
-                    
-                //self.showContactInterface(self.contactArray![indexPath.row - 1])
+                self.showContactInterface(self.contactArray![indexPath.row - 1])
             }
         }
         if indexPath.section == 2 { //Botón de Direcciones
@@ -164,10 +190,48 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
             }
         }
     }
-    
 
-    
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
+        
+        if indexPath.section == 1 { //Contactos
+            let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+                // Alerts before the delete just in case it wasn't meant to be
+                let alertController = UIAlertController(title: "Atención", message:
+                    "¿Estás seguro que quieres borrar este contacto?", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                // Delete action
+                alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                    // Deletes the row from the DAO
+                    daoContacto().deleteContactAt(self.contactArray![indexPath.row - 1])
+                    
+                    // Deletes the element from the array
+                    self.contactArray!.removeAtIndex(indexPath.row - 1)
+                    
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }))
+                
+                // Cancel action
+                alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+                    self.tableView.reloadData()
+                }))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+            })
+            
+            let edit = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Editar", handler: { (action: UITableViewRowAction!, indexPath:NSIndexPath) -> Void in
+                self.editableAddress = self.addressArray![indexPath.row - 1]
+                self.performSegueWithIdentifier("editAddressSegue", sender: self)
+            })
+            
+            delete.backgroundColor = UIColor.redColor()
+            edit.backgroundColor = UIColor.orangeColor()
+            
+            return [delete]
+
+        } else {
+            return nil
+        }
         
         if indexPath.section == 2 { //Direcciones
         
@@ -212,11 +276,29 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
     
     
     @IBAction func saveTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        let indexName = NSIndexPath(forItem: 0, inSection: 0)
+        let indexRS = NSIndexPath(forItem: 1, inSection: 0)
+        let indexRUC = NSIndexPath(forItem: 2, inSection: 0)
+
+        let cellName = self.tableView.cellForRowAtIndexPath(indexName) as! TextInputTableViewCell
+        let cellRS = self.tableView.cellForRowAtIndexPath(indexRS) as! TextInputTableViewCell
+        let cellRUC = self.tableView.cellForRowAtIndexPath(indexRUC) as! TextInputTableViewCell
+        
+        
+        if cellName.txtName.text == "" {
+            self.alertMessage("El cliente necesariamente debe tener un nombre", winTitle: "Error")
+        } else {
+            daoCliente().updateClient(self.cliente!, nombre: cellName.txtName.text!, razSoc: cellRS.txtName.text!, ruc: cellRUC.txtName.text!)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     @IBAction func cancelTapped(sender: AnyObject) {
-        daoCliente().deleteClientAt(self.cliente)
+        
+        if self.source == "NEW" {
+            daoCliente().deleteClientAt(self.cliente!)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
@@ -231,7 +313,7 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         if segue.identifier == "addAddressSegue" {
             let vc:NuevaDireccionViewController = segue.destinationViewController as! NuevaDireccionViewController
             vc.delegateAddress = self
-            vc.data = self.cliente
+            vc.data = self.cliente!
         }
         
         if segue.identifier == "editAddressSegue" {
@@ -260,19 +342,17 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         
         let idNumber:NSNumber = NSNumber(int: recordId)
         
-        daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber,cliente: self.cliente)
+        daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber,cliente: self.cliente!)
         self.refreshAddressesDelegate()
     }
     
     func showContactInterface(contacto: Contacto) {
         
         let peopleViewController = ABPersonViewController()
+        let recID = ABRecordID(integerLiteral: contacto.recordRef!.intValue)
         
-        let recordID:ABRecordID = (contacto.recordRef?.intValue as ABRecordID?)!
+        peopleViewController.displayedPerson = ABAddressBookGetPersonWithRecordID(self.addressBookRef, recID).takeRetainedValue()
         
-        let recordRef:ABRecordRef? = ABAddressBookGetPersonWithRecordID(self.addressBookRef, recordID).takeRetainedValue()
-        
-        peopleViewController.displayedPerson = recordRef!
         self.navigationController?.pushViewController(peopleViewController, animated: true)
     }
     
@@ -282,6 +362,15 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         let alertController = UIAlertController(title: "Dirección", message:
             dir, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

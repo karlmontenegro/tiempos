@@ -62,23 +62,20 @@ class ClientesTableViewController: UITableViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "sendClient"){
-            let vc: DetalleClienteViewController = segue.destinationViewController as! DetalleClienteViewController
-            
+        if segue.identifier == "newClient" {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let clientVC = navVC.viewControllers.first as! NuevoClienteTVC
+            clientVC.source = "NEW"
+        }
+        
+        if segue.identifier == "sendClient" {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let clientVC = navVC.viewControllers.first as! NuevoClienteTVC
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
-            
-            vc.data = self.arreglo[indexpath.row]
-            vc.origin = "EDIT"
+            clientVC.cliente = self.arreglo[indexpath.row]
+            clientVC.source = "EDIT"
         }
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        
-        return true
-    }
-    */
 
     // Override to support editing the table view.
     
@@ -88,6 +85,10 @@ class ClientesTableViewController: UITableViewController {
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("sendClient", sender: self)
     }
 
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
@@ -120,13 +121,6 @@ class ClientesTableViewController: UITableViewController {
        
         return [delete]
     }
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
 
     /*
     // Override to support conditional rearranging of the table view.

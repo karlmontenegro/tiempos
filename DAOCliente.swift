@@ -11,6 +11,26 @@ import UIKit
 import CoreData
 
 class daoCliente{
+    
+    func genericClient()->Cliente {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let newClient = NSEntityDescription.insertNewObjectForEntityForName("Cliente",inManagedObjectContext: context)
+        
+        newClient.setValue("", forKey: "ruc")
+        newClient.setValue("", forKey: "nombre")
+        newClient.setValue("", forKey: "razonSocial")
+        
+        do{
+            try context.save()
+        }catch{
+            print(error)
+        }
+        
+        return newClient as! Cliente
+    }
+    
     func newClient(nombre: String, ruc: String, razonSoc: String, direccion:String, usuario: String)->Cliente{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
