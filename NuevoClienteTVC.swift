@@ -233,8 +233,6 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
             return [delete]
 
         } else {
-            return nil
-        }
         
         if indexPath.section == 2 { //Direcciones
         
@@ -274,6 +272,7 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
             return [edit,delete]
         } else {
             return nil
+        }
         }
     }
     

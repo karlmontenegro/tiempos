@@ -18,7 +18,8 @@ import Foundation
 class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperations, entOperations, UITextFieldDelegate  {
     
     @IBOutlet weak var navigationTitle: UINavigationItem!
-
+    var keyboardVisible:Bool = false
+    
     var contrato:Contrato? = nil
     var origin:String = ""
     
@@ -71,6 +72,16 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtNombreContrato.delegate = self
+        self.txtTarifaEntregableUno.delegate = self
+        self.txtTotalHoras.delegate = self
+        self.txtTarifaPorHoras.delegate = self
+        self.txtTituloEntregableUno.delegate = self
+        self.txtNombreEntregable.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
         
         if self.origin == "NEW" {
             self.lblTipoFacturacion.text = "Por Entregables"
@@ -127,15 +138,54 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         }
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.txtNombreContrato.endEditing(true)
+        self.txtNombreEntregable.endEditing(true)
+        self.txtTarifaEntregableUno.endEditing(true)
+        self.txtTarifaPorHoras.endEditing(true)
+        self.txtTituloEntregableUno.endEditing(true)
+        self.txtTotalHoras.endEditing(true)
+        return false
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        self.view.layoutIfNeeded()
+        if self.keyboardVisible == false && !self.txtNombreContrato.editing {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                
+                self.view.layoutIfNeeded()
+                UIView.animateWithDuration(1, animations: {
+                    self.view.frame.origin.y -= keyboardSize.height
+                    self.view.layoutIfNeeded()
+                })
+            }
+            
+            self.keyboardVisible = true
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if self.keyboardVisible == true {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                
+                self.view.layoutIfNeeded()
+                UIView.animateWithDuration(1, animations: {
+                    self.view.frame.origin.y += keyboardSize.height
+                    self.view.layoutIfNeeded()
+                })
+            }
+            self.keyboardVisible = false
+        }
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.txtNombreContrato.endEditing(true)
-        return false
-    }
     
     // ACTIONS
 
