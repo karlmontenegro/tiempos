@@ -23,6 +23,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     @IBOutlet weak var cobroButton: UIBarButtonItem!
     @IBOutlet weak var navigationTitle: UINavigationItem!
     @IBOutlet weak var lblFechaCobro: UILabel!
+    @IBOutlet weak var lblFechaVenc: UILabel!
     
     var rec:Recibo? = nil
     let dateFormatter = NSDateFormatter()
@@ -37,6 +38,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         self.dateFormatter.dateFormat = "dd/MM/yyyy"
         self.lblFechaEmision.text = self.dateFormatter.stringFromDate((self.rec?.fechaEmision!)!)
         self.lblCliente.text = self.rec?.cliente?.nombre
+        self.lblFechaVenc.text = self.dateFormatter.stringFromDate((self.rec?.fechaVencimiento!)!)
         
         self.reciboDetalle = self.rec?.reciboDetalle?.allObjects as? Array<ReciboDetalle>
         

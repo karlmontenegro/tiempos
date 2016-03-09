@@ -189,7 +189,8 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         }
         if indexPath.section == 2 { //Botón de Direcciones
             if indexPath.row > 0 { //Lista de Direcciones
-                self.showAddressModal(self.addressArray![indexPath.row - 1])
+                self.editableAddress = self.addressArray![indexPath.row - 1]
+                self.performSegueWithIdentifier("editAddressSegue", sender: self)
             }
         }
     }
@@ -269,7 +270,7 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
             delete.backgroundColor = UIColor.redColor()
             edit.backgroundColor = UIColor.orangeColor()
             
-            return [edit,delete]
+            return [delete]
         } else {
             return nil
         }

@@ -43,11 +43,13 @@ class RecibosEntregablesVC: UIViewController, invoiceOp{
     }
     
     func reloadEntregablesList() {
-        
+        self.entregablesDictionary = daoEntregable().getAllEntregables()!
+        self.entregablesKeys = Array(self.entregablesDictionary.keys)
+        self.classifierItemsTable.reloadData()
     }
     
     func reloadTimesList() {
-        
+        //None
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

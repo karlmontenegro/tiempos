@@ -14,7 +14,7 @@ protocol invoiceOp {
     func reloadEntregablesList()
 }
 
-class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSource, tarifaOp {
+class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSource, tarifaOp, dateTimeOp {
 
     var entregable:Entregable? = nil
     var tiemposArray:Array<Tiempo> = []
@@ -23,6 +23,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var tipoFact:String = ""
     var montoTotal:Double? = nil
     var delegateAddress: invoiceOp? = nil
+    var dueDate:NSDate? = nil
     
     let dateFormatter = NSDateFormatter()
     let today:NSDate = NSDate()
@@ -33,11 +34,13 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var lblFechaEmision: UILabel!
     @IBOutlet weak var lblMontoTotal: UILabel!
     @IBOutlet weak var txtDescripcion: UITextView!
+    @IBOutlet weak var btnFechaVencimiento: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dateFormatter.dateFormat = "dd/MM/yyyy"
+        self.dateFormatter.dateFormat = "dd/MM/yy"
         self.lblFechaEmision.text = self.dateFormatter.stringFromDate(self.today)
+        self.btnFechaVencimiento.setTitle(self.lblFechaEmision.text!, forState: UIControlState.Normal)
         self.lblNomCliente.text = self.cliente?.nombre
         if self.tipoFact == "HRS" {
             self.lblTipoFact.text = "Por Horas"
@@ -177,7 +180,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     alertController.addAction(UIAlertAction(title: "Emitir", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                         
                         //Se crea la cabecera del recibo
-                        let recibo:Recibo? = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.findContractInArray(self.tiemposArray), total: self.montoTotal, moneda: self.findCurrencyInArray(self.tiemposArray),description: self.txtDescripcion.text)
+                        let recibo:Recibo? = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.findContractInArray(self.tiemposArray), total: self.montoTotal, moneda: self.findCurrencyInArray(self.tiemposArray),description: self.txtDescripcion.text, dueDate: self.dueDate!)
                             
                         //Se añaden los elementos del recibo detalle
                         daoRecibo().addTiemposToInvoice(recibo!, tiempos: self.tiemposArray)
@@ -198,7 +201,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
                 alertController.addAction(UIAlertAction(title: "Emitir", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                     
-                    let recibo: Recibo? = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.entregable?.contrato, total: Double((self.entregable?.tarifa)!), moneda: self.entregable?.moneda, description: self.txtDescripcion.text)
+                    let recibo: Recibo? = daoRecibo().createGenericNewInvoice(self.today, client: self.cliente, contract: self.entregable?.contrato, total: Double((self.entregable?.tarifa)!), moneda: self.entregable?.moneda, description: self.txtDescripcion.text, dueDate: self.dueDate!)
                     daoRecibo().addEntregablesToInvoice(recibo!, entregables: self.entregable)
                     self.delegateAddress?.reloadEntregablesList()
                     self.dismissViewControllerAnimated(true, completion: nil)
@@ -208,6 +211,12 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
     }
+    
+    func returnDateTimeToDate(date: NSDate, type: String) {
+        self.dueDate = date
+        self.btnFechaVencimiento.setTitle(self.dateFormatter.stringFromDate(self.dueDate!), forState: UIControlState.Normal)
+    }
+    
     
     @IBAction func cancelTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -282,6 +291,19 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             vc.tiempo = self.tiemposArray[indexpath.row]
             vc.currency = self.findCurrencyInArray(self.tiemposArray)
             vc.delegateAddress = self
+        }
+        
+        if segue.identifier == "fechaVencSegue" {
+            let vc:DateTimePicker = segue.destinationViewController as! DateTimePicker
+            
+            if self.dueDate == nil {
+                vc.date = self.today
+            } else {
+                vc.date = self.dueDate!
+            }
+            
+            vc.delegateAddress = self
+            vc.source = "INV"
         }
     }
     

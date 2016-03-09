@@ -91,6 +91,7 @@
         <attribute name="descripcion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fechaCobro" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="fechaEmision" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fechaVencimiento" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="reciboExterno" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="valor" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="recibo" inverseEntity="Cliente" syncable="YES"/>
@@ -150,7 +151,7 @@
         <element name="Entregable" positionX="-108" positionY="-531" width="128" height="180"/>
         <element name="Moneda" positionX="-389" positionY="-657" width="128" height="165"/>
         <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
-        <element name="Recibo" positionX="-738" positionY="-954" width="144" height="195"/>
+        <element name="Recibo" positionX="-738" positionY="-954" width="144" height="210"/>
         <element name="ReciboDetalle" positionX="-990" positionY="-810" width="128" height="180"/>
         <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="240"/>
         <element name="Usuario" positionX="-738" positionY="-706" width="108" height="238"/>

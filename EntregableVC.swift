@@ -12,7 +12,7 @@ protocol entregableEditionOperations{
     func refreshTableViewForEntregables()
 }
 
-class EntregableVC: UIViewController {
+class EntregableVC: UIViewController, UITextFieldDelegate {
 
     var data:AnyObject? = [] //Entregable
     var moneda:Moneda? = nil
@@ -25,6 +25,11 @@ class EntregableVC: UIViewController {
     @IBOutlet weak var txtTarifa: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var lblCurrency: UILabel!
+    
+    var keyboardVisible:Bool = false
+    var height:CGFloat? = nil
+    @IBOutlet weak var heightToTop: NSLayoutConstraint!
+    @IBOutlet weak var modalView: UIView!
     
     @IBAction func cancelTapped(sender: UIButton) {
         if self.mode == "NEW" {
@@ -50,6 +55,16 @@ class EntregableVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.saveButton.enabled = false
+        
+        let bounds = UIScreen.mainScreen().bounds
+        self.height = bounds.size.height
+        self.view.layoutIfNeeded()
+        self.heightToTop.constant = self.height!/2 - self.modalView.frame.height/2
+        self.view.layoutIfNeeded()
+        
+        self.txtNomEntregable.delegate = self
+        self.txtTarifa.delegate = self
+        
         if mode == "NEW" {
             self.txtEntregable.text = "Nuevo Entregable"
         }else{
@@ -68,8 +83,48 @@ class EntregableVC: UIViewController {
         } else {
             self.lblCurrency.text = (self.moneda!.id)! + (self.moneda!.descripcion)!
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.txtNomEntregable.endEditing(true)
+        self.txtTarifa.endEditing(true)
+        return false
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if self.keyboardVisible == false {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                
+                self.view.layoutIfNeeded()
+                UIView.animateWithDuration(1, animations: {
+                    self.heightToTop.constant -= keyboardSize.height/2
+                    self.view.layoutIfNeeded()
+                })
+            }
+            self.keyboardVisible = true
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if self.keyboardVisible == true {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                
+                self.view.layoutIfNeeded()
+                UIView.animateWithDuration(1, animations: {
+                    self.heightToTop.constant += keyboardSize.height/2
+                    self.view.layoutIfNeeded()
+                })
+            }
+            self.keyboardVisible = false
+        }
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

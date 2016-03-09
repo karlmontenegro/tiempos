@@ -24,5 +24,6 @@ extension Recibo {
     @NSManaged var moneda: Moneda?
     @NSManaged var reciboDetalle: NSSet?
     @NSManaged var contrato: Contrato?
+    @NSManaged var fechaVencimiento: NSDate?
 
 }

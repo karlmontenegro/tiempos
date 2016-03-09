@@ -62,12 +62,6 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
             
             daoTiempo().newTiempo(self.cita!, title: (self.event?.title)!, converted: true, hours: NSNumber(integer: numberInterval), place: "", fact: (self.cita!.contrato?.tipoFacturacion)!)
             
-            let alert = UIAlertView()
-            alert.title = "Tiempos"
-            alert.message = "El tiempo laborado se guardó exitosamente"
-            alert.addButtonWithTitle("OK")
-            alert.show()
-            
             self.dismissViewControllerAnimated(true, completion: nil)
         }))
         

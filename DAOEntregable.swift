@@ -77,12 +77,17 @@ class daoEntregable{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        let request = NSFetchRequest(entityName: "Entregable")
+        let request = NSFetchRequest()
         
+        let entityEntregable = NSEntityDescription.entityForName("Entregable", inManagedObjectContext: context)
         let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
         let clienteSortDescriptor = NSSortDescriptor(key: "contrato.cliente.nombre", ascending: true)
-        request.sortDescriptors = [clienteSortDescriptor,contratoSortDescriptor]
         
+        let pred = NSPredicate(format: "(reciboDetalle = NIL)")
+        
+        request.entity = entityEntregable
+        request.predicate = pred
+        request.sortDescriptors = [clienteSortDescriptor,contratoSortDescriptor]
         request.returnsObjectsAsFaults = false
         
         var results:Array<Entregable> = []

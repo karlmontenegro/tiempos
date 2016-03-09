@@ -11,7 +11,7 @@ import CoreData
 
 class daoRecibo{
     
-    func createGenericNewInvoice(date: NSDate, client: Cliente?, contract: Contrato?, total: Double?, moneda: Moneda?,description:String?) -> Recibo?{
+    func createGenericNewInvoice(date: NSDate, client: Cliente?, contract: Contrato?, total: Double?, moneda: Moneda?,description:String?, dueDate: NSDate) -> Recibo?{
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -21,6 +21,7 @@ class daoRecibo{
         newInvoice.setValue(date, forKey: "fechaEmision")
         newInvoice.setValue(client, forKey: "cliente")
         newInvoice.setValue(moneda, forKey: "moneda")
+        newInvoice.setValue(dueDate, forKey: "fechaVencimiento")
         
         if contract != nil {
             newInvoice.setValue(contract, forKey: "contrato")
