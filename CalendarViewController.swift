@@ -11,8 +11,9 @@ import UIKit
 import CoreData
 import Foundation
 import EventKit
+import DZNEmptyDataSet
 
-class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarPickerDelegate,UITableViewDelegate{
+class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarPickerDelegate,UITableViewDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     
     @IBOutlet weak var dateTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -43,6 +44,12 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dateTableView.emptyDataSetDelegate = self
+        self.dateTableView.emptyDataSetSource = self
+        
+        self.dateTableView.tableFooterView = UIView()
+        
         if self.revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
             self.menuButton.action = "revealToggle:"
@@ -72,6 +79,33 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Empty Data Set functions
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "empty-calendar-100")
+    }
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.whiteColor()
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No tienes citas a la fecha"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Haz click en el botón superior derecho para añadir tu primera cita"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -(self.navigationController?.navigationBar.frame.height)!
+    }
+    
     
     @IBAction func calendarTapped(sender: AnyObject) {
         let calendarPicker = EPCalendarPicker(startYear: 2015, endYear: 2040, multiSelection: false)

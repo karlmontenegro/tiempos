@@ -10,8 +10,9 @@ import UIKit
 import CoreData
 import Foundation
 import EventKit
+import DZNEmptyDataSet
 
-class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelegate,unconvertedDatesOp {
+class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelegate,unconvertedDatesOp, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
 
     @IBOutlet weak var datesWithoutTimeTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -36,6 +37,14 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Empty Data Set
+        
+        self.datesWithoutTimeTableView.emptyDataSetSource = self
+        self.datesWithoutTimeTableView.emptyDataSetDelegate = self
+        
+        self.datesWithoutTimeTableView.tableFooterView = UIView()
+        
+        
         self.dateDictionary = daoCita().getUnconvertedDates(self.date, store: self.eventStore)
         self.dateKeyArray = Array(self.dateDictionary!.keys)
         self.dateKeyArray.sortInPlace { $0.compare($1) == .OrderedAscending }
@@ -56,7 +65,33 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }    
+    }
+    
+    //Empty Data Set Functions
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "empty-time-100")
+    }
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.whiteColor()
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No tienes horas laboradas a la fecha"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Haz click en el botón superior derecho para añadir tu primera hora laborada"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -(self.navigationController?.navigationBar.frame.height)!
+    }
     
     func refreshUnconvertedDates() {
         self.dateDictionary = nil

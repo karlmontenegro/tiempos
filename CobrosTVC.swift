@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class CobrosTVC: UITableViewController,cobrosOp {
+class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
 
@@ -17,6 +18,12 @@ class CobrosTVC: UITableViewController,cobrosOp {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Empty Data Set
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
+        
+        self.tableView.tableFooterView = UIView()
         
         if self.revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
@@ -30,6 +37,32 @@ class CobrosTVC: UITableViewController,cobrosOp {
         // Dispose of any resources that can be recreated.
     }
 
+    //Empty Data Set Func
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "empty-money-100")
+    }
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.whiteColor()
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No recibos pendientes que cobrar"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Todo está bien en el mundo"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -(self.navigationController?.navigationBar.frame.height)!
+    }
+    
     func reloadCashedInvoices() {
         self.notCashedInvoices = daoRecibo().getAllPendingInvoices()!
         self.cashedInvoices = daoRecibo().getAllCashedInvoices()!
@@ -44,10 +77,14 @@ class CobrosTVC: UITableViewController,cobrosOp {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
+        if section == 0 && self.notCashedInvoices.count != 0 {
             return "Recibos sin cobrar"
         }else {
-            return "Recibos cobrados"
+            if section == 1 && self.cashedInvoices.count != 0 {
+                return "Recibos cobrados"
+            } else {
+                return ""
+            }
         }
     }
 

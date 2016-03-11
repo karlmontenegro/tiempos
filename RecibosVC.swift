@@ -8,14 +8,15 @@
 
 import UIKit
 import Foundation
+import DZNEmptyDataSet
 
-class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invoiceOp {
+class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invoiceOp, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var tiemposTableView: UITableView!
     @IBOutlet weak var generateInvoiceButton: UIButton!
-
+    
     var tiemposDictionary:Dictionary<Cliente,Array<Tiempo>> = daoTiempo().getAllActiveTiempos()!
     var tiemposKeys:Array<Cliente> = []
     
@@ -25,6 +26,12 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tiemposTableView.emptyDataSetDelegate = self
+        self.tiemposTableView.emptyDataSetSource = self
+        
+        self.tiemposTableView.tableFooterView = UIView()
+        
         if self.revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
             self.menuButton.action = "revealToggle:"
@@ -33,6 +40,7 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
         
         self.tiemposKeys = Array(self.tiemposDictionary.keys)
         self.generateInvoiceButton.enabled = false
+        self.generateInvoiceButton.hidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -40,6 +48,33 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Empty Data Set Func
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "empty-time-100")
+    }
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.whiteColor()
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No tienes horas laboradas que facturar"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Registra algunas horas laboradas previamente"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -(self.navigationController?.navigationBar.frame.height)!
+    }
+    
     
     func reloadTimesList() {
         self.tiemposDictionary = daoTiempo().getAllActiveTiempos()!
@@ -141,8 +176,10 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
             
             if self.selectedTimesArray.count == 0 {
                 self.generateInvoiceButton.enabled = false
+                self.generateInvoiceButton.hidden = true
             } else {
                 self.generateInvoiceButton.enabled = true
+                self.generateInvoiceButton.hidden = false
             }
         }
     }

@@ -8,8 +8,9 @@
 
 import UIKit
 import Foundation
+import DZNEmptyDataSet
 
-class RecibosEntregablesVC: UIViewController, invoiceOp{
+class RecibosEntregablesVC: UIViewController, invoiceOp, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     var origin = "ClassifierItem"
     var classifier = "Clientes"
@@ -26,6 +27,13 @@ class RecibosEntregablesVC: UIViewController, invoiceOp{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Empty Data Set
+        
+        self.classifierItemsTable.emptyDataSetSource = self
+        self.classifierItemsTable.emptyDataSetDelegate = self
+        self.classifierItemsTable.tableFooterView = UIView()
+        
         if self.revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
             self.menuButton.action = "revealToggle:"
@@ -34,12 +42,39 @@ class RecibosEntregablesVC: UIViewController, invoiceOp{
         self.entregablesKeys = Array(self.entregablesDictionary.keys)
         
         self.generateInvoiceButton.enabled = false
+        self.generateInvoiceButton.hidden = true
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Empty Data Set Functions
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "empty-entregable-100")
+    }
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.whiteColor()
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No tienes entregables para facturar"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Todos los entregables han sido facturados."
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -(self.navigationController?.navigationBar.frame.height)!
     }
     
     func reloadEntregablesList() {
@@ -136,6 +171,7 @@ class RecibosEntregablesVC: UIViewController, invoiceOp{
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
             //Ingresar seleccion en la variable
             self.selectedEntregable = entregable
+            self.generateInvoiceButton.hidden = false
             self.generateInvoiceButton.enabled = true
         }
     }
