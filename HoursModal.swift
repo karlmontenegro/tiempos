@@ -21,6 +21,7 @@ class HoursModal: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.timePicker.datePickerMode = UIDatePickerMode.Time
+        
         // Do any additional setup after loading the view.
     }
 
