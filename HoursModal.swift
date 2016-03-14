@@ -17,10 +17,23 @@ class HoursModal: UIViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     var delegateAddress:hoursOp? = nil
     var selectedTime:NSDate? = nil
+    var interval:NSTimeInterval? = nil
+    var dateFormatter:NSDateFormatter = NSDateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.timePicker.datePickerMode = UIDatePickerMode.Time
+        self.dateFormatter.dateFormat = "HH:mm"
+        //self.timePicker.timeZone = NSTimeZone(abbreviation: "UTC");
+        
+        var dateString = "19:00"
+        
+        if self.interval != nil {
+            print(NSDate(timeIntervalSinceReferenceDate: self.interval!))
+            self.timePicker.date = NSDate(timeIntervalSinceReferenceDate: self.interval!)
+        } else {
+            //self.timePicker.date = self.dateFormatter.dateFromString(dateString)!
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -45,6 +58,7 @@ class HoursModal: UIViewController {
     @IBAction func cancelTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     /*
     // MARK: - Navigation
 
@@ -55,4 +69,11 @@ class HoursModal: UIViewController {
     }
     */
 
+    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        return String(format: "%02d horas %02d minutos", hours, minutes)
+    }
 }

@@ -51,7 +51,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
             }
             
         } else {
-            self.lblContrato.text = "(Varios Contratos)"
+            self.lblContrato.text = "(Sin Contrato)"
             self.lblTipoFact.text = "Por Horas"
         }
         

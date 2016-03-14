@@ -68,7 +68,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractHourOp, 
             
             self.lblCita.text = self.event?.title
             self.lblFecha.text = self.dateFormatter.stringFromDate((self.event?.startDate)!)
-            self.horas = self.stringFromTimeInterval(self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!)
+            self.horas = self.stringFromTimeInterval(self.interval!)
             self.lblHoras.text = self.horas
         }
         
@@ -186,6 +186,7 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractHourOp, 
         if segue.identifier == "hoursModalSegue" {
             let vc:HoursModal = segue.destinationViewController as! HoursModal
             vc.delegateAddress = self
+            vc.interval = self.interval
         }
         
         if segue.identifier == "clientModalSegue" {
