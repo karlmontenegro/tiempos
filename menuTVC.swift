@@ -26,14 +26,6 @@ class menuTVC: UITableViewController {
     }
 
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == "contractView"{
-            if daoCliente().getAllClients().count > 0 {
-                return true
-            }else{
-                self.alertMessage("Debe haber por lo menos un cliente para poder asociar un contrato nuevo.", winTitle: "Error")
-                return false
-            }
-        }
         if identifier == "citasView" {
             if daoCliente().getAllClients().count > 0 {
                 return true

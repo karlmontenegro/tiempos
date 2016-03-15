@@ -14,7 +14,7 @@ protocol clientOp{
 
 class ClientePicker: UIViewController, UIPickerViewDelegate {
 
-    var listaClientes: NSArray = []
+    var listaClientes: Array<Cliente> = []
     var cliente:AnyObject? = []
     var delegateAddress:clientOp? = nil
     
@@ -24,7 +24,10 @@ class ClientePicker: UIViewController, UIPickerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.listaClientes = daoCliente().getAllClients()
-        self.cliente = listaClientes[0]
+        
+        if !self.listaClientes.isEmpty {
+            self.cliente = listaClientes[0]
+        } 
         // Do any additional setup after loading the view.
     }
 
@@ -40,19 +43,24 @@ class ClientePicker: UIViewController, UIPickerViewDelegate {
     
     // returns the # of rows in each component..
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        if listaClientes.count > 0 {
-            return listaClientes.count
-        } else{
-            return 0
-        }
+        
+        return self.listaClientes.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-        return listaClientes[row].valueForKey("nombre") as? String
+
+        if !self.listaClientes.isEmpty {
+            return self.listaClientes[row].valueForKey("nombre") as? String
+        } else {
+            return ""
+        }
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.cliente = listaClientes[row]
+        
+        if !self.listaClientes.isEmpty {
+            self.cliente = listaClientes[row]
+        }
     }
 
     @IBAction func doneTapped(sender: AnyObject) {
@@ -60,6 +68,9 @@ class ClientePicker: UIViewController, UIPickerViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func newClientTapped(sender: AnyObject) {
+        
+    }
     
     /*
     // MARK: - Navigation

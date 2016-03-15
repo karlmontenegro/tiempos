@@ -24,6 +24,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     @IBOutlet weak var navigationTitle: UINavigationItem!
     @IBOutlet weak var lblFechaCobro: UILabel!
     @IBOutlet weak var lblFechaVenc: UILabel!
+    @IBOutlet weak var descripcion: UITextView!
     
     var rec:Recibo? = nil
     let dateFormatter = NSDateFormatter()
@@ -118,7 +119,7 @@ class CobroDetailVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         
         // Cobrar
         alertController.addAction(UIAlertAction(title: "Si", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
-            daoRecibo().cashInvoice(self.rec!, date: self.today)
+            daoRecibo().cashInvoice(self.rec!, date: self.today, description: self.descripcion.text)
             
             let confirmationController = UIAlertController(title: "Confirmación", message: "Se ha registrado el cobro del recibo exitosamente", preferredStyle:  UIAlertControllerStyle.Alert)
             

@@ -140,7 +140,9 @@ class daoRecibo{
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         let request = NSFetchRequest(entityName: "Recibo")
+        let invoiceSortDescriptor = NSSortDescriptor(key: "recibo.fechaVencimiento", ascending: true)
         
+        request.sortDescriptors = [invoiceSortDescriptor]
         request.returnsObjectsAsFaults = false
         
         var results:Array<Recibo> = []
@@ -162,7 +164,9 @@ class daoRecibo{
         
         let request = NSFetchRequest()
         let pred = NSPredicate(format: "(cobrado = %@)", true)
+        let invoiceSortDescriptor = NSSortDescriptor(key: "recibo.fechaVencimiento", ascending: true)
         
+        request.sortDescriptors = [invoiceSortDescriptor]
         request.entity = entityInvoice
         request.predicate = pred
         
@@ -212,9 +216,13 @@ class daoRecibo{
         return entregables
     }
     
-    func cashInvoice(obj:Recibo,date:NSDate) {
+    func cashInvoice(obj:Recibo, date:NSDate, description: String?) {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        if description != nil {
+            obj.setValue(description, forKey: "descripcion")
+        }
         
         obj.setValue(true, forKey: "cobrado")
         obj.setValue(date, forKey: "fechaCobro")

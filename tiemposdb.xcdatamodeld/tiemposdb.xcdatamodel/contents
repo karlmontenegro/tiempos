@@ -61,6 +61,7 @@
         <relationship name="cliente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cliente" inverseName="direccion" inverseEntity="Cliente" syncable="YES"/>
     </entity>
     <entity name="Entregable" representedClassName="Entregable" syncable="YES">
+        <attribute name="fechaEntrega" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nombreEntreg" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nroHorasInc" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="tarifa" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -148,7 +149,7 @@
         <element name="Contrato" positionX="-29" positionY="-234" width="128" height="195"/>
         <element name="ContratoHoras" positionX="-209" positionY="-324" width="128" height="150"/>
         <element name="Direccion" positionX="-216" positionY="38" width="128" height="118"/>
-        <element name="Entregable" positionX="-108" positionY="-531" width="128" height="180"/>
+        <element name="Entregable" positionX="-108" positionY="-531" width="128" height="195"/>
         <element name="Moneda" positionX="-389" positionY="-657" width="128" height="165"/>
         <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
         <element name="Recibo" positionX="-738" positionY="-954" width="144" height="210"/>

@@ -245,7 +245,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                                 self.alertMessage("El entregable debe tener una tarifa", winTitle: "Error")
                             }else {
                                 self.entregableUno = daoEntregable().genericEntregable()
-                                daoEntregable().updateEntregable(self.txtTituloEntregableUno.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!)
+                                daoEntregable().updateEntregable(self.txtTituloEntregableUno.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!, entrega: nil)
                                 
                                 self.contrato?.addEntregable(self.entregableUno!)
                                 

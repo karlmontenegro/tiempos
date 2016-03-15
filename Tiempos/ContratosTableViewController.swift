@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 
 class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
-    var arreglo = daoContrato().getAllActiveContracts()
+    var arreglo:Array<Contrato>? = daoContrato().getAllActiveContracts()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -58,7 +58,12 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Haz click en el botón superior derecho para añadir tu primer contrato"
+        var str = "Haz click en el botón superior derecho para añadir tu primer contrato"
+        
+        if daoCliente().getAllClients().isEmpty {
+            str = "No tienes clientes, haz click aquí para añadir uno."
+        } 
+        
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)]
         return NSAttributedString(string: str, attributes: attrs)
     }
@@ -79,8 +84,8 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if(arreglo.count > 0){
-            return self.arreglo.count
+        if self.arreglo != nil {
+            return self.arreglo!.count
         }else{
             return 0
         }
@@ -90,9 +95,11 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath)
 
-        cell.textLabel!.text = self.arreglo[indexPath.row].nombreContrato!
-        cell.detailTextLabel!.text = "Cliente: " + (self.arreglo[indexPath.row].cliente?.nombre!)! + " Facturación: " + self.arreglo[indexPath.row].tipoFacturacion!
+        if self.arreglo != nil {
         
+            cell.textLabel!.text = self.arreglo![indexPath.row].nombreContrato!
+            cell.detailTextLabel!.text = "Cliente: " + (self.arreglo![indexPath.row].cliente?.nombre!)! + " Facturación: " + self.arreglo![indexPath.row].tipoFacturacion!
+        }
         return cell
     }
    
@@ -106,10 +113,10 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
             // Delete action
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
-                daoContrato().deleteContractAt(self.arreglo[indexPath.row])
+                daoContrato().deleteContractAt(self.arreglo![indexPath.row])
                 
                 // Deletes the element from the array
-                self.arreglo.removeAtIndex(indexPath.row)
+                self.arreglo!.removeAtIndex(indexPath.row)
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
@@ -143,7 +150,7 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
             
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             
-            vc.contrato = self.arreglo[indexpath.row]
+            vc.contrato = self.arreglo![indexpath.row]
             vc.origin = "EDIT"
         }
         if(segue.identifier == "nuevoContratoSegue"){

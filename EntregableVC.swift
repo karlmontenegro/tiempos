@@ -19,12 +19,14 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
     var nro:Int = 0
     var mode:String = ""
     var delegateAddress:entregableEditionOperations? = nil
+    var dueDate:NSDate? = nil
     
     @IBOutlet weak var txtEntregable: UILabel!
     @IBOutlet weak var txtNomEntregable: UITextField!
     @IBOutlet weak var txtTarifa: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var lblCurrency: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var keyboardVisible:Bool = false
     var height:CGFloat? = nil
@@ -38,6 +40,10 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func dateTimePickerChanged(sender: UIDatePicker) {
+        self.dueDate = self.datePicker.date
+    }
+    
     @IBAction func saveTapped(sender: UIButton) {
         if self.txtNomEntregable.text == "" {
             self.alertMessage("El entregable debe tener un nombre.", winTitle: "Error")
@@ -45,7 +51,7 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
             if self.txtTarifa.text == "" {
                 self.alertMessage("El entregable debe tener una tarifa.", winTitle: "Error")
             }else {
-                daoEntregable().updateEntregable(txtNomEntregable.text as String!, tarifa: txtTarifa.text as String!, moneda: self.moneda!, object: self.data as! Entregable)
+                daoEntregable().updateEntregable(txtNomEntregable.text as String!, tarifa: txtTarifa.text as String!, moneda: self.moneda!, object: self.data as! Entregable, entrega: self.dueDate)
                 self.delegateAddress!.refreshTableViewForEntregables()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }

@@ -23,5 +23,5 @@ extension Entregable {
     @NSManaged var recibo: Recibo?
     @NSManaged var tiempo: NSSet?
     @NSManaged var reciboDetalle: ReciboDetalle?
-
+    @NSManaged var fechaEntrega: NSDate?
 }

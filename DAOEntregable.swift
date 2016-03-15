@@ -54,12 +54,17 @@ class daoEntregable{
         }
     }
     
-    func updateEntregable(nombre: String, tarifa: String, moneda: Moneda, object: Entregable){
+    func updateEntregable(nombre: String, tarifa: String, moneda: Moneda, object: Entregable, entrega: NSDate?){
+        
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         let numTarifa = Float(tarifa)
         let num = NSNumber(float: numTarifa!)
+        
+        if entrega != nil {
+            object.setValue(entrega, forKey: "fechaEntrega")
+        }
         
         object.setValue(nombre, forKey: "nombreEntreg")
         object.setValue(num, forKey: "tarifa")
