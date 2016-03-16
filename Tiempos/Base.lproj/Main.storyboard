@@ -3683,10 +3683,10 @@
             </objects>
             <point key="canvasLocation" x="5491.5" y="94.5"/>
         </scene>
-        <!--Contract Picker-->
+        <!--Contract Modal-->
         <scene sceneID="LxX-BE-p7k">
             <objects>
-                <viewController id="JYd-PL-BCv" customClass="ContractPicker" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JYd-PL-BCv" customClass="ContractModal" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aCH-CV-UW7"/>
                         <viewControllerLayoutGuide type="bottom" id="2dR-GI-aYB"/>
@@ -3705,33 +3705,6 @@
                                             <outlet property="delegate" destination="JYd-PL-BCv" id="fCZ-i3-ih6"/>
                                         </connections>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6o-TJ-5hi">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="DDo-k1-8nK"/>
-                                            <constraint firstAttribute="width" constant="46" id="kww-Or-PUA">
-                                                <variation key="heightClass=regular-widthClass=compact" constant="109"/>
-                                            </constraint>
-                                        </constraints>
-                                        <state key="normal" title="Seleccionar">
-                                            <color key="titleColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="DDo-k1-8nK"/>
-                                                <exclude reference="kww-Or-PUA"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="DDo-k1-8nK"/>
-                                                <include reference="kww-Or-PUA"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="doneTapped:" destination="JYd-PL-BCv" eventType="touchUpInside" id="AiA-2x-5ZY"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLf-0e-udS">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                         <constraints>
@@ -3759,6 +3732,33 @@
                                             </segue>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6o-TJ-5hi">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="DDo-k1-8nK"/>
+                                            <constraint firstAttribute="width" constant="46" id="kww-Or-PUA">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="109"/>
+                                            </constraint>
+                                        </constraints>
+                                        <state key="normal" title="Seleccionar">
+                                            <color key="titleColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="DDo-k1-8nK"/>
+                                                <exclude reference="kww-Or-PUA"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="DDo-k1-8nK"/>
+                                                <include reference="kww-Or-PUA"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="doneTapped:" destination="JYd-PL-BCv" eventType="touchUpInside" id="AiA-2x-5ZY"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -3784,8 +3784,8 @@
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="z34-ff-ZrX"/>
-                                        <exclude reference="V6o-TJ-5hi"/>
                                         <exclude reference="hLf-0e-udS"/>
+                                        <exclude reference="V6o-TJ-5hi"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="kjK-mN-n4a"/>
@@ -3803,8 +3803,8 @@
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="z34-ff-ZrX"/>
-                                        <include reference="V6o-TJ-5hi"/>
                                         <include reference="hLf-0e-udS"/>
+                                        <include reference="V6o-TJ-5hi"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="kjK-mN-n4a"/>
@@ -3854,13 +3854,13 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="contractPickerOut" destination="z34-ff-ZrX" id="r9n-ed-1X1"/>
-                        <outlet property="selectButton" destination="V6o-TJ-5hi" id="5Ys-ZH-Hmw"/>
+                        <outlet property="contractPickerOut" destination="z34-ff-ZrX" id="lkD-ye-78Z"/>
+                        <outlet property="selectedButton" destination="V6o-TJ-5hi" id="GRP-ku-9bz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1k-c4-BTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4438.5" y="-1559.25"/>
+            <point key="canvasLocation" x="3333" y="-1956.75"/>
         </scene>
         <!--Date Time Picker-->
         <scene sceneID="Ttc-NK-G2l">
@@ -7103,15 +7103,15 @@
         <segue reference="9Mu-EJ-Weg"/>
         <segue reference="uOR-nE-Lvj"/>
         <segue reference="LiL-b8-wS2"/>
-        <segue reference="5qd-TT-vRv"/>
-        <segue reference="JkI-sg-EPr"/>
-        <segue reference="Rm0-TT-V55"/>
         <segue reference="SD1-5e-R04"/>
-        <segue reference="gXv-1y-fNi"/>
-        <segue reference="ug0-Sy-PtU"/>
         <segue reference="IEm-rT-DGL"/>
-        <segue reference="nf2-hQ-ana"/>
         <segue reference="fAi-QO-h1o"/>
         <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="oyW-Uv-Djb"/>
+        <segue reference="VN9-SP-Fso"/>
+        <segue reference="JkI-sg-EPr"/>
+        <segue reference="wRK-05-tv0"/>
+        <segue reference="Rm0-TT-V55"/>
     </inferredMetricsTieBreakers>
 </document>
