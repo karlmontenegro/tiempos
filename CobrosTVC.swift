@@ -8,8 +8,9 @@
 
 import UIKit
 import DZNEmptyDataSet
+import MGSwipeTableCell
 
-class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
+class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, MGSwipeTableCellDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
 
@@ -99,9 +100,16 @@ class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmp
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
+        var cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath) as! MGSwipeTableCell
+        
+        cell.delegate = self
         
         if indexPath.section == 0 {
+            
+            cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"check.png"), backgroundColor: UIColor.greenColor())
+                ,MGSwipeButton(title: "", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blueColor())]
+            
+            cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
             
             if self.notCashedInvoices[indexPath.row].contrato != nil {
                 cell.textLabel!.text = self.notCashedInvoices[indexPath.row].contrato?.nombreContrato
@@ -135,15 +143,16 @@ class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmp
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
-
     
-    // MARK: - Navigation
+    
+    func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+        return true
+    }
 
+    // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         if segue.identifier == "invoiceDetailSegue" {
             let cobroVC = segue.destinationViewController as! CobroDetailVC

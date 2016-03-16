@@ -208,9 +208,10 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOperations, contract
         
         if segue.identifier == "contractModalSegue" {
             
-            let vc:ContractPicker = segue.destinationViewController as! ContractPicker
+            let vc:ContractModal = segue.destinationViewController as! ContractModal
             vc.delegateAddress = self
             vc.cliente = self.cliente
+            vc.source = "HRS"
         }
         
         if segue.identifier == "selectDateSegue" {

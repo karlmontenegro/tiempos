@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import EventKitUI
 
-class NuevaCitaTVC: UITableViewController,clientOperations,dateTimeOp,contractOp,alarmOp,entregableOp,UITextFieldDelegate {
+class NuevaCitaTVC: UITableViewController,clientOperations,dateTimeOp,alarmOp,entregableOp, contractOp,UITextFieldDelegate {
 
     @IBOutlet weak var lblCliente: UILabel!
     @IBOutlet weak var txtNomCita: UITextField!
@@ -20,8 +20,6 @@ class NuevaCitaTVC: UITableViewController,clientOperations,dateTimeOp,contractOp
     @IBOutlet weak var lblStartDate: UILabel!
     @IBOutlet weak var cellContrato: UITableViewCell!
 
-
-    
     var cliente:Cliente? = nil
     var startDate:NSDate? = nil
     var endDate:NSDate? = nil
@@ -202,9 +200,10 @@ class NuevaCitaTVC: UITableViewController,clientOperations,dateTimeOp,contractOp
             vc.delegateAddress = self
         }
         if segue.identifier == "contractPicker" {
-            let vc:ContractPicker = segue.destinationViewController as! ContractPicker
+            let vc:ContractModal = segue.destinationViewController as! ContractModal
             vc.cliente = self.cliente
             vc.delegateAddress = self
+            vc.source = "ALL"
         }
         if segue.identifier == "entregablePicker" {
             let vc:EntregablePicker = segue.destinationViewController as! EntregablePicker

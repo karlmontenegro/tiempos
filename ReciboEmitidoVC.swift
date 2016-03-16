@@ -23,7 +23,7 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var tipoFact:String = ""
     var montoTotal:Double? = nil
     var delegateAddress: invoiceOp? = nil
-    var dueDate:NSDate? = nil
+    var dueDate:NSDate? = NSDate()
     var moneda:Moneda? = nil
     var monedaStatus:Bool = true
     
@@ -53,8 +53,10 @@ class ReciboEmitidoVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 self.btnMoneda.enabled = true
             } else {
                 
-                if self.findCurrencyInArray(self.tiemposArray) != nil {
-                    self.btnMoneda.setTitle(self.findCurrencyInArray(self.tiemposArray)?.descripcion, forState: UIControlState.Normal)
+                self.moneda = self.findCurrencyInArray(self.tiemposArray)
+                
+                if self.moneda != nil {
+                    self.btnMoneda.setTitle(self.moneda?.descripcion, forState: UIControlState.Normal)
                     self.btnMoneda.enabled = false
                 } else {
                     self.btnMoneda.setTitle("+ Añadir", forState: UIControlState.Normal)

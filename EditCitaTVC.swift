@@ -210,9 +210,10 @@ class EditCitaTVC: UITableViewController,clientOperations,contractOp,alarmOp,dat
             vc.date = self.endDate
         }
         if segue.identifier == "editContractSegue"{
-            let vc:ContractPicker = segue.destinationViewController as! ContractPicker
+            let vc:ContractModal = segue.destinationViewController as! ContractModal
             vc.cliente = self.cliente
             vc.delegateAddress = self
+            vc.source = "ALL"
         }
         if segue.identifier == "editReminderSegue"{
             let vc:AlarmPicker = segue.destinationViewController as! AlarmPicker
