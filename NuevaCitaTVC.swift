@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import EventKitUI
 
-class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp,entregableOp,UITextFieldDelegate {
+class NuevaCitaTVC: UITableViewController,clientOperations,dateTimeOp,contractOp,alarmOp,entregableOp,UITextFieldDelegate {
 
     @IBOutlet weak var lblCliente: UILabel!
     @IBOutlet weak var txtNomCita: UITextField!
@@ -18,6 +18,8 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     @IBOutlet weak var entregableCell: UITableViewCell!
     @IBOutlet weak var lblAlarm: UILabel!
     @IBOutlet weak var lblStartDate: UILabel!
+    @IBOutlet weak var cellContrato: UITableViewCell!
+
 
     
     var cliente:Cliente? = nil
@@ -44,7 +46,8 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         // Dispose of any resources that can be recreated.
     }
 
-    func returnClientToDate(client: Cliente) {
+
+    func returnClientToSource(client: Cliente) {
         self.cliente = client
         self.lblCliente.text = client.nombre
     }
@@ -73,22 +76,20 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         }
     }
     
-    func returnContractToDate(contract: Contrato) {
-        
-        let cellContract:UITableViewCell = tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!)!
+    func returnContractToSource(contract: Contrato) {
         
         self.contrato = contract
-        cellContract.textLabel!.text = self.contrato!.nombreContrato
+        self.cellContrato.textLabel?.text = self.contrato!.nombreContrato
         
         if self.contrato!.tipoFacturacion! == "HRS" {
-            cellContract.detailTextLabel!.text = "Por Horas"
+            self.cellContrato.detailTextLabel!.text = "Por Horas"
             entregableCell.hidden = true
         }else{
             if self.contrato!.tipoFacturacion! == "ENT" {
-                cellContract.detailTextLabel!.text = "Por Entregables"
+                self.cellContrato.detailTextLabel!.text = "Por Entregables"
                 entregableCell.hidden = false
             } else {
-                cellContract.detailTextLabel!.text = "(Sin Facturación)"
+                self.cellContrato.detailTextLabel!.text = "(Sin Facturación)"
                 entregableCell.hidden = true
             }
         }
@@ -156,11 +157,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
         if indexPath.section == 2 {
             if indexPath.row == 0 {
                 if self.cliente != nil {
-                    if self.cliente?.contrato!.count != 0  {
-                        self.performSegueWithIdentifier("contractPicker", sender: self)
-                    } else {
-                        self.alertMessage("El cliente seleccionado no tiene ningún contrato asociado. Selecciona otro.", winTitle: "Error")
-                    }
+                    self.performSegueWithIdentifier("contractPicker", sender: self)
                 } else {
                     self.alertMessage("Selecciona un cliente primero.", winTitle: "Error")
                 }
@@ -185,7 +182,7 @@ class NuevaCitaTVC: UITableViewController,clientOp,dateTimeOp,contractOp,alarmOp
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "clientPickerModal"{
-            let vc:ClientePicker = segue.destinationViewController as! ClientePicker
+            let vc:ClientModal = segue.destinationViewController as! ClientModal
             vc.delegateAddress = self
         }
         if segue.identifier == "datePickerSegue"{

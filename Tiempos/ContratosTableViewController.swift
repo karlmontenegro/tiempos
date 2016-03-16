@@ -146,20 +146,22 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "ContratoDetalle"){
-            let vc:NuevoContratoTVC = segue.destinationViewController as! NuevoContratoTVC
             
             let indexpath:NSIndexPath = self.tableView.indexPathForSelectedRow!
             
-            vc.contrato = self.arreglo![indexpath.row]
-            vc.origin = "EDIT"
+            let navVC = segue.destinationViewController as! UINavigationController
+            let tableVC = navVC.viewControllers.first as! NuevoContratoTVC
+            tableVC.contrato = self.arreglo![indexpath.row]
+            tableVC.origin = "EDIT"
+
         }
         if(segue.identifier == "nuevoContratoSegue"){
-            let vc:NuevoContratoTVC = segue.destinationViewController as! NuevoContratoTVC
             
             //Aquí se crea el nuevo contrato
-            let nuevoContrato:Contrato = daoContrato().genericContract()
-            vc.contrato = nuevoContrato
-            vc.origin = "NEW"
+            
+            let navVC = segue.destinationViewController as! UINavigationController
+            let tableVC = navVC.viewControllers.first as! NuevoContratoTVC
+            tableVC.origin = "NEW"
         }
     }
 

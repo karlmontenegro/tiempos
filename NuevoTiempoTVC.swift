@@ -14,7 +14,7 @@ protocol unconvertedDatesOp{
     func refreshUnconvertedDates()
 }
 
-class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractHourOp, dateTimeOp {
+class NuevoTiempoTVC: UITableViewController, hoursOp, clientOperations, contractOp, dateTimeOp {
     
     var date:NSDate? = nil
     var cita:Cita? = nil
@@ -159,12 +159,12 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractHourOp, 
         self.lblHoras.text = self.horas
     }
     
-    func returnClientToDate(client: Cliente) {
+    func returnClientToSource(client: Cliente) {
         self.lblCliente.text = client.nombre!
         self.cliente = client
     }
     
-    func returnHourContract(contract: Contrato) {
+    func returnContractToSource(contract: Contrato) {
         self.lblContrato.text = contract.nombreContrato!
         self.contrato = contract
     }
@@ -179,6 +179,18 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractHourOp, 
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
 */
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        
+        if identifier == "contractModalSegue" {
+            if self.cliente == nil {
+                self.alertMessage("Selecciona un cliente primero", winTitle: "Error")
+                return false
+            }
+        }
+        return true
+    }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -190,12 +202,13 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractHourOp, 
         }
         
         if segue.identifier == "clientModalSegue" {
-            let vc:ClientePicker = segue.destinationViewController as! ClientePicker
+            let vc:ClientModal = segue.destinationViewController as! ClientModal
             vc.delegateAddress = self
         }
         
         if segue.identifier == "contractModalSegue" {
-            let vc:ContractHoursPicker = segue.destinationViewController as! ContractHoursPicker
+            
+            let vc:ContractPicker = segue.destinationViewController as! ContractPicker
             vc.delegateAddress = self
             vc.cliente = self.cliente
         }
@@ -211,18 +224,6 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOp, contractHourOp, 
                 vc.date = self.date
             }
         }
-    }
-
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        
-        if identifier == "contractModalSegue" {
-            
-            if daoContrato().getAllActiveContractsPorHorasByClient(self.cliente!)!.count == 0 {
-                self.alertMessage("Debe haber por lo menos un contrato creado.", winTitle: "Error")
-                return false
-            }
-        }
-        return true
     }
     
     func alertMessage(winMessage: String, winTitle: String){

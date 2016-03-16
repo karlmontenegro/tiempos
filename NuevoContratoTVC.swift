@@ -15,6 +15,10 @@
 import UIKit
 import Foundation
 
+protocol contractViewOperations {
+    func updateContent()
+}
+
 class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperations, entOperations, UITextFieldDelegate  {
     
     @IBOutlet weak var navigationTitle: UINavigationItem!
@@ -29,6 +33,8 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     var hideSectionHoras:Int = 1
     var hideSectionEnt:Int = 0
     var hideRowsEnt: Int = 0
+    
+    var delegateAddress:contractViewOperations? = nil
     
     @IBOutlet weak var lblNombreCliente: UILabel!
     @IBOutlet weak var lblCurrency: UILabel!
@@ -88,6 +94,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.lblTotalReferencial.text = "0.0"
             self.navigationTitle.title = "Nuevo Contrato"
             self.lblNumEntregables.text = "+ Añadir más entregables"
+            self.contrato = daoContrato().genericContract()
             
             if self.moneda == nil {
                 self.lblCurrency.text = "+ Moneda de Facturación"
@@ -267,7 +274,8 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                     }
                 }
                 }
-                self.navigationController?.popToRootViewControllerAnimated(true)
+                self.delegateAddress?.updateContent()
+                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
@@ -276,12 +284,12 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         if self.origin == "NEW" {
             daoContrato().deleteContractAt(self.contrato!)
         }
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // DELEGATE FUNCTIONS FOR CLIENT AND CURRENCY
 
-    func returnClientToContract(client: Cliente) {
+    func returnClientToSource(client: Cliente) {
         self.cliente = client
         self.lblNombreCliente.text = self.cliente?.nombre
     }

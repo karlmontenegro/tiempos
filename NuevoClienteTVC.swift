@@ -10,6 +10,10 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
+protocol clientViewOperations {
+    func updateContent()
+}
+
 class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressTableAfterEdit,ABPeoplePickerNavigationControllerDelegate,textInputOp {
 
     @IBOutlet weak var winTitle: UINavigationItem!
@@ -28,6 +32,8 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
     
     var addressArray:Array<Direccion>? = nil
     var editableAddress:Direccion? = nil
+    
+    var delegate:clientViewOperations? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -293,6 +299,7 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
             self.alertMessage("El cliente necesariamente debe tener un nombre", winTitle: "Error")
         } else {
             daoCliente().updateClient(self.cliente!, nombre: cellName.txtName.text!, razSoc: cellRS.txtName.text!, ruc: cellRUC.txtName.text!)
+            self.delegate?.updateContent()
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }

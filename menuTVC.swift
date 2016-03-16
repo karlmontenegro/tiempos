@@ -26,14 +26,7 @@ class menuTVC: UITableViewController {
     }
 
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == "citasView" {
-            if daoCliente().getAllClients().count > 0 {
-                return true
-            } else {
-                self.alertMessage("Debe haber por lo menos un cliente para poder crear una cita nueva.", winTitle: "Error")
-                return false
-            }
-        }
+        
         return true
     }
     

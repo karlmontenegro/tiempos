@@ -14,7 +14,7 @@ protocol dateDetailOp{
     func reloadDateDetailInfo(event:EKEvent, date:Cita)
 }
 
-class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,entregableOp{
+class EditCitaTVC: UITableViewController,clientOperations,contractOp,alarmOp,dateTimeOp,entregableOp{
 
     @IBOutlet weak var txtNomCita: UITextField!
     @IBOutlet weak var lblNomCliente: UILabel!
@@ -104,7 +104,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
         // Dispose of any resources that can be recreated.
     }
     
-    func returnClientToDate(client: Cliente) {
+    func returnClientToSource(client: Cliente) {
         self.cliente = client
         self.lblNomCliente.text = client.nombre
     }
@@ -125,7 +125,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
 
     }
     
-    func returnContractToDate(contract: Contrato) {
+    func returnContractToSource(contract: Contrato) {
         self.contrato = contract
         self.lblNomContrato.text = contract.nombreContrato
         
@@ -194,7 +194,7 @@ class EditCitaTVC: UITableViewController,clientOp,contractOp,alarmOp,dateTimeOp,
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "editNomClienteSegue"{
-            let vc:ClientePicker = segue.destinationViewController as! ClientePicker
+            let vc:ClientModal = segue.destinationViewController as! ClientModal
             vc.delegateAddress = self
         }
         if segue.identifier == "editStartDateSegue"{
