@@ -25,4 +25,36 @@ class Cliente: NSManagedObject {
     func allAddresses()->NSSet{
         return self.mutableSetValueForKey("direccion")
     }
+    
+    func hasContracts()->Bool {
+        if self.contrato == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func hasCitas()->Bool {
+        if self.cita == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func hasTiempos()->Bool {
+        if self.tiempo == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func hasRecibos()->Bool {
+        if self.recibo == nil {
+            return false
+        } else {
+            return true
+        }
+    }
 }

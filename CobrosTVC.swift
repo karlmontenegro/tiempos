@@ -8,9 +8,8 @@
 
 import UIKit
 import DZNEmptyDataSet
-import MGSwipeTableCell
 
-class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource, MGSwipeTableCellDelegate {
+class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
 
@@ -39,6 +38,13 @@ class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmp
     }
 
     //Empty Data Set Func
+    
+    func refreshInvoiceInfo() {
+        self.notCashedInvoices = daoRecibo().getAllPendingInvoices()!
+        self.cashedInvoices = daoRecibo().getAllCashedInvoices()!
+        
+        self.tableView.reloadData()
+    }
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "empty-money-100")
@@ -100,16 +106,9 @@ class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmp
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath) as! MGSwipeTableCell
-        
-        cell.delegate = self
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("reciboCell", forIndexPath: indexPath)
         
         if indexPath.section == 0 {
-            
-            cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"check.png"), backgroundColor: UIColor.greenColor())
-                ,MGSwipeButton(title: "", icon: UIImage(named:"fav.png"), backgroundColor: UIColor.blueColor())]
-            
-            cell.leftSwipeSettings.transition = MGSwipeTransition.Rotate3D
             
             if self.notCashedInvoices[indexPath.row].contrato != nil {
                 cell.textLabel!.text = self.notCashedInvoices[indexPath.row].contrato?.nombreContrato
@@ -141,13 +140,38 @@ class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmp
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     
-    
-    func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
-        return true
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let cashAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Cobrar") { (action , indexPath ) -> Void in
+            self.editing = false
+            
+            daoRecibo().cashInvoice(self.notCashedInvoices[indexPath.row], date: NSDate(), description: "")
+            self.refreshInvoiceInfo()
+        }
+        
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar") { (action, indexPath) -> Void in
+            self.editing = false
+            
+            if indexPath.section == 0 {
+                daoRecibo().deleteInvoice(self.notCashedInvoices[indexPath.row])
+                self.notCashedInvoices.removeAtIndex(indexPath.row)
+            } else {
+                daoRecibo().deleteInvoice(self.cashedInvoices[indexPath.row])
+                self.cashedInvoices.removeAtIndex(indexPath.row)
+            }
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+        
+        if indexPath.section == 0 {
+            return [deleteAction, cashAction]
+        } else {
+            return [deleteAction]
+        }
     }
+    
 
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation

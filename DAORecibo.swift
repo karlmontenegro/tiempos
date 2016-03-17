@@ -164,7 +164,7 @@ class daoRecibo{
         
         let request = NSFetchRequest()
         let pred = NSPredicate(format: "(cobrado = %@)", true)
-        let invoiceSortDescriptor = NSSortDescriptor(key: "recibo.fechaVencimiento", ascending: true)
+        let invoiceSortDescriptor = NSSortDescriptor(key: "fechaVencimiento", ascending: true)
         
         request.sortDescriptors = [invoiceSortDescriptor]
         request.entity = entityInvoice

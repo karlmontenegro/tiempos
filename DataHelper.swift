@@ -21,11 +21,13 @@ class DataHelper {
             (id: "USD", descripcion: "($)",  defaultCurrency: false),
             (id: "EUR", descripcion: "(€)",  defaultCurrency: false)]
         
-        for moneda in monedaList {
-            let newMoneda = NSEntityDescription.insertNewObjectForEntityForName("Moneda", inManagedObjectContext: context) as! Moneda
-            newMoneda.id = moneda.id
-            newMoneda.descripcion = moneda.descripcion
-            newMoneda.defaultCurrency = moneda.defaultCurrency
+        if self.isCurrencyEmpty() {
+            for moneda in monedaList {
+                let newMoneda = NSEntityDescription.insertNewObjectForEntityForName("Moneda", inManagedObjectContext: context) as! Moneda
+                newMoneda.id = moneda.id
+                newMoneda.descripcion = moneda.descripcion
+                newMoneda.defaultCurrency = moneda.defaultCurrency
+            }
         }
         
         do{
@@ -47,5 +49,27 @@ class DataHelper {
             print(error)
         }
         
+    }
+    
+    func isCurrencyEmpty ()->Bool {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let entityContract = NSEntityDescription.entityForName("Moneda", inManagedObjectContext: context)
+        
+        let request = NSFetchRequest()
+        
+        request.entity = entityContract
+        request.returnsObjectsAsFaults = false
+        
+        var result:Array<Moneda>= []
+        
+        do{
+            try result = context.executeFetchRequest(request) as! Array<Moneda>
+        }catch{
+            print(error)
+        }
+        
+        return result.isEmpty
     }
 }

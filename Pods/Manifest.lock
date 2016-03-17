@@ -1,13 +1,10 @@
 PODS:
   - DZNEmptyDataSet (1.7.3)
-  - MGSwipeTableCell (1.5.3)
 
 DEPENDENCIES:
   - DZNEmptyDataSet
-  - MGSwipeTableCell
 
 SPEC CHECKSUMS:
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
-  MGSwipeTableCell: 5ae3b9a15efda26b201adc8676b24040febe6ff6
 
 COCOAPODS: 0.39.0

@@ -136,13 +136,20 @@ class ClientesTableViewController: UITableViewController, DZNEmptyDataSetDelegat
             
             // Delete action
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
-                // Deletes the row from the DAO
-                daoCliente().deleteClientAt(self.arreglo[indexPath.row])
                 
-                // Deletes the element from the array
-                self.arreglo.removeAtIndex(indexPath.row)
+                //Checks for associated information
                 
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                let cliente = self.arreglo[indexPath.row]
+                
+                if cliente.hasContracts() || cliente.hasCitas() || cliente.hasRecibos() || cliente.hasTiempos() {
+                    self.alertMessage("El cliente no se puede borrar, tiene mucha información asociada.", winTitle: "Error")
+                } else {
+                    // Deletes the row from the DAO
+                    daoCliente().deleteClientAt(self.arreglo[indexPath.row])
+                    // Deletes the element from the array
+                    self.arreglo.removeAtIndex(indexPath.row)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
             }))
             
             // Cancel action
@@ -165,5 +172,14 @@ class ClientesTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         return true
     }
     */
+    
+    func alertMessage(winMessage: String, winTitle: String){
+        let alertController = UIAlertController(title: winTitle, message: winMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
 
 }

@@ -4,4 +4,4 @@
 
 #import "SWRevealViewController.h"
 #import "DZNEmptyDataSet/UIScrollView+EmptyDataSet.h"
-#import "MGSwipeTableCell/MGSwipeTableCell.h"
+
