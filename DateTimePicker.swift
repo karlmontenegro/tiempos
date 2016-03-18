@@ -24,7 +24,7 @@ class DateTimePicker: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if source == "INV" {
+        if source == "INV" || source == "CTR" {
             self.dateTimePicker.datePickerMode = UIDatePickerMode.Date
         } else {
             self.dateTimePicker.datePickerMode = UIDatePickerMode.DateAndTime

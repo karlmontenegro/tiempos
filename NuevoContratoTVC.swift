@@ -19,7 +19,7 @@ protocol contractViewOperations {
     func updateContent()
 }
 
-class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperations, entOperations, UITextFieldDelegate  {
+class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperations, entOperations, UITextFieldDelegate, dateTimeOp  {
     
     @IBOutlet weak var navigationTitle: UINavigationItem!
     var keyboardVisible:Bool = false
@@ -41,7 +41,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     @IBOutlet weak var lblTipoFacturacion: UILabel!
     @IBOutlet weak var factSwitch: UISwitch!
     @IBOutlet weak var txtNombreContrato: UITextField!
-    @IBOutlet weak var txtNombreEntregable: UITextField!
+
 
     //FACTURACIÓN POR HORAS
     
@@ -54,12 +54,13 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     var numEntregables:Int = 1
     var entregableUno:Entregable? = nil
+    var fechaEntregableUno:NSDate? = nil
+    var dateFormatter:NSDateFormatter = NSDateFormatter()
     
-    @IBOutlet weak var tituloEntregableCell: UITableViewCell!
     @IBOutlet weak var tarifaEntregableCell: UITableViewCell!
     @IBOutlet weak var lblNumEntregables: UILabel!
-    @IBOutlet weak var txtTituloEntregableUno: UITextField!
     @IBOutlet weak var txtTarifaEntregableUno: UITextField!
+    @IBOutlet weak var lblFechaEntregableUno: UILabel!
     
     override func viewWillAppear(animated: Bool) {
         if self.origin == "EDIT" {
@@ -81,8 +82,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         self.txtTarifaEntregableUno.delegate = self
         self.txtTotalHoras.delegate = self
         self.txtTarifaPorHoras.delegate = self
-        self.txtTituloEntregableUno.delegate = self
-        self.txtNombreEntregable.delegate = self
+        self.dateFormatter.dateFormat = "dd/MM/yy"
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         
@@ -111,7 +111,6 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             self.tipoFact = (self.contrato?.tipoFacturacion)!
             self.navigationTitle.title = "Editar Contrato"
             self.hideRowsEnt = 1
-            self.tituloEntregableCell.hidden = true
             self.tarifaEntregableCell.hidden = true
             
             self.lblNombreCliente.text = self.cliente!.nombre
@@ -124,7 +123,12 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 self.lblNumEntregables.text = "Entregables: " + (self.contrato?.entregables!.count.description)!
                 self.numEntregables = (self.contrato?.entregables!.count)!
                 
-                
+                if self.contrato?.entregables!.allObjects[0].fechaEntregableUno != nil {
+                    self.fechaEntregableUno = self.contrato?.entregables!.allObjects[0].fechaEntregableUno
+                    self.lblFechaEntregableUno.text = "Fecha de Entrega: " + self.dateFormatter.stringFromDate(self.fechaEntregableUno!)
+                } else {
+                    self.lblFechaEntregableUno.text = "+ Añadir fecha de entrega"
+                }
                 
             } else { //Por Horas
                 
@@ -145,12 +149,15 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         }
     }
 
+    func returnDateTimeToDate(date: NSDate, type: String) {
+        self.fechaEntregableUno = date
+        self.lblFechaEntregableUno.text = self.dateFormatter.stringFromDate(self.fechaEntregableUno!)
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.txtNombreContrato.endEditing(true)
-        self.txtNombreEntregable.endEditing(true)
         self.txtTarifaEntregableUno.endEditing(true)
         self.txtTarifaPorHoras.endEditing(true)
-        self.txtTituloEntregableUno.endEditing(true)
         self.txtTotalHoras.endEditing(true)
         return false
     }
@@ -219,9 +226,6 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         }
     }
     
-    @IBAction func tituloContratoChanged(sender: AnyObject) {
-        self.txtTituloEntregableUno.text = self.txtNombreContrato.text
-    }
 
     @IBAction func horasTotalesChanged(sender: UITextField) {
         let tarHoras:Double? = Double(self.txtTarifaPorHoras.text!)
@@ -245,20 +249,18 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                     
                 if self.tipoFact == "ENT" {
                     if self.origin == "NEW" {
-                        if self.txtTituloEntregableUno.text == "" {
-                            self.alertMessage("El entregable debe tener un título", winTitle: "Error")
-                        } else {
-                            if self.txtTarifaEntregableUno.text == "" {
-                                self.alertMessage("El entregable debe tener una tarifa", winTitle: "Error")
-                            }else {
-                                self.entregableUno = daoEntregable().genericEntregable()
-                                daoEntregable().updateEntregable(self.txtTituloEntregableUno.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!, entrega: nil)
+                        
+                        if self.txtTarifaEntregableUno.text == "" {
+                            self.alertMessage("El entregable debe tener una tarifa", winTitle: "Error")
+                        }else {
+                            self.entregableUno = daoEntregable().genericEntregable()
+                            daoEntregable().updateEntregable(self.txtNombreContrato.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!, entrega: self.fechaEntregableUno)
                                 
-                                self.contrato?.addEntregable(self.entregableUno!)
+                            self.contrato?.addEntregable(self.entregableUno!)
                                 
-                                daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
-                            }
+                            daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
                         }
+                        
                     } else {
                         daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
                     }
@@ -414,6 +416,12 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             tableVC.contrato = self.contrato
             tableVC.delegateAddress = self
             tableVC.moneda = self.moneda
+        }
+        if segue.identifier == "dateEntregableSegue" {
+            let vc:DateTimePicker = segue.destinationViewController as! DateTimePicker
+            vc.source = "CTR"
+            vc.delegateAddress = self
+            vc.date = NSDate()
         }
     }
     

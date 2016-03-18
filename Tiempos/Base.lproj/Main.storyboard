@@ -519,9 +519,6 @@
                                                     <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <connections>
-                                                        <action selector="tituloContratoChanged:" destination="dfE-gH-JLK" eventType="editingChanged" id="UTI-R8-6zR"/>
-                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -834,46 +831,6 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Facturación por Entregables" id="CqQ-gH-bD0">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="sxy-gX-CWr">
-                                        <rect key="frame" x="0.0" y="725" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sxy-gX-CWr" id="4sA-kY-N0M">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título del Entregable 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2K0-ky-PVX">
-                                                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="2K0-ky-PVX" firstAttribute="leading" secondItem="4sA-kY-N0M" secondAttribute="leadingMargin" constant="12" id="Au8-sU-GB8"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="2K0-ky-PVX" secondAttribute="trailing" constant="13" id="d23-Tq-5vV"/>
-                                                <constraint firstItem="2K0-ky-PVX" firstAttribute="centerY" secondItem="4sA-kY-N0M" secondAttribute="centerY" id="kVu-vq-Tbl"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="2K0-ky-PVX"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <exclude reference="Au8-sU-GB8"/>
-                                                    <exclude reference="d23-Tq-5vV"/>
-                                                    <exclude reference="kVu-vq-Tbl"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="2K0-ky-PVX"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <include reference="Au8-sU-GB8"/>
-                                                    <include reference="d23-Tq-5vV"/>
-                                                    <include reference="kVu-vq-Tbl"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="PxQ-T5-9Ws">
                                         <rect key="frame" x="0.0" y="769" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -915,6 +872,29 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="TCs-Kb-ZxV" style="IBUITableViewCellStyleDefault" id="BTn-5h-UKy">
+                                        <rect key="frame" x="0.0" y="813" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BTn-5h-UKy" id="vKL-pD-UEk">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="+ Añadir fecha de entrega" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TCs-Kb-ZxV">
+                                                    <rect key="frame" x="15" y="0.0" width="550" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="EDM-aX-XF8" kind="presentation" identifier="dateEntregableSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="wSO-dN-ubs"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3y9-8F-CWP" style="IBUITableViewCellStyleDefault" id="1Zc-OJ-gIl">
                                         <rect key="frame" x="0.0" y="813" width="600" height="44"/>
@@ -966,18 +946,16 @@
                     <connections>
                         <outlet property="factSwitch" destination="ih8-LZ-GRj" id="Xu0-tK-QcX"/>
                         <outlet property="lblCurrency" destination="Fd6-iJ-YxY" id="nZG-yW-GcE"/>
+                        <outlet property="lblFechaEntregableUno" destination="TCs-Kb-ZxV" id="OsL-8J-jCj"/>
                         <outlet property="lblNombreCliente" destination="DKP-g4-bV8" id="c1a-3i-5iH"/>
                         <outlet property="lblNumEntregables" destination="3y9-8F-CWP" id="ca8-JC-u4Z"/>
                         <outlet property="lblTipoFacturacion" destination="2Md-8h-lJh" id="3LR-5K-f5S"/>
                         <outlet property="lblTotalReferencial" destination="KB5-s8-9a2" id="9mi-Bu-hDe"/>
                         <outlet property="navigationTitle" destination="lAl-Zq-W2d" id="GhT-lf-iDo"/>
                         <outlet property="tarifaEntregableCell" destination="PxQ-T5-9Ws" id="vy9-TQ-WB1"/>
-                        <outlet property="tituloEntregableCell" destination="sxy-gX-CWr" id="cma-vJ-G87"/>
                         <outlet property="txtNombreContrato" destination="3Ci-Hh-Yh3" id="TMN-tW-L6d"/>
-                        <outlet property="txtNombreEntregable" destination="2K0-ky-PVX" id="jbk-j3-l6n"/>
                         <outlet property="txtTarifaEntregableUno" destination="HVI-iD-28O" id="a5W-kJ-RlQ"/>
                         <outlet property="txtTarifaPorHoras" destination="0NH-cw-1CC" id="Kmu-Jb-DkO"/>
-                        <outlet property="txtTituloEntregableUno" destination="2K0-ky-PVX" id="z6b-WG-m5Q"/>
                         <outlet property="txtTotalHoras" destination="kHv-Tf-mSP" id="7Wy-LZ-WOC"/>
                     </connections>
                 </tableViewController>
@@ -3971,7 +3949,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE0-9f-8vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4771.5" y="-1479"/>
+            <point key="canvasLocation" x="3963" y="84.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0GT-4e-TzG">
@@ -7078,19 +7056,19 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LiL-b8-wS2"/>
-        <segue reference="uOR-nE-Lvj"/>
         <segue reference="IEm-rT-DGL"/>
-        <segue reference="fAi-QO-h1o"/>
-        <segue reference="QM7-Ye-Xhr"/>
-        <segue reference="oyW-Uv-Djb"/>
-        <segue reference="VN9-SP-Fso"/>
-        <segue reference="9Mu-EJ-Weg"/>
-        <segue reference="JkI-sg-EPr"/>
-        <segue reference="Rm0-TT-V55"/>
+        <segue reference="uOR-nE-Lvj"/>
         <segue reference="Vgj-sz-mG7"/>
+        <segue reference="T9P-OV-9XB"/>
+        <segue reference="wRK-05-tv0"/>
+        <segue reference="Rm0-TT-V55"/>
+        <segue reference="LiL-b8-wS2"/>
         <segue reference="SD1-5e-R04"/>
-        <segue reference="ug0-Sy-PtU"/>
-        <segue reference="gXv-1y-fNi"/>
+        <segue reference="8vE-Kv-g5c"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="VN9-SP-Fso"/>
+        <segue reference="oyW-Uv-Djb"/>
+        <segue reference="9Mu-EJ-Weg"/>
+        <segue reference="fAi-QO-h1o"/>
     </inferredMetricsTieBreakers>
 </document>

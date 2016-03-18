@@ -110,6 +110,7 @@ class EntregableTVC: UITableViewController, entregableEditionOperations {
             vc.data = self.entregables![indexpath.row]
             vc.delegateAddress = self
             vc.mode = "EDIT"
+            vc.dueDate = self.entregables![indexpath.row].fechaEntrega
             
         }
     }

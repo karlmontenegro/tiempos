@@ -75,6 +75,11 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
             self.txtEntregable.text = "Nuevo Entregable"
         }else{
             self.txtEntregable.text = "Editar Entregable"
+            
+            if self.dueDate != nil {
+                self.datePicker.date = self.dueDate!
+            }
+            
         }
         // Do any additional setup after loading the view.
         
