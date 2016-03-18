@@ -2002,6 +2002,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="winTitle" destination="jH7-My-b42" id="TNj-xD-xyW"/>
                         <segue destination="8g9-O3-lqi" kind="presentation" identifier="editAddressSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="kWc-F1-iXa"/>
