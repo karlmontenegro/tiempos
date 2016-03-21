@@ -37,18 +37,21 @@ class daoDireccion{
             print(error)
         }
         
-        self.setMainAddress(cliente, dir: newDir)
+        if cliente.direccion!.count == 1 {
+            self.setMainAddress(cliente, dir: newDir)
+        }
+        
     }
     
     func setMainAddress(obj: Cliente, dir:Direccion){
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        for direccion in obj.allAddresses() {
-            direccion.setValue(false, forKey: "principal")
+        for direccion in (obj.direccion?.allObjects)! {
+            (direccion as! Direccion).principal = false
         }
 
-        dir.setValue(true, forKey: "principal")
+        dir.principal = true
 
         do{
             try context.save()

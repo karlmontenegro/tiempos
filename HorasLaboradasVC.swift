@@ -78,13 +78,13 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "No tienes horas laboradas a la fecha"
+        let str = "No tienes citas pendientes de convertir"
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Haz click en el botón superior derecho para añadir tu primera hora laborada"
+        let str = "Haz click en el botón superior derecho para añadir horas laboradas"
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote)]
         return NSAttributedString(string: str, attributes: attrs)
     }

@@ -832,7 +832,7 @@
                             <tableViewSection headerTitle="Facturación por Entregables" id="CqQ-gH-bD0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="PxQ-T5-9Ws">
-                                        <rect key="frame" x="0.0" y="769" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="725" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PxQ-T5-9Ws" id="qxY-2r-cit">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -874,7 +874,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="TCs-Kb-ZxV" style="IBUITableViewCellStyleDefault" id="BTn-5h-UKy">
-                                        <rect key="frame" x="0.0" y="813" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="769" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BTn-5h-UKy" id="vKL-pD-UEk">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -945,6 +945,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="factSwitch" destination="ih8-LZ-GRj" id="Xu0-tK-QcX"/>
+                        <outlet property="fechaDeEntrega" destination="BTn-5h-UKy" id="WgL-T1-3GB"/>
                         <outlet property="lblCurrency" destination="Fd6-iJ-YxY" id="nZG-yW-GcE"/>
                         <outlet property="lblFechaEntregableUno" destination="TCs-Kb-ZxV" id="OsL-8J-jCj"/>
                         <outlet property="lblNombreCliente" destination="DKP-g4-bV8" id="c1a-3i-5iH"/>
@@ -4577,7 +4578,7 @@
             </objects>
             <point key="canvasLocation" x="1078.5" y="-1956.75"/>
         </scene>
-        <!--Horas Laboradas-->
+        <!--Citas Pendientes de Confirmar-->
         <scene sceneID="R0N-GD-PHC">
             <objects>
                 <viewController id="qlO-lb-Tpv" customClass="HorasLaboradasVC" customModule="Tiempos" customModuleProvider="target" sceneMemberID="viewController">
@@ -4663,7 +4664,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Horas Laboradas" id="jZW-s5-Qfc">
+                    <navigationItem key="navigationItem" title="Citas Pendientes de Confirmar" id="jZW-s5-Qfc">
                         <barButtonItem key="leftBarButtonItem" image="menu-25.png" id="OAn-2q-Jda">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -5422,7 +5423,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Horas Laboradas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5dW-kJ-If6">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Confirmar Horas Laboradas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5dW-kJ-If6">
                                                     <rect key="frame" x="62" y="0.0" width="523" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -5450,7 +5451,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Recibos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HPC-Sq-Xka">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Generar Recibos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HPC-Sq-Xka">
                                                     <rect key="frame" x="62" y="0.0" width="523" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -7057,19 +7058,19 @@
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IEm-rT-DGL"/>
         <segue reference="uOR-nE-Lvj"/>
         <segue reference="Vgj-sz-mG7"/>
         <segue reference="T9P-OV-9XB"/>
+        <segue reference="gKx-zT-PIN"/>
         <segue reference="wRK-05-tv0"/>
+        <segue reference="wSO-dN-ubs"/>
         <segue reference="Rm0-TT-V55"/>
-        <segue reference="LiL-b8-wS2"/>
-        <segue reference="SD1-5e-R04"/>
-        <segue reference="8vE-Kv-g5c"/>
-        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="IEm-rT-DGL"/>
+        <segue reference="fAi-QO-h1o"/>
         <segue reference="VN9-SP-Fso"/>
         <segue reference="oyW-Uv-Djb"/>
-        <segue reference="9Mu-EJ-Weg"/>
-        <segue reference="fAi-QO-h1o"/>
+        <segue reference="QM7-Ye-Xhr"/>
+        <segue reference="SD1-5e-R04"/>
+        <segue reference="LiL-b8-wS2"/>
     </inferredMetricsTieBreakers>
 </document>

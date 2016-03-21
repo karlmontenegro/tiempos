@@ -61,6 +61,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     @IBOutlet weak var lblNumEntregables: UILabel!
     @IBOutlet weak var txtTarifaEntregableUno: UITextField!
     @IBOutlet weak var lblFechaEntregableUno: UILabel!
+    @IBOutlet weak var fechaDeEntrega: UITableViewCell!
     
     override func viewWillAppear(animated: Bool) {
         if self.origin == "EDIT" {
@@ -123,11 +124,17 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 self.lblNumEntregables.text = "Entregables: " + (self.contrato?.entregables!.count.description)!
                 self.numEntregables = (self.contrato?.entregables!.count)!
                 
-                if self.contrato?.entregables!.allObjects[0].fechaEntregableUno != nil {
-                    self.fechaEntregableUno = self.contrato?.entregables!.allObjects[0].fechaEntregableUno
-                    self.lblFechaEntregableUno.text = "Fecha de Entrega: " + self.dateFormatter.stringFromDate(self.fechaEntregableUno!)
+                if self.contrato?.entregables!.count == 1 {
+                    self.txtTarifaEntregableUno.text = (self.contrato?.entregables?.allObjects[0] as! Entregable).tarifa?.description
+                    
+                    if (self.contrato?.entregables!.allObjects[0] as! Entregable).fechaEntrega != nil {
+                        self.fechaEntregableUno = (self.contrato?.entregables!.allObjects[0] as! Entregable).fechaEntrega
+                        self.lblFechaEntregableUno.text = "Fecha de Entrega: " + self.dateFormatter.stringFromDate(self.fechaEntregableUno!)
+                    } else {
+                        self.lblFechaEntregableUno.text = "+ Añadir fecha de entrega"
+                    }
                 } else {
-                    self.lblFechaEntregableUno.text = "+ Añadir fecha de entrega"
+                    
                 }
                 
             } else { //Por Horas
@@ -263,6 +270,10 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                         
                     } else {
                         daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
+                        
+                        if self.contrato!.entregables?.count == 1 {
+                            daoEntregable().updateEntregable(self.txtNombreContrato.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: (self.contrato!.entregables?.allObjects[0])! as! Entregable, entrega: self.fechaEntregableUno)
+                        }
                     }
                 }
                 if self.tipoFact == "HRS" {
@@ -364,7 +375,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                     return 0
                 }
                 if indexPath.row == 1 {
-                    return 0
+                    return 44
                 }
             }
         }
@@ -411,6 +422,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             vc.delegateAddress = self
         }
         if segue.identifier == "entregablesSegue" {
+            
             let navVC = segue.destinationViewController as! UINavigationController
             let tableVC = navVC.viewControllers.first as! EntregableTVC
             tableVC.contrato = self.contrato
@@ -429,6 +441,10 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         if identifier == "entregablesSegue"{
             if self.moneda == nil {
                 self.alertMessage("Asígnale una moneda al contrato primero.", winTitle: "Error")
+                return false
+            }
+            if self.txtTarifaEntregableUno.text == "" {
+                self.alertMessage("Asígnale una tarifa al primer entregable primero.", winTitle: "Error")
                 return false
             }
         }

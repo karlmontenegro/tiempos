@@ -91,7 +91,7 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "No tienes citas a la fecha"
+        let str = "No tienes citas programadas en los próximos 7 días"
         let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
         return NSAttributedString(string: str, attributes: attrs)
     }

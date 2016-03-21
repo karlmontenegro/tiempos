@@ -109,6 +109,7 @@ class daoCalendar{
         return self.classifyEventsByDate(newStartDate,array: result)
     }
     
+    
     //Aux Functions
     
     func searchCalendarByTitle(title:String, list: [EKCalendar])->EKCalendar?{

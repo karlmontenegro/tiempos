@@ -63,7 +63,7 @@ class daoEntregable{
         let num = NSNumber(float: numTarifa!)
         
         if entrega != nil {
-            object.setValue(entrega, forKey: "fechaEntrega")
+            object.setValue(entrega!, forKey: "fechaEntrega")
         }
         
         object.setValue(nombre, forKey: "nombreEntreg")
@@ -87,12 +87,13 @@ class daoEntregable{
         let entityEntregable = NSEntityDescription.entityForName("Entregable", inManagedObjectContext: context)
         let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
         let clienteSortDescriptor = NSSortDescriptor(key: "contrato.cliente.nombre", ascending: true)
+        let dateSortDescriptor = NSSortDescriptor(key: "fechaEntrega", ascending: true)
         
         let pred = NSPredicate(format: "(reciboDetalle = NIL)")
         
         request.entity = entityEntregable
         request.predicate = pred
-        request.sortDescriptors = [clienteSortDescriptor,contratoSortDescriptor]
+        request.sortDescriptors = [clienteSortDescriptor,contratoSortDescriptor,dateSortDescriptor]
         request.returnsObjectsAsFaults = false
         
         var results:Array<Entregable> = []

@@ -18,6 +18,7 @@ class RecibosEntregablesVC: UIViewController, invoiceOp, DZNEmptyDataSetSource, 
     
     var entregablesDictionary:Dictionary<Cliente,Array<Entregable>> = daoEntregable().getAllEntregables()!
     var entregablesKeys:Array<Cliente> = []
+    var dateFormatter = NSDateFormatter()
     
     var selectedEntregable:Entregable? = nil
     
@@ -27,6 +28,8 @@ class RecibosEntregablesVC: UIViewController, invoiceOp, DZNEmptyDataSetSource, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dateFormatter.dateFormat = "dd/MM/YY"
         
         //Empty Data Set
         
@@ -115,10 +118,14 @@ class RecibosEntregablesVC: UIViewController, invoiceOp, DZNEmptyDataSetSource, 
     
         cell.textLabel?.text = entregable.nombreEntreg
         
-        if entregable.contrato != nil {
-            cell.detailTextLabel?.text = "Contrato: " + (entregable.contrato?.nombreContrato)!
+        if entregable.contrato != nil && entregable.fechaEntrega != nil {
+            cell.detailTextLabel?.text = "Contrato: " + (entregable.contrato?.nombreContrato)! + " - Fecha de Entrega: " + self.dateFormatter.stringFromDate(entregable.fechaEntrega!)
         } else {
-            cell.detailTextLabel?.text = "(Sin Contrato)"
+            if entregable.fechaEntrega != nil {
+                cell.detailTextLabel?.text = "(Sin Contrato)" + " - Fecha de Entrega: " + self.dateFormatter.stringFromDate(entregable.fechaEntrega!)
+            } else {
+                cell.detailTextLabel?.text = "(Sin Contrato)" + " - (Sin Fecha de Entrega)"
+            }
         }
 
         return cell

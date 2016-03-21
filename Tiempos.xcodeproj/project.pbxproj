@@ -54,6 +54,7 @@
 		0C705BF21B7519B400191AEF /* tiemposdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF01B7519B400191AEF /* tiemposdb.xcdatamodeld */; };
 		0C705BF41B751BB600191AEF /* NuevoCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C705BF31B751BB600191AEF /* NuevoCliente.swift */; };
 		0C8675991C99E2C300C3CFEB /* ContractModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8675981C99E2C300C3CFEB /* ContractModal.swift */; };
+		0C86759B1CA0463700C3CFEB /* DateBatchImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C86759A1CA0463700C3CFEB /* DateBatchImport.swift */; };
 		0C8BDE151B87993500EDBC9C /* EditarCliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8BDE141B87993500EDBC9C /* EditarCliente.swift */; };
 		0C909A131BF6563C00B93046 /* AlarmPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C909A121BF6563C00B93046 /* AlarmPicker.swift */; };
 		0C9832B41BFF8E7D00184DFA /* EditCitaTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9832B31BFF8E7D00184DFA /* EditCitaTVC.swift */; };
@@ -197,6 +198,7 @@
 		0C705BF11B7519B400191AEF /* tiemposdb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tiemposdb.xcdatamodel; sourceTree = "<group>"; };
 		0C705BF31B751BB600191AEF /* NuevoCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NuevoCliente.swift; path = Tiempos/NuevoCliente.swift; sourceTree = "<group>"; };
 		0C8675981C99E2C300C3CFEB /* ContractModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractModal.swift; sourceTree = "<group>"; };
+		0C86759A1CA0463700C3CFEB /* DateBatchImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateBatchImport.swift; sourceTree = "<group>"; };
 		0C8BDE141B87993500EDBC9C /* EditarCliente.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditarCliente.swift; sourceTree = "<group>"; };
 		0C909A121BF6563C00B93046 /* AlarmPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmPicker.swift; sourceTree = "<group>"; };
 		0C9832B31BFF8E7D00184DFA /* EditCitaTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCitaTVC.swift; sourceTree = "<group>"; };
@@ -479,7 +481,6 @@
 				0C5F57841BDFE34200B1A0C9 /* ContratoHoras+CoreDataProperties.swift */,
 				0CFB8DBC1BB1C0310044D0F5 /* ContratoHoras.swift */,
 				0C9C589C1B72869B0091B578 /* NotaAudio.swift */,
-				0CCF3D5E1C63E2400066FB63 /* DataHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -487,6 +488,7 @@
 		0CAF58FF1B7E4A5000DE9CF8 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
+				0CCF3D5E1C63E2400066FB63 /* DataHelper.swift */,
 				0C4E68081B7A59700002CE49 /* DAOPais.swift */,
 				0C4E68061B7A51A40002CE49 /* DAOUsuario.swift */,
 				0C3749BF1B7903D900EBD075 /* DAOCliente.swift */,
@@ -502,6 +504,7 @@
 				0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */,
 				0CCF78F01BEBC1BF00D2B3A6 /* DAOCalendar.swift */,
 				0CCF3D661C63E8930066FB63 /* DAOConfiguracion.swift */,
+				0C86759A1CA0463700C3CFEB /* DateBatchImport.swift */,
 			);
 			name = DAO;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 				0C581E1E1BC2F57C00D2C297 /* ClientModal.swift in Sources */,
 				0C50390F1C7E0FCB0004D122 /* Recibo.swift in Sources */,
 				0CAF591F1B7E5E2900DE9CF8 /* DAOCita.swift in Sources */,
+				0C86759B1CA0463700C3CFEB /* DateBatchImport.swift in Sources */,
 				0CFB8DC91BB1C0310044D0F5 /* Cita.swift in Sources */,
 				0CE4B3BD1BA091E700FCC736 /* HomeViewController.swift in Sources */,
 				0C2042261C5AC4E00082AB9F /* CobroDetailVC.swift in Sources */,
