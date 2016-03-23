@@ -22,5 +22,5 @@ extension Moneda {
     @NSManaged var recibo: NSSet?
     @NSManaged var configuracion: Configuracion?
     @NSManaged var contrato: NSSet?
-
+    @NSManaged var tiempo: Tiempo?
 }

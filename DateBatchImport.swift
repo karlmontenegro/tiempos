@@ -19,7 +19,13 @@ class DateBatchImport {
         self.calendar = c
     }
     
-    func importCalendarDatesToDataBase(startDate: NSDate, endDate: NSDate) {
+    func importCalendarDatesToDataBase(startDate: NSDate, endDate: NSDate)->Array<EKEvent>? {
+        var list:Array<EKEvent>? = nil
         
+        let predicate = eventStore?.predicateForEventsWithStartDate(startDate, endDate: endDate, calendars: [calendar!])
+        
+        list = eventStore?.eventsMatchingPredicate(predicate!) as [EKEvent]!
+        
+        return list
     }
 }

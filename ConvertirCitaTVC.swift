@@ -105,7 +105,7 @@ class ConvertirCitaTVC: UITableViewController, TimeOp {
     
     func stringFromTimeInterval(interval: NSTimeInterval) -> String {
         let interval = Int(interval)
-        let seconds = interval % 60
+        //let seconds = interval % 60
         let minutes = (interval / 60) % 60
         let hours = (interval / 3600)
         return String(format: "%02d horas %02d minutos", hours, minutes)

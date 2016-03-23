@@ -53,7 +53,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
         
         let recordID:ABRecordID = (((contacto as! Contacto).valueForKey("recordRef")?.intValue) as ABRecordID?)!
         
-        var recordRef:ABRecordRef? = ABAddressBookGetPersonWithRecordID(self.addressBookRef, recordID).takeRetainedValue()
+        let recordRef:ABRecordRef? = ABAddressBookGetPersonWithRecordID(self.addressBookRef, recordID).takeRetainedValue()
         
         peopleViewController.displayedPerson = recordRef!
         self.navigationController?.pushViewController(peopleViewController, animated: true)
@@ -121,7 +121,7 @@ class DetalleClienteViewController: UIViewController,refreshClientData,refreshAd
     
     @IBAction func addNewContact(sender: UIButton) {
         
-        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
+        //let authorizationStatus = ABAddressBookGetAuthorizationStatus()
         let people = ABPeoplePickerNavigationController()
         people.peoplePickerDelegate = self
         people.editing = true

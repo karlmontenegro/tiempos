@@ -24,9 +24,6 @@ class HoursModal: UIViewController {
         super.viewDidLoad()
         self.timePicker.datePickerMode = UIDatePickerMode.Time
         self.dateFormatter.dateFormat = "HH:mm"
-        //self.timePicker.timeZone = NSTimeZone(abbreviation: "UTC");
-        
-        var dateString = "19:00"
         
         if self.interval != nil {
             print(NSDate(timeIntervalSinceReferenceDate: self.interval!))
@@ -71,7 +68,7 @@ class HoursModal: UIViewController {
 
     func stringFromTimeInterval(interval: NSTimeInterval) -> String {
         let interval = Int(interval)
-        let seconds = interval % 60
+        //let seconds = interval % 60
         let minutes = (interval / 60) % 60
         let hours = (interval / 3600)
         return String(format: "%02d horas %02d minutos", hours, minutes)

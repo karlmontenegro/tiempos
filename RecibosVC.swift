@@ -34,7 +34,7 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
         
         if self.revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
-            self.menuButton.action = "revealToggle:"
+            self.menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
@@ -195,7 +195,7 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
     }
     
     func stringFromTimeInterval(interval: Int) -> String {
-        let seconds = interval % 60
+        //let seconds = interval % 60
         let minutes = (interval / 60) % 60
         let hours = (interval / 3600)
         return String(format: "%02d horas %02d minutos", hours, minutes)
@@ -208,7 +208,7 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
     
     
     func removeFromArray(obj: Tiempo) {
-        for var index = 0; index < self.selectedTimesArray.count; ++index {
+        for index in 0 ..< self.selectedTimesArray.count {
             if self.selectedTimesArray[index] == obj {
                 self.selectedTimesArray.removeAtIndex(index)
             }

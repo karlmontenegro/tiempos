@@ -50,9 +50,9 @@ class EditarDireccionViewController: UIViewController,UITextFieldDelegate {
         self.txtReferencia1.text = (data as! Direccion).referenciaUno!
         self.txtReferencia2.text = (data as! Direccion).referenciaDos!
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditarDireccionViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditarDireccionViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         
         if (data as! Direccion).principal as! Bool {

@@ -91,7 +91,7 @@ class daoRecibo{
             newInvoiceDetail.setValue(t.tarifaHoras, forKey: "tarifaHoras")
             newInvoiceDetail.setValue(subtotal, forKey: "total")
             newInvoiceDetail.setValue(t, forKey: "tiempo")
-            item++
+            item += 1
             
             t.setValue(obj, forKey: "recibo")
             t.setValue(true, forKey: "convertido")
@@ -205,13 +205,13 @@ class daoRecibo{
     }
     
     func getTiempoListFromInvoice(obj:Recibo)->Array<Tiempo>? {
-        var tiempos: Array<Tiempo> = []
+        let tiempos: Array<Tiempo> = []
 
         return tiempos
     }
     
     func getEntregablesListFromInvoice(obj:Recibo)->Array<Entregable>?{
-        var entregables: Array<Entregable> = []
+        let entregables: Array<Entregable> = []
 
         return entregables
     }

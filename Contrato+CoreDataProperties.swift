@@ -24,5 +24,6 @@ extension Contrato {
     @NSManaged var entregables: NSSet?
     @NSManaged var recibo: NSSet?
     @NSManaged var tiempo: NSSet?
+    @NSManaged var reciboDetalle: NSSet?
 
 }
