@@ -86,6 +86,8 @@
 		0CAF592D1B7E5EC500DE9CF8 /* DAOTiempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF592C1B7E5EC500DE9CF8 /* DAOTiempo.swift */; };
 		0CAF592F1B7E5EF900DE9CF8 /* DAOContratoHoras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF592E1B7E5EF900DE9CF8 /* DAOContratoHoras.swift */; };
 		0CAF59311B7E5F1800DE9CF8 /* DAOEntregable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */; };
+		0CB0EB6C1CA2FA170031E53D /* sync-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CB0EB6B1CA2FA170031E53D /* sync-32.png */; };
+		0CB0EB6E1CA30A020031E53D /* contacts-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CB0EB6D1CA30A020031E53D /* contacts-32.png */; };
 		0CB1D31A1BED29AA00512744 /* NuevaCitaTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1D3191BED29AA00512744 /* NuevaCitaTVC.swift */; };
 		0CB2239D1C0610F700AF7656 /* EntregablePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB2239C1C0610F700AF7656 /* EntregablePicker.swift */; };
 		0CB866971C442A1A00A38653 /* RecibosEntregablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB866961C442A1A00A38653 /* RecibosEntregablesVC.swift */; };
@@ -231,6 +233,8 @@
 		0CAF592C1B7E5EC500DE9CF8 /* DAOTiempo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOTiempo.swift; sourceTree = "<group>"; };
 		0CAF592E1B7E5EF900DE9CF8 /* DAOContratoHoras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOContratoHoras.swift; sourceTree = "<group>"; };
 		0CAF59301B7E5F1800DE9CF8 /* DAOEntregable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOEntregable.swift; sourceTree = "<group>"; };
+		0CB0EB6B1CA2FA170031E53D /* sync-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sync-32.png"; path = "Iconos/sync-32.png"; sourceTree = "<group>"; };
+		0CB0EB6D1CA30A020031E53D /* contacts-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contacts-32.png"; path = "Iconos/contacts-32.png"; sourceTree = "<group>"; };
 		0CB1D3191BED29AA00512744 /* NuevaCitaTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuevaCitaTVC.swift; sourceTree = "<group>"; };
 		0CB2239C1C0610F700AF7656 /* EntregablePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregablePicker.swift; sourceTree = "<group>"; };
 		0CB866961C442A1A00A38653 /* RecibosEntregablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecibosEntregablesVC.swift; sourceTree = "<group>"; };
@@ -352,7 +356,9 @@
 				777706331C934A020068720A /* empty-time-100.png */,
 				777706391C934B9F0068720A /* empty-entregable-100.png */,
 				777706371C934B0C0068720A /* empty-client-100.png */,
+				0CB0EB6D1CA30A020031E53D /* contacts-32.png */,
 				0CECCFCF1C3EC0BC006C849A /* edit-32.png */,
+				0CB0EB6B1CA2FA170031E53D /* sync-32.png */,
 				0C22906F1C32EDE800FCD448 /* Settings-32.png */,
 				0C9E67001C2B05D4000BC948 /* Calendar-32.png */,
 				0C9E66FE1C2B03F4000BC948 /* calendar-50.png */,
@@ -742,6 +748,7 @@
 				7777063C1C9350D60068720A /* empty-money-100.png in Resources */,
 				526D56871B5D57BF000F323D /* LaunchScreen.xib in Resources */,
 				0C3533F11C0F6BEA00D52D7A /* menu-32.png in Resources */,
+				0CB0EB6E1CA30A020031E53D /* contacts-32.png in Resources */,
 				0C3533E71C0F61DB00D52D7A /* contract-32.png in Resources */,
 				0C3533ED1C0F633400D52D7A /* receipt-32.png in Resources */,
 				0C3533F41C0F6CA800D52D7A /* cancel-32.png in Resources */,
@@ -753,6 +760,7 @@
 				0CD84C931C19E5D700159373 /* home-32.png in Resources */,
 				0C3533F51C0F6CA800D52D7A /* save-32.png in Resources */,
 				7777063A1C934B9F0068720A /* empty-entregable-100.png in Resources */,
+				0CB0EB6C1CA2FA170031E53D /* sync-32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

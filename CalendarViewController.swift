@@ -25,6 +25,7 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     let hourFormatter = NSDateFormatter()
     let weekDateFormatter = NSDateFormatter()
     var date = NSDate()
+    var dateSync: DateBatchImport? = nil
     
     var weekEventKeyArray:Array<NSDate> = []
     var weekEventDictionary:Dictionary<NSDate,Array<EKEvent>>? = nil
@@ -44,6 +45,8 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dateSync = DateBatchImport(eS: self.eventStore , c: daoCalendar().getCalendar(self.calendarName, store: self.eventStore))
         
         self.dateTableView.emptyDataSetDelegate = self
         self.dateTableView.emptyDataSetSource = self
@@ -106,6 +109,42 @@ class CalendarViewController: UIViewController,UITableViewDataSource,EPCalendarP
         return -(self.navigationController?.navigationBar.frame.height)!
     }
     
+    @IBAction func syncCalendarDates(sender: AnyObject) {
+        
+        if !self.dateSync!.unsyncedDatesExist(-4, endDate: NSDate()) {
+            self.alertMessage("Todas las citas se encuentran sincronizadas", winTitle: "")
+        } else {
+            let alertController = UIAlertController(title: "Atención", message:
+                "¿Desea importar las citas del calendario a Freelo?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            // Delete action
+            alertController.addAction(UIAlertAction(title: "Importar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                // Deletes the row from the DAO
+                
+                let dateCount = self.dateSync!.importCalendarDatesToDataBase(-4, endDate: NSDate())
+                
+                self.weekEventDictionary = daoCalendar().getWeeklyEventsForDate(self.date, calendar: self.defaultCalendar!, eventStore: self.eventStore)!
+                
+                self.weekEventKeyArray = Array(self.weekEventDictionary!.keys)
+                self.weekEventKeyArray.sortInPlace { $0.compare($1) == .OrderedAscending }
+                
+                self.dateTableView.reloadData()
+                
+                self.alertMessage("Se importaron " + dateCount.description + " citas a Freelo", winTitle: "Exito")
+                
+            }))
+            
+            // Cancel action
+            alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+    }
+
     
     @IBAction func calendarTapped(sender: AnyObject) {
         let calendarPicker = EPCalendarPicker(startYear: 2015, endYear: 2040, multiSelection: false)

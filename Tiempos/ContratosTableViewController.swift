@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 
 class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
-    var arreglo:Array<Contrato>? = daoContrato().getAllActiveContracts()
+    var arreglo:Array<Contrato> = daoContrato().getAllActiveContracts()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -84,21 +84,17 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if self.arreglo != nil {
-            return self.arreglo!.count
-        }else{
-            return 0
-        }
+        return self.arreglo.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ContratoCell", forIndexPath: indexPath)
 
-        if self.arreglo != nil {
-            cell.textLabel?.text = self.arreglo![indexPath.row].nombreContrato!
-            cell.detailTextLabel?.text = "Cliente: " + (self.arreglo![indexPath.row].cliente?.nombre!)! + " Facturación: " + self.arreglo![indexPath.row].tipoFacturacion!
-        }
+        
+        cell.textLabel?.text = self.arreglo[indexPath.row].nombreContrato!
+        cell.detailTextLabel?.text = "Cliente: " + (self.arreglo[indexPath.row].cliente?.nombre!)! + " Facturación: " + self.arreglo[indexPath.row].tipoFacturacion!
+        
         return cell
     }
    
@@ -112,10 +108,10 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
             // Delete action
             alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 // Deletes the row from the DAO
-                daoContrato().deleteContractAt(self.arreglo![indexPath.row])
+                daoContrato().deleteContractAt(self.arreglo[indexPath.row])
                 
                 // Deletes the element from the array
-                self.arreglo!.removeAtIndex(indexPath.row)
+                self.arreglo.removeAtIndex(indexPath.row)
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }))
@@ -150,7 +146,7 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
             
             let navVC = segue.destinationViewController as! UINavigationController
             let tableVC = navVC.viewControllers.first as! NuevoContratoTVC
-            tableVC.contrato = self.arreglo![indexpath.row]
+            tableVC.contrato = self.arreglo[indexpath.row]
             tableVC.origin = "EDIT"
 
         }

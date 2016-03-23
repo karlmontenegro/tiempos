@@ -260,14 +260,17 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                         if self.txtTarifaEntregableUno.text == "" {
                             self.alertMessage("El entregable debe tener una tarifa", winTitle: "Error")
                         }else {
-                            self.entregableUno = daoEntregable().genericEntregable()
-                            daoEntregable().updateEntregable(self.txtNombreContrato.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!, entrega: self.fechaEntregableUno)
+                            if self.contrato?.entregables == nil {
+                                if self.contrato?.entregables!.count == 0 {
+                                    self.entregableUno = daoEntregable().genericEntregable()
+                                    daoEntregable().updateEntregable(self.txtNombreContrato.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!, entrega: self.fechaEntregableUno)
                                 
-                            self.contrato?.addEntregable(self.entregableUno!)
-                                
+                                    self.contrato?.addEntregable(self.entregableUno!)
+                                }
+                            }
                             daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
                         }
-                        
+                
                     } else {
                         daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
                         
@@ -443,9 +446,22 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                 self.alertMessage("Asígnale una moneda al contrato primero.", winTitle: "Error")
                 return false
             }
-            if self.txtTarifaEntregableUno.text == "" {
+            if self.origin == "NEW" && self.txtTarifaEntregableUno.text == "" {
                 self.alertMessage("Asígnale una tarifa al primer entregable primero.", winTitle: "Error")
                 return false
+            } else {
+                if self.contrato?.entregables != nil {
+                    if self.contrato?.entregables?.count == 0 {
+                        if self.txtNombreContrato.text == "" {
+                            self.alertMessage("El contrato debe llevar un nombre", winTitle: "Error")
+                            return false
+                        } else {
+                            let entregable = daoEntregable().genericEntregable()
+                            daoEntregable().updateEntregable(self.txtNombreContrato.text!, tarifa:self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: entregable, entrega: self.fechaEntregableUno)
+                            self.contrato?.addEntregable(entregable)
+                        }
+                    }
+                }
             }
         }
         return true

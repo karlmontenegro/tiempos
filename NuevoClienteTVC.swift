@@ -283,6 +283,12 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         }
     }
     
+    @IBAction func importContactFromAddressBook(sender: AnyObject) {
+        let people = ABPeoplePickerNavigationController()
+        people.peoplePickerDelegate = self
+        people.editing = true
+        presentViewController(people, animated: true, completion: nil)
+    }
     
     @IBAction func saveTapped(sender: AnyObject) {
         
@@ -353,6 +359,24 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         let idNumber:NSNumber = NSNumber(int: recordId)
         
         daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber,cliente: self.cliente!)
+        
+        if self.cliente?.contacto?.count == 1 {
+            self.txtNombre = (contact.valueForKey("firstName") as! String) + " " + (contact.valueForKey("lastName") as! String)
+            
+            print(contact)
+            
+            if contact.valueForKey("address") != nil || contact.valueForKey("city") != nil || contact.valueForKey("zipCode") != nil {
+                
+                let address = contact.valueForKey("address") as! String
+                let city = contact.valueForKey("city") as! String
+                let zipCode = contact.valueForKey("zipCode") as! String
+                
+                daoDireccion().newAddress(self.cliente!, dir: address, ref1: city, ref2: zipCode, p: true)
+            }
+        } else {
+            self.txtNombre = ""
+        }
+        
         self.refreshAddressesDelegate()
     }
     

@@ -65,13 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Tiempos.sqlite")
         
-       /*
+       
         do{
             try NSFileManager.defaultManager().removeItemAtURL(url)
         } catch {
             print(error)
         }
-        */
         
         
         

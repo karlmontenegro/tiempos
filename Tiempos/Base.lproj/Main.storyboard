@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -1996,12 +1997,20 @@
                                 <action selector="cancelTapped:" destination="jya-e5-erQ" id="dee-RY-Izm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Grabar" id="kvS-Ad-fhj">
-                            <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="saveTapped:" destination="jya-e5-erQ" id="9aS-l2-z96"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Grabar" id="kvS-Ad-fhj">
+                                <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="saveTapped:" destination="jya-e5-erQ" id="9aS-l2-z96"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="contacts-32.png" id="ssF-dV-w0k">
+                                <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="importContactFromAddressBook:" destination="jya-e5-erQ" id="R01-EI-Eog"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -3364,12 +3373,20 @@
                         <barButtonItem key="leftBarButtonItem" image="menu-25.png" id="fCz-oz-hWT">
                             <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Tnn-e8-7aa">
-                            <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="NHD-Fr-LMh" kind="show" identifier="newDate" id="SVX-Mr-y85"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Tnn-e8-7aa">
+                                <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="NHD-Fr-LMh" kind="show" identifier="newDate" id="SVX-Mr-y85"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="sync-32.png" id="9gT-bq-8bX">
+                                <color key="tintColor" red="1" green="0.67824286330000005" blue="0.0016981144329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="syncCalendarDates:" destination="uAg-Ro-dQw" id="FiV-2x-T1x"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="dateTableView" destination="Cco-Yq-UUV" id="31r-BT-LeC"/>
@@ -7051,12 +7068,14 @@
         <image name="Calendar-32.png" width="32" height="32"/>
         <image name="Settings-32.png" width="32" height="32"/>
         <image name="client-32.png" width="32" height="32"/>
+        <image name="contacts-32.png" width="32" height="32"/>
         <image name="contract-32.png" width="32" height="32"/>
         <image name="date-32.png" width="32" height="32"/>
         <image name="home-32.png" width="32" height="32"/>
         <image name="menu-25.png" width="25" height="25"/>
         <image name="payment-32.png" width="32" height="32"/>
         <image name="receipt-32.png" width="32" height="32"/>
+        <image name="sync-32.png" width="32" height="32"/>
         <image name="time-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
