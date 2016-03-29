@@ -83,7 +83,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         self.txtTarifaEntregableUno.delegate = self
         self.txtTotalHoras.delegate = self
         self.txtTarifaPorHoras.delegate = self
-        self.dateFormatter.dateFormat = "dd/MM/yy"
+        self.dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NuevoContratoTVC.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         

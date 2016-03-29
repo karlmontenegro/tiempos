@@ -19,6 +19,8 @@ class HomeVC: UIViewController {
     
     let eventStore = EKEventStore()
     var addressBookRef: ABAddressBook? = nil
+    var defaultCalendar: EKCalendar? = nil
+    var dateSync:DateBatchImport? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,10 @@ class HomeVC: UIViewController {
         // Do any additional setup after loading the view.
         checkAccessForCalendar()
         checkAccessForAddressBook()
+        
+        self.defaultCalendar = daoCalendar().getCalendar("Freelo Calendar", store: self.eventStore)
+        self.dateSync = DateBatchImport.init(eS: eventStore, c: defaultCalendar)
+        self.dateSync!.importCalendarDatesToDataBase(-1, endDate: NSDate())
     }
 
     override func didReceiveMemoryWarning() {

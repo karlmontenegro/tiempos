@@ -32,7 +32,8 @@ class DateBatchImport {
         
         for ev in list! {
             if daoCita().getDateByEventId(ev) == nil {
-                daoCita().createGenericDate(ev.title, calEvent: ev)
+                let cita = daoCita().createGenericDate(ev.title, calEvent: ev)
+                daoCita().updateDate(cita!, start: ev.startDate, end: ev.endDate)
                 count += 1
             }
         }

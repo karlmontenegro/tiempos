@@ -136,8 +136,12 @@ class HorasLaboradasVC: UIViewController,UITableViewDataSource,UITableViewDelega
         let client = (self.dateDictionary![key]![indexPath.row]).cliente?.nombre
         
         cell.textLabel!.text = title
-        cell.detailTextLabel!.text = subtitle + " - " + client!
         
+        if client != nil {
+            cell.detailTextLabel!.text = subtitle + " - " + client!
+        } else {
+            cell.detailTextLabel!.text = subtitle + " - (Sin Cliente)"
+        }
         return cell
     }
     

@@ -37,6 +37,7 @@ class NuevaCitaTVC: UITableViewController,clientOperations,dateTimeOp,alarmOp,en
         
         self.lblStartDate.text = self.dateFormatter.stringFromDate(self.startDate!)
         self.endDate = self.startDate!.dateByAddingTimeInterval(1.0 * 60.0 * 60.0)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +49,8 @@ class NuevaCitaTVC: UITableViewController,clientOperations,dateTimeOp,alarmOp,en
     func returnClientToSource(client: Cliente) {
         self.cliente = client
         self.lblCliente.text = client.nombre
+        
+        print(client)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -135,8 +138,7 @@ class NuevaCitaTVC: UITableViewController,clientOperations,dateTimeOp,alarmOp,en
                     if self.endDate == nil {
                         self.alertMessage("Fin de cita necesario", winTitle: "Error")
                     } else {
-                        daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato ,entregable: self.entregable, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
-                        
+                        let c = daoCita().newDate(self.txtNomCita.text!, cliente: self.cliente!, start: self.startDate!, end: self.endDate!, contract: self.contrato ,entregable: self.entregable, activateAlarm: self.alarmSwitch.on, alarm: self.alarm, store: self.eventStore)
                         self.navigationController?.popToRootViewControllerAnimated(true)
                     }
                 }

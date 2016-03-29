@@ -34,7 +34,7 @@ class daoCita{
         return newGenericCita as? Cita
     }
     
-    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato?,entregable:Entregable?,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore){
+    func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato?,entregable:Entregable?,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore)-> Cita?{
         
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -85,6 +85,8 @@ class daoCita{
         }catch{
             print(error)
         }
+        
+        return newCita as? Cita
     }
     
     func newDate(nomDate: String, cliente:Cliente, start:NSDate, end:NSDate, contract:Contrato?,entregable:Entregable?,activateAlarm:Bool,alarm:EKAlarm?,store:EKEventStore,converted:Bool)->Cita{
@@ -98,6 +100,7 @@ class daoCita{
         let calendar:EKCalendar = daoCalendar().getCalendar("Freelo Calendar", store: store)!
         
         newCita.setValue(cliente, forKey: "cliente")
+        
         if contract != nil {
             newCita.setValue(contract, forKey: "contrato")
         }
@@ -157,14 +160,13 @@ class daoCita{
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        cita.setValue(cliente, forKey: "cliente")
-        
         let store:EKEventStore = event.valueForKey("eventStore") as! EKEventStore
         
         event.title = nomDate
         event.startDate = start
         event.endDate = end
         
+        cita.setValue(cliente, forKey: "cliente")
         cita.setValue(start, forKey:  "fechaInicio")
         cita.setValue(end, forKey: "fechaFin")
         
@@ -172,7 +174,6 @@ class daoCita{
             cita.setValue(contract!, forKey: "contrato")
             event.notes = "Cliente: " + cliente.nombre! + " Contrato:" + contract!.nombreContrato!
         }
-        
         
         if alarm != nil{
             event.alarms = []
@@ -194,6 +195,22 @@ class daoCita{
         }catch{
             print(error)
         }
+    }
+    
+    func updateDate(cita: Cita, start:NSDate, end:NSDate) {
+        
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        cita.setValue(start, forKey: "fechaInicio")
+        cita.setValue(end, forKey: "fechaFin")
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+        
     }
     
     func getDateByEventId(event:EKEvent)->Cita?{
@@ -299,6 +316,8 @@ class daoCita{
         
         var citaDictionary = Dictionary<NSDate,Array<Cita>>()
         var dateForThisDay:NSDate? = nil
+        
+        print(array)
         
         for cita in array {
             dateForThisDay = cita.fechaInicio

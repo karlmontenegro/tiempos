@@ -107,6 +107,7 @@ class EditCitaTVC: UITableViewController,clientOperations,contractOp,alarmOp,dat
     func returnClientToSource(client: Cliente) {
         self.cliente = client
         self.lblNomCliente.text = client.nombre
+        print(client)
     }
     
     func returnDateTimeToDate(date: NSDate, type: String) {

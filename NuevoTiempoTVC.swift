@@ -64,8 +64,11 @@ class NuevoTiempoTVC: UITableViewController, hoursOp, clientOperations, contract
             self.interval = self.getTotalTime((self.event?.startDate)!, end: (self.event?.endDate)!)!
             
             self.txtTitulo.text = self.event?.title
-            self.lblCliente.text = self.cita?.cliente?.nombre
-            
+            if self.cliente != nil {
+                self.lblCliente.text = self.cita?.cliente?.nombre
+            } else {
+                self.lblCliente.text = "+ Cliente Asociado"
+            }
             self.lblCita.text = self.event?.title
             self.lblFecha.text = self.dateFormatter.stringFromDate((self.event?.startDate)!)
             self.horas = self.stringFromTimeInterval(self.interval!)
