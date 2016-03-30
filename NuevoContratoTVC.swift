@@ -79,16 +79,17 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
         self.txtNombreContrato.delegate = self
         self.txtTarifaEntregableUno.delegate = self
         self.txtTotalHoras.delegate = self
         self.txtTarifaPorHoras.delegate = self
-        self.dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
+        self.dateFormatter.dateFormat = "ccc, dd MMM"
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NuevoContratoTVC.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NuevoContratoTVC.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        
         
         if self.origin == "NEW" {
             self.lblTipoFacturacion.text = "Por Entregables"
@@ -129,7 +130,7 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                     
                     if (self.contrato?.entregables!.allObjects[0] as! Entregable).fechaEntrega != nil {
                         self.fechaEntregableUno = (self.contrato?.entregables!.allObjects[0] as! Entregable).fechaEntrega
-                        self.lblFechaEntregableUno.text = "Fecha de Entrega: " + self.dateFormatter.stringFromDate(self.fechaEntregableUno!)
+                        self.lblFechaEntregableUno.text = "Vence:" + self.dateFormatter.stringFromDate(self.fechaEntregableUno!)
                     } else {
                         self.lblFechaEntregableUno.text = "+ Añadir fecha de entrega"
                     }
@@ -256,19 +257,15 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                     
                 if self.tipoFact == "ENT" {
                     if self.origin == "NEW" {
-                        
                         if self.txtTarifaEntregableUno.text == "" {
                             self.alertMessage("El entregable debe tener una tarifa", winTitle: "Error")
                         }else {
-                            if self.contrato?.entregables == nil {
-                                if self.contrato?.entregables!.count == 0 {
-                                    self.entregableUno = daoEntregable().genericEntregable()
-                                    daoEntregable().updateEntregable(self.txtNombreContrato.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!, entrega: self.fechaEntregableUno)
-                                
-                                    self.contrato?.addEntregable(self.entregableUno!)
-                                }
-                            }
                             daoContrato().updateContract(self.txtNombreContrato.text!, tipoFact: self.tipoFact, moneda: self.moneda!, client: self.cliente!, object: self.contrato!)
+                            if self.contrato?.entregables!.count == 0 {
+                                self.entregableUno = daoEntregable().genericEntregable()
+                                daoEntregable().updateEntregable(self.txtNombreContrato.text!, tarifa: self.txtTarifaEntregableUno.text!, moneda: self.moneda!, object: self.entregableUno!, entrega: self.fechaEntregableUno)
+                                self.contrato?.addEntregable(self.entregableUno!)
+                            }
                         }
                 
                     } else {
@@ -474,5 +471,18 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
         }))
         
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UIGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

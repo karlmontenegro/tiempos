@@ -63,7 +63,7 @@ class daoEntregable{
         let num = NSNumber(float: numTarifa!)
         
         if entrega != nil {
-            object.setValue(entrega!, forKey: "fechaEntrega")
+            object.setValue(entrega, forKey: "fechaEntrega")
         }
         
         object.setValue(nombre, forKey: "nombreEntreg")

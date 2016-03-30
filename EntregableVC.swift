@@ -32,6 +32,7 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
     var height:CGFloat? = nil
     @IBOutlet weak var heightToTop: NSLayoutConstraint!
     @IBOutlet weak var modalView: UIView!
+
     
     @IBAction func cancelTapped(sender: UIButton) {
         if self.mode == "NEW" {
@@ -57,16 +58,18 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.saveButton.enabled = false
-        
+    override func viewWillAppear(animated: Bool) {
         let bounds = UIScreen.mainScreen().bounds
         self.height = bounds.size.height
+        self.heightToTop.constant = 10
         self.view.layoutIfNeeded()
         self.heightToTop.constant = self.height!/2 - self.modalView.frame.height/2
         self.view.layoutIfNeeded()
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.saveButton.enabled = false
+        self.hideKeyboardWhenTappedAround()
         
         self.txtNomEntregable.delegate = self
         self.txtTarifa.delegate = self
@@ -112,7 +115,7 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
                 
                 self.view.layoutIfNeeded()
                 UIView.animateWithDuration(1, animations: {
-                    self.heightToTop.constant -= keyboardSize.height/2
+                    self.heightToTop.constant -= keyboardSize.height/4
                     self.view.layoutIfNeeded()
                 })
             }
@@ -127,7 +130,7 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
                 
                 self.view.layoutIfNeeded()
                 UIView.animateWithDuration(1, animations: {
-                    self.heightToTop.constant += keyboardSize.height/2
+                    self.heightToTop.constant += keyboardSize.height/4
                     self.view.layoutIfNeeded()
                 })
             }

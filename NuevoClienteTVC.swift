@@ -363,8 +363,6 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         if self.cliente?.contacto?.count == 1 {
             self.txtNombre = (contact.valueForKey("firstName") as! String) + " " + (contact.valueForKey("lastName") as! String)
             
-            print(contact)
-            
             if contact.valueForKey("address") != nil || contact.valueForKey("city") != nil || contact.valueForKey("zipCode") != nil {
                 
                 let address = contact.valueForKey("address") as! String
