@@ -283,6 +283,14 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         }
     }
     
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        if indexPath.section == 0 {
+            return UITableViewCellEditingStyle.None
+        } else {
+            return UITableViewCellEditingStyle.Delete
+        }
+    }
+    
     @IBAction func importContactFromAddressBook(sender: AnyObject) {
         let people = ABPeoplePickerNavigationController()
         people.peoplePickerDelegate = self
@@ -361,7 +369,10 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
         daoContacto().newContact(contact.valueForKey("firstName") as! String, lastName: contact.valueForKey("lastName") as! String, recordRef: idNumber,cliente: self.cliente!)
         
         if self.cliente?.contacto?.count == 1 {
-            self.txtNombre = (contact.valueForKey("firstName") as! String) + " " + (contact.valueForKey("lastName") as! String)
+            
+            if self.txtNombre == "" {
+                self.txtNombre = (contact.valueForKey("firstName") as! String) + " " + (contact.valueForKey("lastName") as! String)
+            }
             
             if contact.valueForKey("address") != nil || contact.valueForKey("city") != nil || contact.valueForKey("zipCode") != nil {
                 

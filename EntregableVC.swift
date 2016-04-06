@@ -43,6 +43,7 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func dateTimePickerChanged(sender: UIDatePicker) {
         self.dueDate = self.datePicker.date
+        self.saveButton.enabled = true
     }
     
     @IBAction func saveTapped(sender: UIButton) {
@@ -78,7 +79,7 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
             self.txtEntregable.text = "Nuevo Entregable"
         }else{
             self.txtEntregable.text = "Editar Entregable"
-            
+            self.moneda = (data as! Entregable).moneda
             if self.dueDate != nil {
                 self.datePicker.date = self.dueDate!
             }

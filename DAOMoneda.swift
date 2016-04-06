@@ -29,6 +29,9 @@ class daoMoneda{
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         let request = NSFetchRequest(entityName: "Moneda")
+        let currencySortDescriptor = NSSortDescriptor(key: "descripcion", ascending: true)
+        
+        request.sortDescriptors =  [currencySortDescriptor]
         
         request.returnsObjectsAsFaults = false
         

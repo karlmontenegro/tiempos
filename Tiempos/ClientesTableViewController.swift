@@ -129,28 +129,28 @@ class ClientesTableViewController: UITableViewController, DZNEmptyDataSetDelegat
 
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?  {
         
+        let cliente = self.arreglo[indexPath.row]
+        
         let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Borrar" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             // Alerts before the delete just in case it wasn't meant to be
-            let alertController = UIAlertController(title: "Atención", message:
+            
+            
+            if cliente.hasContracts() || cliente.hasCitas() || cliente.hasRecibos() || cliente.hasTiempos() {
+            
+                let alertController = UIAlertController(title: "Atención", message:
                 "¿Estás seguro que quieres borrar este cliente? Esto borrará toda la información relacionada con el cliente.", preferredStyle: UIAlertControllerStyle.Alert)
             
             // Delete action
-            alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
+                alertController.addAction(UIAlertAction(title: "Borrar", style: UIAlertActionStyle.Default, handler: { (alertController) -> Void in
                 
-                //Checks for associated information
-                
-                let cliente = self.arreglo[indexPath.row]
-                
-                if cliente.hasContracts() || cliente.hasCitas() || cliente.hasRecibos() || cliente.hasTiempos() {
-                    self.alertMessage("El cliente no se puede borrar, tiene mucha información asociada.", winTitle: "Error")
-                } else {
-                    // Deletes the row from the DAO
-                    daoCliente().deleteClientAt(self.arreglo[indexPath.row])
-                    // Deletes the element from the array
-                    self.arreglo.removeAtIndex(indexPath.row)
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                }
-            }))
+                // Deletes the row from the DAO
+                daoCliente().deleteClientAt(self.arreglo[indexPath.row])
+                // Deletes the element from the array
+                self.arreglo.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    
+                }))
+            
             
             // Cancel action
             alertController.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Default,handler: { (alertController) -> Void in
@@ -158,7 +158,13 @@ class ClientesTableViewController: UITableViewController, DZNEmptyDataSetDelegat
             }))
             
             self.presentViewController(alertController, animated: true, completion: nil)
-
+            } else {
+                // Deletes the row from the DAO
+                daoCliente().deleteClientAt(self.arreglo[indexPath.row])
+                // Deletes the element from the array
+                self.arreglo.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
         })
         delete.backgroundColor = UIColor.redColor()
        

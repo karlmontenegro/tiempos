@@ -60,6 +60,9 @@ class EntregablePicker: UIViewController, UIPickerViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
+    @IBAction func cancelTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
