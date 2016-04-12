@@ -103,8 +103,9 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
             } else {
                 self.lblCurrency.text = (self.moneda?.id)! + (self.moneda?.descripcion)!
                 daoContrato().updateContract("", tipoFact: "", moneda: self.moneda!, client: nil, object: self.contrato!)
-                
             }
+            
+            self.lblFechaEntregableUno.text = "Vence: " + self.dateFormatter.stringFromDate(NSDate())
         }
         
         if self.origin == "EDIT" {
@@ -130,9 +131,9 @@ class NuevoContratoTVC: UITableViewController,clientOperations,currencyOperation
                     
                     if (self.contrato?.entregables!.allObjects[0] as! Entregable).fechaEntrega != nil {
                         self.fechaEntregableUno = (self.contrato?.entregables!.allObjects[0] as! Entregable).fechaEntrega
-                        self.lblFechaEntregableUno.text = "Vence:" + self.dateFormatter.stringFromDate(self.fechaEntregableUno!)
+                        self.lblFechaEntregableUno.text = "Vence: " + self.dateFormatter.stringFromDate(self.fechaEntregableUno!)
                     } else {
-                        self.lblFechaEntregableUno.text = "+ Añadir fecha de entrega"
+                        self.lblFechaEntregableUno.text = "Vence: " + self.dateFormatter.stringFromDate(NSDate())
                     }
                 } else {
                     

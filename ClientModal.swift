@@ -22,6 +22,7 @@ class ClientModal: UIViewController, UIPickerViewDelegate, clientViewOperations 
     @IBOutlet var clientPicker: [UIPickerView]!
     @IBOutlet weak var clientPickerOut: UIPickerView!
     @IBOutlet weak var selectButton: UIButton!
+    @IBOutlet weak var centerView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +36,20 @@ class ClientModal: UIViewController, UIPickerViewDelegate, clientViewOperations 
             
         }
         // Do any additional setup after loading the view.
+        
+        let transparencyButton: UIButton = UIButton.init(frame: self.view.bounds)
+        
+        transparencyButton.backgroundColor = UIColor.clearColor()
+        
+        self.view.insertSubview(transparencyButton, belowSubview: self.centerView)
+        
+        transparencyButton.addTarget(self, action: #selector(ClientModal.dismissHelper(_:)), forControlEvents: UIControlEvents.TouchUpInside)
     }
-
+    
+    func dismissHelper(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func updateContent() {
         self.listaClientes = daoCliente().getAllClients()
         self.clientPickerOut.reloadAllComponents()

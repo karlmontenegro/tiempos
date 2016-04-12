@@ -46,6 +46,9 @@ class TimePicker: UIViewController {
         self.delegateAddress!.returnTimeToDate(self.selectedDate!,type: self.origin)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    @IBAction func cancelTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     @IBAction func selectedTime(sender: UIDatePicker) {
         self.selectedDate = self.timePicker.date
