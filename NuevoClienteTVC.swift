@@ -374,14 +374,6 @@ class NuevoClienteTVC: UITableViewController,refreshAddressTable,refreshAddressT
                 self.txtNombre = (contact.valueForKey("firstName") as! String) + " " + (contact.valueForKey("lastName") as! String)
             }
             
-            if contact.valueForKey("address") != nil || contact.valueForKey("city") != nil || contact.valueForKey("zipCode") != nil {
-                
-                let address = contact.valueForKey("address") as! String
-                let city = contact.valueForKey("city") as! String
-                let zipCode = contact.valueForKey("zipCode") as! String
-                
-                daoDireccion().newAddress(self.cliente!, dir: address, ref1: city, ref2: zipCode, p: true)
-            }
         } else {
             self.txtNombre = ""
         }

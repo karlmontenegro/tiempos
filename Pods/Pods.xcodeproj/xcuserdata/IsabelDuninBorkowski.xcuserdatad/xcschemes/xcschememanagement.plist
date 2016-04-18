@@ -4,12 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Tiempos.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8064EFD900392054D55A8CF99C5A2765</key>
+		<key>86FCAFBE3ACE0BF6FEB45151E8D15D55</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C76C7BDF95EBF34302564FED2A623AFA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F831852D7F125168B1EF17FC76AB893C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA073A2B6A40241050D91303EE6DF561</key>
 		<dict>
 			<key>primary</key>
 			<true/>
