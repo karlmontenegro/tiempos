@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 4.3">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 4.3">
     <entity name="Cita" representedClassName="Cita" syncable="YES">
         <attribute name="convertido" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="eventRef" optional="YES" attributeType="String" syncable="YES"/>
@@ -117,6 +117,7 @@
     </entity>
     <entity name="Tiempo" representedClassName="Tiempo" syncable="YES">
         <attribute name="convertido" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="horas" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lugar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tarifaHoras" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -158,7 +159,7 @@
         <element name="Pais" positionX="-972" positionY="-648" width="144" height="90"/>
         <element name="Recibo" positionX="-738" positionY="-954" width="144" height="240"/>
         <element name="ReciboDetalle" positionX="-990" positionY="-810" width="128" height="180"/>
-        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="240"/>
+        <element name="Tiempo" positionX="-1190" positionY="-498" width="128" height="255"/>
         <element name="Usuario" positionX="-738" positionY="-706" width="108" height="238"/>
     </elements>
 </model>

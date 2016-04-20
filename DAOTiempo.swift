@@ -23,6 +23,10 @@ class daoTiempo{
         newTiempo.setValue(converted, forKey: "convertido")
         newTiempo.setValue(hours, forKey: "horas")
         
+        if fecha != nil {
+            newTiempo.setValue(fecha, forKey: "createdAt")
+        }
+        
         newTiempo.setValue(cliente, forKey: "cliente")
         newTiempo.setValue(contrato, forKey: "contrato")
         //newTiempo.setValue(cita.entregable!, forKey: "entregable")
@@ -79,6 +83,10 @@ class daoTiempo{
         newTiempo.setValue(title, forKey: "titulo")
         newTiempo.setValue(client, forKey: "cliente")
         newTiempo.setValue(hours, forKey: "horas")
+        
+        if fecha != nil {
+            newTiempo.setValue(fecha, forKey: "createdAt")
+        }
         
         if contract != nil {
             newTiempo.setValue(contract, forKey: "contrato")

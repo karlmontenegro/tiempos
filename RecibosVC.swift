@@ -208,11 +208,8 @@ class RecibosVC: UIViewController,UITableViewDelegate,UITableViewDataSource,invo
     
     
     func removeFromArray(obj: Tiempo) {
-        for index in 0 ..< self.selectedTimesArray.count {
-            if self.selectedTimesArray[index] == obj {
-                self.selectedTimesArray.removeAtIndex(index)
-            }
-        }
+        let index = self.selectedTimesArray.indexOf(obj)
+        self.selectedTimesArray.removeAtIndex(index!)
     }
     
     func sameCurrencyCheck(obj: Array<Tiempo>)->Bool {

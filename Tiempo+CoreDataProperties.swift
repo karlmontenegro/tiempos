@@ -27,4 +27,5 @@ extension Tiempo {
     @NSManaged var reciboDetalle: ReciboDetalle?
     @NSManaged var tarifaHoras: NSNumber?
     @NSManaged var moneda: Moneda?
+    @NSManaged var createdAt: NSDate?
 }

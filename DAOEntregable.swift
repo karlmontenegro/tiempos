@@ -158,11 +158,13 @@ class daoEntregable{
         for entregable in array {
             thisClient = entregable.contrato?.cliente
             
-            if entregableDictionary.indexForKey(thisClient!) == nil {
-                entregableDictionary[thisClient!] = []
-            }
+            if thisClient != nil {
+                if entregableDictionary.indexForKey(thisClient!) == nil {
+                    entregableDictionary[thisClient!] = []
+                }
             
-            entregableDictionary[thisClient!]?.append(entregable)
+                entregableDictionary[thisClient!]?.append(entregable)
+            }
         }
         
         return entregableDictionary

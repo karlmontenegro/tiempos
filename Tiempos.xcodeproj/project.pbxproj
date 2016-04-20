@@ -102,6 +102,10 @@
 		0CD84C961C19E67900159373 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD84C951C19E67900159373 /* HomeVC.swift */; };
 		0CD8DB4D1BE3ED2F00AAA173 /* CitasTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8DB4C1BE3ED2F00AAA173 /* CitasTVC.swift */; };
 		0CDC90351BFCF3950048A195 /* CitaDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC90341BFCF3950048A195 /* CitaDetailTVC.swift */; };
+		0CE1027A1CC7D58D001AE129 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE102731CC7D57E001AE129 /* Charts.framework */; };
+		0CE1027B1CC7D58D001AE129 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE102731CC7D57E001AE129 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0CE102801CC7E6A1001AE129 /* DAOReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE1027F1CC7E6A1001AE129 /* DAOReports.swift */; };
+		0CE102821CC806D3001AE129 /* DateRangeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE102811CC806D3001AE129 /* DateRangeModal.swift */; };
 		0CE406701B9F3FA80096CE36 /* Direccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4066F1B9F3FA80096CE36 /* Direccion.swift */; };
 		0CE406721B9F53900096CE36 /* VerDireccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */; };
 		0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4B3BA1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift */; };
@@ -143,6 +147,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0CE102721CC7D57E001AE129 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		0CE102741CC7D57E001AE129 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		0CE102761CC7D57E001AE129 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		0CE102781CC7D57E001AE129 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		0CE1027C1CC7D58D001AE129 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
 		526D568D1B5D57C0000F323D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 526D566F1B5D57BF000F323D /* Project object */;
@@ -151,6 +190,20 @@
 			remoteInfo = Tiempos;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0CE1027E1CC7D58D001AE129 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0CE1027B1CC7D58D001AE129 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0C0E71A61C3C2FA4006404CD /* ReciboEmitidoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReciboEmitidoVC.swift; sourceTree = "<group>"; };
@@ -249,6 +302,10 @@
 		0CD84C951C19E67900159373 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		0CD8DB4C1BE3ED2F00AAA173 /* CitasTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitasTVC.swift; sourceTree = "<group>"; };
 		0CDC90341BFCF3950048A195 /* CitaDetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitaDetailTVC.swift; sourceTree = "<group>"; };
+		0CE102521CC7CE10001AE129 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Charts-master/Charts/build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
+		0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
+		0CE1027F1CC7E6A1001AE129 /* DAOReports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOReports.swift; sourceTree = "<group>"; };
+		0CE102811CC806D3001AE129 /* DateRangeModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeModal.swift; sourceTree = "<group>"; };
 		0CE4066F1B9F3FA80096CE36 /* Direccion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direccion.swift; sourceTree = "<group>"; };
 		0CE406711B9F53900096CE36 /* VerDireccionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerDireccionViewController.swift; sourceTree = "<group>"; };
 		0CE4B3BA1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsociarContactosTableViewController.swift; sourceTree = "<group>"; };
@@ -301,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6573795CA62188CC81C8E56 /* Pods_Tiempos.framework in Frameworks */,
+				0CE1027A1CC7D58D001AE129 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +385,7 @@
 				0C50390A1C7CD5FC0004D122 /* ContractHoursPicker.swift */,
 				0C5039181C7E31930004D122 /* TarifaModal.swift */,
 				0C8675981C99E2C300C3CFEB /* ContractModal.swift */,
+				0CE102811CC806D3001AE129 /* DateRangeModal.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -511,6 +570,7 @@
 				0CCF78F01BEBC1BF00D2B3A6 /* DAOCalendar.swift */,
 				0CCF3D661C63E8930066FB63 /* DAOConfiguracion.swift */,
 				0C86759A1CA0463700C3CFEB /* DateBatchImport.swift */,
+				0CE1027F1CC7E6A1001AE129 /* DAOReports.swift */,
 			);
 			name = DAO;
 			sourceTree = "<group>";
@@ -525,6 +585,17 @@
 				0C9E2E861C11FD43003BB112 /* menuTVC.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		0CE1026C1CC7D57E001AE129 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CE102731CC7D57E001AE129 /* Charts.framework */,
+				0CE102751CC7D57E001AE129 /* Charts.framework */,
+				0CE102771CC7D57E001AE129 /* Charts.framework */,
+				0CE102791CC7D57E001AE129 /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		0CE4B3C81BA898EE00FCC736 /* Contract View */ = {
@@ -555,6 +626,7 @@
 		5145FDC8EA15DA72FE05F3E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0CE102521CC7CE10001AE129 /* Charts.framework */,
 				378857C4500381BB3B75F119 /* Pods_Tiempos.framework */,
 			);
 			name = Frameworks;
@@ -563,6 +635,7 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
+				0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */,
 				0C1446091C1F45710027BD80 /* Modals */,
 				0C9E2E8D1C1218F9003BB112 /* SWSidebarController */,
 				0C3533681C0F5FA000D52D7A /* Icons */,
@@ -661,10 +734,12 @@
 				0C6CD5751B7161270084343E /* Headers */,
 				931635CBE01D00432ED7188D /* Embed Pods Frameworks */,
 				1B3ABE0C8F8043E948F02B94 /* Copy Pods Resources */,
+				0CE1027E1CC7D58D001AE129 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0CE1027D1CC7D58D001AE129 /* PBXTargetDependency */,
 			);
 			name = Tiempos;
 			productName = Tiempos;
@@ -720,6 +795,12 @@
 			mainGroup = 526D566E1B5D57BF000F323D;
 			productRefGroup = 526D56781B5D57BF000F323D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0CE1026C1CC7D57E001AE129 /* Products */;
+					ProjectRef = 0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				526D56761B5D57BF000F323D /* Tiempos */,
@@ -727,6 +808,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0CE102731CC7D57E001AE129 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 0CE102721CC7D57E001AE129 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0CE102751CC7D57E001AE129 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 0CE102741CC7D57E001AE129 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0CE102771CC7D57E001AE129 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 0CE102761CC7D57E001AE129 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0CE102791CC7D57E001AE129 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 0CE102781CC7D57E001AE129 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		526D56751B5D57BF000F323D /* Resources */ = {
@@ -865,6 +977,7 @@
 				0C9E2E871C11FD43003BB112 /* menuTVC.swift in Sources */,
 				0C5F050F1BD6C7EC00F80578 /* EntregableVC.swift in Sources */,
 				0C50390B1C7CD5FC0004D122 /* ContractHoursPicker.swift in Sources */,
+				0CE102821CC806D3001AE129 /* DateRangeModal.swift in Sources */,
 				0C5E8E5B1C0788C400869599 /* ConvertirCitaTVC.swift in Sources */,
 				0CCF3D611C63E7F30066FB63 /* Moneda+CoreDataProperties.swift in Sources */,
 				0CE4B3BB1BA08E6E00FCC736 /* AsociarContactosTableViewController.swift in Sources */,
@@ -909,6 +1022,7 @@
 				0CFB8DC01BB1C0310044D0F5 /* Usuario.swift in Sources */,
 				0CCF3D641C63E8770066FB63 /* Configuracion+CoreDataProperties.swift in Sources */,
 				0C2C1E581B72B809009CEB43 /* DetalleContratoViewController.swift in Sources */,
+				0CE102801CC7E6A1001AE129 /* DAOReports.swift in Sources */,
 				0CFB8DCB1BB1C0310044D0F5 /* Moneda.swift in Sources */,
 				0CECCF901C3D8408006C849A /* NuevoContratoTVC.swift in Sources */,
 				0CFB8DC71BB1C0310044D0F5 /* Pais.swift in Sources */,
@@ -942,6 +1056,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0CE1027D1CC7D58D001AE129 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = 0CE1027C1CC7D58D001AE129 /* PBXContainerItemProxy */;
+		};
 		526D568E1B5D57C0000F323D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 526D56761B5D57BF000F323D /* Tiempos */;
@@ -1061,6 +1180,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Charts-master/Charts/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Tiempos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "IDB.$(PRODUCT_NAME:rfc1034identifier)";
@@ -1080,6 +1204,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Charts-master/Charts/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Tiempos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "IDB.$(PRODUCT_NAME:rfc1034identifier)";

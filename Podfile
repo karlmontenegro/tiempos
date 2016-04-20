@@ -6,7 +6,6 @@ use_frameworks!
 target 'Tiempos' do
 
     pod 'DZNEmptyDataSet'
-    pod 'Charts/Realm'
 
 end
 

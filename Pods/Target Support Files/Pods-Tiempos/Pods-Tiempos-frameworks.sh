@@ -84,14 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-Tiempos/Charts.framework"
   install_framework "Pods-Tiempos/DZNEmptyDataSet.framework"
-  install_framework "Pods-Tiempos/Realm.framework"
-  install_framework "Pods-Tiempos/RealmSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-Tiempos/Charts.framework"
   install_framework "Pods-Tiempos/DZNEmptyDataSet.framework"
-  install_framework "Pods-Tiempos/Realm.framework"
-  install_framework "Pods-Tiempos/RealmSwift.framework"
 fi
