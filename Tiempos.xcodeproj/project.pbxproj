@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0207AA1CD3B79A005E3639 /* HomeTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0207A91CD3B79A005E3639 /* HomeTwoVC.swift */; };
+		0C0207B31CD3C2E3005E3639 /* logo_58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C0207B21CD3C2E3005E3639 /* logo_58x58.png */; };
 		0C0E71A71C3C2FA4006404CD /* ReciboEmitidoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0E71A61C3C2FA4006404CD /* ReciboEmitidoVC.swift */; };
 		0C0F91E61BF4F19A00C1872D /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0F91E51BF4F19A00C1872D /* DateTimePicker.swift */; };
 		0C1446061C1F29530027BD80 /* HorasLaboradasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */; };
@@ -206,6 +208,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C0207A91CD3B79A005E3639 /* HomeTwoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTwoVC.swift; sourceTree = "<group>"; };
+		0C0207B21CD3C2E3005E3639 /* logo_58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_58x58.png; path = Iconos/logo_58x58.png; sourceTree = "<group>"; };
 		0C0E71A61C3C2FA4006404CD /* ReciboEmitidoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReciboEmitidoVC.swift; sourceTree = "<group>"; };
 		0C0F91E51BF4F19A00C1872D /* DateTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
 		0C1446051C1F29530027BD80 /* HorasLaboradasVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorasLaboradasVC.swift; sourceTree = "<group>"; };
@@ -372,6 +376,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0207B41CD3C32C005E3639 /* App-Icons */ = {
+			isa = PBXGroup;
+			children = (
+				0C0207B21CD3C2E3005E3639 /* logo_58x58.png */,
+			);
+			name = "App-Icons";
+			sourceTree = "<group>";
+		};
 		0C1446091C1F45710027BD80 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +595,7 @@
 				0C9C58941B726A0E0091B578 /* ClientesTableViewController.swift */,
 				0CE4B3BC1BA091E700FCC736 /* HomeViewController.swift */,
 				0C9E2E861C11FD43003BB112 /* menuTVC.swift */,
+				0C0207A91CD3B79A005E3639 /* HomeTwoVC.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -635,6 +648,7 @@
 		526D566E1B5D57BF000F323D = {
 			isa = PBXGroup;
 			children = (
+				0C0207B41CD3C32C005E3639 /* App-Icons */,
 				0CE1026B1CC7D57E001AE129 /* Charts.xcodeproj */,
 				0C1446091C1F45710027BD80 /* Modals */,
 				0C9E2E8D1C1218F9003BB112 /* SWSidebarController */,
@@ -868,6 +882,7 @@
 				0C3533E91C0F623300D52D7A /* date-32.png in Resources */,
 				526D56841B5D57BF000F323D /* Images.xcassets in Resources */,
 				0C9E2E851C11F489003BB112 /* menu-25.png in Resources */,
+				0C0207B31CD3C2E3005E3639 /* logo_58x58.png in Resources */,
 				0C9E66F81C2B0288000BC948 /* EPCalendarCell1.xib in Resources */,
 				0CD84C931C19E5D700159373 /* home-32.png in Resources */,
 				0C3533F51C0F6CA800D52D7A /* save-32.png in Resources */,
@@ -996,6 +1011,7 @@
 				0C5039191C7E31930004D122 /* TarifaModal.swift in Sources */,
 				0CFA4B081BE1420B007F30B8 /* CitaViewController.swift in Sources */,
 				0C5DBC2C1B8CCDD000FF1D26 /* DireccionesPorClienteTableViewController.swift in Sources */,
+				0C0207AA1CD3B79A005E3639 /* HomeTwoVC.swift in Sources */,
 				0C5F57851BDFE34200B1A0C9 /* ContratoHoras+CoreDataProperties.swift in Sources */,
 				0C598F901B90C3390023FBB2 /* NuevoContactoViewController.swift in Sources */,
 				0C9CF83C1BE922AB00712067 /* CalendarViewController.swift in Sources */,

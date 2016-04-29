@@ -16,6 +16,7 @@ import Charts
 class HomeVC: UIViewController, ChartViewDelegate, dateRangeOp {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var lblDateRangeOne: UILabel!
 
     
     let eventStore = EKEventStore()
@@ -34,6 +35,8 @@ class HomeVC: UIViewController, ChartViewDelegate, dateRangeOp {
     var xAxis: Array<Double>? = nil
     var yAxis: Array<String>? = nil
     
+    var dateFormatter: NSDateFormatter = NSDateFormatter()
+    
     @IBOutlet weak var barChartView: HorizontalBarChartView!
     
     override func viewDidLoad() {
@@ -41,6 +44,10 @@ class HomeVC: UIViewController, ChartViewDelegate, dateRangeOp {
 
         self.end = NSDate()
         self.start = self.end?.dateByAddingMonths(-1)
+        
+        self.dateFormatter.dateFormat = "dd/MM/yy"
+        
+        self.lblDateRangeOne.text = "Del: " + self.dateFormatter.stringFromDate(self.start!) + " Al: " + self.dateFormatter.stringFromDate(self.end!)
         
         self.barChartView.delegate = self
         
@@ -186,6 +193,8 @@ class HomeVC: UIViewController, ChartViewDelegate, dateRangeOp {
     func returnRangeToHome(start: NSDate, end: NSDate) {
         self.start = start
         self.end = end
+        
+        self.lblDateRangeOne.text = "Del: " + self.dateFormatter.stringFromDate(self.start!) + " Al: " + self.dateFormatter.stringFromDate(self.end!)
         
         self.hoursByClient = daoReports().getAllCashedTiempos(self.start!, end: self.end!)
         self.clientKeyArray = Array(self.hoursByClient!.keys)

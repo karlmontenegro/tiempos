@@ -15,13 +15,14 @@ class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmp
 
     var notCashedInvoices:Array<Recibo> = daoRecibo().getAllPendingInvoices()!
     var cashedInvoices:Array<Recibo> = daoRecibo().getAllCashedInvoices()!
-    
+    var dateFormatter = NSDateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Empty Data Set
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
+        self.dateFormatter.dateFormat = "dd/MM/yy"
         
         self.tableView.tableFooterView = UIView()
         
@@ -110,15 +111,12 @@ class CobrosTVC: UITableViewController,cobrosOp, DZNEmptyDataSetDelegate, DZNEmp
         
         if indexPath.section == 0 {
             
-            if self.notCashedInvoices[indexPath.row].contrato != nil {
-                cell.textLabel!.text = self.notCashedInvoices[indexPath.row].contrato?.nombreContrato
-            } else {
-                cell.textLabel!.text = "(Sin Contrato)"
-            }
-            cell.detailTextLabel?.text = "Cliente: " + (self.notCashedInvoices[indexPath.row].cliente?.nombre)! + " Monto: " + Double(self.notCashedInvoices[indexPath.row].valor!).description
+            cell.textLabel!.text = "" + (self.notCashedInvoices[indexPath.row].cliente?.nombre)!
+            
+            cell.detailTextLabel?.text = "Vence: " + self.dateFormatter.stringFromDate((self.notCashedInvoices[indexPath.row].fechaVencimiento)!) + " Monto: " + Double(self.notCashedInvoices[indexPath.row].valor!).description
         } else {
             cell.textLabel!.text = self.cashedInvoices[indexPath.row].cliente?.nombre
-            cell.detailTextLabel?.text = "Cliente: " + (self.cashedInvoices[indexPath.row].cliente?.nombre)! + " Monto: " + Double(self.cashedInvoices[indexPath.row].valor!).description
+            cell.detailTextLabel?.text = "Vence: " + self.dateFormatter.stringFromDate((self.cashedInvoices[indexPath.row].fechaVencimiento)!) + " Monto: " + Double(self.cashedInvoices[indexPath.row].valor!).description
         }
         
         return cell

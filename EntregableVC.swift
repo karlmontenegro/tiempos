@@ -75,6 +75,7 @@ class EntregableVC: UIViewController, UITextFieldDelegate {
         self.txtNomEntregable.delegate = self
         self.txtTarifa.delegate = self
         
+        
         if mode == "NEW" {
             self.txtEntregable.text = "Nuevo Entregable"
         }else{

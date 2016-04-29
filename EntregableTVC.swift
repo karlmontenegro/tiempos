@@ -18,10 +18,12 @@ class EntregableTVC: UITableViewController, entregableEditionOperations {
     var entregables:Array<Entregable>? = nil
     var delegateAddress:entOperations? = nil
     var moneda:Moneda? = nil
+    var dateFormatter = NSDateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.entregables = daoEntregable().getEntregablesByContract(self.contrato!)
+        self.dateFormatter.dateFormat = "dd/MM/Y"
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +60,7 @@ class EntregableTVC: UITableViewController, entregableEditionOperations {
         let cell = tableView.dequeueReusableCellWithIdentifier("entregableCell", forIndexPath: indexPath)
         
         if self.entregables != nil {
+            
             cell.textLabel!.text = self.entregables![indexPath.row].nombreEntreg!
             cell.detailTextLabel!.text = "Tarifa: " + (self.contrato?.moneda?.descripcion)! + " " + Double(self.entregables![indexPath.row].tarifa!).description
         }

@@ -17,7 +17,31 @@ class daoReports{
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         let request = NSFetchRequest(entityName: "Tiempo")
-        let pred = NSPredicate(format: "(convertido = %@) AND ((contrato.tipoFacturacion = %@) OR (contrato = nil)) AND ((createdAt >= %@) AND (createdAt <= %@))", true,"HRS", start, end)
+        let pred = NSPredicate(format: "(convertido = %@) AND ((contrato.tipoFacturacion = %@) OR (contrato = nil)) AND ((createdAt >= %@) AND (createdAt <= %@)) AND (recibo != nil)", true,"HRS", start, end)
+        
+        let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
+        
+        let clienteSortDescriptor = NSSortDescriptor(key: "cliente.nombre", ascending: true)
+        request.sortDescriptors = [clienteSortDescriptor, contratoSortDescriptor]
+        request.predicate = pred
+        request.returnsObjectsAsFaults = false
+        
+        var results:Array<Tiempo> = []
+        
+        do{
+            try results = context.executeFetchRequest(request) as! Array<Tiempo>
+        } catch {
+            print(error)
+        }
+        return self.classifyTimesByClient(results)
+    }
+    
+    func getAllUncashedTiempos(start:NSDate, end:NSDate)->Dictionary<String,Double>? {
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        let request = NSFetchRequest(entityName: "Tiempo")
+        let pred = NSPredicate(format: "((contrato.tipoFacturacion = %@) OR (contrato = nil) OR (contrato.tipoFacturacion = %@)) AND ((createdAt >= %@) AND (createdAt <= %@)) AND (recibo = nil)","HRS","ENT", start, end)
         
         let contratoSortDescriptor = NSSortDescriptor(key: "contrato.nombreContrato", ascending: true)
         

@@ -32,12 +32,12 @@ class CitaDetailTVC: UITableViewController,dateDetailOp {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tiemposCell.hidden = true
         dateFormatter.dateFormat = "ccc, dd MMM hh:mm a"
         
         self.cita = daoCita().getDateByEventId(self.event as! EKEvent)
         
-        print(self.cita)
+        print(self.cita?.tiempo?.recibo)
         
         self.nomCita.text = (self.event as! EKEvent).title
         self.nomCliente.text = self.cita?.cliente?.nombre
