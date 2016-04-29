@@ -93,6 +93,7 @@ class ContratosTableViewController: UITableViewController, DZNEmptyDataSetSource
 
         
         cell.textLabel?.text = self.arreglo[indexPath.row].nombreContrato!
+
         cell.detailTextLabel?.text = "Cliente: " + (self.arreglo[indexPath.row].cliente?.nombre!)! + " Facturación: " + self.arreglo[indexPath.row].tipoFacturacion!
         
         return cell
